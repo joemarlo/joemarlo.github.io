@@ -6,9 +6,29 @@
     <description>Recent content on marlo.works</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 13 Oct 2019 16:26:44 -0400</lastBuildDate>
     
 	<atom:link href="https://joemarlo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Optimizing Yahtzee</title>
+      <link>https://joemarlo.github.io/posts/yahtzee/</link>
+      <pubDate>Sun, 13 Oct 2019 16:26:44 -0400</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/yahtzee/</guid>
+      <description>&lt;p&gt;Simulating Yahtzee and determining your next move
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Is it possible beat Left Right Center?</title>
+      <link>https://joemarlo.github.io/posts/lrc/</link>
+      <pubDate>Sun, 13 Oct 2019 14:20:22 +0530</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/lrc/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
   </channel>
 </rss>
