@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Posts</title>
+<title>Is it possible beat Left Right Center?</title>
 <meta name="description" content="Blog for stats and visualizations">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
@@ -28,9 +28,6 @@
 
 <link href="https://joemarlo.github.io/css/custom.css" rel="stylesheet">
 <link rel="shortcut icon" href="https://joemarlo.github.io/img/favicon.png">
-
-  <link href="https://joemarlo.github.io/posts/index.xml" rel="alternate" type="application/rss+xml" title="marlo.works" />
-  <link href="https://joemarlo.github.io/posts/index.xml" rel="feed" type="application/rss+xml" title="marlo.works" />
 
 
 </head>
@@ -84,68 +81,50 @@
 </div>
 
               
-  <div class="col-xs-12 col-sm-8 col-md-9 content-column">
-    <div class="small-navbar visible-xs">
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
   <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
   <h1 class="small-navbar-heading"><a href="https://joemarlo.github.io">marlo.works</a></h1>
 </div>
 
-    <div class="grid">
-        <div class="row">
-          
-              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 masonry-item">
-                  <div class="box-masonry">
-                      
-                        
-                        <a href="https://joemarlo.github.io/posts/yahtzee/" title="" class="box-masonry-image with-hover-overlay">
-                        
-                            <img src="https://joemarlo.github.io/img/posts/yahtzee/Expected_roll_outcomes_thumbnail2.png" alt="" class="img-responsive">
-                        </a>
-                      
-                      
-                      <div class="box-masonry-hover-text-header">
-                      
-                          <h4><a href="https://joemarlo.github.io/posts/yahtzee/">Optimizing Yahtzee</a></h4>
-                          <div class="box-masonry-description">
-                            <p>
-                                
-                                  <p>Simulating Yahtzee and determining your next move
-</p>
-                                
-                            </p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          
-              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 masonry-item">
-                  <div class="box-masonry">
-                      
-                        
-                        <a href="https://joemarlo.github.io/posts/lrc/" title="" class="box-masonry-image with-hover-overlay">
-                        
-                            <img src="https://joemarlo.github.io/img/posts/LRC/LRC.gif" alt="" class="img-responsive">
-                        </a>
-                      
-                      
-                      <div class="box-masonry-hover-text-header">
-                      
-                          <h4><a href="https://joemarlo.github.io/posts/lrc/">Is it possible beat Left Right Center?</a></h4>
-                          <div class="box-masonry-description">
-                            <p>
-                                
-                                  <p></p>
-                                
-                            </p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          
-        </div>
-    </div>
-</div>
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h1>Is it possible beat Left Right Center?</h1>
+         <p></p>
 
+<p>Around the holidays my family enjoys a game of <a href="https://en.wikipedia.org/wiki/LCR_(dice_game)">Left Right Center</a>, a <del>completely</del> largely chance-based dice game where everyone puts a few dollars on the line. It&rsquo;s a nice reprieve from the typical skill-based games much of family tends to play, and the only decision involved is: what position around the table do you sit?</p>
+
+<p><img src="/img/posts/LRC/LRC.gif" alt="this image" /></p>
+
+<h2 id="simulating-it">Simulating it</h2>
+
+<p>If the game is totally up to chance then what is the point of simulating it? Is there actually an edge to be had? The expected average outcome of any given turn is negative &ndash; i.e. an average turn will result in less dollars for the player as only half the die faces (the dots) result in keeping dollars and the other half result in giving away dollars. Does this mean that its best to go last?</p>
+
+<p>In order to simulate the game we need to first break it down into its core parts:</p>
+
+<p><code>rollDice()</code>: function calculates a single roll of the dice</p>
+
+<p><code>takeTurn()</code>: function calculates the result of <code>rollDice()</code> on the rolling player&rsquo;s score and the players adjacent to them</p>
+
+<p><code>playLRC()</code>: function pulls it all together and simulates a full game; returns a matrix of the full game with turn-by-turn scores</p>
+
+<p>We can now simulate many games with any number of players and then examine the results. Running this 50,000 times (10 different game sizes * 5,000 runs each) gives us simulated data of who typically wins the game.</p>
+
+<p><img src="/img/posts/LRC/LRC_winners.png" alt="winners" /></p>
+
+<p>There&rsquo;s clearly a gain for going last &ndash; at least with the number of players is low. Once the group gets bigger than ~five it doesn&rsquo;t make a substantial difference, and this is confirmed by fiting a linear model (# of wins ~ Player position) and examining the betas.</p>
+
+<p><img src="/img/posts/LRC/Player_coefficents.png" alt="lm model" /></p>
+
+<p>You might not be able to get an edge during the larger games but at least you&rsquo;ll be in for something a little more exciting.</p>
+
+<p><img src="/img/posts/LRC/Comeback_winners.png" alt="comeback" /></p>
+         
+      </div>
+    </div>
+  </div>
+</div>
 
           </div>
       </div>
