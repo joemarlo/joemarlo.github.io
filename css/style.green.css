@@ -330,12 +330,12 @@ SIDEBAR + RIGHT COLUMN
   }
 }
 .sidebar-heading {
-  font-size: 18px;
+  font-size: 20px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 .sidebar-heading a {
-  color: #000;
+  color: #2b7551;
   text-decoration: none;
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;

@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Is it possible beat Left Right Center?</title>
+<title>Optimizing Yahtzee</title>
 <meta name="description" content="Blog for stats and visualizations">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
@@ -90,44 +90,73 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
-         <h1>Is it possible beat Left Right Center?</h1>
-         <p></p>
-
-<p>Around the holidays my family enjoys a game of <a href="https://en.wikipedia.org/wiki/LCR_(dice_game)">Left Right Center</a>, a <del>completely</del> largely chance-based dice game where everyone puts a few dollars on the line. It&rsquo;s a nice reprieve from the typical skill-based games much of family tends to play, and the only decision involved is: what position around the table do you sit?</p>
-
-<p><img src="/img/posts/LRC/LRC.gif" alt="this image" /></p>
-
-<h2 id="simulating-it">Simulating it</h2>
-
-<p>If the game is totally up to chance then what is the point of simulating it? Is there actually an edge to be had? The expected average outcome of any given turn is negative &ndash; i.e. an average turn will result in less dollars for the player as only half the die faces (the dots) result in keeping dollars and the other half result in giving away dollars. Does this mean that its best to go last?</p>
-
-<p>In order to simulate the game we need to first break it down into its core parts:</p>
-
-<p><code>rollDice()</code>: function calculates a single roll of the dice</p>
-
-<p><code>takeTurn()</code>: function calculates the result of <code>rollDice()</code> on the rolling player&rsquo;s score and the players adjacent to them</p>
-
-<p><code>playLRC()</code>: function pulls it all together and simulates a full game; returns a matrix of the full game with turn-by-turn scores</p>
-
-<p>We can now simulate many games with any number of players and then examine the results. Running this 50,000 times (10 different game sizes * 5,000 runs each) gives us simulated data of who typically wins the game.</p>
-
-<p align="center">
-<img src="/img/posts/LRC/LRC_winners.svg" width=80%>
+         <h1>Optimizing Yahtzee</h1>
+         <p>Simulating Yahtzee and determining your next move
 </p>
 
-<p>There&rsquo;s clearly a gain for going last &ndash; at least with the number of players is low. Once the group gets bigger than ~five it doesn&rsquo;t make a substantial difference, and this is confirmed by fiting a linear model (# of wins ~ Player position) and examining the betas.</p>
+<p>One of the core challenges when playing <a href="https://en.wikipedia.org/wiki/Yahtzee">yahtzee</a> is determining which die to keep before throwing your second and third rolls. Plenty has been <a href="http://mathworld.wolfram.com/Yahtzee.html">written</a> on the <a href="https://www.thoughtco.com/probability-of-rolling-a-yahtzee-3126593">probabilities</a> of yahtzee rolls and <a href="http://galsterhome.com/stats/Tutorial/SAS19.htm">simulating</a> <a href="https://www.reddit.com/r/dataisbeautiful/comments/8vgxwl/simulating_10000_yahtzee_dice_throws_how_many/">yahtzee</a> outcomes. The goal of this script is to go one step further and optimize future rolls by determining likely outcomes after your first roll.</p>
+
+<p><code>calculate.score()</code>: function calculates the score of a given roll. Allows us to simulate a single roll and view the results.</p>
+
+<pre><code>&gt; calculate.score(verbose = TRUE)
+# A tibble: 14 x 2
+   Result         Score    
+   &lt;chr&gt;          &lt;chr&gt;    
+ 1 Roll results   2-3-6-6-6
+ 2 Ones           0        
+ 3 Twos           2        
+ 4 Threes         3        
+ 5 Fours          0        
+ 6 Fives          0        
+ 7 Sixes          18       
+ 8 3 of a kind    23       
+ 9 4 of a kind    0        
+10 Full house     0        
+11 Small straight 0        
+12 Large straight 0        
+13 Chance         23       
+14 YAHTZEE        0        
+[1] 23
+</code></pre>
+
+<p>Great. We rolled a &lsquo;2-3-6-6-6&rsquo; and can mark down 23 points. But this doesn&rsquo;t tell us what we should do next. Is this a great roll and we should stop while we&rsquo;re up? Or should we keep all three 6s and roll the remaining two dice?</p>
+
+<p><code>calculate.die.to.keep()</code>: function takes a roll, withholds a certain amount of die then calculates the probabilities of the expected outcomes. Repeats for each combination of die to withhold.</p>
+
+<pre><code>&gt; calculate.die.to.keep(seed.roll = last.roll, verbose = TRUE)
+# A tibble: 16 x 4
+   Base_roll     Mean Median    SD
+   &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+ 1 6-6-6         25.8   25    4.63
+ 2 3-6-6-6       24.7   25    1.86
+ 3 2-6-6-6       24     24.5  1.79
+ 4 2-3-6-6-6     23     23    0   
+ 5 6-6           22.8   23    3.43
+ 6 3-6-6         22.2   22    2.52
+ 7 2-6-6         21.4   21    2.61
+ 8 6             20.6   20    3.97
+ 9 2-3-6-6       20.5   20.5  1.76
+10 3-6           20.2   20    3.81
+11 2-3           19.7   17    7.41
+12 3             19.7   18    6.13
+13 Keep no dice  19.5   19    5.80
+14 2-3-6         19.3   18    4.45
+15 2-6           19.3   19    4.03
+16 2             18.8   17    6.50
+[1] 6 6 6
+</code></pre>
 
 <p align="center">
-<img src="/img/posts/LRC/Player_coefficents.svg" width=80%>
+<img src="/img/posts/yahtzee/Expected_roll_outcomes.svg" width=80%>
 </p>
 
-<p>You might not be able to get an edge during the larger games but at least you&rsquo;ll be in for something a little more exciting.</p>
+<p>That looks great and seems like we should hold onto those three 6s (bottom right plot). But is it really working? Let&rsquo;s run this 500 more times and automatically choose our next roll based on the highest mean expected outcome. Then we can compare the results to just randomly rolling die.</p>
 
 <p align="center">
-<img src="/img/posts/LRC/Comeback_winners.svg" width=80%>
+<img src="/img/posts/yahtzee/Smart_vs_Dumb_boxplot.svg" width=80%>
 </p>
 
-<p><em>Find the code here: <a href="https://github.com/joemarlo/left-right-center">github.com/joemarlo/left-right-center</a></em></p>
+<p><em>Find the code here: <a href="https://github.com/joemarlo/yahtzee">github.com/joemarlo/yahtzee</a></em></p>
          
       </div>
     </div>
