@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://joemarlo.github.io/posts/yahtzee/</loc>
+    <lastmod>2019-10-13T16:26:44-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://joemarlo.github.io/posts/lrc/</loc>
     <lastmod>2019-10-13T14:20:22+05:30</lastmod>
   </url>
@@ -24,7 +29,7 @@
   
   <url>
     <loc>https://joemarlo.github.io/posts/</loc>
-    <lastmod>2019-10-13T14:20:22+05:30</lastmod>
+    <lastmod>2019-10-13T16:26:44-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -35,7 +40,7 @@
   
   <url>
     <loc>https://joemarlo.github.io/</loc>
-    <lastmod>2019-10-13T14:20:22+05:30</lastmod>
+    <lastmod>2019-10-13T16:26:44-04:00</lastmod>
     <priority>0</priority>
   </url>
   
