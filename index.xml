@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Marlo</title>
-    <link>https://www.marlo.works/</link>
+    <link>marlo.works/</link>
     <description>Recent content on Marlo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 13 Oct 2019 16:26:44 -0400</lastBuildDate>
     
-	<atom:link href="https://www.marlo.works/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="marlo.works/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Optimizing Yahtzee</title>
-      <link>https://www.marlo.works/posts/yahtzee/</link>
+      <link>marlo.works/posts/yahtzee/</link>
       <pubDate>Sun, 13 Oct 2019 16:26:44 -0400</pubDate>
       
-      <guid>https://www.marlo.works/posts/yahtzee/</guid>
+      <guid>marlo.works/posts/yahtzee/</guid>
       <description>&lt;p&gt;Simulating Yahtzee and determining your next move
 &lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Is it possible to beat Left Right Center?</title>
-      <link>https://www.marlo.works/posts/lrc/</link>
+      <link>marlo.works/posts/lrc/</link>
       <pubDate>Sun, 13 Oct 2019 14:20:22 +0530</pubDate>
       
-      <guid>https://www.marlo.works/posts/lrc/</guid>
+      <guid>marlo.works/posts/lrc/</guid>
       <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
