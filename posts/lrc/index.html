@@ -93,35 +93,72 @@
          <h1>Is it possible to beat Left Right Center?</h1>
          <p></p>
 
-<p>Around the holidays my family enjoys a game of <a href="https://en.wikipedia.org/wiki/LCR_(dice_game)">Left Right Center</a>, a <del>completely</del> largely chance-based dice game where everyone puts a few dollars on the line. It&rsquo;s a nice reprieve from the typical skill-based games much of family tends to play, and the only decision involved is: what position around the table do you sit?</p>
+<p>Around the holidays my family enjoys a game of <a href="https://en.wikipedia.org/wiki/LCR_(dice_game)">Left Right Center</a>, a <del>completely</del> largely chance-based dice game where everyone puts a few dollars on the line. It&rsquo;s a nice reprieve from the typical skill-based card games much of family tends to play, and the only decision involved is: what position around the table do you sit?</p>
 
-<p><img src="/img/posts/LRC/LRC.gif" alt="this image" /></p>
+<p align="center">
+<img src="/img/posts/LRC/LRC.gif" width=80%>
+</p>
+
+<h2 id="a-quick-primer-on-the-game">A quick primer on the game</h2>
+
+<h5 id="at-least-how-many-family-plays-it">(At least how many family plays it&hellip;)</h5>
+
+<p>The goal of the game is to be the last person with at least one dollar. Participants sit in a circle, and each turn consists of a single participant rolling dice. The die is six-sided but contains four markings: one side has an &ldquo;L,&rdquo; one side a &ldquo;R,&rdquo; one side a &ldquo;center&rdquo;, and three sides have single dots. If the die lands on the &ldquo;L&rdquo; then the roller hands a dollar to the participant to their left; similarly right for a &ldquo;R.&rdquo; If it lands on &ldquo;center&rdquo; then the roller places a dollar in the center of the table, and if it lands on a dot then the roller keeps the dollar. Each participant starts with three dollars, and will roll an equalvalent amount of dice — up to a maximum of three dice per turn. For example, if I have two dollars then I toss two dice but if I have four dollars then I only toss three dice. If I have zero dollars than I don&rsquo;t roll at all, however I can receive dollars from rollers to my left or right. The game ends once only one player has at least one dollar left. The pile of dollars accumulated in the center of the table are their winnings.</p>
 
 <h2 id="simulating-it">Simulating it</h2>
 
-<p>If the game is totally up to chance then what is the point of simulating it? Is there actually an edge to be had? The expected average outcome of any given turn is negative &ndash; i.e. an average turn will result in less dollars for the player as only half the die faces (the dots) result in keeping dollars and the other half result in giving away dollars. Does this mean that its best to go last?</p>
+<p>If the game is completely up to chance then what is the point of simulating it? Is there actually an edge to be had? It comes down to this: the expected average outcome of any given turn is negative — i.e. an average turn will result in less dollars for the rolling player as only half the die faces (the dots) result in keeping dollars, the other half result in giving away dollars, and none result in the rolling player receiving dollars. Does this mean that its best to go last?</p>
 
 <p>In order to simulate the game we need to first break it down into its core parts:</p>
 
-<p><code>rollDice()</code>: function calculates a single roll of the dice</p>
+<ul>
+<li>a function to calculate a single roll of the dice: <code>rollDice()</code></li>
+<li>a function to calculate the impact of <code>rollDice()</code> on the roller&rsquo;s score and the participants adjacent to them. We&rsquo;ll call this function <code>takeTurn()</code></li>
+<li>a function that pulls it all together and simulates a full game. It should return a matrix of the full game with turn-by-turn scores. This is <code>playLRC()</code></li>
+</ul>
 
-<p><code>takeTurn()</code>: function calculates the result of <code>rollDice()</code> on the rolling player&rsquo;s score and the players adjacent to them</p>
+<p><font size="2"><em>Note you can find the code here: <a href="https://github.com/joemarlo/left-right-center">github.com/joemarlo/left-right-center</a></em></font></p>
 
-<p><code>playLRC()</code>: function pulls it all together and simulates a full game; returns a matrix of the full game with turn-by-turn scores</p>
+<p>If we run <code>playLRC()</code> specifying three players we get a nice, tidy matrix showing the turn-by-turn plays. Here the participant in position 2 won after going head-to-head with player 3 for final three rolls.</p>
 
-<p>We can now simulate many games with any number of players and then examine the results. Running this 50,000 times (10 different game sizes * 5,000 runs each) gives us simulated data of who typically wins the game.</p>
+<pre><code>&gt; playLRC(n.player = 3)
+   1 2 3
+1  3 3 3
+2  0 4 3
+3  0 3 4
+4  2 3 2
+5  0 4 3
+6  1 3 3
+7  3 3 1
+8  2 4 1
+9  2 4 1
+10 2 4 1
+11 1 5 1
+12 2 3 2
+13 2 3 2
+14 1 4 2
+15 1 3 3
+16 1 4 2
+17 0 4 2
+18 0 3 3
+19 0 5 0
+</code></pre>
+
+<p>We can now simulate many games using <code>playLRC()</code> with any number of participants we choose. Running this 50,000 times (10 different game sizes * 5,000 runs each) gives us simulated data of who typically wins the game for a given number of participants.</p>
 
 <p align="center">
 <img src="/img/posts/LRC/LRC_winners.svg" width=80%>
 </p>
 
-<p>There&rsquo;s clearly a gain for going last &ndash; at least with the number of players is low. Once the group gets bigger than ~five it doesn&rsquo;t make a substantial difference, and this is confirmed by fiting a linear model (# of wins ~ Player position) and examining the betas.</p>
+<p>There&rsquo;s clearly a gain for going last &ndash; at least when the number of players is low. If there&rsquo;s only two participants then the second participant wins ~1,200 more times over 5,000 games or about a <strong>66% increase</strong> over the first participant. Once the group gets bigger than ~five, position doesn&rsquo;t appear to make a substantial difference. Let&rsquo;s quantify this advantage for all game sizes.</p>
 
 <p align="center">
-<img src="/img/posts/LRC/Player_coefficents.svg" width=80%>
+<img src="/img/posts/LRC/Player_advantage.svg" width=80%>
 </p>
 
-<p>You might not be able to get an edge during the larger games but at least you&rsquo;ll be in for something a little more exciting.</p>
+<p>What does this tell us? I&rsquo;m not sure. The advantage of sitting further from the first roller is clear until you reach a game size of six. Then it could be a disadvantage but as you continue to increase game size it&rsquo;s up and down. Perhaps the advantage is completely erased once the game size reaches six and the up/down is randomness.</p>
+
+<p>You might not be able to get an edge during the larger games but at least you&rsquo;ll be in for something a little more exciting. The larger games tend to produce much more winners who came back after having zero dollars.</p>
 
 <p align="center">
 <img src="/img/posts/LRC/Comeback_winners.svg" width=80%>
