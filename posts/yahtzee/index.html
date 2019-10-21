@@ -107,7 +107,7 @@
 
 <p>The goal of the second part is determining the right combinations and permutations to draw from the current roll. We want to eventually arrive at the sample space conditioned on which die we withhold. In other words, we want a big list where each observation is a possible outcome of the next die roll. We can then calculate the resulting scores using a custom function <code>calculate.score()</code>, and the resulting list of scores will allow us to calculate the probability of any given score conditioned on which die we withheld.</p>
 
-<p>Let&rsquo;s break this down further into two parts. We first need a list of all the <code>base.rolls</code> or the combination of dice we are going to keep. E.g. in our example of <code>2, 2, 4, 5, 2</code>, if we keep two dice then we will have 5 choose 2 = 10 outcomes. But this still overcounts as we don&rsquo;t care which <code>2</code> we pick. This results in a list of four possible <code>base.rolls</code>: (2, 2), (2, 4), (2, 5), (4, 5). This can automated in R using <code>combn()</code> (from the <a href="https://www.rdocumentation.org/packages/combinat/versions/0.0-8">combinat package</a>) then sorting the results and finally removing the duplicates using <code>.[!duplicated(.)]</code>.</p>
+<p>Let&rsquo;s break this down further into two parts. We first need a list of all the <code>base.rolls</code> or the combination of dice we are going to keep. E.g. in our example of <code>2, 2, 4, 5, 2</code>, if we keep two dice then we will have 5 choose 2 = 10 outcomes. But this still over counts as we don&rsquo;t care which <code>2</code> we pick. This results in a list of four possible <code>base.rolls</code>: (2, 2), (2, 4), (2, 5), (4, 5). This can automated in R using <code>combn()</code> (from the <a href="https://www.rdocumentation.org/packages/combinat/versions/0.0-8">combinat package</a>) then sorting the results and finally removing the duplicates using <code>.[!duplicated(.)]</code>.</p>
 
 <p>The second part is determining the resulting three dice rolls that complete each possible <code>base.rolls</code> pair. In our example, these three can take 216 different permutations (there&rsquo;s three slots to fill where each slot can take six values so: 6 * 6 * 6 = 216). In R we can build a vector <code>1:6</code> three times using <code>replicate(3, 1:6)</code> then call <code>expand.grid()</code> on itself to produce the actual 216 permutations.</p>
 
@@ -148,7 +148,9 @@
 <img src="/img/posts/yahtzee/Smart_vs_Dumb_boxplot.svg" width=100%>
 </p>
 
-<p>Fantastic, it works. Next step is expanding this to all 13 turns of a full game of Yahtzee. That will be a little more involved as the box score will need to be kept track of over the course of the game, and scoring options will need to be consequently excluded from the <code>calculate.score()</code> function.</p>
+<p>Fantastic, it works. Now that we have the two ends of the information spectrum — random rolls acting on no additional information and &ldquo;smart&rdquo; rolls acting on perfect probability information — this methodology would be a great way to test heuristics that players could actually use in practice. E.g is it better to retain a three-of-a-kind or is better to retain a small straight? Sounds like a good v2.0 of this project.</p>
+
+<p>Besides testing heuristics, the next step is expanding this to all 13 turns of a full game of Yahtzee. That will be a little more involved as the box score will need to be kept track of over the course of the game, and scoring options will need to be consequently excluded from the <code>calculate.score()</code> function.</p>
 
 <p><em>Find the code here: <a href="https://github.com/joemarlo/yahtzee">github.com/joemarlo/yahtzee</a></em></p>
          
