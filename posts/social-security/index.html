@@ -96,7 +96,7 @@
     <div class="col-lg-8">
       <div class="content-column-content">
          <h1>Claiming Social Security benefits</h1>
-         <p><em>For old people. Optimizing Social Security and market Monte Carlos</em>
+         <p><em>For the elderly. Optimizing Social Security and market Monte Carlos</em>
 </p>
 
 <hr />
@@ -186,11 +186,14 @@ At what age should I claim Social Security based on how long I expect to live an
 <p>We can determine the value of a series of benefits by simple net present value discounted at the rate of inflation. First, calculate the benefits using the benefits calculator then take the NPV. Repeat for each claim age.</p>
 
 <pre><code># calculate the NPV of a series of annual benefits 
-benefits &lt;- calculate_benefits(birth.year = 1957, claim.age = 62) %&gt;%
-  filter(Age &gt;= 62)
-  NPV(benefits$Benefits, inflation.rate)
+benefits &lt;- calculate_benefits(birth.year = 1957, claim.age = 62) %&gt;% filter(Age &gt;= 62)
+NPV(benefits$Benefits, inflation.rate)
+</code></pre>
 
-# plot of NPVs by claim age
+<pre><code>[1] 430684.4
+</code></pre>
+
+<pre><code># plot of NPVs by claim age
 sapply(62:70, function(claim.age){
   calculate_benefits(birth.year = 1957, claim.age = claim.age) %&gt;%
     filter(Age &gt;= 62) %&gt;% 
