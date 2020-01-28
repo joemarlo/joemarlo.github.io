@@ -112,7 +112,7 @@ plot_pca(
   data = nba,
   frame = TRUE,
   colour = 'km_labs_opt_names',
-  title = 'Kmeans: four cluster solution in principal component space',
+  title = 'K-Means: four cluster solution in principal component space',
   label = km_labels
 )
 
@@ -129,7 +129,7 @@ plot_pca(
   frame = TRUE,
   data = nba,
   colour = hcl_labs[2],
-  title = paste0('Hclust: four cluster solution in principal component space'),
+  title = paste0('Hierarchical: four cluster solution in principal component space'),
   label = hcl_labels
 )
 
@@ -163,7 +163,7 @@ nba_km_avg %>%
   geom_col(fill = rep(c("indianred1", "palegreen2", "darkslategray2", "plum2"), 3),
            alpha = 0.9) +
   facet_wrap(~name, scales = 'free') + 
-  labs(title = 'Overall player performance by cluster',
+  labs(title = 'K-Means: overall player performance by cluster',
        subtitle = 'Average advanced statistics',
        x = 'Cluster', 
        y = '') +

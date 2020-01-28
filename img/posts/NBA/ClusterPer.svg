@@ -186,5 +186,5 @@
 <polyline points='53.48,103.07 56.22,103.07 ' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt;' clip-path='url(#cpMC4wMHw2NDguMDB8MzYwLjAwfDAuMDA=)' />
 <g clip-path='url(#cpMC4wMHw2NDguMDB8MzYwLjAwfDAuMDA=)'><text x='320.52' y='329.26' style='font-size: 11.00px; fill: #4D4D4D; font-family: Helvetica;' textLength='34.84px' lengthAdjust='spacingAndGlyphs'>Cluster</text></g>
 <g clip-path='url(#cpMC4wMHw2NDguMDB8MzYwLjAwfDAuMDA=)'><text x='56.22' y='53.62' style='font-size: 10.00px; fill: #4D4D4D; font-family: Helvetica;' textLength='124.50px' lengthAdjust='spacingAndGlyphs'>Average advanced statistics</text></g>
-<g clip-path='url(#cpMC4wMHw2NDguMDB8MzYwLjAwfDAuMDA=)'><text x='56.22' y='37.97' style='font-size: 13.20px; font-weight: bold; fill: #4D4D4D; font-family: Helvetica;' textLength='236.97px' lengthAdjust='spacingAndGlyphs'>Overall player performance by cluster</text></g>
+<g clip-path='url(#cpMC4wMHw2NDguMDB8MzYwLjAwfDAuMDA=)'><text x='56.22' y='37.97' style='font-size: 13.20px; font-weight: bold; fill: #4D4D4D; font-family: Helvetica;' textLength='297.83px' lengthAdjust='spacingAndGlyphs'>K-Means: overall player performance by cluster</text></g>
 </svg>
