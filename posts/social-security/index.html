@@ -183,7 +183,7 @@ At what age should I claim Social Security based on how long I expect to live an
 
 <h3 id="the-discounting-process">The discounting process</h3>
 
-<p>We can determine the value of a series of benefits by simple net present value discounted at the rate of inflation.</p>
+<p>We can determine the value of a series of benefits by simple net present value discounted at the rate of inflation. First, calculate the benefits using the benefits calculator then take the NPV. Repeat for each claim age.</p>
 
 <pre><code># calculate the NPV of a series of annual benefits 
 benefits &lt;- calculate_benefits(birth.year = 1957, claim.age = 62) %&gt;%
