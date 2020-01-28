@@ -137,7 +137,7 @@ At what age should I claim Social Security based on how long I expect to live an
 
 <p>Luckily, combinations of these outcomes can be calculated and then explained via a simple plot. The plot below describes the best age to claim Social Security while capturing relationship between life expectancy (also known as longevity) and investment return. To use, pick a life expectancy and expected investment return, go to the intersection and the color indicates which claim age is best. You can find more on market return expectations <a href="https://am.jpmorgan.com/us/institutional/ltcma-executive-summary">here</a>.</p>
 
-<p>An investment return of 5% is probably a safe bet for most people. At that rate and using a life expectancy of age 90 (about average for a couple currently age 62), claiming Social Security at age 70 is the best choice to maximize lifetime benefits. If you don&rsquo;t plan on investing the benefits, it&rsquo;s almost better to wait until 70 if you think you&rsquo;ll live to 80. Conversely, if you believe you can yield at least 9% consistently every year in the market, feel free to claim early. However, note that this is a trade-off between a guaranteed, government-backed increase and volatile market returns.</p>
+<p>An investment return of 5% is probably a safe bet for most people. At that rate and using a life expectancy of age 90 (about average for a couple currently age 62), claiming Social Security at age 70 is the best choice to maximize lifetime benefits. If you don&rsquo;t plan on investing the benefits, it&rsquo;s almost always better to wait until 70 if you think you&rsquo;ll live to 80. Conversely, if you believe you can yield at least 9% consistently every year in the market, feel free to claim early. However, note that this is a trade-off between a guaranteed, government-backed increase and volatile market returns.</p>
 
 <p align="center">
 <img src="/img/posts/Social-Security/bestClaim.png" width=100%>
@@ -179,11 +179,11 @@ At what age should I claim Social Security based on how long I expect to live an
 <li>calculate present value and net present value (these can also be found in third-party packages)</li>
 </ul>
 
-<p>You can find the helper functions in <code>R</code> form here: <a href="https://github.com/joemarlo/Social-Security/tree/master/R"><code>helper_functions.R</code></a>.</p>
+<p>You can find the helper functions in <code>R</code> form here: <a href="https://github.com/joemarlo/Social-Security/tree/master/R"><code>Helper_functions.R</code></a>.</p>
 
 <h3 id="the-discounting-process">The discounting process</h3>
 
-<p>We can determine the value of a series of benefits by simple net present value discounted at the rate of inflation. First, calculate the benefits using the benefits calculator then take the NPV. Repeat for each claim age.</p>
+<p>We can determine the value of a series of benefits by simple net present value (NPV) discounted at the rate of inflation. First, calculate the benefits using the benefits calculator then take the NPV. Repeat for each claim age.</p>
 
 <pre><code># calculate the NPV of a series of annual benefits 
 benefits &lt;- calculate_benefits(birth.year = 1957, claim.age = 62) %&gt;% filter(Age &gt;= 62)
