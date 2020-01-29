@@ -121,7 +121,7 @@
 <li>Scaling and transformation
 
 <ul>
-<li>Features was standardized to a per-game rate</li>
+<li>Features were standardized to a per-game rate</li>
 <li>Data was scaled for all clustering methods</li>
 <li>Data was transformed via cube-root for the model-based clustering to meet assumptions of normality</li>
 </ul></li>
@@ -145,9 +145,9 @@
 
 <h4 id="clustering-and-cluster-selection">Clustering and cluster selection</h4>
 
-<p>Principal component analysis showed strong groupings that could be explained with domain knowledge. For example, LeBron James and James Harden are near each other, indicating star players may be grouped together. There are also similarities based on player position. For example, centers/power-forwards such as Anthony Davis and Karl-Anthony Towns are near each other.</p>
+<p>The results from the principal component analysis showed strong groupings that could be explained with domain knowledge. For example, LeBron James and James Harden are near each other, indicating star players may be grouped together. There are also similarities based on player position. For example, centers/power-forwards such as Anthony Davis and Karl-Anthony Towns are near each other.</p>
 
-<p>Three clustering methods were tested to find the separation and homogeneity: hierarchical (single, centroid, and Ward), K-Means, and model-based clustering. Most methods optimized for four or five clusters as measured by Calinski-Harabasz index and Silhouette width. K-Means provided the greatest balance of separation and homogeneity.</p>
+<p>Three clustering methods were then tested and assessed on separation and homogeneity: hierarchical (single, centroid, and Ward), K-Means, and model-based clustering. Most methods optimized for four or five clusters as measured by Calinski-Harabasz index and Silhouette width. K-Means provided the greatest balance of separation and homogeneity.</p>
 
 <p>Visualizing the clusters in principal component space, we see clear separation based on apparent skillsets. For example, LeBron James and James Harden (star players) are in one cluster, whereas John Lucas and Danuel House (lower performers) are in the left-most cluster, opposite to the &lsquo;star player&rsquo; cluster on the right.</p>
 
@@ -163,7 +163,7 @@
 <img src="/img/posts/NBA/MC5.svg"" width=100%>
 </p>
 
-<p>Cluster sizes tends to be imbalanced across methods which may be explained by the underlying inherently imbalanced player skillsets. This imbalance is reflected in univariate density plots, where most densities were positively skewed suggesting that there a few players whose statistics significantly exceed those of the average player. It is also reflected in the average statistics by cluster shown below.</p>
+<p>Cluster sizes tends to be imbalanced across methods which may be explained by the underlying inherently imbalanced player skillsets. This imbalance is reflected in univariate density plots where most densities were positively skewed suggesting that there a few players whose statistics significantly exceed those of the average player. It is also reflected in the average statistics by cluster shown below.</p>
 
 <p><br></p>
 

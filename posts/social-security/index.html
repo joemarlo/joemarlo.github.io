@@ -108,11 +108,11 @@
 <li><strong>Social Security is something Americans <a href="http://crr.bc.edu/wp-content/uploads/2015/05/IB_15-8.pdf">routinely mess up by claiming too early</a></strong></li>
 </ul>
 
-<p>There&rsquo;s plenty written on <a href="https://www.fool.com/retirement/general/2015/11/22/how-does-social-security-work.aspx">how Social Security works</a>. The very basics that every eligible American should understand are the potential tradeoffs they are making when they file to claim their benefits. I won&rsquo;t dive into the specifics of <a href="https://www.investopedia.com/retirement/when-take-social-security-complete-guide/">how the claiming process works</a> but you should know that you can claim as early as age 62 and you receive an increase for each month you wait to claim until age 70.</p>
+<p>Social Security is complicated. Luckily, there&rsquo;s plenty written on <a href="https://www.fool.com/retirement/general/2015/11/22/how-does-social-security-work.aspx">how it works</a> for the fastidious reader. Every eligible American should understand the very basics that directly impact their benefits check and the implicit tradeoffs they are making when they file to claim their benefits. I won&rsquo;t dive into the specifics of <a href="https://www.investopedia.com/retirement/when-take-social-security-complete-guide/">how the claiming process works</a> but you should know that you can claim as early as age 62 and you receive a permanent increase in benefits for each month you wait to claim until age 70.</p>
 
 <p>This leads to the question:</p>
 
-<p align="center">
+<p align="left">
 <font size="3">
 <b>
 At what age should I claim Social Security in order to receive the most amount of money?
@@ -122,7 +122,7 @@ At what age should I claim Social Security in order to receive the most amount o
 
 <p>Or more specifically:</p>
 
-<p align="center">
+<p align="left">
 <font size="3">
 <b>
 At what age should I claim Social Security based on how long I expect to live and, if I invest the money, what rate of return I expect to earn in the market?
@@ -130,13 +130,9 @@ At what age should I claim Social Security based on how long I expect to live an
 </font> 
 </p>
 
-<p>This is commonly asked by financial advisors who serve the wealthy. And these advisors tend to assume it&rsquo;s best to claim early, hand that money over to the advisor, and have them invest in the market (and reap the associated fees).</p>
+<p>This is commonly asked by financial advisors who serve the wealthy, but perhaps less so by the individuals who make these financial decisions themselves. These advisors tend to assume it&rsquo;s best to claim early, hand that money over to the advisor, and have them invest in the market (and reap the associated fees).</p>
 
-<p>Longevity may be hard to estimate but <a href="http://www.onlinejacc.org/content/68/8/874">family member experience</a> and <a href="https://www.ssa.gov/planners/lifeexpectancy.html">life expectancies</a> <a href="https://www.ssa.gov/oact/STATS/table4c6.html">at age 62</a> is a good place to start. The decision between uncertain market return and guaranteed U.S. government money is much more tractable.</p>
-
-<p>Luckily, combinations of these outcomes can be calculated and then explained via a simple plot. The plot below describes the best age to claim Social Security while capturing relationship between life expectancy (also known as longevity) and investment return. To use, pick a life expectancy and expected investment return, go to the intersection and the color indicates which claim age is best. You can find more on market return expectations <a href="https://am.jpmorgan.com/us/institutional/ltcma-executive-summary">here</a>.</p>
-
-<p>An investment return of 5% is probably a safe bet for most people. At that rate and using a life expectancy of age 90 (about average for a couple currently age 62), claiming Social Security at age 70 is the best choice to maximize lifetime benefits. If you don&rsquo;t plan on investing the benefits, it&rsquo;s almost always better to wait until 70 if you think you&rsquo;ll live to 80. Conversely, if you believe you can yield at least 9% consistently every year in the market, feel free to claim early. However, note that this is a trade-off between a guaranteed, government-backed increase and volatile market returns.</p>
+<p>To answer this question, I&rsquo;ve done the work to calculate the combinations of these outcomes and presented it in the below plot. It describes the best age to claim Social Security while capturing the relationship between life expectancy (also known as longevity) and investment return. To use, pick a life expectancy and expected investment return, go to the intersection and the color indicates which claim age is best.</p>
 
 <p align="center">
 <img src="/img/posts/Social-Security/bestClaim.png" width=100%>
@@ -148,17 +144,23 @@ At what age should I claim Social Security based on how long I expect to live an
 </div>
 -->
 
+<p>Life expectancy may be hard to estimate for yourself but <a href="http://www.onlinejacc.org/content/68/8/874">family member experience</a> and <a href="https://www.ssa.gov/planners/lifeexpectancy.html">life expectancies</a> <a href="https://www.ssa.gov/oact/STATS/table4c6.html">at age 62</a> are a good place to start. The decision between uncertain market return and guaranteed U.S. government money is much more tractable. If you want to learn more about long-term market expectations, you can find more <a href="https://am.jpmorgan.com/us/institutional/ltcma-executive-summary">here</a>.</p>
+
+<p>The plot tells us if you don&rsquo;t plan on investing the benefits, it&rsquo;s almost always better to wait until 70 if you think you&rsquo;ll live past 80. If you do plan on investing the benefits, at an investment return of 5% (probably a safe bet for most people) and using a life expectancy of age 90 (about average for a couple currently age 62), claiming Social Security at age 70 is the best choice to maximize lifetime benefits. If you&rsquo;re optimistic about the market and believe you can yield at least 9% consistently every year, feel free to claim early. However, note that this is a trade-off between a guaranteed, government-backed increase and volatile market returns. More on market uncertainty below.</p>
+
 <p><br></p>
 
 <h2 id="how-to-build-your-own-analysis">How to build your own analysis</h2>
 
+<p>If you&rsquo;re interested in building and tweaking this model yourself, you can <a href="https://github.com/joemarlo/Social-Security">find all the code on my github</a>. Here&rsquo;s the basic structure of the analysis:</p>
+
 <ol>
 <li>First build a Social Security benefits calculator based on the <a href="https://www.ssa.gov/OP_Home/ssact/comp-ssa.htm">laws</a>, <a href="https://www.ssa.gov/OP_Home/comp2/comp2.html">IRS code</a>, and maybe recent <a href="https://www.ssa.gov/legislation/index.html#legislation">legislation</a>. Not as difficult as one would imagine if you know <a href="https://www.ssa.gov/OACT/TR/2019/">where to look</a></li>
-<li>Calculate Social Security benefits for a given claim age and life expectancy</li>
+<li>Calculate Social Security benefits for a given claim age and life expectancy. &ldquo;Invest&rdquo; those benefits at some rate</li>
 <li>Discount those benefits back to age 62 at some interest rate</li>
-<li>Repeat steps 2 &amp; 3 for every combination of claim age, life expectancy, and interest rate (this is a brute force method)</li>
+<li>Repeat steps 2 &amp; 3 for every combination of claim age, life expectancy, and rate (this is a brute force method)</li>
 <li>Find the claim age that maximizes the discounted benefits for each combination of life expectancy and interest rate</li>
-<li>Optional: simulate the rates with market returns</li>
+<li>Optional: simulate the rates to account for market uncertainty</li>
 </ol>
 
 <h3 id="the-calculator">The calculator</h3>
@@ -191,6 +193,8 @@ NPV(benefits$Benefits, inflation.rate)
 
 <pre><code>[1] 430684.4
 </code></pre>
+
+<p>Now, repeat this process for all the claim ages between 62 and 70 then plot it.</p>
 
 <pre><code># plot of NPVs by claim age
 sapply(62:70, function(claim.age){
