@@ -96,8 +96,7 @@
     <div class="col-lg-8">
       <div class="content-column-content">
          <h1>Claiming Social Security benefits</h1>
-         <p><em>For the elderly. Optimizing Social Security and market Monte Carlos</em>
-</p>
+         <p><em>For the elderly. Optimizing Social Security and market Monte Carlos</em></p>
 
 <hr />
 
@@ -109,7 +108,7 @@
 <li><strong>Social Security is something Americans <a href="http://crr.bc.edu/wp-content/uploads/2015/05/IB_15-8.pdf">routinely mess up by claiming too early</a></strong></li>
 </ul>
 
-<p>There&rsquo;s plenty written on <a href="https://www.fool.com/retirement/general/2015/11/22/how-does-social-security-work.aspx">how Social Security works</a>. At the least, though, every eligible American should understand the potential tradeoffs when they claim it. I won&rsquo;t dive into the specifics of <a href="https://www.investopedia.com/retirement/when-take-social-security-complete-guide/">how the claiming process works</a> but the least you should know that you can claim as early as age 62 and you receive an increase for each month you wait until age 70.</p>
+<p>There&rsquo;s plenty written on <a href="https://www.fool.com/retirement/general/2015/11/22/how-does-social-security-work.aspx">how Social Security works</a>. The very basics that every eligible American should understand are the potential tradeoffs they are making when they file to claim their benefits. I won&rsquo;t dive into the specifics of <a href="https://www.investopedia.com/retirement/when-take-social-security-complete-guide/">how the claiming process works</a> but you should know that you can claim as early as age 62 and you receive an increase for each month you wait to claim until age 70.</p>
 
 <p>This leads to the question:</p>
 
@@ -166,7 +165,7 @@ At what age should I claim Social Security based on how long I expect to live an
 
 <p>It calculates Social Security benefits for a given birth year, claim age, and wage history. Wages are capped at the <a href="https://www.ssa.gov/oact/cola/cbb.html">applicable amount</a>. The top 35 years of earnings are captured to calculate the <a href="https://www.ssa.gov/OACT/COLA/Benefits.html">Average Indexed Monthly Earnings and then the Primary Insurance Amount</a>. Benefits are forecasted into the future based on expected <a href="https://www.ssa.gov/OACT/COLA/colasummary.html">Cost-of-Living-Adjustment</a>. COLA itself is based on inflation, specifically <a href="https://www.ssa.gov/OACT/COLA/colaseries.html">CPI-W</a>. Since individual Social Security benefits discontinue at time of death the benefits stop at the expected longevity (life expectancy) of the person.</p>
 
-<p>You can find the calculator in <code>R</code> form here: <a href="https://github.com/joemarlo/Social-Security/tree/master/R"><code>SS_calculator.R</code></a>.</p>
+<p>You can find the calculator in <code>R</code> form here: <a href="https://github.com/joemarlo/Social-Security/blob/master/R/SS_calculator.R"><code>SS_calculator.R</code></a>.</p>
 
 <h3 id="helper-functions">Helper functions</h3>
 
@@ -174,12 +173,12 @@ At what age should I claim Social Security based on how long I expect to live an
 
 <ul>
 <li>add inflation to a series of cash flows</li>
-<li>add investment return over a series of cash flows</li>
-<li>simulate investment return over a series of cash flows, and then return a specified quantile value</li>
+<li>add investment return to a series of cash flows</li>
+<li>simulate investment return over a series of cash flows and then return a specified quantile value</li>
 <li>calculate present value and net present value (these can also be found in third-party packages)</li>
 </ul>
 
-<p>You can find the helper functions in <code>R</code> form here: <a href="https://github.com/joemarlo/Social-Security/tree/master/R"><code>Helper_functions.R</code></a>.</p>
+<p>You can find the helper functions in <code>R</code> form here: <a href="https://github.com/joemarlo/Social-Security/blob/master/R/Helper_functions.R"><code>Helper_functions.R</code></a>.</p>
 
 <h3 id="the-discounting-process">The discounting process</h3>
 
@@ -273,7 +272,7 @@ head(PV.grid)
 
 <p>We now have present values for every combination of investment return, claim age, and longevity. What we really care about is the best claim age for a given investment return and longevity. To find this, we can take the maximum present value for a given grouping of investment return and longevity.</p>
 
-<p>We can now build the plot show at the beginning of the post. A simple table will do but that might miss the bigger pattern A tile plot should do the trick. This one will be bit more detailed as every age between between 62 and 70 was calculated, not just age 62, 66 (<a href="https://www.ssa.gov/planners/retire/retirechart.html">FRA</a>), and 70.</p>
+<p>We can now build the plot show at the beginning of the post. A simple table will do but that might miss the bigger pattern. This one will be bit more detailed as every age between between 62 and 70 was calculated, not just age 62, 66 (<a href="https://www.ssa.gov/planners/retire/retirechart.html">FRA</a>), and 70.</p>
 
 <pre><code># plot of best claim age by investment return and death age
 PV.grid %&gt;%
