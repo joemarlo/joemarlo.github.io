@@ -224,7 +224,7 @@ sapply(62:70, function(claim.age){
 <img src="/img/posts/Social-Security/NPVs.png" width=100%>
 </p>
 
-<p>However, we want to know is if one invests their benefits and it yields a certain rate of return then how much is that series of benefits worth. We can treat the accumulation of benefits as an investment account with annual deposits and compounded growth at a given rate. Then we can take the terminal (final) value and discount it back to age 62. This will give us a single value that is an apples-to-apples comparison once we start varying the claim age.</p>
+<p>However, what we want to know is how much is a series of benefits worth if one invests their benefits and it yields a certain rate of return. We can treat the accumulation of benefits as an investment account with annual deposits and compounded growth at a given rate. Then we can take the terminal (final) value and discount it back to age 62. This will give us a single value that is an apples-to-apples comparison once we start varying the claim age.</p>
 
 <pre><code># calculate the present value of one series of benefits, starting at age 62,
 #  ending at age 100, and with an an investment return of 5%
@@ -281,7 +281,7 @@ head(PV.grid)
 
 <p>We now have present values for every combination of investment return, claim age, and longevity. What we really care about is the best claim age for a given investment return and longevity. To find this, we can take the maximum present value for a given grouping of investment return and longevity.</p>
 
-<p>We can now build the plot show at the beginning of the post. A simple table will do but that might miss the bigger pattern. This one will be bit more detailed as every age between between 62 and 70 was calculated, not just age 62, 66 (<a href="https://www.ssa.gov/planners/retire/retirechart.html">FRA</a>), and 70.</p>
+<p>We can now build the plot shown at the beginning of the post. A simple table will do but that might miss the bigger pattern. This one will be bit more detailed as every age between between 62 and 70 was calculated, not just age 62, 66 (<a href="https://www.ssa.gov/planners/retire/retirechart.html">FRA</a>), and 70.</p>
 
 <pre><code># plot of best claim age by investment return and death age
 PV.grid %&gt;%
@@ -428,7 +428,7 @@ PV.grid %&gt;%
 
 <p>I find the original deterministic plot much easier to read. The trend is clear and there&rsquo;s obviously less noise. However, the takeaway from the simulated version is to lower your expectations of investment return. Therefore, if you&rsquo;re going to use the deterministic version perhaps it&rsquo;s best to use a lower return expectation than you would otherwise.</p>
 
-<p>There&rsquo;s two items that could be refined for a second iteration of this project. First, the volatility assumptions for the investment simulations are simply assumed to be twice the return. This is a decent estimation as volatility increases with return, however, more refined assumptions that account for specific portfolio mixtures would be best. Second, the calculator only allows claiming dates on an annual basis. The rules of Social Security allow for claiming on a monthly basis along with commensurate increases/decreases in benefits.</p>
+<p>There are two items that could be refined for a second iteration of this project. First, the volatility assumptions for the investment simulations are simply twice the return. This is a decent estimation as volatility increases with return, however, more refined assumptions that account for specific portfolio mixtures would be best. Second, the calculator only allows claiming dates on an annual basis. The rules of Social Security allow for claiming on a monthly basis along with commensurate increases/decreases in benefits.</p>
 
 <p><br>
 <strong>This post should not be misconstrued as financial advice. Financial planning is a highly personalized process and is best handled by a professional financial planner.</strong></p>
