@@ -96,29 +96,17 @@
     <div class="col-lg-8">
       <div class="content-column-content">
          <h1>Optimizing Yahtzee</h1>
-         <p><em>Simulating Yahtzee and determining your next move</em>
-</p>
-
-<hr />
-
+         <p><em>Simulating Yahtzee and determining your next move</em></p>
+<hr>
 <p>One of the core challenges when playing <a href="https://en.wikipedia.org/wiki/Yahtzee">Yahtzee</a> is determining which die to keep before throwing your second and third rolls. Plenty has been <a href="http://mathworld.wolfram.com/Yahtzee.html">written</a> on the <a href="https://www.thoughtco.com/probability-of-rolling-a-yahtzee-3126593">probabilities</a> of Yahtzee rolls and <a href="http://galsterhome.com/stats/Tutorial/SAS19.htm">simulating</a> <a href="https://www.reddit.com/r/dataisbeautiful/comments/8vgxwl/simulating_10000_yahtzee_dice_throws_how_many/">Yahtzee</a> outcomes. The goal of this post is to go one step further and optimize future rolls by determining likely outcomes after your first roll.</p>
-
 <p>The goal of Yahtzee is to get the highest score after 13 rounds of play. Each round consists of one turn by each player, and each turn is conducted by rolling five standard dice and recording the outcome&rsquo;s points based on the <a href="https://www.hasbro.com/common/documents/dad2af551c4311ddbd0b0800200c9a66/8302F43150569047F57EB8D746BA9D86.pdf">Yahtzee rulebook</a>. The player can roll up to three times per turn, withholding any of the dice they wish from their previous throw. This is where the probabilities become important: which dice, if any, should the player withhold from their next roll in order to maximize their points?</p>
-
-<p>Simulating only a given turn is much simpler than playing an entire 13-round game so let&rsquo;s start with that. There&rsquo;s two main parts. First, we need to be able to calculate the score of any given roll. This is relatively simple. However, the second part is much more complicated: we need to figure out the expected probabilities of all the combinations of dice that a player could withhold given that they have already rolled once. E.g. if the player&rsquo;s first roll is a <code>2, 2, 4, 5, 2</code>, should they hang on to the three <code>2</code>&rsquo;s or maybe go for a straight by hanging onto <code>2, 4, 5</code> and hope to roll a <code>3</code>. Or is there another, better combination?</p>
-
+<p>Simulating only a given turn is much simpler than playing an entire 13-round game so let&rsquo;s start with that. There&rsquo;s two main parts. First, we need to be able to calculate the score of any given roll. This is relatively simple. However, the second part is much more complicated: we need to figure out the expected probabilities of all the combinations of dice that a player could withhold given that they have already rolled once. E.g. if the player&rsquo;s first roll is a <code>2, 2, 4, 5, 2</code>, should they hang on to the three <code>2</code>'s or maybe go for a straight by hanging onto <code>2, 4, 5</code> and hope to roll a <code>3</code>. Or is there another, better combination?</p>
 <h4 id="combinations-and-permutations">Combinations and permutations</h4>
-
 <p>The goal of the second part is determining the right combinations and permutations to draw from the current roll. We want to eventually arrive at the sample space conditioned on which die we withhold. In other words, we want a big list where each observation is a possible outcome of the next die roll. We can then calculate the resulting scores using a custom function <code>calculate.score()</code>, and the resulting list of scores will allow us to calculate the probability of any given score conditioned on which die we withheld.</p>
-
 <p>Let&rsquo;s break this down further into two parts. We first need a list of all the <code>base.rolls</code> or the combination of dice we are going to keep. E.g. in our example of <code>2, 2, 4, 5, 2</code>, if we keep two dice then we will have 5 choose 2 = 10 outcomes. But this still over counts as we don&rsquo;t care which <code>2</code> we pick. This results in a list of four possible <code>base.rolls</code>: (2, 2), (2, 4), (2, 5), (4, 5). This can automated in R using <code>combn()</code> (from the <a href="https://www.rdocumentation.org/packages/combinat/versions/0.0-8">combinat package</a>) then sorting the results and finally removing the duplicates using <code>.[!duplicated(.)]</code>.</p>
-
 <p>The second part is determining the resulting three dice rolls that complete each possible <code>base.rolls</code> pair. In our example, these three can take 216 different permutations (there&rsquo;s three slots to fill where each slot can take six values so: 6 * 6 * 6 = 216). In R we can build a vector <code>1:6</code> three times using <code>replicate(3, 1:6)</code> then call <code>expand.grid()</code> on itself to produce the actual 216 permutations.</p>
-
 <p>These 216 permutations now need to combined with our base rolls. This results in 864 possible outcomes (4 * 216), and can be produced using <code>expand.grid()</code>. We now have the four conditional sample spaces — one for each <code>base.rolls</code> — and can pass them to <code>calculate.score()</code>.</p>
-
 <p>Rinse-and-repeat this process for withholding one, three, four, or five different dice. Group the results based on the <code>base.rolls</code> and then we can see the likely outcomes for each combination of original dice to withhold. We can also plot the densities to get a more intuitive view of the possible scores:</p>
-
 <pre><code>&gt; calculate.die.to.keep(seed.roll = c(2, 2, 4, 5, 2), verbose = TRUE)
 # A tibble: 16 x 4
    Base_roll     Mean Median    SD
@@ -140,23 +128,16 @@
 15 2-2-2-4       15.3   14    5.09
 16 2-2-2-4-5     15     15    0   
 [1] 2 4 5
-</code></pre>
-
-<p align="center">
+</code></pre><p align="center">
 <img src="/img/posts/yahtzee/Expected_roll_outcomes.svg" width=100%>
 </p>
-
 <p>That looks great, and it seems like we should hold onto <code>2, 4, 5</code> (bottom right plot). But how can we be sure this is really working? Let&rsquo;s run this 500 more times and automatically choose our next roll based on the highest mean expected outcome. Then we can compare the results to just randomly rolling die.</p>
-
 <p align="center">
 <img src="/img/posts/yahtzee/Smart_vs_Dumb_boxplot.svg" width=100%>
 </p>
-
 <p>Fantastic, it works. Now that we have the two ends of the information spectrum — random rolls acting on no additional information and &ldquo;smart&rdquo; rolls acting on perfect probability information — this framework would be a great way to test heuristics that players could actually use during a game. E.g how well does the strategy of always withholding a three-of-a-kind perform? Or withholding a small straight? Sounds like a good v2.0 of this project.</p>
-
 <p>Besides testing heuristics, the next step is expanding this to all 13 turns of a full game of Yahtzee. That will be a little more involved as the box score will need to be kept track of over the course of the game, and scoring options will need to be consequently excluded from the <code>calculate.score()</code> function.</p>
-
-<p><em>2019 October</em><br />
+<p><em>2019 October</em><br>
 <em>Find the code here: <a href="https://github.com/joemarlo/yahtzee">github.com/joemarlo/yahtzee</a></em></p>
          
       </div>
