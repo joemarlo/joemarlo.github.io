@@ -1,1 +1,7 @@
 /* your styles go here */
+/* code for side scrolling code chunks */
+pre code {
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
+}
