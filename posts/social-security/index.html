@@ -359,6 +359,78 @@ PV.grid %&gt;%
 <h3 id="final-thoughts">Final thoughts</h3>
 <p>I find the original deterministic plot much easier to read. The trend is clear and there&rsquo;s obviously less noise. However, the takeaway from the simulated version is to lower your expectations of investment return. Therefore, if you&rsquo;re going to use the deterministic version perhaps it&rsquo;s best to use a lower return expectation than you would otherwise.</p>
 <p>There are two items that could be refined for a second iteration of this project. First, the volatility assumptions for the investment simulations are simply twice the return. This is a decent estimation as volatility increases with return, however, more refined assumptions that account for specific portfolio mixtures would be best. Second, the calculator only allows claiming dates on an annual basis. The rules of Social Security allow for claiming on a monthly basis along with commensurate increases/decreases in benefits.</p>
+<h3 id="an-addendum-on-vectorizing">An addendum on vectorizing</h3>
+<p>The above investment simulation is generalizable and simple to follow but it&rsquo;s resourceful intensive — taking up to two hours depending on your machine. As it stands, the simulation is calculating 101 x 9 x 38 x 5,000 (investment returns x claim ages x death ages x simulations) = 172,710,000 values. A faster approach would be to vectorize as much of the process as we can. Vectorizing within the simulation does not provide any speed advantages because the recursive nature of applying investment returns to incremental cashflows is difficult to simplify with vectors. However, vectorizing across simulations is possible and can provide a substantial speed increase.</p>
+<p>The previous method follows a straightforward method of repeating the following process for each of the 101 x 9 x 38 = 34,542 combinations: 1. calculate the benefits 2. simulate investing those benefits 5,000 times 3. grab the percentile ending values and 4. discount the values back to today.  We can cut down the calculations by &gt;97.4% by creating a single matrix of simulated invested cashflows for each set of death ages. I.e. for each combination of 101 x 9 = 909 combinations: 1. calculate the benefits to 100 2. simulate investing those benefits 5,000 time 3. (here&rsquo;s the difference) grab the percentile value for <em>each death year of those simulations</em> and 4. calculate the present value. This method reduces the simulation calls from 101 x 9 x 38 = 34,542 to 101 x 8 = 909 by vectorizing across death ages. Additionally, we can call the <code>PV()</code> function once on the whole vector of results rather than within each iteration of 101 x 9 x 39 = 34,542.</p>
+<p>Runtime is reduced from <strong>two hours to about three minutes which is ~40x faster</strong>. Not bad for a slight tradeoff in readability.</p>
+<pre><code># create all combinations of investment returns and claim age
+PV.grid &lt;- crossing(Return = seq(1, 1.1, by = 0.001),
+                    Claim.age = 62:70)
+
+# calculate quantiles for all the combinations
+sim.PV &lt;- map2_dfr(PV.grid$Return, PV.grid$Claim.age, 
+                   function(inv.return, age){
+  
+  # calculate the benefits
+  benefits &lt;- calculate_benefits(birth.year = 1957,
+                                 claim.age = age) %&gt;%
+  filter(Age &gt;= 62) %&gt;% 
+  pull(Benefits)
+  
+  # simulate the investment returns from 62:100
+  sims &lt;- replicate(
+    n.sims,
+    sim_investment_return(
+      cashflows = benefits,
+      exp.return = inv.return,
+      exp.vol = (inv.return - 1) * 2
+    )
+  )
+  
+  # calculate the quantiles for each death age and clean up
+  quantiles &lt;- sapply(62:100 - 61, FUN = function(death) {
+    quantile(sims[death,], probs = percentile)}) %&gt;%
+    t() %&gt;%
+    as_tibble() %&gt;%
+    mutate(
+      death.age = 62:100,
+      claim.age = age,
+      inv.return = inv.return
+    )
+})
+
+# rename the percentile columns
+names(sim.PV)[1:length(percentile)] &lt;- paste0(percentile * 100, &quot;th percentile of investment returns&quot;)
+
+# plot of best claim age by investment return and death age (all claim ages)
+sim.PV %&gt;%
+  filter(death.age &gt; claim.age) %&gt;% 
+  pivot_longer(cols = contains(&quot;percentile&quot;), names_to = &quot;Percentile&quot;, values_to = &quot;PV&quot;) %&gt;% 
+  mutate(PV = PV(PV, inflation.rate, death.age - 62)) %&gt;% 
+  group_by(inv.return, death.age, Percentile) %&gt;%
+  filter(PV == max(PV)) %&gt;%
+  ggplot(aes(x = death.age, y = inv.return, fill = as.factor(claim.age))) +
+  geom_tile() +
+  scale_fill_brewer(name = &quot;Claim age&quot;) +
+  scale_y_continuous(breaks = seq(1, 1.1, by = 0.01),
+                     labels = scales::percent(0:10/100, 1)) +
+  scale_x_continuous(breaks = seq(65, 100, 5)) +
+  labs(title = &quot;Best age to claim Social Security to maximum lifetime benefits&quot;,
+       subtitle = paste(&quot;Based on&quot;,
+                        scales::comma(n.sims),
+                        &quot;simulations per each intersection of return, longevity, and claim age&quot;),
+       x = &quot;Expected longevity (years)&quot;,
+       y = &quot;Expected investment return&quot;) +
+  facet_wrap(~Percentile, nrow = length(percentile)) +
+  light.theme +
+  theme(panel.grid.major.y = element_line(color = NA),
+        plot.caption = element_text(color = &quot;gray30&quot;,
+                                    face = 'italic',
+                                    size = 7),
+        legend.position = &quot;bottom&quot;)
+</code></pre><p align="center">
+<img src="/img/posts/Social-Security/bestClaimVec.png"" width=100%>
+</p>
 <br>
 <p><strong>This post should not be misconstrued as financial advice. Financial planning is a highly personalized process and is best handled by a professional financial planner.</strong></p>
 <p><em>2019 December</em><br>
