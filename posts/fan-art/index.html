@@ -96,22 +96,22 @@
     <div class="col-lg-8">
       <div class="content-column-content">
          <h1>Starburst Art</h1>
-         <p>Building beautiful digital artwork randomly
+         <p>Using R to build beautiful digital artwork randomly
 </p>
 
 <hr />
 
-<p>A while ago I came across a short example of how to build randomly created R plots. The examples included generic shapes such as a semi-circle that could then be stretched and mutated using random noise. It was a great, concise example but it was obvious there was a lot of headroom in what could be accomplished with the basic idea. I decided to build on the example, and below are a few of my attempts at constructing random abstract designs. These are all generated from one core function that accepts many parameters to tweak the resulting plot.</p>
+<p>R is consistently lauded for its impressive data plotting capabilities. These capabilities can be co-opted to create beautiful art, programmatically. Below are a few examples of my results using a single core function that accepts many parameters and outputs a semi-randomly generated plot.</p>
 
 <p>The general idea is to create:</p>
 
 <ol>
-<li>One generic function that can plot segments with given inputs such as segment end positions and color values. Add a bit of randomness for effect
+<li>One generic function that can plot segments with given inputs such as segment end positions and color values. Add a bit of randomness for effect. Shapes can created by passing values to the segment positions. For example, <code>sin()</code>, <code>cos()</code>, and <code>pi</code> values can be used to create circle and semi circle shapes
 
 <ul>
 <li>this is <code>buildFan()</code></li>
 </ul></li>
-<li>A second function that wraps around the first to print multiple &lsquo;plots.&rsquo; It also allows parameters across the plots such as color gradients and shapes
+<li>A second function that wraps around the first to print multiple plots. It also allows parameters across the plots such as color gradients and shapes
 
 <ul>
 <li>this is <code>printFans()</code></li>
@@ -318,23 +318,23 @@ buildFan &lt;- function(hue = 0.5, saturation = 0.20, value = 0.55, alpha = 0.5,
 <h2 id="tweaking-the-parameters-leads-to-many-different-effects">Tweaking the parameters leads to many different effects</h2>
 
 <p align="center">
-<img src="/img/posts/fan-art/Fans.png" width=80%>
+<img src="/img/posts/fan-art/Fans.png" width=90%>
 </p> 
 
 <p align="center">
-<img src="/img/posts/fan-art/fans_monochrome.png" width=80%>
+<img src="/img/posts/fan-art/fans_monochrome.png" width=90%>
 </p> 
 
 <p align="center">
-<img src="/img/posts/fan-art/fans_square.png" width=80%>
+<img src="/img/posts/fan-art/fans_square.png" width=90%>
 </p> 
 
 <p align="center">
-<img src="/img/posts/fan-art/Fluffy_fans.png" width=80%>
+<img src="/img/posts/fan-art/Fluffy_fans.png" width=90%>
 </p> 
 
 <p align="center">
-<img src="/img/posts/fan-art/Segments_bg_dark_2.png" width=80%>
+<img src="/img/posts/fan-art/Segments_bg_dark_2.png" width=90%>
 </p> 
 
 <p><br>

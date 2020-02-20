@@ -42,22 +42,22 @@
     </item>
     
     <item>
-      <title>Starburst Art</title>
-      <link>https://joemarlo.github.io/posts/fan-art/</link>
-      <pubDate>Sun, 13 Oct 2019 16:40:25 -0400</pubDate>
-      
-      <guid>https://joemarlo.github.io/posts/fan-art/</guid>
-      <description>&lt;p&gt;Building beautiful digital artwork randomly
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Is it possible to beat Left Right Center?</title>
       <link>https://joemarlo.github.io/posts/lrc/</link>
       <pubDate>Sun, 13 Oct 2019 14:20:22 +0530</pubDate>
       
       <guid>https://joemarlo.github.io/posts/lrc/</guid>
       <description>&lt;p&gt;&lt;em&gt;Finding the right seat at the table&lt;/em&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Starburst Art</title>
+      <link>https://joemarlo.github.io/posts/fan-art/</link>
+      <pubDate>Sun, 13 Oct 2019 16:40:25 -0400</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/fan-art/</guid>
+      <description>&lt;p&gt;Using R to build beautiful digital artwork randomly
 &lt;/p&gt;</description>
     </item>
     
