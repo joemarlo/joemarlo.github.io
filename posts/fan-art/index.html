@@ -171,6 +171,61 @@ for (i in c(1:40, 39:1)){
 <img src="/img/posts/fan-art/fans.gif" width=70%>
 </p> 
 
+<h4 id="you-can-create-animated-gifs-across-plots-specifying-individual-parameters-to-create-effects-and-systematically-removing-plots">You can create animated gifs across plots, specifying individual parameters to create effects and systematically removing plots.</h4>
+
+<pre><code>n.plots &lt;- 80
+hues &lt;- seq(0, 1, length = 12)
+logis.curve &lt;- 1 / ( 1 + exp(seq(3, -3, length = n.plots/2)))
+logis.curve &lt;- c(logis.curve, rev(logis.curve))
+
+name &lt;- 1
+
+for (i in 1:n.plots){
+  # set where to save
+  png(filename = paste0('Plotted_images/multiGif/fan', name, '.png'),
+      width = 1000,
+      height = 1000)
+  
+  # set graphical parameters
+  par(bg = 'white',
+      mar = rep(2, 4),
+      mfrow = c(3, 4),
+      bty = &quot;n&quot;)
+
+  
+  for (j in 1:12) {
+    n &lt;-  floor(logis.curve[i] * 100)
+    
+    if (i %% j == 0){
+      buildFan(alpha = 0)
+      next
+    }
+    
+    # build the plot
+    buildFan(
+      hue = hues[j],
+      saturation = 1 - logis.curve[i],
+      value = 0.5,
+      alpha = 1 - logis.curve[i],
+      n.segments = n,
+      x.end = runif(n,-1, 1),
+      y.end = runif(n,-1, 1),
+      x.center = rep(0, n),
+      y.center = rep(0, n),
+      depth = TRUE
+    )
+  }
+    
+  # save it
+  dev.off()
+  name &lt;- name + 1
+}
+</code></pre>
+
+<p align="center">
+<img src="/img/posts/fan-art/multifan.gif" width=90%>
+</p> 
+
 <pre><code># build a panel of fans and save it
 printFans()
 </code></pre>
@@ -335,10 +390,6 @@ buildFan &lt;- function(hue = 0.5, saturation = 0.20, value = 0.55, alpha = 0.5,
 
 <p align="center">
 <img src="/img/posts/fan-art/Segments_bg_dark_2.png" width=90%>
-</p> 
-
-<p align="center">
-<img src="/img/posts/fan-art/multifan.gif" width=90%>
 </p> 
 
 <p><br>
