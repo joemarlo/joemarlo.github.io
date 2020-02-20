@@ -109,12 +109,12 @@
 <li>One generic function that can plot segments with given inputs such as segment end positions and color values. Add a bit of randomness for effect
 
 <ul>
-<li>this is called <code>buildFan()</code></li>
+<li>this is <code>buildFan()</code></li>
 </ul></li>
 <li>A second function that wraps around the first to print multiple &lsquo;plots.&rsquo; It also allows parameters across the plots such as color gradients and shapes
 
 <ul>
-<li>this is called <code>printFans()</code></li>
+<li>this is <code>printFans()</code></li>
 </ul></li>
 </ol>
 
@@ -164,16 +164,8 @@ for (i in c(1:40, 39:1)){
   dev.off()
   name &lt;- name + 1
 }
+# then collapse into a GIF using GIMP
 </code></pre>
-
-<p>Then within GIMP:</p>
-
-<ol>
-<li>File -&gt; open &lsquo;fan1.png&rsquo;</li>
-<li>Image -&gt; Mode-&gt; check RGB</li>
-<li>File -&gt; Open as layers -&gt; select the rest of the files</li>
-<li>File -&gt; Export as -&gt; yourfilename.gif</li>
-</ol>
 
 <p align="center">
 <img src="/img/posts/fan-art/fans.gif" width=50%>
