@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Fan Art</title>
+<meta name="description" content="Blog for stats and visualizations">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/owl.theme.css">
+<link rel="icon" href= "https://joemarlo.github.io/favicon.ico" /> 
+
+
+  <link href="https://joemarlo.github.io/css/style.green.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://joemarlo.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://joemarlo.github.io/img/favicon.png">
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="https://joemarlo.github.io">Marlo</a></h1>
+    
+      <p class="sidebar-p">I'm a statistics grad student @ NYU. <br> Based in New York.</p>
+    
+    <ul class="sidebar-menu">
+      
+        <li><a href="https://joemarlo.github.io/posts/">Posts</a></li>
+      
+        <li><a href="https://joemarlo.github.io/about/">About</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  
+  
+  
+  <a href="https://www.linkedin.com/in/jmarlo" data-animate-hover="pulse" class="external">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+  
+  <a href="https://www.github.com/joemarlo" data-animate-hover="pulse" class="external">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2020 Joe Marlo
+        
+        <br> Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://joemarlo.github.io">Marlo</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h1>Fan Art</h1>
+         <p>Building beautiful digital artwork randomly
+</p>
+
+<hr />
+
+<p>A while ago I came across a short example of how to build randomly created R plots. The examples included generic shapes such as a semi-circle that could then be stretched and mutated using random noise. It was a great, concise example but it was obvious there was a lot of headroom in what could be accomplished with the basic idea. I decided to build on the example, and below are a few of my attempts at constructing random abstract designs. These are all generated from one core function that accepts many parameters to tweak the resulting plot.</p>
+
+<p>The general idea is to create:</p>
+
+<ol>
+<li>One generic function that can plot segments with given inputs such as segment end positions and color values. Add a bit of randomness for effect
+
+<ul>
+<li>this is called <code>buildFan()</code></li>
+</ul></li>
+<li>A second function that wraps around the first to print multiple &lsquo;plots.&rsquo; It also allows parameters across the plots such as color gradients and shapes
+
+<ul>
+<li>this is called <code>printFans()</code></li>
+</ul></li>
+</ol>
+
+<p>If you&rsquo;re more interested in this, I encourage you to tweak (and improve) <a href="https://github.com/joemarlo/Fan-art">my code</a> along with checking out <a href="https://www.data-to-art.com/">Data-to-Art</a>.</p>
+
+<pre><code># build a single fan
+buildFan()
+</code></pre>
+
+<p align="center">
+<img src="/img/posts/fan-art/singlefan.png" width=40%>
+</p> 
+
+<pre><code># tweak the fan's properties
+buildFan(n.segments = 1000,
+         x.end = runif(1000, -1, 1),
+         y.end = runif(1000, -1, 1),
+         x.center = rep(0, 1000),
+         y.center = rep(0, 1000),
+         alpha = 0.3,
+         depth = TRUE)
+</code></pre>
+
+<p align="center">
+<img src="/img/posts/fan-art/singlefanDepth.png" width=40%>
+</p>
+
+<h4 id="you-can-create-animated-gifs-by-saving-many-plots-and-then-loading-them-into-your-favorite-photo-editor-i-use-gimp-https-www-gimp-org">You can create animated gifs by saving many plots and then loading them into your favorite photo editor (I use <a href="https://www.gimp.org/">GIMP</a>).</h4>
+
+<pre><code>name &lt;- 1
+# within each loop, create and save the fan. Result is 79 image files
+for (i in c(1:40, 39:1)){
+  n &lt;- floor(i^2)
+  png(filename = paste0('Plotted_images/Gif/fan', name, '.png'),
+      width = 500,
+      height = 500)
+  buildFan(hue = i/40, 
+           saturation = 1- i/40, 
+           value = 0.5, 
+           alpha = 1 - (i/40),
+           n.segments = n,
+           x.end = runif(n, -1, 1),
+           y.end = runif(n, -1, 1),
+           x.center = rep(0, n),
+           y.center = rep(0, n),
+           depth = TRUE)
+  dev.off()
+  name &lt;- name + 1
+}
+</code></pre>
+
+<p>Then within GIMP:</p>
+
+<ol>
+<li>File -&gt; open &lsquo;fan1.png&rsquo;</li>
+<li>Image -&gt; Mode-&gt; check RGB</li>
+<li>File -&gt; Open as layers -&gt; select the rest of the files</li>
+<li>File -&gt; Export as -&gt; yourfilename.gif</li>
+</ol>
+
+<p align="center">
+<img src="/img/posts/fan-art/fans.gif" width=50%>
+</p> 
+
+<pre><code># build a panel of fans and save it
+printFans()
+</code></pre>
+
+<p align="center">
+<img src="/img/posts/fan-art/fansDefault.png" width=100%>
+</p> 
+
+<p><br></p>
+
+<h1 id="functions-to-create-plots">Functions to create plots</h1>
+
+<pre><code>library(tidyverse)
+library(png)
+
+buildFan &lt;- function(hue = 0.5, saturation = 0.20, value = 0.55, alpha = 0.5,
+                     hue.range = 0, saturation.range = 0, value.range = 0, alpha.range = 0,
+                     x.end = NULL, y.end = NULL, x.center = NULL, y.center = NULL,
+                     random.center = FALSE, segment.width = 8, n.segments = 200,
+                     depth = FALSE, rescale = FALSE){
+  
+  #function builds a single fan plot
+  #random vectors are generated if no vectors are provided
+  #hue, saturation, value, and alpha should be between 0:1
+  
+  # set the center points of the segments
+  x.center &lt;- if (!is.null(x.center)) x.center else if(random.center == FALSE) 0 else if(is.null(x.end)) runif(1, -1, 1) else runif(1, min(x.end), max(x.end))
+  y.center &lt;- if (!is.null(y.center)) y.center else if(random.center == FALSE) 0 else if(is.null(y.end)) runif(1, -1, 1) else runif(1, min(y.end), max(y.end))
+  
+  # set the end of the segments. If vectors are provided then add some randomness
+  x.end &lt;- if(is.null(x.end)) rnorm(n.segments, 0, 1) else x.end * runif(n.segments, 0.3)
+  y.end &lt;- if(is.null(y.end)) rnorm(n.segments, 0, 1) else y.end * runif(n.segments, 0.3)
+  
+  # set the hue, saturation, value, and alpha per segment
+  generate.variables &lt;- function(variable, variable.range){
+    runif(n = n.segments,
+          min = max(0, variable - variable.range),
+          max = min(1, variable + variable.range))
+  }
+  
+  h &lt;- generate.variables(hue, hue.range)
+  s &lt;- generate.variables(saturation, saturation.range)
+  v &lt;- generate.variables(value, value.range)
+  alpha &lt;- generate.variables(alpha, alpha.range)
+  
+  lwd &lt;- segment.width * runif(n.segments)
+  
+  if (depth) {
+    # reorganize the segments to give them depth. Layer the segments by length and then increase the color strength
+    # effect should be the longer ones look like they're further back, darker, less colorful, thiner
+    # shorter ones will be brighter, more colorful, thicker
+    
+    # sort vector by eucledian distance from their center (longest first)
+    vector.order &lt;- sqrt(abs(x.end - x.center) ^ 2 + abs(y.end - y.center) ^ 2) %&gt;% order(decreasing = TRUE)
+    x.end &lt;- x.end[vector.order]
+    y.end &lt;- y.end[vector.order]
+    
+    # sort the colors by strength
+    # leave out hsv so there is still some color variance per plot
+    # h &lt;- sort(h)
+    # s &lt;- sort(s)
+    # v &lt;- sort(v)
+    alpha &lt;- sort(alpha)
+    lwd &lt;- sort(lwd)
+  }
+  
+  #rescale the x, y vectors so they're between -1 and 1
+  if (rescale){
+    rescale.vector &lt;- function(x){(x - min(x))/(max(x) - min(x)) * 2 - 1}
+    x.end &lt;- rescale.vector(x.end)
+    y.end &lt;- rescale.vector(y.end)
+  }
+  
+  #set graphical parameters
+  par(mar = rep(1, 4),
+      bty = &quot;n&quot;)
+  
+  # draw the plot template
+  plot(x = 0,
+       y = 0,
+       xlim = c(-1, 1),
+       ylim = c(-1, 1),
+       type = 'n',
+       xaxt = 'n',
+       yaxt = 'n',
+       ann = FALSE)
+  
+  # draw the segments
+  segments(x0 = x.center,
+           y0 = y.center,
+           x1 = x.end,
+           y1 = y.end,
+           col = hsv(h = h,
+                     s = s,
+                     v = v,
+                     alpha = alpha),
+           lwd = lwd)
+}
+</code></pre>
+
+<p><br></p>
+
+<h4 id="printfans-wraps-around-buildfan-to-automate-the-printing-of-multiple-plots-while-scaling-the-color-across-plots">printFans() wraps around buildFan() to automate the printing of multiple plots while scaling the color across plots</h4>
+
+<pre><code>printFans &lt;- function(hsv.array = seq(0, 1, length.out = 100), filename = &quot;fans.png&quot;,
+                      output.image.width = 4608, output.image.height = 2880, background = &quot;white&quot;, ...){
+  
+  # function automates the printing and saving of buildFan
+  # hsv.array is the array colors to map the buildFan function over. If only one vector is provided then it is
+  # assumed to be hue. If two, then hue and saturation. If three, hue then saturation then value
+  # length / nrow of hsv.array determines how many plots there will be
+  # n.segments is number of segments per plot
+  
+  # n.plots is the number of plots to be printed determined by the length/nrow of hsv.array
+  n.plots &lt;- if (!is.null(nrow(hsv.array))) nrow(hsv.array) else length(hsv.array)
+  
+  if (sqrt(n.plots) %% 1 != 0) stop(&quot;Square root of the number of plots must be a whole number.&quot;)
+  
+  # set where to save
+  png(filename = filename,
+      width = output.image.width,
+      height = output.image.height)
+    
+  # set graphical parameters
+  par(bg = background,
+      mar = rep(2, 4),
+      mfrow = c(sqrt(n.plots), sqrt(n.plots)),
+      bty = &quot;n&quot;)
+  
+  #ensure hsv list to map over is dataframe and rename columns
+  hsv.array &lt;- as.data.frame(hsv.array)
+  names(hsv.array) &lt;- c(&quot;hue&quot;, &quot;saturation&quot;, &quot;value&quot;)[1:ncol(hsv.array)]
+  
+  # run the function over the hsv.array, saves plots
+  pwalk(hsv.array, buildFan, ...)
+  
+  # reset graphics
+  invisible(dev.off())
+  
+}
+</code></pre>
+
+<p><br></p>
+
+<h2 id="tweaking-the-parameters-leads-to-many-different-effects">Tweaking the parameters leads to many different effects</h2>
+
+<p align="center">
+<img src="/img/posts/fan-art/Fans.png" width=80%>
+</p> 
+
+<p align="center">
+<img src="/img/posts/fan-art/fans_monochrome.png" width=80%>
+</p> 
+
+<p align="center">
+<img src="/img/posts/fan-art/fans_square.png" width=80%>
+</p> 
+
+<p align="center">
+<img src="/img/posts/fan-art/Fluffy_fans.png" width=80%>
+</p> 
+
+<p align="center">
+<img src="/img/posts/fan-art/Segments_bg_dark_2.png" width=80%>
+</p> 
+
+<p><br>
+<em>2019 September</em><br />
+<em>Find the code here: <a href="https://github.com/joemarlo/Fan-art">github.com/joemarlo/Fan-art</a></em></p>
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://joemarlo.github.io/js/jquery.min.js"></script>
+<script src="https://joemarlo.github.io/js/bootstrap.min.js"></script>
+<script src="https://joemarlo.github.io/js/jquery.cookie.js"> </script>
+<script src="https://joemarlo.github.io/js/ekko-lightbox.js"></script>
+<script src="https://joemarlo.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://joemarlo.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://joemarlo.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://joemarlo.github.io/js/owl.carousel.min.js"></script>
+<script src="https://joemarlo.github.io/js/front.js"></script>
+
+
+
+</body>
+</html>
