@@ -171,50 +171,123 @@ for (i in c(1:40, 39:1)){
 <img src="/img/posts/fan-art/fans.gif" width=70%>
 </p> 
 
+<pre><code>n.frames &lt;- 100
+logis.curve &lt;- 1 / ( 1 + exp(seq(4, -5, length = n.frames/2)))
+logis.curve &lt;- c(logis.curve, rev(logis.curve))
+rescale.vector &lt;- function(x, min = .1, max = .9) (x - min(x))/(max(x) - min(x)) * (max - min) + min
+
+name &lt;- 1
+for (i in 1:n.frames){
+  n &lt;- floor(logis.curve[i]*250)
+  png(filename = paste0('Plotted_images/Gif/fan', name, '.png'),
+      width = 1250,
+      height = 1250)
+  buildFan(hue = rescale.vector(logis.curve)[i], 
+           saturation = .6, 
+           value = 0.5, 
+           hue.range = 0.20,
+           saturation.range = 0.20,
+           value.range = 0.20,
+           alpha =  1 - rescale.vector(logis.curve)[i],
+           alpha.range = 0.10,
+           segment.width = 6,
+           n.segments = n,
+           x.end = runif(n, -1, 1),
+           y.end = runif(n, -1, 1),
+           x.center = rep(0, n),
+           y.center = rep(0, n),
+           depth = TRUE
+           )
+  dev.off()
+  name &lt;- name + 1
+}
+</code></pre>
+
+<p align="center">
+<img src="/img/posts/fan-art/fans_intense.gif" width=80%>
+</p>
+
+<pre><code>name &lt;- 1
+for (i in 1:n.frames){
+  n &lt;- floor(logis.curve[i]*400)
+  
+  # semi circle
+  base.vector &lt;- seq(0, pi, length = n)
+  x.vector &lt;- cos(base.vector)
+  y.vector &lt;- sin(base.vector) * 2 - 1
+  
+  png(filename = paste0('Plotted_images/Gif/fan', name, '.png'),
+      width = 1250,
+      height = 800)
+  buildFan(hue = rescale.vector(logis.curve, min = 0.3, max = .6)[i], 
+           saturation = .45, 
+           value = 0.4, 
+           hue.range = 0.20,
+           saturation.range = 0.20,
+           value.range = 0.20,
+           alpha =  1 - rescale.vector(logis.curve, min = .6, max = .95)[i],
+           alpha.range = 0.30,
+           segment.width = 20,
+           n.segments = n,
+           x.end = x.vector,
+           y.end = y.vector,
+           x.center = 0,
+           y.center = -1
+  )
+  dev.off()
+  name &lt;- name + 1
+}
+
+</code></pre>
+
+<p align="center">
+<img src="/img/posts/fan-art/fans_semi.gif" width=70%>
+</p> 
+
+<p><br></p>
+
 <h4 id="you-can-create-animated-gifs-across-plots-specifying-individual-parameters-to-create-effects-and-systematically-removing-plots">You can create animated gifs across plots, specifying individual parameters to create effects and systematically removing plots.</h4>
 
-<pre><code>
-n.frames &lt;- 80
+<pre><code>n.frames &lt;- 80
 hues &lt;- rep(seq(0, 1, length = 12), 12)
 logis.curve &lt;- 1 / ( 1 + exp(seq(4, -4, length = n.frames/2)))
 logis.curve &lt;- c(logis.curve, rev(logis.curve))
 
 name &lt;- 1
-
 for (i in 1:n.frames){
   # set where to save
   png(filename = paste0('Plotted_images/multiGif/fan', name, '.png'),
-      width = 1000,
-      height = 1000)
+      width = 1250,
+      height = 1250)
   
   # set graphical parameters
   par(bg = 'white',
       mar = rep(2, 4),
       mfrow = c(3, 4),
       bty = &quot;n&quot;)
-
   
   for (j in 1:12) {
     n &lt;-  floor(logis.curve[i] * 250)
     
-    if (i %% 12 == j){
-      buildFan(alpha = 0)
+    # logic controls the plot sequence
+    # if (i %% 12 == j | i %% 6 == j | i %% 3 == j){
+    if (i %% 12 == j | i %% 12 == j - 1 | i %% 12 == j - 2 | i %% 12 == j - 3){
+      buildFan(
+        hue = hues[j + i],
+        saturation = .7,
+        value = 0.5,
+        alpha = 1 - logis.curve[i],
+        n.segments = n,
+        x.end = runif(n, -1, 1),
+        y.end = runif(n, -1, 1),
+        random.center = TRUE
+        depth = TRUE,
+      )
       next
     }
     
-    # build the plot
-    buildFan(
-      hue = hues[j+i],
-      saturation = .7,
-      value = 0.5,
-      alpha = 1 - logis.curve[i],
-      n.segments = n,
-      x.end = runif(n,-1, 1),
-      y.end = runif(n,-1, 1),
-      x.center = rep(0, n),
-      y.center = rep(0, n),
-      depth = TRUE
-    )
+    # build a blank plot
+    buildFan(alpha = 0)
   }
     
   # save it
@@ -225,7 +298,7 @@ for (i in 1:n.frames){
 </code></pre>
 
 <p align="center">
-<img src="/img/posts/fan-art/multifan.gif" width=90%>
+<img src="/img/posts/fan-art/multifansporadic.gif" width=90%>
 </p> 
 
 <pre><code># build a panel of fans and save it
