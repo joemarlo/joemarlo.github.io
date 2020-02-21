@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Marlo</title>
@@ -6,7 +6,7 @@
     <description>Recent content on Marlo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 27 Jan 2020 13:09:49 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 27 Jan 2020 21:12:52 -0500</lastBuildDate>
     
 	<atom:link href="https://joemarlo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,8 +17,7 @@
       <pubDate>Mon, 27 Jan 2020 13:09:49 -0500</pubDate>
       
       <guid>https://joemarlo.github.io/posts/nba/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Finding patterns between NBA compensation and skill-sets&lt;/em&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;em&gt;Finding patterns between NBA compensation and skill-sets&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -27,8 +26,7 @@
       <pubDate>Mon, 27 Jan 2020 21:12:52 -0500</pubDate>
       
       <guid>https://joemarlo.github.io/posts/social-security/</guid>
-      <description>&lt;p&gt;&lt;em&gt;For the elderly. Optimizing Social Security and market Monte Carlos&lt;/em&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;em&gt;For the elderly. Optimizing Social Security and market Monte Carlos&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -37,8 +35,7 @@
       <pubDate>Sun, 13 Oct 2019 16:26:44 -0400</pubDate>
       
       <guid>https://joemarlo.github.io/posts/yahtzee/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Simulating Yahtzee and determining your next move&lt;/em&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;em&gt;Simulating Yahtzee and determining your next move&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -47,8 +44,7 @@
       <pubDate>Sun, 13 Oct 2019 14:20:22 +0530</pubDate>
       
       <guid>https://joemarlo.github.io/posts/lrc/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Finding the right seat at the table&lt;/em&gt;
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;em&gt;Finding the right seat at the table&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -57,8 +53,7 @@
       <pubDate>Sun, 13 Oct 2019 16:40:25 -0400</pubDate>
       
       <guid>https://joemarlo.github.io/posts/fan-art/</guid>
-      <description>&lt;p&gt;Using R to build beautiful digital artwork randomly
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Using R to build beautiful digital artwork randomly&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -96,38 +96,28 @@
     <div class="col-lg-8">
       <div class="content-column-content">
          <h1>Starburst Art</h1>
-         <p>Using R to build beautiful digital artwork randomly
-</p>
-
-<hr />
-
+         <p>Using R to build beautiful digital artwork randomly</p>
+<hr>
 <p>R is consistently lauded for its impressive data plotting capabilities. These capabilities can be co-opted to create beautiful art, programmatically. Below are a few examples of my results using a single core function that accepts many parameters and outputs a semi-randomly generated plot.</p>
-
 <p>The general idea is to create:</p>
-
 <ol>
-<li>One generic function that can plot segments with given inputs such as segment end positions and color values. Add a bit of randomness for effect. Shapes can created by passing values to the segment positions. For example, <code>sin()</code>, <code>cos()</code>, and <code>pi</code> values can be used to create circle and semi circle shapes
-
+<li>One generic function that can plot segments with given inputs such as segment end positions and color values. Add a bit of randomness for effect. Shapes can created by passing values to the segment positions. For example, <code>sin()</code>, <code>cos()</code>, and <code>pi</code> values can be used to create circle and semi circle shapes</li>
+</ol>
 <ul>
 <li>this is <code>buildFan()</code></li>
-</ul></li>
-<li>A second function that wraps around the first to print multiple plots. It also allows parameters across the plots such as color gradients and shapes
-
+</ul>
+<ol start="2">
+<li>A second function that wraps around the first to print multiple plots. It also allows parameters across the plots such as color gradients and shapes</li>
+</ol>
 <ul>
 <li>this is <code>printFans()</code></li>
-</ul></li>
-</ol>
-
+</ul>
 <p>If you&rsquo;re more interested in this, I encourage you to tweak (and improve) <a href="https://github.com/joemarlo/Fan-art">my code</a> along with checking out <a href="https://www.data-to-art.com/">Data-to-Art</a>.</p>
-
 <pre><code># build a single fan
 buildFan()
-</code></pre>
-
-<p align="center">
+</code></pre><p align="center">
 <img src="/img/posts/fan-art/singlefan.png" width=60%>
 </p> 
-
 <pre><code># tweak the fan's properties
 buildFan(n.segments = 1000,
          x.end = runif(1000, -1, 1),
@@ -136,14 +126,10 @@ buildFan(n.segments = 1000,
          y.center = rep(0, 1000),
          alpha = 0.3,
          depth = TRUE)
-</code></pre>
-
-<p align="center">
+</code></pre><p align="center">
 <img src="/img/posts/fan-art/singlefanDepth.png" width=80%>
 </p>
-
-<h4 id="you-can-create-animated-gifs-by-saving-many-plots-and-then-loading-them-into-your-favorite-photo-editor-i-use-gimp-https-www-gimp-org">You can create animated gifs by saving many plots and then loading them into your favorite photo editor (I use <a href="https://www.gimp.org/">GIMP</a>).</h4>
-
+<h4 id="you-can-create-animated-gifs-by-saving-many-plots-and-then-loading-them-into-your-favorite-photo-editor-i-use-gimphttpswwwgimporg">You can create animated gifs by saving many plots and then loading them into your favorite photo editor (I use <a href="https://www.gimp.org/">GIMP</a>).</h4>
 <pre><code>name &lt;- 1
 # within each loop, create and save the fan. Result is 79 image files
 for (i in c(1:40, 39:1)){
@@ -165,12 +151,9 @@ for (i in c(1:40, 39:1)){
   name &lt;- name + 1
 }
 # then collapse into a GIF using GIMP
-</code></pre>
-
-<p align="center">
-<img src="/img/posts/fan-art/fans.gif" width=70%>
+</code></pre><p align="center">
+<img src="/img/posts/fan-art/fans_thumbnail.gif" width=70%>
 </p> 
-
 <pre><code>n.frames &lt;- 100
 logis.curve &lt;- 1 / ( 1 + exp(seq(4, -5, length = n.frames/2)))
 logis.curve &lt;- c(logis.curve, rev(logis.curve))
@@ -201,12 +184,9 @@ for (i in 1:n.frames){
   dev.off()
   name &lt;- name + 1
 }
-</code></pre>
-
-<p align="center">
-<img src="/img/posts/fan-art/fans_intense.gif" width=80%>
+</code></pre><p align="center">
+<img src="/img/posts/fan-art/depth_fan.gif" width=80%>
 </p>
-
 <pre><code>name &lt;- 1
 for (i in 1:n.frames){
   n &lt;- floor(logis.curve[i]*400)
@@ -238,16 +218,11 @@ for (i in 1:n.frames){
   name &lt;- name + 1
 }
 
-</code></pre>
-
-<p align="center">
-<img src="/img/posts/fan-art/fans_semi.gif" width=70%>
+</code></pre><p align="center">
+<img src="/img/posts/fan-art/semi_fan.gif" width=70%>
 </p> 
-
-<p><br></p>
-
+<br>
 <h4 id="you-can-create-animated-gifs-across-plots-specifying-individual-parameters-to-create-effects-and-systematically-removing-plots">You can create animated gifs across plots, specifying individual parameters to create effects and systematically removing plots.</h4>
-
 <pre><code>n.frames &lt;- 80
 hues &lt;- rep(seq(0, 1, length = 12), 12)
 logis.curve &lt;- 1 / ( 1 + exp(seq(4, -4, length = n.frames/2)))
@@ -295,24 +270,16 @@ for (i in 1:n.frames){
   name &lt;- name + 1
 }
 
-</code></pre>
-
-<p align="center">
-<img src="/img/posts/fan-art/multifansporadic.gif" width=90%>
+</code></pre><p align="center">
+<img src="/img/posts/fan-art/multi_fan.gif" width=90%>
 </p> 
-
 <pre><code># build a panel of fans and save it
 printFans()
-</code></pre>
-
-<p align="center">
+</code></pre><p align="center">
 <img src="/img/posts/fan-art/fansDefault.png" width=100%>
 </p> 
-
-<p><br></p>
-
-<h1 id="functions-to-create-plots">Functions to create plots</h1>
-
+<br>
+# Functions to create plots
 <pre><code>library(tidyverse)
 library(png)
 
@@ -399,80 +366,68 @@ buildFan &lt;- function(hue = 0.5, saturation = 0.20, value = 0.55, alpha = 0.5,
                      alpha = alpha),
            lwd = lwd)
 }
-</code></pre>
+</code></pre><br>
+#### printFans() wraps around buildFan() to automate the printing of multiple plots while scaling the color across plots
+```
+printFans <- function(hsv.array = seq(0, 1, length.out = 100), filename = "fans.png",
+                      output.image.width = 4608, output.image.height = 2880, background = "white", ...){
+<h1 id="function-automates-the-printing-and-saving-of-buildfan">function automates the printing and saving of buildFan</h1>
+<h1 id="hsvarray-is-the-array-colors-to-map-the-buildfan-function-over-if-only-one-vector-is-provided-then-it-is">hsv.array is the array colors to map the buildFan function over. If only one vector is provided then it is</h1>
+<h1 id="assumed-to-be-hue-if-two-then-hue-and-saturation-if-three-hue-then-saturation-then-value">assumed to be hue. If two, then hue and saturation. If three, hue then saturation then value</h1>
+<h1 id="length--nrow-of-hsvarray-determines-how-many-plots-there-will-be">length / nrow of hsv.array determines how many plots there will be</h1>
+<h1 id="nsegments-is-number-of-segments-per-plot">n.segments is number of segments per plot</h1>
+<h1 id="nplots-is-the-number-of-plots-to-be-printed-determined-by-the-lengthnrow-of-hsvarray">n.plots is the number of plots to be printed determined by the length/nrow of hsv.array</h1>
+<p>n.plots &lt;- if (!is.null(nrow(hsv.array))) nrow(hsv.array) else length(hsv.array)</p>
+<p>if (sqrt(n.plots) %% 1 != 0) stop(&ldquo;Square root of the number of plots must be a whole number.&quot;)</p>
+<h1 id="set-where-to-save">set where to save</h1>
+<p>png(filename = filename,
+width = output.image.width,
+height = output.image.height)</p>
+<h1 id="set-graphical-parameters">set graphical parameters</h1>
+<p>par(bg = background,
+mar = rep(2, 4),
+mfrow = c(sqrt(n.plots), sqrt(n.plots)),
+bty = &ldquo;n&rdquo;)</p>
+<p>#ensure hsv list to map over is dataframe and rename columns
+hsv.array &lt;- as.data.frame(hsv.array)
+names(hsv.array) &lt;- c(&ldquo;hue&rdquo;, &ldquo;saturation&rdquo;, &ldquo;value&rdquo;)[1:ncol(hsv.array)]</p>
+<h1 id="run-the-function-over-the-hsvarray-saves-plots">run the function over the hsv.array, saves plots</h1>
+<p>pwalk(hsv.array, buildFan, &hellip;)</p>
+<h1 id="reset-graphics">reset graphics</h1>
+<p>invisible(dev.off())</p>
+<p>}</p>
+<pre><code>&lt;br&gt;
 
-<p><br></p>
+## Tweaking the parameters leads to many different effects
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/img/posts/fan-art/Fans.png&quot; width=90%&gt;
+&lt;/p&gt; 
 
-<h4 id="printfans-wraps-around-buildfan-to-automate-the-printing-of-multiple-plots-while-scaling-the-color-across-plots">printFans() wraps around buildFan() to automate the printing of multiple plots while scaling the color across plots</h4>
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/img/posts/fan-art/fans_monochrome.png&quot; width=90%&gt;
+&lt;/p&gt; 
 
-<pre><code>printFans &lt;- function(hsv.array = seq(0, 1, length.out = 100), filename = &quot;fans.png&quot;,
-                      output.image.width = 4608, output.image.height = 2880, background = &quot;white&quot;, ...){
-  
-  # function automates the printing and saving of buildFan
-  # hsv.array is the array colors to map the buildFan function over. If only one vector is provided then it is
-  # assumed to be hue. If two, then hue and saturation. If three, hue then saturation then value
-  # length / nrow of hsv.array determines how many plots there will be
-  # n.segments is number of segments per plot
-  
-  # n.plots is the number of plots to be printed determined by the length/nrow of hsv.array
-  n.plots &lt;- if (!is.null(nrow(hsv.array))) nrow(hsv.array) else length(hsv.array)
-  
-  if (sqrt(n.plots) %% 1 != 0) stop(&quot;Square root of the number of plots must be a whole number.&quot;)
-  
-  # set where to save
-  png(filename = filename,
-      width = output.image.width,
-      height = output.image.height)
-    
-  # set graphical parameters
-  par(bg = background,
-      mar = rep(2, 4),
-      mfrow = c(sqrt(n.plots), sqrt(n.plots)),
-      bty = &quot;n&quot;)
-  
-  #ensure hsv list to map over is dataframe and rename columns
-  hsv.array &lt;- as.data.frame(hsv.array)
-  names(hsv.array) &lt;- c(&quot;hue&quot;, &quot;saturation&quot;, &quot;value&quot;)[1:ncol(hsv.array)]
-  
-  # run the function over the hsv.array, saves plots
-  pwalk(hsv.array, buildFan, ...)
-  
-  # reset graphics
-  invisible(dev.off())
-  
-}
-</code></pre>
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/img/posts/fan-art/fans_square.png&quot; width=90%&gt;
+&lt;/p&gt; 
 
-<p><br></p>
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/img/posts/fan-art/Fluffy_fans.png&quot; width=90%&gt;
+&lt;/p&gt; 
 
-<h2 id="tweaking-the-parameters-leads-to-many-different-effects">Tweaking the parameters leads to many different effects</h2>
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/img/posts/fan-art/Segments_bg_dark_2.png&quot; width=90%&gt;
+&lt;/p&gt; 
 
-<p align="center">
-<img src="/img/posts/fan-art/Fans.png" width=90%>
-</p> 
 
-<p align="center">
-<img src="/img/posts/fan-art/fans_monochrome.png" width=90%>
-</p> 
 
-<p align="center">
-<img src="/img/posts/fan-art/fans_square.png" width=90%>
-</p> 
 
-<p align="center">
-<img src="/img/posts/fan-art/Fluffy_fans.png" width=90%>
-</p> 
 
-<p align="center">
-<img src="/img/posts/fan-art/Segments_bg_dark_2.png" width=90%>
-</p> 
+&lt;br&gt;
 
-<p><br></p>
-
-<hr />
-
-<p><em>2019 September</em><br />
-<em>Find the code here: <a href="https://github.com/joemarlo/Fan-art">github.com/joemarlo/Fan-art</a></em></p>
+---
+*2019 September*  
+*Find the code here: [github.com/joemarlo/Fan-art](https://github.com/joemarlo/Fan-art)*</code></pre>
          
       </div>
     </div>
