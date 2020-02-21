@@ -101,14 +101,14 @@
 <p>R is consistently lauded for its impressive data plotting capabilities. These capabilities can be co-opted to create beautiful art, programmatically. Below are a few examples of my results using a single core function that accepts many parameters and outputs a semi-randomly generated plot.</p>
 <p>The general idea is to create:</p>
 <ol>
-<li>One generic function that can plot segments with given inputs such as segment end positions and color values. Add a bit of randomness for effect. Shapes can created by passing values to the segment positions. For example, <code>sin()</code>, <code>cos()</code>, and <code>pi</code> values can be used to create circle and semi circle shapes
+<li>One generic function that can plot segments with given inputs such as segment end positions and color values. Add a bit of randomness for effect. Shapes can be created by passing values to the segment positions. For example, <code>sin()</code>, <code>cos()</code>, and <code>pi</code> values can be used to create circle and semi circles
 <ul>
-<li>this is <a href="https://github.com/joemarlo/Fan-art/blob/master/Functions.R"><code>buildFan()</code></a></li>
+<li>this is <a href="https://github.com/joemarlo/Fan-art/blob/master/Functions.R#L6"><code>buildFan()</code></a></li>
 </ul>
 </li>
 <li>A second function that wraps around the first to print multiple plots. It also allows parameters across the plots such as color gradients and shapes
 <ul>
-<li>this is <a href="https://github.com/joemarlo/Fan-art/blob/master/Functions.R"><code>printFans()</code></a></li>
+<li>this is <a href="https://github.com/joemarlo/Fan-art/blob/master/Functions.R#L93"><code>printFans()</code></a></li>
 </ul>
 </li>
 </ol>
@@ -275,7 +275,7 @@ for (i in 1:n.frames){
   }
 }
 dev.off()
-system(&quot;convert -delay 20 *.png multi_fan.gif&quot;)
+system(&quot;convert -delay 40 *.png multi_fan.gif&quot;)
 file.remove(list.files(pattern = &quot;.png&quot;))
 </code></pre><p align="center">
 <img src="/img/posts/fan-art/multi_fan.gif" width=90%>
