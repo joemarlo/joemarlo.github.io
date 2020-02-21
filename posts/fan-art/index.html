@@ -130,8 +130,8 @@ buildFan(n.segments = 1000,
 <img src="/img/posts/fan-art/singlefanDepth.png" width=80%>
 </p>
 <h4 id="you-can-create-animated-gifs-by-saving-many-plots-and-then-collapse-them-into-a-gif-use-imagemagickhttpsimagemagickorg-shell-commands">You can create animated gifs by saving many plots and then collapse them into a GIF use <a href="https://imagemagick.org/">imagemagick</a> shell commands:</h4>
-<pre><code># note requires imagemagick to be installed: https://imagemagick.org/
-#  or brew install imagemagick 
+<pre><code># gif rendering requires imagemagick to be installed
+#  see https://imagemagick.org/ or brew install imagemagick 
 setwd(&quot;Plotted_images/Gifs&quot;)
 
 # gif of single fan
@@ -139,7 +139,10 @@ png(filename = paste0('fan%02d.png'),
     width = 500,
     height = 500)
 for (i in c(1:40, 39:1)){
+ 
+  # set the number of segments to plot
   n &lt;- floor(i^2)
+
   buildFan(hue = i/40, 
            saturation = 1- i/40, 
            value = 0.5, 
@@ -168,7 +171,10 @@ png(filename = paste0('fan%02d.png'),
     width = 1250,
     height = 1250)
 for (i in 1:n.frames){
+  
+  # set the number of segments to plot
   n &lt;- floor(logis.curve[i]*250)
+  
   buildFan(hue = rescale.vector(logis.curve)[i], 
            saturation = .6, 
            value = 0.5, 
@@ -198,6 +204,8 @@ png(filename = paste0('fan%02d.png'),
     height = 800)
 
 for (i in 1:n.frames){
+  
+  # set the number of segments to plot
   n &lt;- floor(logis.curve[i]*400)
   
   # semi circle
@@ -229,11 +237,13 @@ file.remove(list.files(pattern = &quot;.png&quot;))
 </p> 
 <br>
 <h4 id="you-can-create-animated-gifs-across-plots-specifying-individual-parameters-to-create-effects-and-systematically-removing-plots">You can create animated gifs across plots, specifying individual parameters to create effects and systematically removing plots.</h4>
-<pre><code># gif parameters
-n.frames &lt;- 80
+<pre><code># gif of many fans with sequencing pattern
+# gif parameters
+n.frames &lt;- 12*8
 hues &lt;- rep(seq(0, 1, length = 12), 12)
 logis.curve &lt;- 1 / ( 1 + exp(seq(4, -4, length = n.frames/2)))
 logis.curve &lt;- c(logis.curve, rev(logis.curve))
+loop.vec &lt;- c(10:11, 0:11, 0)
 
 # set where to save
 png(filename = 'fan%02d.png',
@@ -248,12 +258,13 @@ for (i in 1:n.frames){
       mfrow = c(3, 4),
       bty = &quot;n&quot;)
   
+  # set the number of segments to plot
+  n &lt;-  floor(logis.curve[i] * 250)
+  
   for (j in 1:12) {
-    n &lt;-  floor(logis.curve[i] * 250)
     
     # logic controls the plot sequence
-    # if (i %% 12 == j | i %% 6 == j | i %% 3 == j){
-    if (i %% 12 == j | i %% 12 == j - 1 | i %% 12 == j - 2 | i %% 12 == j - 3){
+    if (i %% 12 %in% loop.vec[(j+3)-0:3]){
       buildFan(
         hue = hues[j + i],
         saturation = .7,
@@ -267,11 +278,10 @@ for (i in 1:n.frames){
         depth = TRUE,
         random.center = TRUE
       )
-      next
+    } else {
+      # build a blank plot
+      buildFan(alpha = 0)
     }
-    
-    # build a blank plot
-    buildFan(alpha = 0)
   }
 }
 dev.off()
