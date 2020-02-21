@@ -173,8 +173,9 @@ for (i in c(1:40, 39:1)){
 
 <h4 id="you-can-create-animated-gifs-across-plots-specifying-individual-parameters-to-create-effects-and-systematically-removing-plots">You can create animated gifs across plots, specifying individual parameters to create effects and systematically removing plots.</h4>
 
-<pre><code>n.frames &lt;- 80
-hues &lt;- seq(0, 1, length = 12)
+<pre><code>
+n.frames &lt;- 80
+hues &lt;- rep(seq(0, 1, length = 12), 12)
 logis.curve &lt;- 1 / ( 1 + exp(seq(4, -4, length = n.frames/2)))
 logis.curve &lt;- c(logis.curve, rev(logis.curve))
 
@@ -194,7 +195,7 @@ for (i in 1:n.frames){
 
   
   for (j in 1:12) {
-    n &lt;-  floor(logis.curve[i] * 100)
+    n &lt;-  floor(logis.curve[i] * 250)
     
     if (i %% 12 == j){
       buildFan(alpha = 0)
@@ -203,8 +204,8 @@ for (i in 1:n.frames){
     
     # build the plot
     buildFan(
-      hue = hues[j],
-      saturation = .8,
+      hue = hues[j+i],
+      saturation = .7,
       value = 0.5,
       alpha = 1 - logis.curve[i],
       n.segments = n,
