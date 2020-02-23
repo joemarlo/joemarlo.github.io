@@ -460,9 +460,10 @@ deduped.ngrams %&gt;%
 </blockquote>
 
 <pre><code>cosine_matrix &lt;- function(tokenized_data, lower = 0, upper = 1, filt = 0) {
-
-  if (!all(c(&quot;word&quot;, &quot;Name&quot;) %in% names(tokenized_data))) {
-    stop(&quot;tokenized_data must contain variables named word and Name&quot;)
+  # ruthlessly stolen from https://www.markhw.com/blog/word-similarity-graphs
+  
+  if (!all(c(&quot;stem&quot;, &quot;Name&quot;) %in% names(tokenized_data))) {
+    stop(&quot;tokenized_data must contain variables named stem and Name&quot;)
   }
   
   if (lower &lt; 0 | lower &gt; 1 | upper &lt; 0 | upper &gt; 1 | filt &lt; 0 | filt &gt; 1) {
@@ -472,14 +473,14 @@ deduped.ngrams %&gt;%
   docs &lt;- length(unique(tokenized_data$Name))
   
   out &lt;- tokenized_data %&gt;%
-    count(Name, word) %&gt;%
-    group_by(word) %&gt;%
+    count(Name, stem) %&gt;%
+    group_by(stem) %&gt;%
     mutate(n_docs = n()) %&gt;%
     ungroup() %&gt;%
     filter(n_docs &lt; (docs * upper) &amp; n_docs &gt; (docs * lower)) %&gt;%
     select(-n_docs) %&gt;%
     mutate(n = 1) %&gt;%
-    spread(word, n, fill = 0) %&gt;%
+    spread(stem, n, fill = 0) %&gt;%
     select(-Name) %&gt;%
     as.matrix() %&gt;%
     lsa::cosine()
@@ -494,24 +495,25 @@ deduped.ngrams %&gt;%
 # calculate the cosine of our ngrams grouped by Name
 cos_mat &lt;- cosine_matrix(deduped.ngrams, lower = .035,
                          upper = .90, filt = .75)
-                         
-head(cos_mat)
+round(cos_mat[1:8, 1:8], 2)
 </code></pre>
 
-<pre><code>          apples burritos ice cream pizza pizzas tacos
-apples         0        0         1     0      1     0
-burritos       0        0         0     1      0     1
-ice cream      1        0         0     0      1     0
-pizza          0        1         0     0      0     1
-pizzas         1        0         1     0      0     0
-tacos          0        1         0     1      0     0
+<pre><code>          apple pi bacon banana beef chees cheesecak cherri chicken
+apple pi      0.00  0.00   0.00 0.00  0.00      0.00   0.00    0.00
+bacon         0.00  0.00   0.23 0.00  0.17      0.00   0.00    0.00
+banana        0.00  0.23   0.00 0.00  0.00      0.00   0.00    0.00
+beef          0.00  0.00   0.00 0.00  0.00      0.17   0.00    0.00
+chees         0.00  0.17   0.00 0.00  0.00      0.24   0.33    0.18
+cheesecak     0.00  0.00   0.00 0.17  0.24      0.00   0.15    0.00
+cherri        0.00  0.00   0.00 0.00  0.33      0.15   0.00    0.00
+chicken       0.00  0.00   0.00 0.00  0.18      0.00   0.00    0.00
 </code></pre>
 
 <p><br></p>
 
 <h3 id="graphing-cosine-similarity-a-id-cosine-graphs-a">Graphing cosine similarity <a id="cosine-graphs"></a></h3>
 
-<p>We can build a graph from this document-term matrix to visualize which food items tend to co-occur more frequently.</p>
+<p>We can build a graph from this matrix to visualize which food items tend to co-occur more frequently.</p>
 
 <pre><code>set.seed(26)
 graph_from_adjacency_matrix(cos_mat, 
