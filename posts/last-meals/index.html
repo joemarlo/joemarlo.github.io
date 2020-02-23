@@ -125,7 +125,7 @@
 
 <h2 id="the-analysis-process">The analysis process</h2>
 
-<p>Analyzing this corpus is a multi stage process to clean data properly and to examine the results:</p>
+<p>Exploring this corpus is a complex, multi stage process where significant cleaning decisions need to be made. Once finished, the data is relatively simple to anlayze.</p>
 
 <ol>
 <li>Cleaning the data
@@ -275,9 +275,9 @@ food.words  &lt;- read_xml('Data/Foodbase/FoodBase_uncurated.xml') %&gt;%
   str_to_lower()
 
 # remove copmmon condiments from the food words list
-excl.words &lt;- c(&quot;meal&quot;, &quot;food&quot;, &quot;snack&quot;, &quot;drink&quot;, &quot;double&quot;, &quot;ketchup&quot;, &quot;cups&quot;, &quot;pecan&quot;,
-                &quot;mustard&quot;, &quot;mayonnaise&quot;, &quot;mayo&quot;, &quot;sauce&quot;, &quot;sour cream&quot;, &quot;onion&quot;,
-                &quot;onions&quot;, &quot;pepper&quot;, &quot;ranch&quot;, &quot;ranch dressing&quot;, &quot;meat&quot;, &quot;butter&quot;)
+excl.words &lt;- c(&quot;meal&quot;, &quot;food&quot;, &quot;snack&quot;, &quot;drink&quot;, &quot;double&quot;, &quot;sauce&quot;, &quot;ketchup&quot;, &quot;cups&quot;,
+                &quot;mustard&quot;, &quot;mayonnaise&quot;, &quot;mayo&quot;, &quot;pecan&quot;, &quot;sour cream&quot;, &quot;onion&quot;,
+                &quot;onions&quot;, &quot;pepper&quot;, &quot;butter&quot;, &quot;ranch&quot;, &quot;ranch dressing&quot;, &quot;meat&quot;)
 food.words &lt;- food.words[!(food.words %in% excl.words)]
 
 # add additional one-off words
