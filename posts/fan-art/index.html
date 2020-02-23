@@ -96,28 +96,38 @@
     <div class="col-lg-8">
       <div class="content-column-content">
          <h1>Starburst Art</h1>
-         <p>Using R to build beautiful digital artwork randomly</p>
-<hr>
+         <p>Using R to build beautiful digital artwork randomly
+</p>
+
+<hr />
+
 <p>R is consistently lauded for its impressive data plotting capabilities. These capabilities can be co-opted to create beautiful art, programmatically. Below are a few examples of my results using a single core function that accepts many parameters and outputs a semi-randomly generated plot.</p>
+
 <p>The general idea is to create:</p>
+
 <ol>
 <li>One generic function that can plot segments with given inputs such as segment end positions and color values. Add a bit of randomness for effect. Shapes can be created by passing values to the segment positions. For example, <code>sin()</code>, <code>cos()</code>, and <code>pi</code> values can be used to create circle and semi circles
+
 <ul>
 <li>this is <a href="https://github.com/joemarlo/Fan-art/blob/master/Functions.R#L6"><code>buildFan()</code></a></li>
-</ul>
-</li>
+</ul></li>
 <li>A second function that wraps around the first to print multiple plots. It also allows parameters across the plots such as color gradients and shapes
+
 <ul>
 <li>this is <a href="https://github.com/joemarlo/Fan-art/blob/master/Functions.R#L93"><code>printFans()</code></a></li>
-</ul>
-</li>
+</ul></li>
 </ol>
+
 <p>If you&rsquo;re more interested in this, I encourage you to tweak (and improve) <a href="https://github.com/joemarlo/Fan-art">my code</a> along with checking out <a href="https://www.data-to-art.com/">Data-to-Art</a>.</p>
+
 <pre><code># build a single fan
 buildFan()
-</code></pre><p align="center">
+</code></pre>
+
+<p align="center">
 <img src="/img/posts/fan-art/singlefan.png" width=60%>
 </p> 
+
 <pre><code># tweak the fan's properties
 buildFan(n.segments = 1000,
          x.end = runif(1000, -1, 1),
@@ -126,10 +136,14 @@ buildFan(n.segments = 1000,
          y.center = rep(0, 1000),
          alpha = 0.3,
          depth = TRUE)
-</code></pre><p align="center">
+</code></pre>
+
+<p align="center">
 <img src="/img/posts/fan-art/singlefanDepth.png" width=80%>
 </p>
-<h4 id="you-can-create-animated-gifs-by-saving-many-plots-and-then-collapse-them-into-a-gif-use-imagemagickhttpsimagemagickorg-shell-commands">You can create animated gifs by saving many plots and then collapse them into a GIF use <a href="https://imagemagick.org/">imagemagick</a> shell commands:</h4>
+
+<h4 id="you-can-create-animated-gifs-by-saving-many-plots-and-then-collapse-them-into-a-gif-use-imagemagick-https-imagemagick-org-shell-commands">You can create animated gifs by saving many plots and then collapse them into a GIF use <a href="https://imagemagick.org/">imagemagick</a> shell commands:</h4>
+
 <pre><code># gif rendering requires imagemagick to be installed
 #  see https://imagemagick.org/ or brew install imagemagick 
 setwd(&quot;Plotted_images/Gifs&quot;)
@@ -157,9 +171,12 @@ for (i in c(1:40, 39:1)){
 dev.off()
 system(&quot;convert -delay 20 *.png single_fan.gif&quot;)
 file.remove(list.files(pattern = &quot;.png&quot;))
-</code></pre><p align="center">
+</code></pre>
+
+<p align="center">
 <img src="/img/posts/fan-art/fans_thumbnail.gif" width=70%>
 </p> 
+
 <pre><code># gif parameters
 n.frames &lt;- 100
 logis.curve &lt;- 1 / ( 1 + exp(seq(4, -5, length = n.frames/2)))
@@ -195,9 +212,12 @@ for (i in 1:n.frames){
 dev.off()
 system(&quot;convert -delay 20 *.png depth_fan.gif&quot;)
 file.remove(list.files(pattern = &quot;.png&quot;))
-</code></pre><p align="center">
+</code></pre>
+
+<p align="center">
 <img src="/img/posts/fan-art/depth_fan.gif" width=80%>
 </p>
+
 <pre><code># set where to save
 png(filename = paste0('fan%02d.png'),
     width = 1250,
@@ -232,11 +252,16 @@ for (i in 1:n.frames){
 dev.off()
 system(&quot;convert -delay 20 *.png semi_fan.gif&quot;)
 file.remove(list.files(pattern = &quot;.png&quot;))
-</code></pre><p align="center">
+</code></pre>
+
+<p align="center">
 <img src="/img/posts/fan-art/semi_fan.gif" width=70%>
 </p> 
-<br>
+
+<p><br></p>
+
 <h4 id="you-can-create-animated-gifs-across-plots-specifying-individual-parameters-to-create-effects-and-systematically-removing-plots">You can create animated gifs across plots, specifying individual parameters to create effects and systematically removing plots.</h4>
+
 <pre><code># gif of many fans with sequencing pattern
 # gif parameters
 n.frames &lt;- 12*8
@@ -287,34 +312,49 @@ for (i in 1:n.frames){
 dev.off()
 system(&quot;convert -delay 40 *.png multi_fan.gif&quot;)
 file.remove(list.files(pattern = &quot;.png&quot;))
-</code></pre><p align="center">
+</code></pre>
+
+<p align="center">
 <img src="/img/posts/fan-art/multi_fan.gif" width=90%>
 </p> 
+
 <pre><code># build a panel of fans and save it
 printFans()
-</code></pre><p align="center">
+</code></pre>
+
+<p align="center">
 <img src="/img/posts/fan-art/fansDefault.png" width=100%>
 </p> 
-<br>
+
+<p><br></p>
+
 <h2 id="tweaking-the-parameters-leads-to-many-different-effects">Tweaking the parameters leads to many different effects</h2>
+
 <p align="center">
 <img src="/img/posts/fan-art/Fans.png" width=90%>
 </p> 
+
 <p align="center">
 <img src="/img/posts/fan-art/fans_monochrome.png" width=90%>
 </p> 
+
 <p align="center">
 <img src="/img/posts/fan-art/fans_square.png" width=90%>
 </p> 
+
 <p align="center">
 <img src="/img/posts/fan-art/Fluffy_fans.png" width=90%>
 </p> 
+
 <p align="center">
 <img src="/img/posts/fan-art/Segments_bg_dark_2.png" width=90%>
 </p> 
-<br>
-<hr>
-<p><em>2019 September</em><br>
+
+<p><br></p>
+
+<hr />
+
+<p><em>2019 September</em><br />
 <em>Find the code here: <a href="https://github.com/joemarlo/Fan-art">github.com/joemarlo/Fan-art</a></em></p>
          
       </div>
