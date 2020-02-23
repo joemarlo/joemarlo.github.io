@@ -6,20 +6,10 @@
     <description>Recent content on Marlo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 19 Feb 2020 11:16:00 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 27 Jan 2020 13:09:49 -0500</lastBuildDate>
     
 	<atom:link href="https://joemarlo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Text analysis of last meals</title>
-      <link>https://joemarlo.github.io/posts/last-meals/</link>
-      <pubDate>Wed, 19 Feb 2020 11:16:00 -0500</pubDate>
-      
-      <guid>https://joemarlo.github.io/posts/last-meals/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Rice and bread vs. fried chicken and bacon&lt;/em&gt;
-&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>Clustering NBA players</title>
