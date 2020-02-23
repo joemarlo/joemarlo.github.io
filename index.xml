@@ -6,10 +6,20 @@
     <description>Recent content on Marlo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 27 Jan 2020 13:09:49 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 19 Feb 2020 11:16:00 -0500</lastBuildDate>
     
 	<atom:link href="https://joemarlo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Text analysis of last meals</title>
+      <link>https://joemarlo.github.io/posts/last-meals/</link>
+      <pubDate>Wed, 19 Feb 2020 11:16:00 -0500</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/last-meals/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Examining favorite foods via last meal requests&lt;/em&gt;
+&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Clustering NBA players</title>
@@ -27,7 +37,7 @@
       <pubDate>Mon, 27 Jan 2020 21:12:52 -0500</pubDate>
       
       <guid>https://joemarlo.github.io/posts/social-security/</guid>
-      <description>&lt;p&gt;&lt;em&gt;For the elderly. Optimizing Social Security and market Monte Carlos&lt;/em&gt;
+      <description>&lt;p&gt;&lt;em&gt;Optimizing Social Security and market Monte Carlos&lt;/em&gt;
 &lt;/p&gt;</description>
     </item>
     
