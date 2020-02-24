@@ -164,7 +164,7 @@ file.remove(list.files(pattern = &quot;.png&quot;))
 n.frames &lt;- 100
 logis.curve &lt;- 1 / ( 1 + exp(seq(4, -5, length = n.frames/2)))
 logis.curve &lt;- c(logis.curve, rev(logis.curve))
-rescale.vector &lt;- function(x, min = .1, max = .9) (x - min(x))/(max(x) - min(x)) * (max - min) + min
+rescaleVector &lt;- function(x, min = .1, max = .9) (x - min(x))/(max(x) - min(x)) * (max - min) + min
 
 # set where to save
 png(filename = paste0('fan%02d.png'),
@@ -175,13 +175,13 @@ for (i in 1:n.frames){
   # set the number of segments to plot
   n &lt;- floor(logis.curve[i]*250)
   
-  buildFan(hue = rescale.vector(logis.curve)[i], 
+  buildFan(hue = rescaleVector(logis.curve)[i], 
            saturation = .6, 
            value = 0.5, 
            hue.range = 0.20,
            saturation.range = 0.20,
            value.range = 0.20,
-           alpha =  1 - rescale.vector(logis.curve)[i],
+           alpha =  1 - rescaleVector(logis.curve)[i],
            alpha.range = 0.10,
            segment.width = 6,
            n.segments = n,
@@ -213,13 +213,13 @@ for (i in 1:n.frames){
   x.vector &lt;- cos(base.vector)
   y.vector &lt;- sin(base.vector) * 2 - 1
   
-  buildFan(hue = rescale.vector(logis.curve, min = 0.3, max = .6)[i], 
+  buildFan(hue = rescaleVector(logis.curve, min = 0.3, max = .6)[i], 
            saturation = .45, 
            value = 0.4, 
            hue.range = 0.20,
            saturation.range = 0.20,
            value.range = 0.20,
-           alpha =  1 - rescale.vector(logis.curve, min = .6, max = .95)[i],
+           alpha =  1 - rescaleVector(logis.curve, min = .6, max = .95)[i],
            alpha.range = 0.30,
            segment.width = 20,
            n.segments = n,
@@ -236,7 +236,7 @@ file.remove(list.files(pattern = &quot;.png&quot;))
 <img src="/img/posts/fan-art/semi_fan.gif" width=70%>
 </p> 
 <br>
-<h4 id="you-can-create-animated-gifs-across-plots-specifying-individual-parameters-to-create-effects-and-systematically-removing-plots">You can create animated gifs across plots, specifying individual parameters to create effects and systematically removing plots.</h4>
+<h4 id="you-can-create-animated-gifs-across-plots-specifying-individual-parameters-to-create-effects">You can create animated gifs across plots, specifying individual parameters to create effects.</h4>
 <pre><code># gif of many fans with sequencing pattern
 # gif parameters
 n.frames &lt;- 12*8
@@ -290,6 +290,7 @@ file.remove(list.files(pattern = &quot;.png&quot;))
 </code></pre><p align="center">
 <img src="/img/posts/fan-art/multi_fan.gif" width=90%>
 </p> 
+<h4 id="use-printfans-to-create-a-panel-of-plots-all-at-once">Use printFans() to create a panel of plots all at once.</h4>
 <pre><code># build a panel of fans and save it
 printFans()
 </code></pre><p align="center">
