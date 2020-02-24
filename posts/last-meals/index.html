@@ -374,7 +374,6 @@ deduped.ngrams %&gt;%
 <p>Note: this next function <code>cosine_matrix()</code> is stolen from <a href="https://www.markhw.com/blog/word-similarity-graphs">markhw.com</a> and modified to fit our needs. I encourage you to read his article as well, especially if you would like to learn about the hyperparameter tuning and clustering based on cosine similarity</p>
 </blockquote>
 <pre><code>cosine_matrix &lt;- function(tokenized_data, lower = 0, upper = 1, filt = 0) {
-  # ruthlessly stolen from https://www.markhw.com/blog/word-similarity-graphs
   
   if (!all(c(&quot;stem&quot;, &quot;Name&quot;) %in% names(tokenized_data))) {
     stop(&quot;tokenized_data must contain variables named stem and Name&quot;)
@@ -421,7 +420,7 @@ cherri        0.00  0.00   0.00 0.00  0.33      0.15   0.00    0.00
 chicken       0.00  0.00   0.00 0.00  0.18      0.00   0.00    0.00
 </code></pre><br>
 <h3 id="graphing-cosine-similarity-a-idcosine-graphsa">Graphing cosine similarity <a id="cosine-graphs"></a></h3>
-<p>We can build a graph from this matrix to visualize which food items tend to co-occur more frequently.</p>
+<p>The <code>cosine_matrix()</code> function does what it sounds likes: returns a matrix of the cosine scores between each food item. We can build a graph from this matrix to visualize which food items tend to co-occur more frequently.</p>
 <pre><code>set.seed(26)
 graph_from_adjacency_matrix(cos_mat, 
                             mode = &quot;undirected&quot;, 
