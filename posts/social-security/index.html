@@ -96,37 +96,25 @@
     <div class="col-lg-8">
       <div class="content-column-content">
          <h1>Claiming Social Security benefits</h1>
-         <p><em>Optimizing Social Security and market Monte Carlos</em>
-</p>
-
-<hr />
-
+         <p><em>Optimizing Social Security and market Monte Carlos</em></p>
+<hr>
 <h2 id="why-write-about-this">Why write about this?</h2>
-
 <ul>
 <li><strong>Social Security is the <a href="https://www.federalreserve.gov/econresdata/notes/feds-notes/2016/role-of-social-security-in-overall-retirement-resources-a-distributional-perspective-20160729.html">largest source of income for most American retirees</a></strong></li>
 <li><strong>Social Security is known as a <a href="https://crr.bc.edu/briefs/social-security-is-a-great-equalizer/">great equalizer across races</a> where there is <a href="https://www.nytimes.com/2019/12/14/business/retirement-social-security-recession.html">savings inequality</a> and reportedly a <a href="https://www.gao.gov/products/GAO-19-442R?utm_campaign=usgao_email&amp;utm_content=topic_retirementsecurity&amp;utm_medium=email&amp;utm_source=govdelivery">general retirement</a> <a href="https://www.wsj.com/articles/is-there-really-a-retirement-savings-crisis-1492999861">savings crisis</a></strong></li>
 <li><strong>Social Security is something Americans <a href="http://crr.bc.edu/wp-content/uploads/2015/05/IB_15-8.pdf">routinely mess up by claiming too early</a></strong></li>
 </ul>
-
 <p>Social Security is complicated. Luckily, there&rsquo;s plenty written on <a href="https://www.fool.com/retirement/general/2015/11/22/how-does-social-security-work.aspx">how it works</a> for the fastidious reader. Every eligible American should understand the very basics that directly impact their benefits check and the implicit tradeoffs they are making when they file to claim their benefits. I won&rsquo;t dive into the specifics of <a href="https://www.investopedia.com/retirement/when-take-social-security-complete-guide/">how the claiming process works</a> but you should know that you can claim as early as age 62 and you receive a permanent increase in benefits for each month you wait to claim until age 70.</p>
-
 <p>This leads to the question:</p>
-
 <blockquote>
 <p><em>At what age should I claim Social Security in order to receive the most amount of money?</em></p>
 </blockquote>
-
 <p>Or more specifically:</p>
-
 <blockquote>
 <p><em>At what age should I claim Social Security based on how long I expect to live and, if I invest the money, what rate of return I expect to earn in the market?</em></p>
 </blockquote>
-
 <p>This is commonly asked by financial advisors who serve the wealthy, but perhaps less so by the individuals who make these financial decisions themselves. These advisors tend to assume it&rsquo;s best to claim early, hand that money over to the advisor, and have them invest in the market (and reap the associated fees).</p>
-
 <p>To answer the question, I&rsquo;ve done the work to calculate all the various possible combinations of outcomes and presented it in the below plot. It describes the best age to claim Social Security while capturing the relationship between life expectancy (also known as longevity) and investment return. To use, pick a longevity and expected investment return, go to the intersection and the color indicates which claim age is best.</p>
-
 <p align="center">
 <img src="/img/posts/Social-Security/bestClaim.png" width=100%>
 </p>
@@ -135,23 +123,16 @@
 This is a simplified result with only three solutions: age 62, Full Retirement Age (FRA, ~66) and 70. A more comprehensive plot with all ages between 62 and 70 is presented in the <b>How to build your own analysis</b> section below.
 </font> 
 </p>
-
 <!---
 <div class="iframe_container">
   <iframe width=100% height="500" src="/img/posts/Social-Security/pltly.html" frameborder="0"></iframe>
 </div>
 -->
-
 <p>Life expectancy may be hard to estimate for yourself but <a href="http://www.onlinejacc.org/content/68/8/874">family member experience</a> and <a href="https://www.ssa.gov/planners/lifeexpectancy.html">life expectancy tables starting</a> <a href="https://www.ssa.gov/oact/STATS/table4c6.html">at age 62</a> are a good place to start. The decision between uncertain market return and guaranteed U.S. government money is much more tractable. If you want to learn more about long-term market expectations, you can find more <a href="https://am.jpmorgan.com/us/institutional/ltcma-executive-summary">here</a>.</p>
-
 <p>The plot tells us it&rsquo;s always better to wait until 70 if you don&rsquo;t plan on investing the benefits and believe you&rsquo;ll live past 80. If you do plan on investing the benefits, at an investment return of 5% (probably a safe bet for most people) and using a life expectancy of age 90 (about average for a couple currently age 62), claiming at age 70 is still the best choice to maximize lifetime benefits. If you&rsquo;re optimistic about the market and believe you can yield at least 9% consistently every year, feel free to claim as early as you wish. However, note that this is a trade-off between a guaranteed, government-backed increase and volatile market returns. More on market uncertainty below.</p>
-
-<p><br></p>
-
+<br>
 <h2 id="how-to-build-your-own-analysis">How to build your own analysis</h2>
-
 <p>If you&rsquo;re interested in building and tweaking this model yourself, you can <a href="https://github.com/joemarlo/Social-Security">find all the code on my github</a>. Here&rsquo;s the basic structure of the analysis:</p>
-
 <ol>
 <li>First build a Social Security benefits calculator based on the <a href="https://www.ssa.gov/OP_Home/ssact/comp-ssa.htm">laws</a>, <a href="https://www.ssa.gov/OP_Home/comp2/comp2.html">IRS code</a>, and maybe recent <a href="https://www.ssa.gov/legislation/index.html#legislation">legislation</a>. Not as difficult as one would imagine if you know <a href="https://www.ssa.gov/OACT/TR/2019/">where to look</a></li>
 <li>Calculate Social Security benefits for a given claim age and life expectancy. &ldquo;Invest&rdquo; those benefits at some rate</li>
@@ -160,39 +141,24 @@ This is a simplified result with only three solutions: age 62, Full Retirement A
 <li>Find the claim age that maximizes the present value for each combination of life expectancy and investment return rate</li>
 <li>Optional: simulate the rates to account for market uncertainty</li>
 </ol>
-
 <h3 id="the-calculator">The calculator</h3>
-
 <p>The calculator should return annual Social Security benefits and allow the user to tweak birth year, claim age, and wage history. Wages are capped at the <a href="https://www.ssa.gov/oact/cola/cbb.html">applicable amount</a>. The top 35 years of earnings are captured to calculate the <a href="https://www.ssa.gov/OACT/COLA/Benefits.html">Average Indexed Monthly Earnings and then the Primary Insurance Amount</a>. Benefits are forecasted into the future based on expected <a href="https://www.ssa.gov/OACT/COLA/colasummary.html">Cost-of-Living-Adjustment</a>. COLA itself is based on inflation, specifically <a href="https://www.ssa.gov/OACT/COLA/colaseries.html">CPI-W</a>. Since individual Social Security benefits discontinue at time of death the benefits stop at the expected longevity of the person. The calculator can be tested against <a href="https://www.ssa.gov/planners/retire/AnypiaApplet.html">this calculator from the Social Security Administration</a>.</p>
-
 <p>You can find the calculator in <code>R</code> form here: <a href="https://github.com/joemarlo/Social-Security/blob/master/R/SS_calculator.R"><code>SS_calculator.R</code></a>.</p>
-
 <h3 id="helper-functions">Helper functions</h3>
-
 <p>Several helper functions need to be written to expedite the analysis. The functions need to perform the following:</p>
-
 <ul>
 <li>add investment return to a series of cash flows</li>
 <li>simulate investment return over a series of cash flows and then return a specified quantile value</li>
 <li>calculate present value and net present value (these can also be found in third-party packages)</li>
 </ul>
-
 <p>You can find the helper functions in <code>R</code> form here: <a href="https://github.com/joemarlo/Social-Security/blob/master/R/Helper_functions.R"><code>Helper_functions.R</code></a>.</p>
-
 <h3 id="the-discounting-process">The discounting process</h3>
-
 <p>We can determine the value of a series of benefits by simple net present value (NPV) discounted at the rate of inflation. First, calculate the benefits using the benefits calculator then take the NPV.</p>
-
 <pre><code># calculate the NPV of a series of annual benefits 
 benefits &lt;- calculate_benefits(birth.year = 1957, claim.age = 62) %&gt;% filter(Age &gt;= 62)
 NPV(benefits$Benefits, inflation.rate)
-</code></pre>
-
-<pre><code>[1] 430684.4
-</code></pre>
-
-<p>Now, repeat this process for all the claim ages between 62 and 70 then plot it.</p>
-
+</code></pre><pre><code>[1] 430684.4
+</code></pre><p>Now, repeat this process for all the claim ages between 62 and 70 then plot it.</p>
 <pre><code># plot of NPVs by claim age
 sapply(62:70, function(claim.age){
   calculate_benefits(birth.year = 1957, claim.age = claim.age) %&gt;%
@@ -210,27 +176,18 @@ sapply(62:70, function(claim.age){
        x = &quot;Claim age&quot;,
        y = &quot;NPV of benefits&quot;) +
   light.theme
-</code></pre>
-
-<p align="center">
+</code></pre><p align="center">
 <img src="/img/posts/Social-Security/NPVs.png" width=100%>
 </p>
-
 <p>However, what we want to know is how much is a series of benefits worth if one invests their benefits and it yields a certain rate of return. We can treat the accumulation of benefits as an investment account with annual deposits and compounded growth at a given rate. Then we can take the terminal (final) value and discount it back to age 62. This will give us a single value that is an apples-to-apples comparison once we start varying the claim age.</p>
-
 <pre><code># calculate the present value of one series of benefits, starting at age 62,
 #  ending at age 100, and with an an investment return of 5%
 benefits$Benefits %&gt;% 
   add_investment_return(., rate = 1.05) %&gt;%
   last(.) %&gt;%
   PV(., rate = inflation.rate, periods = 100-62)
-</code></pre>
-
-<pre><code>[1] 706134
-</code></pre>
-
-<p>Great. Now let&rsquo;s calculate this present value across various investment returns, claim ages, and longevities.</p>
-
+</code></pre><pre><code>[1] 706134
+</code></pre><p>Great. Now let&rsquo;s calculate this present value across various investment returns, claim ages, and longevities.</p>
 <pre><code># set the investment returns, claim ages, and death ages we are interested in
 inv.returns &lt;- seq(1, 1.1, by = 0.001) # this is 0-&gt;10%
 claim.ages &lt;- 62:70
@@ -257,9 +214,7 @@ PV.grid$PV &lt;-
        }) %&gt;% unlist()
 
 head(PV.grid)
-</code></pre>
-
-<pre><code># A tibble: 6 x 4
+</code></pre><pre><code># A tibble: 6 x 4
   Return Claim.age Death.age     PV
    &lt;dbl&gt;     &lt;int&gt;     &lt;int&gt;  &lt;dbl&gt;
 1   1           62        63 21867.
@@ -269,12 +224,8 @@ head(PV.grid)
 5   1.00        62        63 21910.
 6   1.00        62        63 21921.
 
-</code></pre>
-
-<p>We now have present values for every combination of investment return, claim age, and longevity. What we really care about is the best claim age for a given investment return and longevity. To find this, we can take the maximum present value for a given grouping of investment return and longevity.</p>
-
+</code></pre><p>We now have present values for every combination of investment return, claim age, and longevity. What we really care about is the best claim age for a given investment return and longevity. To find this, we can take the maximum present value for a given grouping of investment return and longevity.</p>
 <p>We can now build the plot shown at the beginning of the post. A simple table will do but that might miss the bigger pattern. This one will be bit more detailed as every age between between 62 and 70 was calculated, not just age 62, 66 (<a href="https://www.ssa.gov/planners/retire/retirechart.html">FRA</a>), and 70.</p>
-
 <pre><code># plot of best claim age by investment return and death age
 PV.grid %&gt;%
   group_by(Return, Death.age) %&gt;%
@@ -296,20 +247,13 @@ PV.grid %&gt;%
        y = &quot;Expected investment return&quot;) +
   light.theme +
   theme(panel.grid.major.y = element_line(color = NA))
-</code></pre>
-
-<p align="center">
+</code></pre><p align="center">
 <img src="/img/posts/Social-Security/bestClaimAll.png"" width=100%>
 </p>
-
-<p><br></p>
-
+<br>
 <h3 id="simulating-the-investments">Simulating the investments</h3>
-
 <p>Using deterministic investment returns may overestimate final account balances. Simulating (i.e. Monte Carlo) investment returns will most likely just slightly reduce the expected rate of return which in and of itself does not warrant a full Monte Carlo. Where Monte Carlos do make a significant difference is when you have a sequence of withdrawals or contributions to an account. The variation of investment returns and the timing of those returns tends to have a large effect. Given we are estimating an account balance that has annual contributions, the Monte Carlo method may provide a more accurate prediction than deterministic returns.</p>
-
 <p>Let&rsquo;s simulate a single account first. We can use the already calculated <code>Benefits</code> data frame and apply investment returns using the <code>sim_investment_return()</code> function. Doing this many times we can see how the account balances will vary over time — some perform well and others poorly.</p>
-
 <pre><code># set seed for reproducibility
 set.seed(44)
 
@@ -337,14 +281,10 @@ replicate(n.sims,
        x = &quot;Age&quot;,
        y = &quot;Account balance&quot;) +
   light.theme
-</code></pre>
-
-<p align="center">
+</code></pre><p align="center">
 <img src="/img/posts/Social-Security/AccountSim.png" width=100%>
 </p>
-
 <p>Since we are calculating the present value we only care about the final ending value. And we only need one of those <code>5,000</code> values to pick for our present value calculation. We can shoot for the middle of the road by choosing the 50th percentile or a more conservative approach would be choosing the 20th percentile — that represents the value where 80% of the other values are greater than it. Let&rsquo;s do three approaches representing conservative (20th), moderate (50th), and aggressive (80th) expectations.</p>
-
 <pre><code># set the percentile (quantile) we are interested in (lower percentile = more conservative)
 percentile &lt;- c(0.2, 0.5, 0.8)
 
@@ -353,12 +293,8 @@ benefits$Benefits %&gt;%
   grab_percentile_inv_return(., exp.return = exp.return, exp.vol = exp.vol,
                              n.sims = n.sims, percentile = percentile) %&gt;%
   PV(., rate = inflation.rate, periods = 100 - 62)
-</code></pre>
-
-<pre><code>[1] 486898.7 655132.3 898047.4
-</code></pre>
-
-<pre><code># calculate PV for all the combinations
+</code></pre><pre><code>[1] 486898.7 655132.3 898047.4
+</code></pre><pre><code># calculate PV for all the combinations
 sim.PV &lt;-
   pmap(list(PV.grid$Return, PV.grid$Claim.age, PV.grid$Death.age),
        function(inv.return, age, death) {
@@ -408,48 +344,32 @@ PV.grid %&gt;%
                                     face = 'italic',
                                     size = 7),
         legend.position = &quot;bottom&quot;)
-</code></pre>
-
-<p align="center">
+</code></pre><p align="center">
 <img src="/img/posts/Social-Security/bestClaimSim.png"" width=100%>
 </p>
-
-<p><br></p>
-
+<br>
 <h3 id="final-thoughts">Final thoughts</h3>
-
 <p>I find the original deterministic plot much easier to read. The trend is clear and there&rsquo;s obviously less noise. However, the takeaway from the simulated version is to lower your expectations of investment return. Therefore, if you&rsquo;re going to use the deterministic version perhaps it&rsquo;s best to use a lower return expectation than you would otherwise.</p>
-
 <p>There are two items that could be refined for a second iteration of this project. First, the volatility assumptions for the investment simulations are simply twice the return. This is a decent estimation as volatility increases with return, however, more refined assumptions that account for specific portfolio mixtures would be best. Second, the calculator only allows claiming dates on an annual basis. The rules of Social Security allow for claiming on a monthly basis along with commensurate increases/decreases in benefits.</p>
-
-<p><br></p>
-
+<br>
 <h4 id="an-addendum-on-vectorizing">An addendum on vectorizing</h4>
-
 <p>The above investment simulation is generalizable and simple to follow but it&rsquo;s resource intensive — taking up to two hours depending on your machine. As it stands, the simulation is calculating 101 x 9 x 38 x 5,000 (investment returns x claim ages x death ages x simulations) = 172,710,000 values. A faster approach would be to vectorize as much of the process as we can. Vectorizing within the simulation does not provide any speed advantages because the recursive nature of applying investment returns to incremental cashflows is difficult to simplify with vectors. However, vectorizing across simulations is possible and can provide a substantial speed increase.</p>
-
 <p>The previous method repeats the following process for each of the 101 x 9 x 38 = 34,542 combinations:</p>
-
 <ol>
-<li>Calculate the benefits<br /></li>
-<li>Simulate investing those benefits 5,000 times<br /></li>
-<li>Grab the percentile ending values<br /></li>
+<li>Calculate the benefits</li>
+<li>Simulate investing those benefits 5,000 times</li>
+<li>Grab the percentile ending values</li>
 <li>Discount the values back to today</li>
 </ol>
-
 <p>We can cut down the calculations by &gt;97.4% by creating a single matrix of simulated invested cashflows for each set of death ages. I.e. for each of the 101 x 9 = 909 combinations:</p>
-
 <ol>
 <li>Calculate the benefits <strong>to age 100</strong></li>
 <li>Simulate investing those benefits 5,000 times</li>
 <li>Grab the percentile ending value for <strong>each age within 63:100. This represents the age of death</strong></li>
-<li>Discount the <strong>resulting vector</strong> back to today<br /></li>
+<li>Discount the <strong>resulting vector</strong> back to today</li>
 </ol>
-
 <p>This method reduces the simulation calls from 101 x 9 x 38 = 34,542 to 101 x 8 = 909 by vectorizing across death ages. Additionally, we call the <code>PV()</code> function once on the whole vector of results rather than within each iteration of 101 x 9 x 39 = 34,542.</p>
-
 <p>Runtime is reduced from <strong>two hours to about three minutes which is ~40x faster</strong>. Not bad for a slight tradeoff in readability.</p>
-
 <pre><code># create all combinations of investment returns and claim age
 PV.grid &lt;- crossing(Return = seq(1, 1.1, by = 0.001),
                     Claim.age = 62:70)
@@ -488,20 +408,14 @@ sim.PV &lt;- map2_dfr(PV.grid$Return, PV.grid$Claim.age,
 
 # rename the percentile columns
 names(sim.PV)[1:length(percentile)] &lt;- paste0(percentile * 100, &quot;th percentile of investment returns&quot;)
-</code></pre>
-
-<p align="center">
+</code></pre><p align="center">
 <img src="/img/posts/Social-Security/bestClaimVec.png"" width=100%>
 </p>
-
-<p><br></p>
-
+<br>
 <p><strong>This post should not be misconstrued as financial advice. Financial planning is a highly personalized process and is best handled by a professional financial planner.</strong>
 <br></p>
-
-<hr />
-
-<p><em>2019 December</em><br />
+<hr>
+<p><em>2019 December</em><br>
 <em>Find the code here: <a href="https://github.com/joemarlo/Social-Security">github.com/joemarlo/Social-Security</a></em></p>
          
       </div>
