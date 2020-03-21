@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>How Americans spend their time</title>
+<meta name="description" content="Blog for stats and visualizations">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/owl.theme.css">
+<link rel="icon" href= "https://joemarlo.github.io/favicon.ico" /> 
+
+
+  <link href="https://joemarlo.github.io/css/style.green.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://joemarlo.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://joemarlo.github.io/img/favicon.png">
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="https://joemarlo.github.io">Marlo</a></h1>
+    
+      <p class="sidebar-p">I'm a statistics grad student @ NYU. <br> Based in New York.</p>
+    
+    <ul class="sidebar-menu">
+      
+        <li><a href="https://joemarlo.github.io/posts/">Posts</a></li>
+      
+        <li><a href="https://joemarlo.github.io/about/">About</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  
+  
+  
+  <a href="https://www.linkedin.com/in/jmarlo" data-animate-hover="pulse" class="external">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+  
+  <a href="https://www.github.com/joemarlo" data-animate-hover="pulse" class="external">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2020 Joe Marlo
+        
+        <br> Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://joemarlo.github.io">Marlo</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-9">
+      <div class="content-column-content">
+         <h1>How Americans spend their time</h1>
+         <p><em>How we spend our days is how we spend our lives</em></p>
+<hr>
+<p>Our lives are completely occupied by a certain major current event so it&rsquo;s a good moment to step back and take a look at how we normally spend our lives. The <a href="https://www.bls.gov/tus/">American Time Use Survey</a> (ATUS) measures how Americans spend their time doing various activities such as work, volunteering, leisure, and socializing. It can answer some great questions that aren&rsquo;t addressed in many other surveys. How often do people really spend watching television everyday? Surprisingly a lot. Up to five hours a day for older Americans. Below are a handful of interesting insights, and I&rsquo;ll share how I approach this survey as it can be intimidating to newcomers.</p>
+<p align="center">
+<img src="/img/posts/ATUS/TV_by_age_sex.svg" width=80%>
+</p>
+<br>
+<h2 id="findings">Findings</h2>
+<p>Let&rsquo;s start with a few hypotheses so this isn&rsquo;t just a data mining exercise. Broadly, I was curious about differences in time spent between sexes, between low and high income households, in time spent working vs. leisure, and unemployment trends.</p>
+<p>Let&rsquo;s solidify those curiosities into specific questions:</p>
+<ul>
+<li>Do women still spend more time doing traditional housework, cooking, and grocery shopping?
+<ul>
+<li>A recent <a href="https://www.nytimes.com/2020/02/11/upshot/gender-roles-housework.html">New York Times article</a> claims that despite open-mindedness among the young, &ldquo;traditional views persist about who does what at home.&rdquo;</li>
+</ul>
+</li>
+<li>Do higher income respondents spend their time on different activities such as different sports? Do they spend less time on mundane tasks such as waiting?</li>
+<li>Has leisure time increased since 2003? Has work declined?
+<ul>
+<li>Are we experiencing even a little bit of <a href="https://en.wikipedia.org/wiki/Brave_New_World">Aldous Huxley&rsquo;s fantasy</a> future of reduced work?</li>
+</ul>
+</li>
+<li>Are people spending less time searching for jobs, given the unemployment rate is so low?
+<ul>
+<li>Before March 2020, we were experiencing <a href="https://data.bls.gov/timeseries/LNS14000000">close to lowest unemployment rates of all time</a> but the <a href="https://data.bls.gov/timeseries/LNS11300000">labor force participation rate is also low</a>. Do we see in the ATUS that people are spending less time looking for work?</li>
+</ul>
+</li>
+</ul>
+<br>
+<details>
+  <summary><mark><font color="grey">Click for survey info and caveats</font></mark></summary>
+<blockquote>
+<h4 id="survey-information">Survey information</h4>
+<ul>
+<li>Contains nationally representative estimates of how, where, and with whom Americans spend their time</li>
+<li>Covers 200,000 interviews conducted from 2003 to 2018</li>
+<li>Can be linked to <a href="https://www.census.gov/programs-surveys/cps.html">Current Population Survey</a> for detailed household demographic information</li>
+<li>Sponsored by the Bureau of Labor Statistics and conducted by the Census Bureau</li>
+</ul>
+<br>
+<h4 id="important-caveats">Important caveats</h4>
+<ul>
+<li>Measures primary activity so some activities are not accurately captured. For example, listening to music is rarely recorded because typically it is a secondary task. If I&rsquo;m listening to music, I&rsquo;m probably also doing housework or cooking.</li>
+<li>It&rsquo;s self reported data so <a href="https://en.wikipedia.org/wiki/Response_bias">standard biases apply</a></li>
+<li>Most of the plot fit lines are third order polynomial fits for sake of simplicity. This can overfit and whipsaw near the ends. Some of the fit lines are local regression which are more resilient.</li>
+</ul>
+</blockquote>
+</details>
+<br>
+<h3 id="housework-cooking-and-groceries">Housework, cooking, and groceries</h3>
+<p>The ATUS data is mostly in line with the NYT article. Overall, women (red) still spend much more time on housework for men (blue), but younger (solid line) men have been kicking up in participation in the last few years. Interestingly, older women seem to be spending less time on housework.</p>
+<p>Note that <strong>household activities</strong> are items like cleaning, gardening, financial management, etc.</p>
+<p align="center">
+<img src="/img/posts/ATUS/household.svg" width=80%>
+</p>
+<br>
+<p>There&rsquo;s greater separation in sexes in cooking and getting groceries. Women make up the majority of average minutes and participation but men, across all ages, have increased average minutes and participation since 2003.</p>
+<p align="center">
+<img src="/img/posts/ATUS/cooking.svg" width=80%>
+</p>
+<h3 id="differences-in-income">Differences in income</h3>
+<p>Higher income households do not seem to have substantial differences in day-to-day lifestyle than lower income households, however if we drill down into specific activities there are differences in participation rates. Stereotypically among sports, we see that racquet sports and yoga are dominated by higher income households while outdoor activities such as fishing and hunting skew lower income. However, these latter two activities are roughly evenly split across incomes which may indicate high income households may be overrepresented in all these activities.</p>
+<p align="center">
+<img src="/img/posts/ATUS/Activities_by_income.svg" width=80%>
+</p>
+<p>People generally try to avoid waiting so looking at who-waits-for-what is a curious thought. Overall, it seems lower income households spend more time waiting. But high income households spend more time waiting on items like legal services, the vet, and buying real estate.</p>
+<p align="center">
+<img src="/img/posts/ATUS/Waiting_by_income.svg" width=80%>
+</p>
+<h3 id="patterns-in-leisure-and-work">Patterns in leisure and work</h3>
+<p>Leisure time hasn&rsquo;t noticeably improved over the past decade and a half. It slightly increased post 2009 and then declined.</p>
+<p align="center">
+<img src="/img/posts/ATUS/Leisure_SE.svg" width=80%>
+</p>
+<br>
+<p>Time spent working has declined, however time spent by participants (i.e. workers) has increased. Indicating that the people are working are working longer hours. As expected, the participation rate tracks closely to the labor force participation rate.</p>
+<p align="center">
+<img src="/img/posts/ATUS/work_hours_year.svg" width=80%>
+</p>
+<br>
+<h3 id="unemployment">Unemployment</h3>
+<p>Are people spending less time searching for jobs, given the unemployment rate is so low? Minutes spent and participation rates are down for job search related activities. This could be attributed to lower unemployment or, conversely, to lower labor force participation.</p>
+<p align="center">
+<img src="/img/posts/ATUS/job_search.svg" width=80%>
+</p>
+<h2 id="how-people-may-be-spending-their-time-at-home-for-the-next-month">How people may be spending their time at home for the next month</h2>
+<p>(Many) people are holed up in their homes currently. Assuming they&rsquo;re &ldquo;working&rdquo; from home and not actually getting much done, how do we think they&rsquo;re spending their time? In a most unscientific way, let&rsquo;s look at how people normally spend their days off and only concentrate on the activities possible at home. Although, in reality most people are probably just watching television.</p>
+<p align="center">
+<img src="/img/posts/ATUS/Home_activities.svg" width=80%>
+</p>
+<br>
+<h2 id="methodology">Methodology</h2>
+<h3 id="approach">Approach</h3>
+<p>The ATUS can be complex to work with given its many levels of data. I&rsquo;ve been working with the multi-year files that span 2003-2018 and just within these, there is:</p>
+<ul>
+<li>Summary activity file: information about the total time each ATUS respondent spent doing each activity</li>
+<li>Activity file: a detailed version of the summary file. Includes start and stop times and location</li>
+<li>CPS file: information on the household&rsquo;s demographics</li>
+<li>Respondent file: information on the respondent including labor force status and earnings</li>
+<li>Replicate weights file: weights for calculating standard errors</li>
+<li>Plus a <a href="https://www.bls.gov/tus/datafiles-0318.htm">few others</a></li>
+</ul>
+<p>All of the plots in this post are derived from the summary activity file and the CPS file. Still, within just the summary file there are 431 distinct activities, each nested within a broader category. For example, within the broad category <em>Personal care</em> there is:</p>
+<ul>
+<li>Sleeping</li>
+<li>Sleeplessness</li>
+<li>Sleeping, not elsewhere classified</li>
+<li>Washing, dressing and grooming oneself</li>
+<li>Grooming, not elsewhere classified</li>
+<li>Self care, not elsewhere classified</li>
+<li>Personal/Private activities</li>
+<li>Personal activities, not elsewhere classified</li>
+<li>Personal emergencies</li>
+<li>Personal care emergencies, not elsewhere classified</li>
+<li>Personal Care, not elsewhere classified</li>
+</ul>
+<p>Given there is so much to explore in the ATUS, it was important to have a few flexible functions that return time-use estimates with little hassle. The biggest challenge when writing these functions is properly applying the survey weights. Extra care needs to be exercised when determining when and how to apply these weights. The below code walks through how the weights are applied; the results have been compared to the <a href="https://www.bls.gov/tus/#tables">official summary estimates from the BLS</a> where applicable.</p>
+<h3 id="getting-average-time-estimates">Getting average time estimates</h3>
+<p>Estimating the average minutes spent in an activity can be calculated by taking the sumproduct of the weights and responses and then dividing by the total weights.</p>
+<p>Formally:</p>
+<!-- http://docs.mathjax.org/en/latest/basic/mathematics.html -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<font color="#908f8f">
+$$\bar{T}_j = \frac{\sum_i W_i T_{ij}}{\sum_i W_i}$$<br>
+\(\bar{T}_j =\) mean hours per day spent by a given population engaging in activity j<br>
+\(W_i =\) respondent weight<br>
+\(T_{ij} =\) amount of time spent in activity j by respondent i
+</font>
+<br>
+<br>
+<p>What that means in practice is we multiply the respondent&rsquo;s weight by their time in the activity, repeat for each respondent, sum those values and then divide by the sum of all the weights. In <code>R</code>, and given that <code>atussum_0318</code> is the summary activity file from 2003-2018, we can estimate the sleep activity (denoted <code>t010101</code>) by:</p>
+<pre><code># select identifier, weight, and sleep
+atussum_0318 %&gt;% 
+ select(TUCASEID, TUFNWGTP, 't010101') %&gt;%
+ summarize(weighted.minutes = sum(TUFNWGTP * t010101) / sum(TUFNWGTP)) 
+</code></pre><pre><code># A tibble: 1 x 1
+  weighted.minutes
+             &lt;dbl&gt;
+1             518.
+</code></pre><br>
+<p>And we can expand it to multiple variables by pivoting the whole dataframe of the activity variables and then grouping:</p>
+<pre><code># select all activities
+activities &lt;- str_subset(names(atussum_0318), '^t[0-9]')
+
+atussum_0318 %&gt;% 
+   select(TUCASEID, TUFNWGTP, activities) %&gt;%
+   pivot_longer(cols = -c('TUCASEID', 'TUFNWGTP'),
+                names_to = &quot;activity&quot;,
+                values_to = 'time') %&gt;%
+   group_by(activity) %&gt;% 
+   summarize(weighted.minutes = sum(TUFNWGTP * time) / sum(TUFNWGTP)) %&gt;%
+   ungroup()
+</code></pre><pre><code># A tibble: 431 x 2
+   activity weighted.minutes
+   &lt;chr&gt;               &lt;dbl&gt;
+ 1 t010101         518.     
+ 2 t010102           3.78   
+ 3 t010199           0.00520
+ 4 t010201          40.6    
+ 5 t010299           0.0439 
+ 6 t010301           4.62   
+ 7 t010399           0.166  
+ 8 t010401           0.546  
+ 9 t010499           0.0151 
+10 t010501           0.00203
+# … with 421 more rows
+</code></pre><br>
+<p>Now add an input grouping variable so we can properly subset by additional variables such as sex, age, and income:</p>
+<pre><code># group by sex and age
+groups &lt;- c('TESEX', 'TEAGE')
+
+atussum_0318 %&gt;% 
+  select(TUCASEID, TUFNWGTP, groups, activities) %&gt;%
+  pivot_longer(cols = -c('TUCASEID', 'TUFNWGTP', groups),
+               names_to = &quot;activity&quot;,
+               values_to = 'time') %&gt;%
+  group_by_at(vars(activity, groups)) %&gt;% 
+  summarize(weighted.minutes = sum(TUFNWGTP * time) / sum(TUFNWGTP)) %&gt;%
+  ungroup()
+</code></pre><pre><code># A tibble: 57,754 x 4
+   activity TESEX TEAGE weighted.minutes
+   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;            &lt;dbl&gt;
+ 1 t010101      1    15             580.
+ 2 t010101      1    16             567.
+ 3 t010101      1    17             572.
+ 4 t010101      1    18             578.
+ 5 t010101      1    19             569.
+ 6 t010101      1    20             550.
+ 7 t010101      1    21             540.
+ 8 t010101      1    22             541.
+ 9 t010101      1    23             544.
+10 t010101      1    24             532.
+# … with 57,744 more rows
+</code></pre><br>
+<p>And finally add an optional argument to simplify the output so it doesn&rsquo;t return just cryptic activity codes. This aggregates the activities into higher level descriptions in the <code>descriptions</code> dataframe.</p>
+<pre><code># data frame indicating how to aggregate the ^t* activities
+simplify &lt;- descriptions
+print(simplify)
+</code></pre><pre><code># A tibble: 431 x 2
+   activity description  
+   &lt;chr&gt;    &lt;chr&gt;        
+ 1 t010101  Sleep        
+ 2 t010102  Sleep        
+ 3 t010199  Sleep        
+ 4 t010201  Personal Care
+ 5 t010299  Personal Care
+ 6 t010301  Personal Care
+ 7 t010399  Personal Care
+ 8 t010401  Personal Care
+ 9 t010499  Personal Care
+10 t010501  Personal Care
+# … with 421 more rows
+</code></pre><pre><code>atussum_0318 %&gt;% 
+  select(TUCASEID, TUFNWGTP, groups, activities) %&gt;%
+  pivot_longer(cols = -c('TUCASEID', 'TUFNWGTP', groups),
+               names_to = &quot;activity&quot;,
+               values_to = 'time') %&gt;%
+  group_by_at(vars(activity, groups)) %&gt;% 
+  summarize(weighted.minutes = sum(TUFNWGTP * time) / sum(TUFNWGTP)) %&gt;%
+  ungroup() %&gt;% 
+  left_join(x = .,
+            y = simplify,
+            by = 'activity') %&gt;% 
+  select(activity = description, groups, weighted.minutes) %&gt;% 
+  group_by_at(vars(activity, groups)) %&gt;%
+  summarize(weighted.minutes = sum(weighted.minutes)) %&gt;% 
+  ungroup()
+</code></pre><pre><code># A tibble: 2,010 x 4
+   activity                    TESEX TEAGE weighted.minutes
+   &lt;chr&gt;                       &lt;dbl&gt; &lt;dbl&gt;            &lt;dbl&gt;
+ 1 Caring For Household Member     1    15             5.33
+ 2 Caring For Household Member     1    16             6.40
+ 3 Caring For Household Member     1    17             3.93
+ 4 Caring For Household Member     1    18             8.28
+ 5 Caring For Household Member     1    19             8.40
+ 6 Caring For Household Member     1    20             5.45
+ 7 Caring For Household Member     1    21             6.74
+ 8 Caring For Household Member     1    22             7.98
+ 9 Caring For Household Member     1    23            10.2 
+10 Caring For Household Member     1    24            14.4 
+# … with 2,000 more rows
+</code></pre><br>
+<p>Finally, we can wrap it in a function call <code>get_minutes()</code>. The magic of this functional approach is we can get time-use estimates in as few lines of code as possible:</p>
+<pre><code>television.codes &lt;- c('t120303', 't120304')
+get_minutes(atussum_0318, groups = c('TUYEAR', 'TEAGE'), 
+            activities = television.codes, simplify = TRUE)
+</code></pre><pre><code># A tibble: 1,070 x 4
+   activity               TUYEAR TEAGE weighted.minutes
+   &lt;chr&gt;                   &lt;dbl&gt; &lt;dbl&gt;            &lt;dbl&gt;
+ 1 All activites provided   2003    15             137.
+ 2 All activites provided   2003    16             149.
+ 3 All activites provided   2003    17             127.
+ 4 All activites provided   2003    18             138.
+ 5 All activites provided   2003    19             153.
+ 6 All activites provided   2003    20             118.
+ 7 All activites provided   2003    21             130.
+ 8 All activites provided   2003    22             134.
+ 9 All activites provided   2003    23             132.
+10 All activites provided   2003    24             156.
+# … with 1,060 more rows
+</code></pre><br>
+<h3 id="getting-participation-estimates">Getting participation estimates</h3>
+<p>The second most interesting statistic in the ATUS is estimates of the proportion of people participating in an activity. It can be estimated similar to the average time statistic but instead of multiplying by the time estimate, we multiply by an indicator representing if the respondent participated in the activity or not.</p>
+<p>Formally:</p>
+<!-- http://docs.mathjax.org/en/latest/basic/mathematics.html -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<font color="#908f8f">
+$$P_j = \frac{\sum_i W_i I_{ij}}{\sum_i W_i}$$<br>
+\(P_j =\) percentage of the population engaging in activity j in a given day<br>
+\(W_i =\) respondent weight<br>
+\(I_{ij} =\) indicator if the person participated in activity j
+</font>
+<br>
+<br>
+<p>Applying the participation rate formula is a little more difficult than the mean time estimates. The best method I found was to leverage <a href="https://dplyr.tidyverse.org/reference/group_map.html"><code>dplyr::group_modify</code></a> which applies a function to each grouping variable. The grouping variable is the same as in the time-estimate calculations. I imagine there may be a faster method than mine below such as a matrix approach but this method is consistent with the dplyr pipe syntax.</p>
+<pre><code>atussum_0318 %&gt;% 
+  select(TUCASEID, TUFNWGTP, groups, activities) %&gt;%
+  pivot_longer(cols = -c('TUCASEID', 'TUFNWGTP', groups),
+               names_to = &quot;activity&quot;,
+               values_to = 'time') %&gt;%
+  group_by_at(vars(activity, groups)) %&gt;% 
+  summarize(weighted.minutes = sum(TUFNWGTP * time) / sum(TUFNWGTP)) %&gt;%
+  ungroup() %&gt;% 
+  left_join(x = .,
+            y = simplify,
+            by = 'activity') %&gt;% 
+  select(activity = description, groups, weighted.minutes) %&gt;% 
+  group_by_at(vars(activity, groups)) %&gt;%
+  group_modify(~ {
+      # sum the distinct weights that have time &gt; 0
+      num &lt;- .x %&gt;%
+        filter(time &gt; 0) %&gt;%
+        select(TUCASEID, weight.var) %&gt;%
+        distinct() %&gt;%
+        pull(weight.var) %&gt;%
+        sum()
+      
+      # sum all distinct weights
+      denom &lt;- select(.x, TUCASEID, weight.var) %&gt;%
+        distinct() %&gt;%
+        pull(weight.var) %&gt;%
+        sum()
+      
+      return(tibble(participation.rate = num / denom))
+    }) %&gt;%
+    ungroup()
+</code></pre><br>
+<h3 id="calculating-standard-errors">Calculating standard errors</h3>
+<p>The ATUS uses a replicate approach to calculate standard errors. Each statistic of interest is recalculated using the 160 replicate weights, then we take the squared distance from the original statistic, sum and multiply by 4/160. Finally, take the square-root to get the standard error.</p>
+<p>Formally:</p>
+<!-- http://docs.mathjax.org/en/latest/basic/mathematics.html -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<font color="#908f8f">
+$$Var(\hat{Y}_o) = \frac{4}{160} \sum_{i=1}^{160}(\hat{Y}_i - \hat{Y}_o)^2$$<br>
+\(Var(\hat{Y}_o) =\) variance of the estimate<br>
+\(\hat{Y}_o =\) original estimate of \(Y\). I.e. our statistic using the original weight<br>
+\(\hat{Y}_i = i^{th}\) replicate estimate. I.e. our statistic using the replicate weights
+</font>
+<br>
+<br>
+<pre><code>get_SE &lt;- function(df, groups, activities = NULL) {
+  # function returns the standard error of the weighted means
+  # see get_minutes() for underlying calculations
+  
+  # calculate the original statistic
+  y0 &lt;- get_minutes(
+    df = df,
+    groups = groups,
+    activities = activities,
+    simplify = TRUE
+  )
+  
+  # repeat the statistic calculation using each weight
+  statistics &lt;- apply(atuswgts_0318[, -1], MARGIN = 2, FUN = function(wgt) {
+    df[, 'TUFNWGTP'] &lt;- wgt
+    minutes &lt;- get_minutes(
+      df = df,
+      groups = groups,
+      activities = activities,
+      simplify = TRUE
+    )
+    return(minutes$weighted.minutes)
+    }
+  )
+  
+  # calculate the standard error
+  y0$SE &lt;- sqrt((4 / 160) * rowSums((statistics - y0$weighted.minutes) ^ 2))
+  
+  return(y0)
+}
+
+get_SE(df = atussum_0318,
+       groups = c('TEAGE', 'TESEX'), 
+       activities = c('t120303', 't120304')) %&gt;% 
+  ggplot() + ...
+</code></pre><p align="center">
+<img src="/img/posts/ATUS/TV_by_age_sex_SE.svg" width=80%>
+</p>
+<p>See <a href="https://github.com/joemarlo/ATUS/blob/c74cf36882c51cbfb8d5cb6ce21fe5b8aed162cf/Analyses/Helper_functions.R#L204">here</a> the full functions, and see the <a href="https://www.bls.gov/tus/atususersguide.pdf">ATUS user guide</a> for more information on the methods.</p>
+<br>
+<h2 id="gallery-of-additional-trends">Gallery of additional trends</h2>
+<p>
+
+
+
+  
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="/js/load-photoswipe.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css" integrity="sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css" integrity="sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.js" integrity="sha256-UplRCs9v4KXVJvVY+p+RSo5Q4ilAUXh7kpjyIP5odyc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe-ui-default.min.js" integrity="sha256-PWHOlUzc96pMc8ThwRIXPn8yH4NOLu42RQ0b9SpnpFk=" crossorigin="anonymous"></script>
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />
+
+<div class="gallery caption-position-none caption-effect-slide hover-effect-zoom hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Activities_by_age_income_work.png');" >
+				      <img itemprop="thumbnail" src="https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Activities_by_age_income_work.png" alt="Activities by age income work" />
+				    </div>
+			      <figcaption>
+		          <p>Activities by age income work</p>
+			      </figcaption>
+				    <a href="https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Activities_by_age_income_work.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Activities_income.png');" >
+				      <img itemprop="thumbnail" src="https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Activities_income.png" alt="Activities income" />
+				    </div>
+			      <figcaption>
+		          <p>Activities income</p>
+			      </figcaption>
+				    <a href="https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Activities_income.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Cooking_only.png');" >
+				      <img itemprop="thumbnail" src="https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Cooking_only.png" alt="Cooking only" />
+				    </div>
+			      <figcaption>
+		          <p>Cooking only</p>
+			      </figcaption>
+				    <a href="https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Cooking_only.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Groceries_only.png');" >
+				      <img itemprop="thumbnail" src="https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Groceries_only.png" alt="Groceries only" />
+				    </div>
+			      <figcaption>
+		          <p>Groceries only</p>
+			      </figcaption>
+				    <a href="https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Groceries_only.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Leisure_dots.png');" >
+				      <img itemprop="thumbnail" src="https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Leisure_dots.png" alt="Leisure dots" />
+				    </div>
+			      <figcaption>
+		          <p>Leisure dots</p>
+			      </figcaption>
+				    <a href="https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Leisure_dots.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Leisure_map.png');" >
+				      <img itemprop="thumbnail" src="https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Leisure_map.png" alt="Leisure map" />
+				    </div>
+			      <figcaption>
+		          <p>Leisure map</p>
+			      </figcaption>
+				    <a href="https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Leisure_map.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Plants.png');" >
+				      <img itemprop="thumbnail" src="https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Plants.png" alt="Plants" />
+				    </div>
+			      <figcaption>
+		          <p>Plants</p>
+			      </figcaption>
+				    <a href="https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Plants.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Security.png');" >
+				      <img itemprop="thumbnail" src="https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Security.png" alt="Security" />
+				    </div>
+			      <figcaption>
+		          <p>Security</p>
+			      </figcaption>
+				    <a href="https://joemarlo.github.io/img/posts/ATUS/slide-gallery/Security.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+</div>
+</p>
+<br>
+<hr>
+<p><em>2020 March</em><br>
+<em>Find the code here: <a href="https://github.com/joemarlo/ATUS">github.com/joemarlo/ATUS</a></em></p>
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://joemarlo.github.io/js/jquery.min.js"></script>
+<script src="https://joemarlo.github.io/js/bootstrap.min.js"></script>
+<script src="https://joemarlo.github.io/js/jquery.cookie.js"> </script>
+<script src="https://joemarlo.github.io/js/ekko-lightbox.js"></script>
+<script src="https://joemarlo.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://joemarlo.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://joemarlo.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://joemarlo.github.io/js/owl.carousel.min.js"></script>
+<script src="https://joemarlo.github.io/js/front.js"></script>
+
+
+
+</body>
+</html>

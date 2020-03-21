@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Marlo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 19 Feb 2020 11:16:00 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 29 Feb 2020 20:00:56 -0500</lastBuildDate>
     
 	<atom:link href="https://joemarlo.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How Americans spend their time</title>
+      <link>https://joemarlo.github.io/posts/atus/</link>
+      <pubDate>Sat, 29 Feb 2020 20:00:56 -0500</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/atus/</guid>
+      <description>&lt;p&gt;&lt;em&gt;How we spend our days is how we spend our lives&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Text analysis of last meals</title>
