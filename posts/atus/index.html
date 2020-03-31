@@ -592,10 +592,10 @@ $$Var(\hat{Y}_o) = \frac{4}{160} \sum_{i=1}^{160}(\hat{Y}_i - \hat{Y}_o)^2$$<br>
     groups = groups,
     activities = activities,
     simplify = TRUE
-  )
+  )$weighted.minutes
   
   # repeat the statistic calculation using each weight
-  statistics &lt;- apply(atuswgts_0318[, -1], MARGIN = 2, FUN = function(wgt) {
+  yIs &lt;- apply(atuswgts_0318[, -1], MARGIN = 2, FUN = function(wgt) {
     df[, 'TUFNWGTP'] &lt;- wgt
     minutes &lt;- get_minutes(
       df = df,
@@ -608,7 +608,7 @@ $$Var(\hat{Y}_o) = \frac{4}{160} \sum_{i=1}^{160}(\hat{Y}_i - \hat{Y}_o)^2$$<br>
   )
   
   # calculate the standard error
-  y0$SE &lt;- sqrt((4 / 160) * rowSums((statistics - y0$weighted.minutes) ^ 2))
+  y0$SE &lt;- sqrt((4 / 160) * rowSums((yIs - y0$weighted.minutes) ^ 2))
   
   return(y0)
 }
