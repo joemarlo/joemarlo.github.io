@@ -4,16 +4,20 @@ var margin = {top: 10, right: 30, bottom: 30, left: 60},
     width = 700 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
     
-// Parse the date / time
+// Function to parse the date / time
 var	parseDate = d3.timeParse("%Y-%m-%d");
 
-// Set the ranges
+// Set the axis ranges
 var x = d3.scaleTime().range([ 0, width ]);
 var y = d3.scaleLinear().range([ height, 0 ]);
 
 // set the number of y ticks and gridlines
 var my_nYticks = 5;
+
+// set the padding around the ticks
 var my_tickPadsize = 5;
+
+// set the size of the tick; also controls the grid 'overflow'
 var my_tickSize = 15;
 
 // gridlines in x axis function
@@ -40,7 +44,7 @@ function drawYlabel(selection) {
     .attr("font-size", 14);
 }
 
-// Style the line
+// Style the plot line
 function styleLine(selection) {
   selection
     .attr("fill", "none")
@@ -215,7 +219,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
           // this makes the tooltip move
           Tooltip
             .html("<b>" + d.text + "</b><br>" + 
-                  "- " + Math.round(d.value * 10, 2) / 10 + " million subway rides")
+                  Math.round(d.value * 10, 2) / 10 + " million subway rides")
             .style("left", d3.event.pageX + 10 + "px")
             .style("top", d3.event.pageY + "px");
         })
