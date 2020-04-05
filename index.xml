@@ -6,7 +6,7 @@
     <description>Recent content on Marlo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 29 Feb 2020 20:00:56 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 31 Mar 2020 10:04:35 -0500</lastBuildDate>
     
 	<atom:link href="https://joemarlo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -72,6 +72,15 @@
       
       <guid>https://joemarlo.github.io/posts/fan-art/</guid>
       <description>&lt;p&gt;Using R to build beautiful digital artwork randomly&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Enumerating the ex-health Covid-19 impact</title>
+      <link>https://joemarlo.github.io/posts/covid-impact/</link>
+      <pubDate>Tue, 31 Mar 2020 10:04:35 -0500</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/covid-impact/</guid>
+      <description>&lt;p&gt;&lt;em&gt;WIP | the impact on transportation and the economy&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
