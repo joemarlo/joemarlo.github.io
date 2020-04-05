@@ -11,16 +11,6 @@ var	parseDate = d3.timeParse("%Y-%m-%d");
 var x = d3.scaleTime().range([ 0, width ]);
 var y = d3.scaleLinear().range([ height, 0 ]);
 
-// Style the axes
-function styleAxes(selection) {
-  selection
-    .attrs({
-      fill:"none",
-      stroke:"#bdbdbd",
-      "stroke-width":"0.5"
-    });
-}
-
 // set the number of y ticks and gridlines
 var my_nYticks = 5;
 var my_tickPadsize = 5;
@@ -45,9 +35,9 @@ function drawYlabel(selection) {
     .attr("y", 0 - margin.left)
     .attr("x",0 - (height / 2))
     .attr("dy", "1em")
-    .style("text-anchor", "middle")
-    .attr("stroke-width", 0.7)
-    .attr("stroke", "#bdbdbd");
+    .attr("text-anchor", "middle")
+    .attr("fill", "#333333")
+    .attr("font-size", 14);
 }
 
 // Style the line
@@ -166,16 +156,19 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       
     // add the X axis
     svg_S.append("g")
-      .call(styleAxes)
       .attr("class", "grid")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x).tickPadding(my_tickPadsize).tickSize(my_tickSize));
+      .call(d3.axisBottom(x)
+        .tickPadding(my_tickPadsize)
+        .tickSize(my_tickSize));
 
     // Add Y axis
     svg_S.append("g")
-      .call(styleAxes)
       .attr("class", "grid")
-      .call(d3.axisLeft(y).tickPadding(my_tickPadsize).tickSize(my_tickSize).ticks(my_nYticks));
+      .call(d3.axisLeft(y)
+        .tickPadding(my_tickPadsize)
+        .tickSize(my_tickSize)
+        .ticks(my_nYticks));
       
     // text label for the y axis
     svg_S.append("text").call(drawYlabel).text("Subway ridership (millions)");
@@ -268,7 +261,6 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       
     // add the X axis
     svg_C.append("g")
-      .call(styleAxes)
       .attr("class", "grid")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x)
@@ -277,7 +269,6 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
 
     // Add Y axis
     svg_C.append("g")
-      .call(styleAxes)
       .attr("class", "grid")
       .call(d3.axisLeft(y)
         .tickPadding(my_tickPadsize)
@@ -378,7 +369,6 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       
     // add the X axis
     svg_unemp.append("g")
-      .call(styleAxes)
       .attr("class", "grid")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x)
@@ -387,7 +377,6 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
 
     // Add Y axis
     svg_unemp.append("g")
-      .call(styleAxes)
       .attr("class", "grid")
       .call(d3.axisLeft(y)
         .tickPadding(my_tickPadsize)
@@ -461,7 +450,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
   
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.date; })).nice();
-    y.domain( [0, 125] );
+    y.domain( [0, 140] );
 
     // add the X gridlines
     svg_flights.append("g")			
@@ -482,7 +471,6 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       
     // add the X axis
     svg_flights.append("g")
-      .call(styleAxes)
       .attr("class", "grid")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x)
@@ -491,7 +479,6 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
 
     // Add Y axis
     svg_flights.append("g")
-      .call(styleAxes)
       .attr("class", "grid")
       .call(d3.axisLeft(y)
         .tickPadding(my_tickPadsize)
