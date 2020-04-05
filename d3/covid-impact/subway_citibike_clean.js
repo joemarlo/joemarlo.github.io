@@ -142,7 +142,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("class", "grid")
       .attr("transform", "translate(0," + height + ")")
       .call(make_x_gridlines()
-          .tickSize(-height)
+          .tickSize(-height-my_tickSize)
           .tickFormat("")
       );
       
@@ -150,7 +150,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     svg_S.append("g")			
       .attr("class", "grid")
       .call(make_y_gridlines()
-          .tickSize(-width)
+          .tickSize(-width-my_tickSize)
           .tickFormat("")
       );
       
@@ -247,7 +247,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("class", "grid")
       .attr("transform", "translate(0," + height + ")")
       .call(make_x_gridlines()
-          .tickSize(-height)
+          .tickSize(-height-my_tickSize)
           .tickFormat("")
       );
       
@@ -255,7 +255,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     svg_C.append("g")			
       .attr("class", "grid")
       .call(make_y_gridlines()
-          .tickSize(-width)
+          .tickSize(-width-my_tickSize)
           .tickFormat("")
       );
       
@@ -355,7 +355,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("class", "grid")
       .attr("transform", "translate(0," + height + ")")
       .call(make_x_gridlines()
-          .tickSize(-height)
+          .tickSize(-height-my_tickSize)
           .tickFormat("")
       );
       
@@ -363,7 +363,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     svg_unemp.append("g")			
       .attr("class", "grid")
       .call(make_y_gridlines()
-          .tickSize(-width)
+          .tickSize(-width-my_tickSize)
           .tickFormat("")
       );
       
@@ -457,7 +457,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("class", "grid")
       .attr("transform", "translate(0," + height + ")")
       .call(make_x_gridlines()
-          .tickSize(-height)
+          .tickSize(-height-my_tickSize)
           .tickFormat("")
       );
       
@@ -465,7 +465,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     svg_flights.append("g")			
       .attr("class", "grid")
       .call(make_y_gridlines()
-          .tickSize(-width)
+          .tickSize(-width-my_tickSize)
           .tickFormat("")
       );
       
