@@ -130,7 +130,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
 
   // When reading the csv, I must format variables:
   function(d){
-    return { date : parseDate(d.date), value : d.value, text : d.text, bike_count : d.bike_count, ICSA : d.ICSA, flights: d.flights }
+    return { date : parseDate(d.date), value : d.value, text : d.text, bike_count : d.bike_count, ICSA : d.ICSA, flights: d.flights, ICSA_exists : d.ICSA_exists }
   },
 
   // Now I can use this dataset:
@@ -184,6 +184,9 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.value) })
+        
+        // define (ie draw) the line at values not equal to NA
+        .defined(function(d) { return d.value != "NA" })
         );
         
     // Add the points
@@ -290,10 +293,13 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.bike_count) })
+        
+        // define (ie draw) the line at values not equal to NA
+        .defined(function(d) { return d.bike_count != "NA" })
         );
     
     // Add the points
-    svg_C
+    var circle_bikes = svg_C
       .append("g")
       .selectAll("dot")
       .data(data)
@@ -303,7 +309,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .attr("cy", function(d) { return y(d.bike_count) } )
         .attr("class", function(d, i) {return "pt" + i;})
         //make radius 0 if bike count is NA, otherwise make it 4
-        .attr("r", function(d) { return d.bike_count == "NA" ? 0 : 4; })
+        .attr("r", 4)
         .attr("stroke", "#3262a8")
         .attr("stroke-width", 2)
         .attr("fill", "white")
@@ -346,13 +352,18 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
               // this makes the tooltip disappear
               Tooltip.style("opacity", 0);
           });
-        
+  
+  // this removes the 'null' values
+  circle_bikes.filter(function(d) { 
+	  console.log(d);
+	return d.bike_count == "NA" }).remove();
+  
   
   // unemployment plot
   
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.date; })).nice();
-    y.domain( [0, 4] );
+    y.domain( [0, 7] );
 
     // add the X gridlines
     svg_unemp.append("g")			
@@ -390,6 +401,82 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     // text label for the y axis
     svg_unemp.append("text").call(drawYlabel).text("Weekly unemployment claims (million)");
 
+    // Add the line
+    var line_unemp = svg_unemp.append("path")
+      .datum(data)
+      .call(styleLine)
+      .attr("stroke", "#2b7551")
+      .attr("d", d3.line()
+        .x(function(d) { return x(d.date) })
+        .y(function(d) { return y(d.ICSA) })
+        
+        // define (ie draw) the line at values not equal to NA
+        .defined(function(d) { return d.ICSA > 0 })
+        );
+        
+    // Add the points
+    var circle_unemp = svg_unemp
+      .append("g")
+      .selectAll("dot")
+      .data(data)
+      .enter()
+      .append("circle")
+        .attr("cx", function(d) { return x(d.date) } )
+        .attr("cy", function(d) { return y(d.ICSA) } )
+        .attr("class", function(d, i) {return "pt" + i;})
+        .attr("r", 4)
+        .attr("stroke", "#2b7551")
+        .attr("stroke-width", 2)
+        .attr("fill", "white")
+        
+        // Three function that change the tooltip when user hover / move / leave a cell
+        .on('mouseover', function(d, i) {
+            console.log("mouseover on", this);
+            // make the mouseover'd element big
+            d3.selectAll("circle.pt" + i)
+              .transition()
+              .duration(75)
+              .attr('r', 8)
+              .attr('fill', '#333333')
+              .attr('stroke-opacity', 0);
+            
+            // this makes the tooltip show
+            Tooltip.style("opacity", 1);
+          })
+          
+        .on('mousemove', function(d, i) {
+          // this makes the tooltip move
+          Tooltip
+            .html("<b>" + d.text + "</b><br>" + 
+                  "- " + Math.round(d.value * 10, 2) / 10 + " million subway rides <br>" + 
+                  "- " + Math.round(d.bike_count * 10, 2) / 10 + " thousand Citibike rides <br>" +
+                  "- " + Math.round(d.ICSA * 10, 2) / 10 + " million unemployment claims <br>" +
+                  "- " + Math.round(d.flights * 10, 2) / 10 + " thousand commercial flights")
+            .style("left", d3.event.pageX + 10 + "px")
+            .style("top", d3.event.pageY + "px");
+        })
+        
+        .on('mouseout', function(d, i) {
+            console.log("mouseout", this);
+            // return the mouseover'd element to the original format
+            d3.selectAll("circle.pt" + i)
+              .transition()
+              .duration(200)
+              .attr('r', 4)
+              .attr('fill', 'white')
+              .attr('stroke-opacity', 1);
+              
+              // this makes the tooltip disappear
+              Tooltip.style("opacity", 0);
+          });
+          
+  // this removes the circles where we don't have ICSA values
+  circle_unemp.filter(function(d) { 
+	  console.log(d);
+	return d.ICSA_exists != "TRUE"}).remove();
+
+
+/*
     // add the bars
     svg_unemp.selectAll("bar")
       .data(data)
@@ -448,7 +535,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
               // this makes the tooltip disappear
               Tooltip.style("opacity", 0);
           });
-          
+  */
           
   // flights plot
   
@@ -500,10 +587,13 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.flights) })
+        
+        // define (ie draw) the line at values not equal to NA
+        .defined(function(d) { return d.flights != "NA"})
         );
-    
+
     // Add the points
-    svg_flights
+    var circle_flights = svg_flights
       .append("g")
       .selectAll("dot")
       .data(data)
@@ -512,8 +602,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .attr("cx", function(d) { return x(d.date) } )
         .attr("cy", function(d) { return y(d.flights) } )
         .attr("class", function(d, i) {return "pt" + i;})
-        //make radius 0 if bike count is NA, otherwise make it 4
-        .attr("r", function(d) { return d.flights == "NA" ? 0 : 4; })
+        .attr("r", 4)
         .attr("stroke", "#2b7551")
         .attr("stroke-width", 2)
         .attr("fill", "white")
@@ -558,6 +647,12 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
               // this makes the tooltip disappear
               Tooltip.style("opacity", 0);
           });
+          
+  // this removes the 'NA' values
+  circle_flights.filter(function(d) { 
+	  console.log(d);
+	return d.flights == "NA"; }).remove();
+          
 }
 );
 
