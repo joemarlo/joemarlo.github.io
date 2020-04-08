@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Enumerating the ex-health COVID-19 impact</title>
+<title>Enumerating the economic shifts of March 2020</title>
 <meta name="description" content="Blog for stats and visualizations">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
@@ -95,8 +95,8 @@
   <div class="row">
     <div class="col-lg-9">
       <div class="content-column-content">
-         <h1>Enumerating the ex-health COVID-19 impact</h1>
-         <p><em>Work-in-progress | the impact on transportation and the economy</em></p>
+         <h1>Enumerating the economic shifts of March 2020</h1>
+         <p><em>Work-in-progress | the impact of COVID-19 on transportation and the economy</em></p>
 <hr>
 <p>This is a working page of plots highlighting the non-health related impact of COVID-19. Some of the interactive d3.js has small bugs. All plots are drafts.
 <br></p>
@@ -107,6 +107,8 @@
 <p align="right" style="font-size:60%;">
 <i>
 Data from MTA turnstiles and Citibike
+<br>
+2019 data has been shifted two days to match 2020 weekdays
 <br>
 March Citibike data not yet available
 </i>
@@ -152,9 +154,10 @@ Includes passenger, cargo, charter, and some business jet flights
 <li>traffic to CDC.gov and coronovirus.jhu.edu</li>
 <li>traffic to netflix, youtube, twitch, zoom, espn</li>
 </ul>
-<h4 id="first-us-covid-death">First US covid death</h4>
+<h4 id="to-do">To-do</h4>
 <ul>
-<li>Feb 29</li>
+<li>Add vertical line for first US covid death: Feb 29</li>
+<li>Shift 2019 subway ridership over a day to match weekdays</li>
 </ul>
 <br>
 <h3 id="data-sources">Data sources</h3>
@@ -166,15 +169,13 @@ Includes passenger, cargo, charter, and some business jet flights
 </ul>
 <br>
 <hr>
-<p><em>2020 April</em></p>
+<p><em>2020 April</em><br>
+<em>Find the code here: <a href="https://github.com/joemarlo/NYC-data/tree/master/Analyses/COVID-impact">github.com/joemarlo/NYC-data</a></em></p>
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/d3-selection-multi.v0.4.min.js"></script>
-<!-- Load d3 plots 
-<script src="/d3/covid-impact/subway_ridership.js"></script>
-<script src="/d3/covid-impact/subway_citibike.js"></script>
--->
-<script src="/d3/covid-impact/subway_citibike_clean.js"></script>
+<!-- Load d3 plots -->
+<script src="/d3/covid-impact/covid_plots.js"></script>
 <!-- custom CSS -->
 <style>
 
