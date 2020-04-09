@@ -254,14 +254,23 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         
     // add label for first death
     svg_S.append("text")
-        .attr("x", (width * 0.42))             
+        .attr("x", (width * 0.49))             
         .attr("y", (height * 0.92))
         .attr("text-anchor", "right")  
         .style("font-size", "12px") 
         .style("font-weight", "700") 
         .style("fill", "#333333")
         .style("opacity", 0.8)
-        .text("First US death: Feb 29");
+        .text("First US death");
+      svg_S.append("text")
+        .attr("x", (width * 0.56))             
+        .attr("y", (height * 0.97))
+        .attr("text-anchor", "right")  
+        .style("font-size", "12px") 
+        .style("font-weight", "700") 
+        .style("fill", "#333333")
+        .style("opacity", 0.8)
+        .text("Feb 29");
     
     // add label for 2019
     svg_S.append("text")
