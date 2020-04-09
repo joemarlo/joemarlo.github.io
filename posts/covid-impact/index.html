@@ -127,6 +127,15 @@ Data from flightradar24.com
 Includes passenger, cargo, charter, and some business jet flights
 </i>
 </p>
+<h4 id="daily-change-in-mobility-in-the-united-states">Daily change in mobility in the United States</h4>
+<p><button class="button" onclick="update('retail_rec')">Retail &amp; recreation</button>
+<button class="button" onclick="update('groc_pharm')">Grocery &amp; pharmacy</button>
+<button class="button" onclick="update('parks')">Parks</button>
+<button class="button" onclick="update('transit')">Transit stations</button>
+<button class="button" onclick="update('workplaces')">Workplaces</button>
+<button class="button" onclick="update('Residential')">Residential</button></p>
+<div <div id="trends" style="position: static"></div>
+<p align="right" style="font-size:60%;"><i>Data from Google Mobility Reports</i></p>
 <h3 id="notes">Notes</h3>
 <h4 id="transportation">Transportation</h4>
 <ul>
@@ -154,6 +163,8 @@ Includes passenger, cargo, charter, and some business jet flights
 <li>traffic to CDC.gov and coronovirus.jhu.edu</li>
 <li>traffic to netflix, youtube, twitch, zoom, espn</li>
 </ul>
+<h4 id="electricity-usage">Electricity usage</h4>
+<br>
 <h4 id="to-do">To-do</h4>
 <ul>
 <li>Add vertical line for first US covid death: Feb 29</li>
@@ -166,6 +177,7 @@ Includes passenger, cargo, charter, and some business jet flights
 <li><a href="https://s3.amazonaws.com/tripdata/index.html">NYC Citibike</a></li>
 <li><a href="https://fred.stlouisfed.org/series/ICSA">Unemployment</a></li>
 <li><a href="https://www.flightradar24.com/data/statistics">Flights</a></li>
+<li><a href="https://www.google.com/covid19/mobility/">Google trends</a> and scraped by <a href="https://github.com/nacnudus/google-location-coronavirus">nacnudus</a></li>
 </ul>
 <br>
 <hr>
@@ -179,6 +191,7 @@ Includes passenger, cargo, charter, and some business jet flights
 <!-- custom CSS -->
 <style>
 
+
 .grid line {
   stroke: #e6e6e6;
   stroke-opacity: 1;
@@ -189,10 +202,32 @@ Includes passenger, cargo, charter, and some business jet flights
   stroke: #e6e6e6;
 }
 
-<!-- controls axis text color -->
 .grid text{
   fill: #333333;
 }  
+
+.button {
+  background-color: #2b7551; 
+  border: none;
+  color: white;
+  padding: 2px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  border-radius: 1px;
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #43a173;
+}
+
+.button:active {
+  background-color: #2b7551;
+  box-shadow: 0 1px #333333;
+  transform: translateY(1px);
+}
 
 </style>
          

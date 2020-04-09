@@ -135,14 +135,31 @@ var svg_flights = d3.select("div#flights")
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
+  
+// append the svg object: flights
+var svg_trends = d3.select("div#trends")
+  .append("div")
+  // Container class to make it responsive.
+  .classed("svg-container", true) 
+  .append("svg")
+  // Responsive SVG needs these 2 attributes and no width and height attr.
+  .attr("preserveAspectRatio", "xMinYMin meet")
+  .attr("viewBox", "0 0 700 300")
+  // Class to make it responsive.
+  .classed("svg-content-responsive", true)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
 
+// wrapper function to update google trends plot
+function update(chosen_Y){
 
 //Read the subway and citibike data
 d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
 
   // When reading the csv, I must format variables:
   function(d){
-    return { date : parseDate(d.date), subway_2020 : d.subway_2020, subway_2019 : d.subway_2019, text : d.text, bike_2020 : d.bike_2020, bike_2019 : d.bike_2019, ICSA : d.ICSA, flights : d.flights, ICSA_exists : d.ICSA_exists }
+    return { date : parseDate(d.date), subway_2020 : d.subway_2020, subway_2019 : d.subway_2019, text : d.text, bike_2020 : d.bike_2020, bike_2019 : d.bike_2019, ICSA : d.ICSA, flights : d.flights, ICSA_exists : d.ICSA_exists, retail_rec : d.retail_rec, groc_pharm : d.groc_pharm, parks : d.parks, transit : d.transit, workplaces : d.workplaces, Residential : d.Residential }
   },
 
   // Now I can use this dataset:
@@ -218,7 +235,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     
     // add label for 2019
     svg_S.append("text")
-        .attr("x", (width * 0.95))             
+        .attr("x", (width * 0.94))             
         .attr("y", (height * 0.07))
         .attr("text-anchor", "left")  
         .style("font-size", "12px") 
@@ -521,8 +538,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
             .html("<b>" + d.text + "</b><br>" + 
                   "- " + Math.round(d.subway_2020 * 10, 2) / 10 + " million subway rides <br>" + 
                   "- " + Math.round(d.bike_2020 * 10, 2) / 10 + " thousand Citibike rides <br>" +
-                  "- " + Math.round(d.ICSA * 10, 2) / 10 + " million unemployment claims <br>" +
-                  "- " + Math.round(d.flights * 10, 2) / 10 + " thousand commercial flights")
+                  "- " + Math.round(d.ICSA * 10, 2) / 10 + " million unemployment claims <br>")
             .style("left", d3.event.pageX + 10 + "px")
             .style("top", d3.event.pageY + "px");
         })
@@ -662,7 +678,132 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
   circle_flights.filter(function(d) { 
 	  console.log(d);
 	return d.flights == "NA"; }).remove();
+	
+
+
+	  // google trends plot
+  
+    // Scale the range of the data
+    x.domain(d3.extent(data, function(d) { return d.date; })).nice();
+    y.domain( [-0.5, 0.5] );
+
+    // add the X gridlines
+    svg_trends.append("g")			
+      .attr("class", "grid")
+      .attr("transform", "translate(0," + height + ")")
+      .call(make_x_gridlines()
+          .tickSize(-height-my_tickSize)
+          .tickFormat("")
+      );
+      
+    // add the Y gridlines
+    svg_trends.append("g")			
+      .attr("class", "grid")
+      .call(make_y_gridlines()
+          .tickSize(-width-my_tickSize)
+          .tickFormat("")
+      );
+      
+    // add the X axis
+    svg_trends.append("g")
+      .attr("class", "grid")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x)
+        .tickPadding(my_tickPadsize)
+        .tickSize(my_tickSize));
+
+    // Add Y axis
+    svg_trends.append("g")
+      .attr("class", "grid")
+      .call(d3.axisLeft(y)
+        .tickPadding(my_tickPadsize)
+        .tickSize(my_tickSize)
+        .ticks(my_nYticks));
+      
+    // text label for the y axis
+    svg_trends.append("text").call(drawYlabel).text("Daily activity compared to baseline");
+
+    // remove existing lines
+    this.svg_trends.selectAll('path').remove();
+
+    // Add the line
+    svg_trends.append("path")
+      .datum(data)
+      .call(styleLine)
+      .attr("stroke", "#2b7551")
+      .attr("d", d3.line()
+        .x(function(d) { return x(d.date) })
+        .y(function(d) { return y(d[chosen_Y]) })
+        
+        // define (ie draw) the line at values not equal to NA
+        .defined(function(d) { return d[chosen_Y] != "NA"})
+        );
+
+    // remove existing circles
+    this.svg_trends.selectAll('circle').remove();
+
+    // Add the points
+    var circle_trends = svg_trends
+      .append("g")
+      .selectAll("dot")
+      .data(data)
+      .enter()
+      .append("circle")
+        .attr("cx", function(d) { return x(d.date) } )
+        .attr("cy", function(d) { return y(d[chosen_Y]) } )
+        .attr("class", function(d, i) {return "pt" + i;})
+        .attr("r", 4)
+        .attr("stroke", "#2b7551")
+        .attr("stroke-width", 2)
+        .attr("fill", "white")
+        
+        // Three function that change the tooltip when user hover / move / leave a cell
+        .on('mouseover', function(d, i) {
+            console.log("mouseover on", this);
+            // make the mouseover'd element big
+            d3.selectAll("circle.pt" + i)
+              .transition()
+              .duration(75)
+              .attr('r', 8)
+              .attr('fill', '#333333')
+              .attr('stroke-opacity', 0);
+            
+            // this makes the tooltip show
+            Tooltip.style("opacity", 1);
+          })
           
-}
+        .on('mousemove', function(d, i) {
+          // this makes the tooltip move
+          Tooltip
+            .html("<b>" + d.text + "</b><br>" + 
+                  printableNumber(Math.round(d[chosen_Y] * 100)) + " compared to baseline")
+            .style("left", d3.event.pageX + 10 + "px")
+            .style("top", d3.event.pageY + "px");
+        })
+        
+        .on('mouseout', function(d, i) {
+            console.log("mouseout", this);
+            // return the mouseover'd element to the original format
+            d3.selectAll("circle.pt" + i)
+              .transition()
+              .duration(200)
+              .attr('r', 4)
+              .attr('fill', 'white')
+              .attr('stroke-opacity', 1);
+              
+              // this makes the tooltip disappear
+              Tooltip.style("opacity", 0);
+          });
+          
+  // this removes the 'NA' values
+  circle_trends.filter(function(d) { 
+	  console.log(d);
+	return d[chosen_Y] == "NA"; }).remove();
+	
+	}
+
 );
+}
+
+update('retail_rec');
 
