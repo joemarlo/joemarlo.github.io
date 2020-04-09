@@ -127,15 +127,15 @@ Data from flightradar24.com
 Includes passenger, cargo, charter, and some business jet flights
 </i>
 </p>
-<h4 id="daily-change-in-mobility-in-the-united-states">Daily change in mobility in the United States</h4>
-<p><button class="button" onclick="update('retail_rec')">Retail &amp; recreation</button>
-<button class="button" onclick="update('groc_pharm')">Grocery &amp; pharmacy</button>
-<button class="button" onclick="update('parks')">Parks</button>
-<button class="button" onclick="update('transit')">Transit stations</button>
-<button class="button" onclick="update('workplaces')">Workplaces</button>
-<button class="button" onclick="update('Residential')">Residential</button></p>
+<h4 id="daily-change-in-mobile-phone-location-b-idboldstuffretail--recreationb">Daily change in mobile phone location: <b id='boldStuff'>Retail &amp; recreation</b></h4>
+<p><button class="button" onclick="update('retail_rec'); changeText('Retail & recreation')">Retail &amp; recreation</button>
+<button class="button" onclick="update('groc_pharm'); changeText('Grocery & pharmacy')">Grocery &amp; pharmacy</button>
+<button class="button" onclick="update('parks'); changeText('Parks')">Parks</button>
+<button class="button" onclick="update('transit'); changeText('Transit stations')">Transit stations</button>
+<button class="button" onclick="update('workplaces'); changeText('Workplaces')">Workplaces</button>
+<button class="button" onclick="update('Residential'); changeText('Residential')">Residential</button></p>
 <div <div id="trends" style="position: static"></div>
-<p align="right" style="font-size:60%;"><i>Data from Google Mobility Reports</i></p>
+<p align="right" style="font-size:60%;"><i>Data from Google Mobility Reports. United States.<br></i></p>
 <h3 id="notes">Notes</h3>
 <h4 id="transportation">Transportation</h4>
 <ul>
@@ -181,6 +181,13 @@ Includes passenger, cargo, charter, and some business jet flights
 <hr>
 <p><em>2020 April</em><br>
 <em>Find the code here: <a href="https://github.com/joemarlo/NYC-data/tree/master/Analyses/COVID-impact">github.com/joemarlo/NYC-data</a></em></p>
+<!-- For changing text in google trends plot -->
+<script>
+function changeText(newText)
+{
+ document.getElementById('boldStuff').innerHTML = newText;
+}
+</script>
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/d3-selection-multi.v0.4.min.js"></script>
