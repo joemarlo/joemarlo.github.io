@@ -1,11 +1,27 @@
 
 // set the dimensions and margins of the graph
-var margin = {top: 10, right: 30, bottom: 30, left: 60},
+var margin = {top: 10, right: 50, bottom: 30, left: 70},
     width = 700 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
     
 // Function to parse the date / time
 var	parseDate = d3.timeParse("%Y-%m-%d");
+
+// set death of first death to draw vertical bar
+var first_death = parseDate('2020-02-29');
+
+// style the line to be drawn for first death
+function styleDeath(selection){
+    selection
+      .attr("x1", x(first_death)) 
+      .attr("y1", 0)
+      .attr("x2", x(first_death))
+      .attr("y2", height)
+      .style("stroke-width", 1.5)
+      .style("stroke-dasharray", ("4, 4"))
+      .style("stroke", "#333333")
+      .style("fill", "none");
+}
 
 // Set the axis ranges
 var x = d3.scaleTime().range([ 0, width ]);
@@ -53,7 +69,7 @@ function styleLine(selection) {
 }
 
 // function to add "+" in front if positive; add "%"
-var printableNumber = function(n) { return (n > 0) ? "+" + n + "%": n + "%"; };
+function printableNumber(n) { return (n > 0) ? "+" + n + "%": n + "%"; }
 
 // function to calculat year-over-year different in two numbers for toolip
 function YoY_diff(latest_number, old_number) {
@@ -151,8 +167,6 @@ var svg_trends = d3.select("div#trends")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-// wrapper function to update google trends plot
-function update(chosen_Y){
 
 //Read the subway and citibike data
 d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
@@ -164,7 +178,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
 
   // Now I can use this dataset:
   function(data) {
-
+  
   // subway plot
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.date; })).nice();
@@ -206,6 +220,10 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     // text label for the y axis
     svg_S.append("text").call(drawYlabel).text("Subway ridership (millions)");
     
+    // add vertical bar for first death
+    svg_S.append("line")
+      .call(styleDeath);
+      
     // Add 2019 line
     svg_S.append("path")
       .datum(data)
@@ -232,6 +250,18 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         // define (ie draw) the line at values not equal to NA
         .defined(function(d) { return d.subway_2020 != "NA" })
         );
+    
+        
+    // add label for first death
+    svg_S.append("text")
+        .attr("x", (width * 0.42))             
+        .attr("y", (height * 0.92))
+        .attr("text-anchor", "right")  
+        .style("font-size", "12px") 
+        .style("font-weight", "700") 
+        .style("fill", "#333333")
+        .style("opacity", 0.8)
+        .text("First US death: Feb 29");
     
     // add label for 2019
     svg_S.append("text")
@@ -352,6 +382,10 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       
     // text label for the y axis
     svg_C.append("text").call(drawYlabel).text("Citibike ridership (thousands)");
+
+    // add vertical bar for first death
+    svg_C.append("line")
+      .call(styleDeath);
 
     // Add the 2019 line
     svg_C.append("path")
@@ -489,6 +523,10 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     // text label for the y axis
     svg_unemp.append("text").call(drawYlabel).text("Weekly unemployment claims (million)");
 
+    // add vertical bar for first death
+    svg_unemp.append("line")
+      .call(styleDeath);
+
     // Add the line
     var line_unemp = svg_unemp.append("path")
       .datum(data)
@@ -605,6 +643,10 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     // text label for the y axis
     svg_flights.append("text").call(drawYlabel).text("Daily commercial flights (thousands)");
 
+    // add vertical bar for first death
+    svg_flights.append("line")
+      .call(styleDeath);
+
     // Add the line
     svg_flights.append("path")
       .datum(data)
@@ -679,13 +721,38 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
 	  console.log(d);
 	return d.flights == "NA"; }).remove();
 	
+}
+);
 
+// wrapper function to update google trends plot
+function update(chosen_Y){
+
+//Read the subway and citibike data
+d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
+
+  // When reading the csv, I must format variables:
+  function(d){
+    return { date : parseDate(d.date), subway_2020 : d.subway_2020, subway_2019 : d.subway_2019, text : d.text, bike_2020 : d.bike_2020, bike_2019 : d.bike_2019, ICSA : d.ICSA, flights : d.flights, ICSA_exists : d.ICSA_exists, retail_rec : d.retail_rec, groc_pharm : d.groc_pharm, parks : d.parks, transit : d.transit, workplaces : d.workplaces, Residential : d.Residential }
+  },
+
+  // Now I can use this dataset:
+  function(data) {
 
 	  // google trends plot
   
+    // remove existing text
+    this.svg_trends.selectAll('grid').remove();
+    // remove existing text
+    this.svg_trends.selectAll('text').remove();
+    // remove existing lines
+    this.svg_trends.selectAll('path').remove();
+    // remove existing circles
+    this.svg_trends.selectAll('circle').remove();
+    
+  
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.date; })).nice();
-    y.domain( [-0.5, 0.5] );
+    y.domain( [-0.6, 0.6] );
 
     // add the X gridlines
     svg_trends.append("g")			
@@ -701,7 +768,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("class", "grid")
       .call(make_y_gridlines()
           .tickSize(-width-my_tickSize)
-          .tickFormat("")
+          .tickFormat('')
       );
       
     // add the X axis
@@ -718,13 +785,15 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .call(d3.axisLeft(y)
         .tickPadding(my_tickPadsize)
         .tickSize(my_tickSize)
-        .ticks(my_nYticks));
+        .ticks(my_nYticks)
+        .tickFormat(d3.format(".0%")));
       
     // text label for the y axis
     svg_trends.append("text").call(drawYlabel).text("Daily activity compared to baseline");
 
-    // remove existing lines
-    this.svg_trends.selectAll('path').remove();
+    // add vertical bar for first death
+    svg_trends.append("line")
+      .call(styleDeath);
 
     // Add the line
     svg_trends.append("path")
@@ -738,9 +807,6 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         // define (ie draw) the line at values not equal to NA
         .defined(function(d) { return d[chosen_Y] != "NA"})
         );
-
-    // remove existing circles
-    this.svg_trends.selectAll('circle').remove();
 
     // Add the points
     var circle_trends = svg_trends
