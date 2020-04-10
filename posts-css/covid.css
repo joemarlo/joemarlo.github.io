@@ -1,0 +1,82 @@
+
+/* grid styles */
+
+.grid line {
+  stroke: #e6e6e6;
+  stroke-opacity: 1;
+  shape-rendering: crispEdges;
+}
+
+.grid path {
+  stroke: #e6e6e6;
+}
+
+.grid text {
+  fill: #333333;
+}  
+
+
+/* button styles */
+
+.button {
+  background-color: #2b7551; 
+  border: none;
+  color: white;
+  padding: 2px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  border-radius: 1px;
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #43a173;
+}
+
+.button:active {
+  background-color: #2b7551;
+  box-shadow: 0 1px #333333;
+  transform: translateY(1px);
+}
+
+
+/* dropdown styles */
+
+.dropbtn {
+  background-color: #2b7551;
+  color: white;
+  padding: 2px 16px;
+  font-size: 12px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  font-size: 12px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 6px 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #43a173;}
+

@@ -128,7 +128,7 @@ Data from flightradar24.com
 Includes passenger, cargo, charter, and some business jet flights
 </i>
 </p>
-<h4 id="daily-change-in-mobile-phone-location-b-idboldstuffretail--recreationb">Daily change in mobile phone location: <b id='boldStuff'>Retail &amp; recreation</b></h4>
+<h4 id="daily-change-in-mobile-phone-location-b-idtrendstitleretail--recreationb">Daily change in mobile phone location: <b id='trendsTitle'>Retail &amp; recreation</b></h4>
 <p><button class="button" onclick="update('retail_rec'); changeText('Retail & recreation')">Retail &amp; recreation</button>
 <button class="button" onclick="update('groc_pharm'); changeText('Grocery & pharmacy')">Grocery &amp; pharmacy</button>
 <button class="button" onclick="update('parks'); changeText('Parks')">Parks</button>
@@ -137,6 +137,50 @@ Includes passenger, cargo, charter, and some business jet flights
 <button class="button" onclick="update('Residential'); changeText('Residential')">Residential</button></p>
 <div <div id="trends" style="position: static"></div>
 <p align="right" style="font-size:60%;"><i>Data from Google Mobility Reports. United States.<br></i></p>
+<h4 id="daily-change-in-nyc-311-calls-b-idthreeoneonetitleconsumer-complaintb">Daily change in NYC 311 calls: <b id='threeOneOneTitle'>Consumer complaint</b></h4>
+<!-- Dropbown menu -->
+<div class="dropdown">
+  <button class="dropbtn">Categories</button>
+  <div class="dropdown-content">
+    <a onclick="update311('Appliance'); changeText311('Appliance')">Appliance</a>
+    <a onclick="update311('Boilers'); changeText311('Boilers')">Boilers</a>
+    <a onclick="update311('Construction_lead_dust'); changeText311('Construction lead dust')">Construction lead dust</a>
+    <a onclick="update311('Consumer_complaint'); changeText311('Consumer complaint')">Consumer complaint</a>
+    <a onclick="update311('Door_window'); changeText311('Door window')">Door window</a>
+    <a onclick="update311('Drinking'); changeText311('Drinking')">Drinking</a>
+    <a onclick="update311('Electric'); changeText311('Electric')">Electric</a>
+    <a onclick="update311('Flooring_stairs'); changeText311('Flooring stairs')">Flooring stairs</a>
+    <a onclick="update311('Food_establishment'); changeText311('Food establishment')">Food establishment</a>
+    <a onclick="update311('General'); changeText311('General')">General</a>
+    <a onclick="update311('Indoor_air_quality'); changeText311('Indoor air quality')">Indoor air quality</a>
+    <a onclick="update311('New_tree_request'); changeText311('New tree request')">New tree request</a>
+    <a onclick="update311('Noise'); changeText311('Noise')">Noise</a>
+    <a onclick="update311('Noise_residential'); changeText311('Noise residential')">Noise residential</a>
+    <a onclick="update311('Noise_street_sidewalk'); changeText311('Noise street sidewalk')">Noise street sidewalk</a>
+    <a onclick="update311('Noise_vehicle'); changeText311('Noise vehicle')">Noise vehicle</a>
+    <a onclick="update311('Non_emergency_police_matter'); changeText311('Non emergency police matter')">Non emergency police matter</a>
+    <a onclick="update311('Paint_plaster'); changeText311('Paint plaster')">Paint plaster</a>
+    <a onclick="update311('Plumbing'); changeText311('Plumbing')">Plumbing</a>
+    <a onclick="update311('Safety'); changeText311('Safety')">Safety</a>
+    <a onclick="update311('School_maintenance'); changeText311('School maintenance')">School maintenance</a>
+    <a onclick="update311('Unleashed_dog'); changeText311('Unleashed dog')">Unleashed dog</a>
+    <a onclick="update311('Unsanitary_condition'); changeText311('Unsanitary condition')">Unsanitary condition</a>
+    <a onclick="update311('Violation_of_park_rules'); changeText311('Violation of park rules')">Violation of park rules</a>
+    <a onclick="update311('Water_leak'); changeText311('Water leak')">Water leak</a>
+  </div>
+</div>
+<br>
+<br>
+<div <div id="threeOneOne" style="position: static"></div>
+<p align="right" style="font-size:60%;">
+<i>
+Data from NYC OpenData
+<br>
+2019 data has been shifted two days to match 2020 weekdays
+<br>
+</i></p>
+<br>
+<br>
 <h3 id="notes">Notes</h3>
 <h4 id="transportation">Transportation</h4>
 <ul>
@@ -163,11 +207,13 @@ Includes passenger, cargo, charter, and some business jet flights
 <li><a href="https://www.similarweb.com/coronavirus">https://www.similarweb.com/coronavirus</a></li>
 <li>traffic to CDC.gov and coronovirus.jhu.edu</li>
 <li>traffic to netflix, youtube, twitch, zoom, espn</li>
+<li>search terms: gym, delivery, alcohol delivery, zoom, home yoga, video games</li>
 </ul>
 <h4 id="to-do">To-do</h4>
 <ul>
 <li>Electricity usage</li>
-<li>NYC 311 calls</li>
+<li>NYC 311 calls: clean up; add definitions</li>
+<li>NYC crime</li>
 </ul>
 <br>
 <h3 id="data-sources">Data sources</h3>
@@ -177,65 +223,32 @@ Includes passenger, cargo, charter, and some business jet flights
 <li><a href="https://fred.stlouisfed.org/series/ICSA">Unemployment</a></li>
 <li><a href="https://www.flightradar24.com/data/statistics">Flights</a></li>
 <li><a href="https://www.google.com/covid19/mobility/">Google trends</a> and scraped by <a href="https://github.com/nacnudus/google-location-coronavirus">Duncan Garmonsway</a></li>
+<li><a href="https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9">NYC 311 calls</a></li>
 </ul>
 <br>
 <hr>
 <p><em>2020 April</em><br>
 <em>Find the code here: <a href="https://github.com/joemarlo/NYC-data/tree/master/Analyses/COVID-impact">github.com/joemarlo/NYC-data</a></em></p>
-<!-- For changing text in google trends plot -->
-<script>
-function changeText(newText)
-{
- document.getElementById('boldStuff').innerHTML = newText;
-}
-</script>
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/d3-selection-multi.v0.4.min.js"></script>
 <!-- Load d3 plots -->
 <script src="/d3/covid-impact/covid_plots.js"></script>
-<!-- custom CSS -->
-<style>
-
-
-.grid line {
-  stroke: #e6e6e6;
-  stroke-opacity: 1;
-  shape-rendering: crispEdges;
+<!-- Load custom CSS -->
+<link rel="stylesheet" type="text/css" href="/posts-css/covid.css">
+<!-- For changing text in google trends plot title -->
+<script>
+function changeText(newText)
+{
+ document.getElementById('trendsTitle').innerHTML = newText;
 }
 
-.grid path {
-  stroke: #e6e6e6;
+function changeText311(newText)
+{
+ document.getElementById('threeOneOneTitle').innerHTML = newText;
 }
 
-.grid text{
-  fill: #333333;
-}  
-
-.button {
-  background-color: #2b7551; 
-  border: none;
-  color: white;
-  padding: 2px 8px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-  border-radius: 1px;
-  transition-duration: 0.4s;
-}
-
-.button:hover {
-  background-color: #43a173;
-}
-
-.button:active {
-  background-color: #2b7551;
-  box-shadow: 0 1px #333333;
-  transform: translateY(1px);
-}
-
-</style>
+</script>
          
       </div>
     </div>

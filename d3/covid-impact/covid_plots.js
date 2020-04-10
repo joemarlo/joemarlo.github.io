@@ -152,7 +152,7 @@ var svg_flights = d3.select("div#flights")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
   
-// append the svg object: flights
+// append the svg object: google trends
 var svg_trends = d3.select("div#trends")
   .append("div")
   // Container class to make it responsive.
@@ -167,6 +167,20 @@ var svg_trends = d3.select("div#trends")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
+// append the svg object: 311
+var svg_311 = d3.select("div#threeOneOne")
+  .append("div")
+  // Container class to make it responsive.
+  .classed("svg-container", true) 
+  .append("svg")
+  // Responsive SVG needs these 2 attributes and no width and height attr.
+  .attr("preserveAspectRatio", "xMinYMin meet")
+  .attr("viewBox", "0 0 700 300")
+  // Class to make it responsive.
+  .classed("svg-content-responsive", true)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the subway and citibike data
 d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
@@ -880,5 +894,178 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
 );
 }
 
+
+
+
+// wrapper function to update google trends plot
+function update311(chosen_Y){
+
+ var chosen_Y_2020 = chosen_Y + "_2020";
+ var chosen_Y_2019 = chosen_Y + "_2019";
+
+//Read the subway and citibike data
+d3.csv("/d3/covid-impact/data/threeOneOne.csv",
+
+  // When reading the csv, I must format variables:
+  function(d){
+    return { date : parseDate(d.date), text : d.text, Appliance_2020 : d.Appliance_2020, Appliance_2019 : d.Appliance_2019, Boilers_2020 : d.Boilers_2020, Boilers_2019 : d.Boilers_2019, Construction_lead_dust_2020 : d.Construction_lead_dust_2020, Construction_lead_dust_2019 : d.Construction_lead_dust_2019, Consumer_complaint_2020 : d.Consumer_complaint_2020, Consumer_complaint_2019 : d.Consumer_complaint_2019, Door_window_2020 : d.Door_window_2020, Door_window_2019 : d.Door_window_2019, Drinking_2020 : d.Drinking_2020, Drinking_2019 : d.Drinking_2019, Electric_2020 : d.Electric_2020, Electric_2019 : d.Electric_2019, Flooring_stairs_2020 : d.Flooring_stairs_2020, Flooring_stairs_2019 : d.Flooring_stairs_2019, Food_establishment_2020 : d.Food_establishment_2020, Food_establishment_2019 : d.Food_establishment_2019, General_2020 : d.General_2020, General_2019 : d.General_2019, Indoor_air_quality_2020 : d.Indoor_air_quality_2020, Indoor_air_quality_2019 : d.Indoor_air_quality_2019, New_tree_request_2020 : d.New_tree_request_2020, New_tree_request_2019 : d.New_tree_request_2019, Noise_2020 : d.Noise_2020, Noise_2019 : d.Noise_2019, Noise_residential_2020 : d.Noise_residential_2020, Noise_residential_2019 : d.Noise_residential_2019, Noise_street_sidewalk_2020 : d.Noise_street_sidewalk_2020, Noise_street_sidewalk_2019 : d.Noise_street_sidewalk_2019, Noise_vehicle_2020 : d.Noise_vehicle_2020, Noise_vehicle_2019 : d.Noise_vehicle_2019, Non_emergency_police_matter_2020 : d.Non_emergency_police_matter_2020, Non_emergency_police_matter_2019 : d.Non_emergency_police_matter_2019, Paint_plaster_2020 : d.Paint_plaster_2020, Paint_plaster_2019 : d.Paint_plaster_2019, Plumbing_2020 : d.Plumbing_2020, Plumbing_2019 : d.Plumbing_2019, Safety_2020 : d.Safety_2020, Safety_2019 : d.Safety_2019, School_maintenance_2020 : d.School_maintenance_2020, School_maintenance_2019 : d.School_maintenance_2019, Unleashed_dog_2020 : d.Unleashed_dog_2020, Unleashed_dog_2019 : d.Unleashed_dog_2019, Unsanitary_condition_2020 : d.Unsanitary_condition_2020, Unsanitary_condition_2019 : d.Unsanitary_condition_2019, Violation_of_park_rules_2020 : d.Violation_of_park_rules_2020, Violation_of_park_rules_2019 : d.Violation_of_park_rules_2019, Water_leak_2020 : d.Water_leak_2020, Water_leak_2019 : d.Water_leak_2019 }
+  },
+
+  // Now I can use this dataset:
+  function(data) {
+
+	  // google trends plot
+  
+    // remove existing text
+    this.svg_311.selectAll('grid').remove();
+    // remove existing text
+    this.svg_311.selectAll('text').remove();
+    // remove existing lines
+    this.svg_311.selectAll('path').remove();
+    // remove existing circles
+    this.svg_311.selectAll('circle').remove();
+    // remove existing y axis
+    this.svg_311.selectAll('g').remove();
+  
+    // Scale the range of the data
+    x.domain(d3.extent(data, function(d) { return d.date; })).nice();
+    y.domain( [0, d3.max(data, function (d) { return d[chosen_Y_2020] * 1.1; })]);
+
+    // add the X gridlines
+    svg_311.append("g")			
+      .attr("class", "grid")
+      .attr("transform", "translate(0," + height + ")")
+      .call(make_x_gridlines()
+          .tickSize(-height-my_tickSize)
+          .tickFormat("")
+      );
+      
+    // add the Y gridlines
+    svg_311.append("g")			
+      .attr("class", "grid")
+      .call(make_y_gridlines()
+          .tickSize(-width-my_tickSize)
+          .tickFormat('')
+      );
+      
+    // add the X axis
+    svg_311.append("g")
+      .attr("class", "grid")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x)
+        .tickPadding(my_tickPadsize)
+        .tickSize(my_tickSize));
+
+    // Add Y axis
+    svg_311.append("g")
+      .attr("class", "grid")
+      .call(d3.axisLeft(y)
+        .tickPadding(my_tickPadsize)
+        .tickSize(my_tickSize)
+        .ticks(my_nYticks));
+      
+    // text label for the y axis
+    svg_311.append("text").call(drawYlabel).text("Daily complaints");
+
+    // add vertical bar for first death
+    svg_311.append("line")
+      .call(styleDeath);
+
+    // Add the 2019 line 
+    svg_311.append("path")
+      .datum(data)
+      .call(styleLine)
+      .attr("stroke", "#333333")
+      .attr("stroke-width", 1)
+      .attr("opacity", 0.5)
+      .attr("d", d3.line()
+        .x(function(d) { return x(d.date) })
+        .y(function(d) { return y(d[chosen_Y_2019]) })
+        
+        // define (ie draw) the line at values not equal to NA
+        .defined(function(d) { return d[chosen_Y_2019] != "NA"})
+        );
+
+    // Add the line
+    svg_311.append("path")
+      .datum(data)
+      .call(styleLine)
+      .attr("stroke", "#2b7551")
+      .attr("d", d3.line()
+        .x(function(d) { return x(d.date) })
+        .y(function(d) { return y(d[chosen_Y_2020]) })
+        
+        // define (ie draw) the line at values not equal to NA
+        .defined(function(d) { return d[chosen_Y_2020] != "NA"})
+        );
+
+    // Add the points
+    var circle_trends = svg_311
+      .append("g")
+      .selectAll("dot")
+      .data(data)
+      .enter()
+      .append("circle")
+        .attr("cx", function(d) { return x(d.date) } )
+        .attr("cy", function(d) { return y(d[chosen_Y_2020]) } )
+        .attr("class", function(d, i) {return "pt" + i;})
+        .attr("r", 4)
+        .attr("stroke", "#2b7551")
+        .attr("stroke-width", 2)
+        .attr("fill", "white")
+        
+        // Three function that change the tooltip when user hover / move / leave a cell
+        .on('mouseover', function(d, i) {
+            console.log("mouseover on", this);
+            // make the mouseover'd element big
+            d3.selectAll("circle.pt" + i)
+              .transition()
+              .duration(75)
+              .attr('r', 8)
+              .attr('fill', '#333333')
+              .attr('stroke-opacity', 0);
+            
+            // this makes the tooltip show
+            Tooltip.style("opacity", 1);
+          })
+          
+        .on('mousemove', function(d, i) {
+          // this makes the tooltip move
+          Tooltip
+            .html(
+              "<b>" + d.text + "</b><br>" + 
+              Math.round(d[chosen_Y_2020] * 10, 2) / 10 + " calls (" +
+              YoY_diff(d[chosen_Y_2020], d[chosen_Y_2019]) + " vs. 2019) <br>"
+              )
+            .style("left", d3.event.pageX + 10 + "px")
+            .style("top", d3.event.pageY + "px");
+        })
+        
+        .on('mouseout', function(d, i) {
+            console.log("mouseout", this);
+            // return the mouseover'd element to the original format
+            d3.selectAll("circle.pt" + i)
+              .transition()
+              .duration(200)
+              .attr('r', 4)
+              .attr('fill', 'white')
+              .attr('stroke-opacity', 1);
+              
+              // this makes the tooltip disappear
+              Tooltip.style("opacity", 0);
+          });
+          
+  // this removes the 'NA' values
+  circle_trends.filter(function(d) { 
+	  console.log(d);
+	return d[chosen_Y_2020] == "NA"; }).remove();
+	
+	}
+
+);
+}
+
+
 update('retail_rec');
+update311('Consumer_complaint');
 
