@@ -248,6 +248,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.subway_2019) })
+        .curve(d3.curveMonotoneX)
         
         // define (ie draw) the line at values not equal to NA
         .defined(function(d) { return d.subway_2019 != "NA" })
@@ -260,6 +261,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.subway_2020) })
+        .curve(d3.curveMonotoneX)
         
         // define (ie draw) the line at values not equal to NA
         .defined(function(d) { return d.subway_2020 != "NA" })
@@ -420,6 +422,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.bike_2019) })
+        .curve(d3.curveMonotoneX)
         
         // define (ie draw) the line at values not equal to NA
         .defined(function(d) { return d.bike_2019 != "NA" })
@@ -433,6 +436,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.bike_2020) })
+        .curve(d3.curveMonotoneX)
         
         // define (ie draw) the line at values not equal to NA
         .defined(function(d) { return d.bike_2020 != "NA" })
@@ -558,6 +562,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.ICSA) })
+        .curve(d3.curveMonotoneX)
         
         // define (ie draw) the line at values not equal to NA
         .defined(function(d) { return d.ICSA > 0 })
@@ -678,6 +683,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.flights) })
+        .curve(d3.curveMonotoneX)
         
         // define (ie draw) the line at values not equal to NA
         .defined(function(d) { return d.flights != "NA"})
@@ -826,6 +832,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d[chosen_Y]) })
+        .curve(d3.curveMonotoneX)
         
         // define (ie draw) the line at values not equal to NA
         .defined(function(d) { return d[chosen_Y] != "NA"})
@@ -903,12 +910,12 @@ function update311(chosen_Y){
  var chosen_Y_2020 = chosen_Y + "_2020";
  var chosen_Y_2019 = chosen_Y + "_2019";
 
-//Read the subway and citibike data
+//Read the 311 data
 d3.csv("/d3/covid-impact/data/threeOneOne.csv",
 
   // When reading the csv, I must format variables:
   function(d){
-    return { date : parseDate(d.date), text : d.text, Appliance_2020 : d.Appliance_2020, Appliance_2019 : d.Appliance_2019, Boilers_2020 : d.Boilers_2020, Boilers_2019 : d.Boilers_2019, Construction_lead_dust_2020 : d.Construction_lead_dust_2020, Construction_lead_dust_2019 : d.Construction_lead_dust_2019, Consumer_complaint_2020 : d.Consumer_complaint_2020, Consumer_complaint_2019 : d.Consumer_complaint_2019, Door_window_2020 : d.Door_window_2020, Door_window_2019 : d.Door_window_2019, Drinking_2020 : d.Drinking_2020, Drinking_2019 : d.Drinking_2019, Electric_2020 : d.Electric_2020, Electric_2019 : d.Electric_2019, Flooring_stairs_2020 : d.Flooring_stairs_2020, Flooring_stairs_2019 : d.Flooring_stairs_2019, Food_establishment_2020 : d.Food_establishment_2020, Food_establishment_2019 : d.Food_establishment_2019, General_2020 : d.General_2020, General_2019 : d.General_2019, Indoor_air_quality_2020 : d.Indoor_air_quality_2020, Indoor_air_quality_2019 : d.Indoor_air_quality_2019, New_tree_request_2020 : d.New_tree_request_2020, New_tree_request_2019 : d.New_tree_request_2019, Noise_2020 : d.Noise_2020, Noise_2019 : d.Noise_2019, Noise_residential_2020 : d.Noise_residential_2020, Noise_residential_2019 : d.Noise_residential_2019, Noise_street_sidewalk_2020 : d.Noise_street_sidewalk_2020, Noise_street_sidewalk_2019 : d.Noise_street_sidewalk_2019, Noise_vehicle_2020 : d.Noise_vehicle_2020, Noise_vehicle_2019 : d.Noise_vehicle_2019, Non_emergency_police_matter_2020 : d.Non_emergency_police_matter_2020, Non_emergency_police_matter_2019 : d.Non_emergency_police_matter_2019, Paint_plaster_2020 : d.Paint_plaster_2020, Paint_plaster_2019 : d.Paint_plaster_2019, Plumbing_2020 : d.Plumbing_2020, Plumbing_2019 : d.Plumbing_2019, Safety_2020 : d.Safety_2020, Safety_2019 : d.Safety_2019, School_maintenance_2020 : d.School_maintenance_2020, School_maintenance_2019 : d.School_maintenance_2019, Unleashed_dog_2020 : d.Unleashed_dog_2020, Unleashed_dog_2019 : d.Unleashed_dog_2019, Unsanitary_condition_2020 : d.Unsanitary_condition_2020, Unsanitary_condition_2019 : d.Unsanitary_condition_2019, Violation_of_park_rules_2020 : d.Violation_of_park_rules_2020, Violation_of_park_rules_2019 : d.Violation_of_park_rules_2019, Water_leak_2020 : d.Water_leak_2020, Water_leak_2019 : d.Water_leak_2019 }
+    return { date : parseDate(d.date), text : d.text, Abandoned_vehicle_2020 : d.Abandoned_vehicle_2020, Abandoned_vehicle_2019 : d.Abandoned_vehicle_2019, Blocked_driveway_2020 : d.Blocked_driveway_2020, Blocked_driveway_2019 : d.Blocked_driveway_2019, Consumer_complaint_2020 : d.Consumer_complaint_2020, Consumer_complaint_2019 : d.Consumer_complaint_2019, Derelict_bicycle_2020 : d.Derelict_bicycle_2020, Derelict_bicycle_2019 : d.Derelict_bicycle_2019, Derelict_vehicles_2020 : d.Derelict_vehicles_2020, Derelict_vehicles_2019 : d.Derelict_vehicles_2019, For_hire_vehicle_complaint_2020 : d.For_hire_vehicle_complaint_2020, For_hire_vehicle_complaint_2019 : d.For_hire_vehicle_complaint_2019, General_2020 : d.General_2020, General_2019 : d.General_2019, Illegal_parking_2020 : d.Illegal_parking_2020, Illegal_parking_2019 : d.Illegal_parking_2019, Lost_property_2020 : d.Lost_property_2020, Lost_property_2019 : d.Lost_property_2019, Noise_commercial_2020 : d.Noise_commercial_2020, Noise_commercial_2019 : d.Noise_commercial_2019, Noise_street_sidewalk_2020 : d.Noise_street_sidewalk_2020, Noise_street_sidewalk_2019 : d.Noise_street_sidewalk_2019, Non_emergency_police_matter_2020 : d.Non_emergency_police_matter_2020, Non_emergency_police_matter_2019 : d.Non_emergency_police_matter_2019, Panhandling_2020 : d.Panhandling_2020, Panhandling_2019 : d.Panhandling_2019, Rodent_2020 : d.Rodent_2020, Rodent_2019 : d.Rodent_2019, School_maintenance_2020 : d.School_maintenance_2020, School_maintenance_2019 : d.School_maintenance_2019, Street_condition_2020 : d.Street_condition_2020, Street_condition_2019 : d.Street_condition_2019, Taxi_complaint_2020 : d.Taxi_complaint_2020, Taxi_complaint_2019 : d.Taxi_complaint_2019 }
   },
 
   // Now I can use this dataset:
@@ -981,6 +988,7 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d[chosen_Y_2019]) })
+        .curve(d3.curveMonotoneX)
         
         // define (ie draw) the line at values not equal to NA
         .defined(function(d) { return d[chosen_Y_2019] != "NA"})
@@ -994,6 +1002,7 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d[chosen_Y_2020]) })
+        .curve(d3.curveMonotoneX)
         
         // define (ie draw) the line at values not equal to NA
         .defined(function(d) { return d[chosen_Y_2020] != "NA"})

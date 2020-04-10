@@ -128,7 +128,7 @@ Data from flightradar24.com
 Includes passenger, cargo, charter, and some business jet flights
 </i>
 </p>
-<h4 id="daily-change-in-mobile-phone-location-b-idtrendstitleretail--recreationb">Daily change in mobile phone location: <b id='trendsTitle'>Retail &amp; recreation</b></h4>
+<h4 id="daily-change-in-mobile-phone-location-reveal-our-new-normalbri-idtrendstitle-stylefont-size80retail--recreationi">Daily change in mobile phone location reveal our new normal<br><i id='trendsTitle' style='font-size:80%'>Retail &amp; recreation</i></h4>
 <p><button class="button" onclick="update('retail_rec'); changeText('Retail & recreation')">Retail &amp; recreation</button>
 <button class="button" onclick="update('groc_pharm'); changeText('Grocery & pharmacy')">Grocery &amp; pharmacy</button>
 <button class="button" onclick="update('parks'); changeText('Parks')">Parks</button>
@@ -137,36 +137,28 @@ Includes passenger, cargo, charter, and some business jet flights
 <button class="button" onclick="update('Residential'); changeText('Residential')">Residential</button></p>
 <div <div id="trends" style="position: static"></div>
 <p align="right" style="font-size:60%;"><i>Data from Google Mobility Reports. United States.<br></i></p>
-<h4 id="daily-change-in-nyc-311-calls-b-idthreeoneonetitlenon-emergency-police-matterb">Daily change in NYC 311 calls: <b id='threeOneOneTitle'>Non emergency police matter</b></h4>
+<h4 id="daily-nyc-311-calls-reflect-the-citys-changing-atmospherebri-idthreeoneonetitle-stylefont-size80non-emergency-police-matteri">Daily NYC 311 calls reflect the city&rsquo;s changing atmosphere<br><i id='threeOneOneTitle' style='font-size:80%'>Non emergency police matter</i></h4>
 <!-- Dropbown menu -->
 <div class="dropdown">
   <button class="dropbtn">Categories</button>
   <div class="dropdown-content">
-    <a onclick="update311('Appliance'); changeText311('Appliance')">Appliance</a>
-    <a onclick="update311('Boilers'); changeText311('Boilers')">Boilers</a>
-    <a onclick="update311('Construction_lead_dust'); changeText311('Construction lead dust')">Construction lead dust</a>
+    <a onclick="update311('Abandoned_vehicle'); changeText311('Abandoned vehicle')">Abandoned vehicle</a>
+    <a onclick="update311('Blocked_driveway'); changeText311('Blocked driveway')">Blocked driveway</a>
     <a onclick="update311('Consumer_complaint'); changeText311('Consumer complaint')">Consumer complaint</a>
-    <a onclick="update311('Door_window'); changeText311('Door window')">Door window</a>
-    <a onclick="update311('Drinking'); changeText311('Drinking')">Drinking</a>
-    <a onclick="update311('Electric'); changeText311('Electric')">Electric</a>
-    <a onclick="update311('Flooring_stairs'); changeText311('Flooring stairs')">Flooring stairs</a>
-    <a onclick="update311('Food_establishment'); changeText311('Food establishment')">Food establishment</a>
+    <a onclick="update311('Derelict_bicycle'); changeText311('Derelict bicycle')">Derelict bicycle</a>
+    <a onclick="update311('Derelict_vehicles'); changeText311('Derelict vehicles')">Derelict vehicles</a>
+    <a onclick="update311('For_hire_vehicle_complaint'); changeText311('For hire vehicle complaint')">For hire vehicle complaint</a>
     <a onclick="update311('General'); changeText311('General')">General</a>
-    <a onclick="update311('Indoor_air_quality'); changeText311('Indoor air quality')">Indoor air quality</a>
-    <a onclick="update311('New_tree_request'); changeText311('New tree request')">New tree request</a>
-    <a onclick="update311('Noise'); changeText311('Noise')">Noise</a>
-    <a onclick="update311('Noise_residential'); changeText311('Noise residential')">Noise residential</a>
+    <a onclick="update311('Illegal_parking'); changeText311('Illegal parking')">Illegal parking</a>
+    <a onclick="update311('Lost_property'); changeText311('Lost property')">Lost property</a>
+    <a onclick="update311('Noise_commercial'); changeText311('Noise commercial')">Noise commercial</a>
     <a onclick="update311('Noise_street_sidewalk'); changeText311('Noise street sidewalk')">Noise street sidewalk</a>
-    <a onclick="update311('Noise_vehicle'); changeText311('Noise vehicle')">Noise vehicle</a>
     <a onclick="update311('Non_emergency_police_matter'); changeText311('Non emergency police matter')">Non emergency police matter</a>
-    <a onclick="update311('Paint_plaster'); changeText311('Paint plaster')">Paint plaster</a>
-    <a onclick="update311('Plumbing'); changeText311('Plumbing')">Plumbing</a>
-    <a onclick="update311('Safety'); changeText311('Safety')">Safety</a>
+    <a onclick="update311('Panhandling'); changeText311('Panhandling')">Panhandling</a>
+    <a onclick="update311('Rodent'); changeText311('Rodent')">Rodent</a>
     <a onclick="update311('School_maintenance'); changeText311('School maintenance')">School maintenance</a>
-    <a onclick="update311('Unleashed_dog'); changeText311('Unleashed dog')">Unleashed dog</a>
-    <a onclick="update311('Unsanitary_condition'); changeText311('Unsanitary condition')">Unsanitary condition</a>
-    <a onclick="update311('Violation_of_park_rules'); changeText311('Violation of park rules')">Violation of park rules</a>
-    <a onclick="update311('Water_leak'); changeText311('Water leak')">Water leak</a>
+    <a onclick="update311('Street_condition'); changeText311('Street condition')">Street condition</a>
+    <a onclick="update311('Taxi_complaint'); changeText311('Taxi complaint')">Taxi complaint</a>
   </div>
 </div>
 <br>
@@ -235,7 +227,7 @@ Data from NYC OpenData
 <!-- Load d3 plots -->
 <script src="/d3/covid-impact/covid_plots.js"></script>
 <!-- Load custom CSS -->
-<link rel="stylesheet" type="text/css" href="/posts-css/covid.css">
+<link rel="stylesheet" type="text/css" href="/posts-css/covid-impact.css">
 <!-- For changing text in google trends plot title -->
 <script>
 function changeText(newText)
