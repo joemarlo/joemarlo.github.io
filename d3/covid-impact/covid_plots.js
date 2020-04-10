@@ -309,7 +309,18 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .style("fill", "#2b7551") 
         .text("2020");
         
-    // Add the points
+    // Add the 2019 points
+    svg_S
+      .append("g")
+      .selectAll("dot")
+      .data(data)
+      .enter()
+      .append("circle")
+        .attr("cx", function(d) { return x(d.date) } )
+        .attr("cy", function(d) { return y(d.subway_2019) } )
+        .attr("class", function(d, i) {return "pt_subway19" + i;});
+
+    // Add the 2020 points
     svg_S
       .append("g")
       .selectAll("dot")
@@ -318,7 +329,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .append("circle")
         .attr("cx", function(d) { return x(d.date) } )
         .attr("cy", function(d) { return y(d.subway_2020) } )
-        .attr("class", function(d, i) {return "pt" + i;})
+        .attr("class", function(d, i) {return "pt_subway20" + i;})
         .attr("r", 4)
         .attr("stroke", "#2b7551")
         .attr("stroke-width", 2)
@@ -327,12 +338,21 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .on('mouseover', function(d, i) {
             console.log("mouseover on", this);
             // make the mouseover'd element big
-            d3.selectAll("circle.pt" + i)
+            d3.selectAll("circle.pt_subway20" + i)
               .transition()
               .duration(75)
               .attr('r', 8)
               .attr('fill', '#333333')
               .attr('stroke-opacity', 0);
+            
+            // highlight the 2019 point
+            d3.selectAll("circle.pt_subway19" + i)
+              .transition()
+              .duration(75)
+              .attr('r', 6)
+              .attr('fill', '#737373')
+              .attr('stroke-opacity', 0)
+              .attr('opacity', 1);
             
             // this makes the tooltip show
             Tooltip.style("opacity", 1);
@@ -353,12 +373,18 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .on('mouseout', function(d, i) {
             console.log("mouseout", this);
             // return the mouseover'd element to the original format
-            d3.selectAll("circle.pt" + i)
+            d3.selectAll("circle.pt_subway20" + i)
               .transition()
               .duration(200)
               .attr('r', 4)
               .attr('fill', 'white')
               .attr('stroke-opacity', 1);
+            
+            // return the 2019 dot
+            d3.selectAll("circle.pt_subway19" + i)
+              .transition()
+              .duration(200)
+              .attr('opacity', 0);
               
               // this makes the tooltip disappear
               Tooltip.style("opacity", 0);
@@ -441,7 +467,18 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         // define (ie draw) the line at values not equal to NA
         .defined(function(d) { return d.bike_2020 != "NA" })
         );
-    
+        
+    // Add the 2019 points
+    svg_C
+      .append("g")
+      .selectAll("dot")
+      .data(data)
+      .enter()
+      .append("circle")
+        .attr("cx", function(d) { return x(d.date) } )
+        .attr("cy", function(d) { return y(d.bike_2019) } )
+        .attr("class", function(d, i) {return "pt_bike19" + i;});
+        
     // Add the points
     var circle_bikes = svg_C
       .append("g")
@@ -451,7 +488,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .append("circle")
         .attr("cx", function(d) { return x(d.date) } )
         .attr("cy", function(d) { return y(d.bike_2020) } )
-        .attr("class", function(d, i) {return "pt" + i;})
+        .attr("class", function(d, i) {return "pt_bike20" + i;})
         //make radius 0 if bike count is NA, otherwise make it 4
         .attr("r", 4)
         .attr("stroke", "#3262a8")
@@ -462,12 +499,21 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .on('mouseover', function(d, i) {
             console.log("mouseover on", this);
             // make the mouseover'd element big
-            d3.selectAll("circle.pt" + i)
+            d3.selectAll("circle.pt_bike20" + i)
               .transition()
               .duration(75)
               .attr('r', 8)
               .attr('fill', '#333333')
               .attr('stroke-opacity', 0);
+          
+          // highlight the 2019 point
+            d3.selectAll("circle.pt_bike19" + i)
+              .transition()
+              .duration(75)
+              .attr('r', 6)
+              .attr('fill', '#737373')
+              .attr('stroke-opacity', 0)
+              .attr('opacity', 1);
             
             // this makes the tooltip show
             Tooltip.style("opacity", 1);
@@ -490,12 +536,18 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .on('mouseout', function(d, i) {
             console.log("mouseout", this);
             // return the mouseover'd element to the original format
-            d3.selectAll("circle.pt" + i)
+            d3.selectAll("circle.pt_bike20" + i)
               .transition()
               .duration(200)
               .attr('r', 4)
               .attr('fill', 'white')
               .attr('stroke-opacity', 1);
+              
+            // return the 2019 dot
+            d3.selectAll("circle.pt_bike19" + i)
+              .transition()
+              .duration(200)
+              .attr('opacity', 0);
               
               // this makes the tooltip disappear
               Tooltip.style("opacity", 0);
@@ -577,7 +629,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .append("circle")
         .attr("cx", function(d) { return x(d.date) } )
         .attr("cy", function(d) { return y(d.ICSA) } )
-        .attr("class", function(d, i) {return "pt" + i;})
+        .attr("class", function(d, i) {return "pt_unemp" + i;})
         .attr("r", 4)
         .attr("stroke", "#2b7551")
         .attr("stroke-width", 2)
@@ -587,7 +639,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .on('mouseover', function(d, i) {
             console.log("mouseover on", this);
             // make the mouseover'd element big
-            d3.selectAll("circle.pt" + i)
+            d3.selectAll("circle.pt_unemp" + i)
               .transition()
               .duration(75)
               .attr('r', 8)
@@ -602,9 +654,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
           // this makes the tooltip move
           Tooltip
             .html("<b>" + d.text + "</b><br>" + 
-                  "- " + Math.round(d.subway_2020 * 10, 2) / 10 + " million subway rides <br>" + 
-                  "- " + Math.round(d.bike_2020 * 10, 2) / 10 + " thousand Citibike rides <br>" +
-                  "- " + Math.round(d.ICSA * 10, 2) / 10 + " million unemployment claims <br>")
+                  Math.round(d.ICSA * 10, 2) / 10 + " million unemployment claims <br>")
             .style("left", d3.event.pageX + 10 + "px")
             .style("top", d3.event.pageY + "px");
         })
@@ -612,7 +662,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .on('mouseout', function(d, i) {
             console.log("mouseout", this);
             // return the mouseover'd element to the original format
-            d3.selectAll("circle.pt" + i)
+            d3.selectAll("circle.pt_unemp" + i)
               .transition()
               .duration(200)
               .attr('r', 4)
@@ -698,7 +748,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .append("circle")
         .attr("cx", function(d) { return x(d.date) } )
         .attr("cy", function(d) { return y(d.flights) } )
-        .attr("class", function(d, i) {return "pt" + i;})
+        .attr("class", function(d, i) {return "pt_flights" + i;})
         .attr("r", 4)
         .attr("stroke", "#2b7551")
         .attr("stroke-width", 2)
@@ -708,7 +758,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .on('mouseover', function(d, i) {
             console.log("mouseover on", this);
             // make the mouseover'd element big
-            d3.selectAll("circle.pt" + i)
+            d3.selectAll("circle.pt_flights" + i)
               .transition()
               .duration(75)
               .attr('r', 8)
@@ -723,10 +773,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
           // this makes the tooltip move
           Tooltip
             .html("<b>" + d.text + "</b><br>" + 
-                  "- " + Math.round(d.subway_2020 * 10, 2) / 10 + " million subway rides <br>" + 
-                  "- " + Math.round(d.bike_2020 * 10, 2) / 10 + " thousand Citibike rides <br>" +
-                  "- " + Math.round(d.ICSA * 10, 2) / 10 + " million unemployment claims <br>" +
-                  "- " + Math.round(d.flights * 10, 2) / 10 + " thousand commercial flights")
+                  Math.round(d.flights * 10, 2) / 10 + " thousand commercial flights")
             .style("left", d3.event.pageX + 10 + "px")
             .style("top", d3.event.pageY + "px");
         })
@@ -734,7 +781,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .on('mouseout', function(d, i) {
             console.log("mouseout", this);
             // return the mouseover'd element to the original format
-            d3.selectAll("circle.pt" + i)
+            d3.selectAll("circle.pt_flights" + i)
               .transition()
               .duration(200)
               .attr('r', 4)
@@ -847,7 +894,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .append("circle")
         .attr("cx", function(d) { return x(d.date) } )
         .attr("cy", function(d) { return y(d[chosen_Y]) } )
-        .attr("class", function(d, i) {return "pt" + i;})
+        .attr("class", function(d, i) {return "pt_trends" + i;})
         .attr("r", 4)
         .attr("stroke", "#2b7551")
         .attr("stroke-width", 2)
@@ -857,7 +904,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .on('mouseover', function(d, i) {
             console.log("mouseover on", this);
             // make the mouseover'd element big
-            d3.selectAll("circle.pt" + i)
+            d3.selectAll("circle.pt_trends" + i)
               .transition()
               .duration(75)
               .attr('r', 8)
@@ -880,7 +927,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .on('mouseout', function(d, i) {
             console.log("mouseout", this);
             // return the mouseover'd element to the original format
-            d3.selectAll("circle.pt" + i)
+            d3.selectAll("circle.pt_trends" + i)
               .transition()
               .duration(200)
               .attr('r', 4)
@@ -1008,6 +1055,17 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
         .defined(function(d) { return d[chosen_Y_2020] != "NA"})
         );
 
+    // Add the 2019 points
+    svg_311
+      .append("g")
+      .selectAll("dot")
+      .data(data)
+      .enter()
+      .append("circle")
+        .attr("cx", function(d) { return x(d.date) } )
+        .attr("cy", function(d) { return y(d[chosen_Y_2019]) } )
+        .attr("class", function(d, i) {return "pt_31119" + i;});
+        
     // Add the points
     var circle_trends = svg_311
       .append("g")
@@ -1017,7 +1075,7 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
       .append("circle")
         .attr("cx", function(d) { return x(d.date) } )
         .attr("cy", function(d) { return y(d[chosen_Y_2020]) } )
-        .attr("class", function(d, i) {return "pt" + i;})
+        .attr("class", function(d, i) {return "pt_31120" + i;})
         .attr("r", 4)
         .attr("stroke", "#2b7551")
         .attr("stroke-width", 2)
@@ -1027,12 +1085,21 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
         .on('mouseover', function(d, i) {
             console.log("mouseover on", this);
             // make the mouseover'd element big
-            d3.selectAll("circle.pt" + i)
+            d3.selectAll("circle.pt_31120" + i)
               .transition()
               .duration(75)
               .attr('r', 8)
               .attr('fill', '#333333')
               .attr('stroke-opacity', 0);
+            
+            // highlight the 2019 point
+            d3.selectAll("circle.pt_31119" + i)
+              .transition()
+              .duration(75)
+              .attr('r', 6)
+              .attr('fill', '#737373')
+              .attr('stroke-opacity', 0)
+              .attr('opacity', 1);
             
             // this makes the tooltip show
             Tooltip.style("opacity", 1);
@@ -1053,12 +1120,19 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
         .on('mouseout', function(d, i) {
             console.log("mouseout", this);
             // return the mouseover'd element to the original format
-            d3.selectAll("circle.pt" + i)
+            d3.selectAll("circle.pt_31120" + i)
               .transition()
               .duration(200)
               .attr('r', 4)
               .attr('fill', 'white')
               .attr('stroke-opacity', 1);
+              
+                        
+            // return the 2019 dot
+            d3.selectAll("circle.pt_31119" + i)
+              .transition()
+              .duration(200)
+              .attr('opacity', 0);
               
               // this makes the tooltip disappear
               Tooltip.style("opacity", 0);
