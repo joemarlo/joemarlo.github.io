@@ -10,9 +10,13 @@ var	parseDate = d3.timeParse("%Y-%m-%d");
 // set death of first death to draw vertical bar
 var first_death = parseDate('2020-02-29');
 
+// set opacity to de-emphasize lines and circles when using tooltip
+var de_emphasize_opacity = 0.2;
+
 // style the line to be drawn for first death
 function styleDeath(selection){
     selection
+      .attr("class", "death_bar")
       .attr("x1", x(first_death)) 
       .attr("y1", 0)
       .attr("x2", x(first_death))
@@ -21,6 +25,15 @@ function styleDeath(selection){
       .style("stroke-dasharray", ("4, 4"))
       .style("stroke", "#333333")
       .style("fill", "none");
+}
+
+// style the line to be drawn for first death
+function styleConn(selection){
+    selection
+        .style('stroke', '#737373')
+        .attr('opacity', 0)
+        .style("stroke-width", 2.5)
+        .style("stroke-dasharray", ("6, 4"));
 }
 
 // Set the axis ranges
@@ -243,6 +256,21 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     svg_S.append("line")
       .call(styleDeath);
       
+    // add line between 2019 and 2020 points
+    /*
+    var conn_lines = svg_S.selectAll("line")
+      .data(data)
+      .enter()
+      .append("line")
+        .call(styleConn)
+        .attr('opacity', 0)
+        .attr("class", function(d, i) {return "line_conn line_conn" + i;})
+        .attr("x1", function(d) { return x(d.date) } )
+        .attr("y1", function(d) { return y(d.subway_2019) } )
+        .attr("x2", function(d) { return x(d.date) } )
+        .attr("y2", function(d) { return y(d.subway_2020) } );
+    */
+      
     // Add 2019 line
     svg_S.append("path")
       .datum(data)
@@ -277,37 +305,38 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         
     // add label for first death
     svg_S.append("text")
+        .attr("class", "plot_label")
         .attr("x", (width * 0.49))             
         .attr("y", (height * 0.92))
         .attr("text-anchor", "right")  
         .style("font-size", "12px") 
         .style("font-weight", "700") 
         .style("fill", "#333333")
-        .style("opacity", 0.8)
         .text("First US death");
       svg_S.append("text")
+        .attr("class", "plot_label")
         .attr("x", (width * 0.56))             
         .attr("y", (height * 0.97))
         .attr("text-anchor", "right")  
         .style("font-size", "12px") 
         .style("font-weight", "700") 
         .style("fill", "#333333")
-        .style("opacity", 0.8)
         .text("Feb 29");
     
     // add label for 2019
     svg_S.append("text")
+        .attr("class", "plot_label")
         .attr("x", (width * 0.94))             
         .attr("y", (height * 0.07))
         .attr("text-anchor", "left")  
         .style("font-size", "12px") 
         .style("font-weight", "700") 
         .style("fill", "#333333")
-        .style("opacity", 0.8)
         .text("2019");
     
     // add label for 2019
     svg_S.append("text")
+        .attr("class", "plot_label")
         .attr("x", (width * 0.87))             
         .attr("y", (height * 0.77))
         .attr("text-anchor", "left")  
@@ -345,13 +374,17 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         // Three function that change the tooltip when user hover / move / leave a cell
         .on('mouseover', function(d, i) {
             console.log("mouseover on", this);
-            
-            // de-emphasis lines and circles
+              
+            // de-emphasize lines, circles, text labels, 
             d3.selectAll("path.path_subway")
-              .attr('opacity', 0.3);
+              .attr('opacity', de_emphasize_opacity);
             d3.selectAll("circle.pt_subway20")
-              .attr('stroke-opacity', 0.3);
-            
+              .attr('stroke-opacity', de_emphasize_opacity);
+            svg_S.selectAll("text.plot_label")
+              .attr('opacity', de_emphasize_opacity);
+            svg_S.selectAll("line.death_bar")
+              .attr('opacity', de_emphasize_opacity);
+              
             // make the mouseover'd element big
             d3.selectAll("circle.pt_subway20" + i)
               .transition()
@@ -368,6 +401,10 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
               .attr('r', 6)
               .attr('fill', '#737373')
               .attr('stroke-opacity', 0)
+              .attr('opacity', 1);
+              
+            // highlight the selected points connection
+            d3.selectAll("line.line_conn" + i)
               .attr('opacity', 1);
             
             // this makes the tooltip show
@@ -409,6 +446,14 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
               .attr('opacity', 1);
             d3.selectAll("circle.pt_subway20")
               .attr('stroke-opacity', 1);
+            svg_S.selectAll("text.plot_label")
+              .attr('opacity', 1);
+            svg_S.selectAll("line.death_bar")
+              .attr('opacity', 1);
+
+            // remove the selected points connection
+            d3.selectAll("line.line_conn" + i)
+              .attr('opacity', 0);
 
               // this makes the tooltip disappear
               Tooltip.style("opacity", 0);
@@ -419,6 +464,11 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
 	  console.log(d);
 	return d.subway_2019 == "NA" }).remove();
 
+/*
+  conn_lines.filter(function(d) { 
+	  console.log(d);
+	return d.subway_2019 == "NA" }).remove();
+*/
 
   // citibike plot
   
@@ -465,6 +515,21 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     // add vertical bar for first death
     svg_C.append("line")
       .call(styleDeath);
+
+      
+    // add line between 2019 and 2020 points
+    /*
+    var conn_bike_lines = svg_C.selectAll("line")
+      .data(data)
+      .enter()
+      .append("line")
+        .call(styleConn)
+        .attr("class", function(d, i) {return "line_bike_conn line_bike_conn" + i;})
+        .attr("x1", function(d) { return x(d.date) } )
+        .attr("y1", function(d) { return y(d.bike_2019) } )
+        .attr("x2", function(d) { return x(d.date) } )
+        .attr("y2", function(d) { return y(d.bike_2020) } );
+    */
 
     // Add the 2019 line
     svg_C.append("path")
@@ -531,9 +596,11 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
             
             // de-emphasis lines and circles
             d3.selectAll("path.path_bike")
-              .attr('opacity', 0.3);
+              .attr('opacity', de_emphasize_opacity);
             d3.selectAll("circle.pt_bike20")
-              .attr('stroke-opacity', 0.3);
+              .attr('stroke-opacity', de_emphasize_opacity);
+            svg_C.selectAll("line.death_bar")
+              .attr('opacity', de_emphasize_opacity);
             
             // make the mouseover'd element big
             d3.selectAll("circle.pt_bike20" + i)
@@ -550,6 +617,10 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
               .attr('r', 6)
               .attr('fill', '#737373')
               .attr('stroke-opacity', 0)
+              .attr('opacity', 1);
+            
+          // highlight the selected points connection
+            d3.selectAll("line.line_bike_conn" + i)
               .attr('opacity', 1);
             
             // this makes the tooltip show
@@ -589,6 +660,12 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
               .attr('opacity', 1);
             d3.selectAll("circle.pt_bike20")
               .attr('stroke-opacity', 1);
+            svg_C.selectAll("line.death_bar")
+              .attr('opacity', 1);
+              
+            // remove the selected points connection
+            d3.selectAll("line.line_bike_conn" + i)
+              .attr('opacity', 0);
               
               // this makes the tooltip disappear
               Tooltip.style("opacity", 0);
@@ -599,6 +676,11 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
 	  console.log(d);
 	return d.bike_2020 == "NA" }).remove();
   
+  /*
+  conn_bike_lines.filter(function(d) { 
+	  console.log(d);
+	return d.bike_2020 == "NA" || d.bike_2019 == "NA" }).remove();
+  */
   
   // unemployment plot
   
@@ -1024,7 +1106,12 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
   
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.date; })).nice();
-    y.domain( [0, d3.max(data, function (d) { return d[chosen_Y_2020] * 1.1; })]).nice();
+    y.domain( [0, 
+      d3.max([
+        d3.max(data, function (d) { return d[chosen_Y_2020] * 1.1; }),
+        d3.max(data, function (d) { return d[chosen_Y_2019] * 1.1; })
+        ])
+      ]).nice();
 
     // add the X gridlines
     svg_311.append("g")			
@@ -1130,9 +1217,11 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
             
             // de-emphasis lines and circles
             d3.selectAll("path.path_311")
-              .attr('opacity', 0.3);
+              .attr('opacity', de_emphasize_opacity);
             d3.selectAll("circle.pt_31120")
-              .attr('stroke-opacity', 0.3);
+              .attr('stroke-opacity', de_emphasize_opacity);
+            svg_311.selectAll("line.death_bar")
+              .attr('opacity', de_emphasize_opacity);
             
             // make the mouseover'd element big
             d3.selectAll("circle.pt_31120" + i)
@@ -1177,7 +1266,6 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
               .attr('fill', 'white')
               .attr('stroke-opacity', 1);
               
-                        
             // return the 2019 dot
             d3.selectAll("circle.pt_31119" + i)
               .transition()
@@ -1189,6 +1277,8 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
               .attr('opacity', 1);
             d3.selectAll("circle.pt_31120")
               .attr('stroke-opacity', 1);
+            svg_311.selectAll("line.death_bar")
+              .attr('opacity', 1);
               
               // this makes the tooltip disappear
               Tooltip.style("opacity", 0);
