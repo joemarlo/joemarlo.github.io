@@ -929,7 +929,7 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
   
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.date; })).nice();
-    y.domain( [0, d3.max(data, function (d) { return d[chosen_Y_2020] * 1.1; })]);
+    y.domain( [0, d3.max(data, function (d) { return d[chosen_Y_2020] * 1.1; })]).nice();
 
     // add the X gridlines
     svg_311.append("g")			
@@ -965,7 +965,7 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
         .ticks(my_nYticks));
       
     // text label for the y axis
-    svg_311.append("text").call(drawYlabel).text("Daily complaints");
+    svg_311.append("text").call(drawYlabel).text("Daily calls");
 
     // add vertical bar for first death
     svg_311.append("line")
@@ -1067,5 +1067,5 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
 
 
 update('retail_rec');
-update311('Consumer_complaint');
+update311('Non_emergency_police_matter');
 
