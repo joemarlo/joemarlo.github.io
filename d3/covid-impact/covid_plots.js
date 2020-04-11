@@ -278,7 +278,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("stroke", "#333333")
       .attr("stroke-width", 1)
       .attr("opacity", 0.5)
-      .attr("class", "path_subway")
+      .attr("class", "path_subway path_subway19")
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.subway_2019) })
@@ -444,6 +444,8 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
             // re-emphasis lines and circles
             d3.selectAll("path.path_subway")
               .attr('opacity', 1);
+            d3.selectAll("path.path_subway19")
+              .attr('opacity', 0.5);
             d3.selectAll("circle.pt_subway20")
               .attr('stroke-opacity', 1);
             svg_S.selectAll("text.plot_label")
@@ -538,7 +540,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("stroke", "#333333")
       .attr("stroke-width", 1)
       .attr("opacity", 0.5)
-      .attr("class", "path_bike")
+      .attr("class", "path_bike path_bike19")
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.bike_2019) })
@@ -658,6 +660,8 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
             // re-emphasis lines and circles
             d3.selectAll("path.path_bike")
               .attr('opacity', 1);
+            d3.selectAll("path.path_bike19")
+              .attr('opacity', 0.5);
             d3.selectAll("circle.pt_bike20")
               .attr('stroke-opacity', 1);
             svg_C.selectAll("line.death_bar")
@@ -1160,7 +1164,7 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
       .attr("stroke", "#333333")
       .attr("stroke-width", 1)
       .attr("opacity", 0.5)
-      .attr("class", "path_311")
+      .attr("class", "path_311 path_31119")
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d[chosen_Y_2019]) })
@@ -1275,6 +1279,8 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
             // re-emphasis lines and circles
             d3.selectAll("path.path_311")
               .attr('opacity', 1);
+            d3.selectAll("path.path_31119")
+              .attr('opacity', 0.5);              
             d3.selectAll("circle.pt_31120")
               .attr('stroke-opacity', 1);
             svg_311.selectAll("line.death_bar")
