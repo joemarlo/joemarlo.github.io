@@ -1,17 +1,17 @@
 
 // set the dimensions and margins of the graph
-var margin = {top: 10, right: 50, bottom: 30, left: 70},
+var margin = {top: 10, right: 50, bottom: 40, left: 75},
     width = 700 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
     
 // Function to parse the date / time
 var	parseDate = d3.timeParse("%Y-%m-%d");
 
-// set death of first death to draw vertical bar
-var first_death = parseDate('2020-02-29');
-
 // set opacity to de-emphasize lines and circles when using tooltip
 var de_emphasize_opacity = 0.2;
+
+// set death of first death to draw vertical bar
+var first_death = parseDate('2020-02-29');
 
 // style the line to be drawn for first death
 function styleDeath(selection){
@@ -27,7 +27,7 @@ function styleDeath(selection){
       .style("fill", "none");
 }
 
-// style the line to be drawn for first death
+// style the line to be drawn to connect 2020-2019 points
 function styleConn(selection){
     selection
         .style('stroke', '#737373')
@@ -40,7 +40,8 @@ function styleConn(selection){
 var x = d3.scaleTime().range([ 0, width ]);
 var y = d3.scaleLinear().range([ height, 0 ]);
 
-// set the number of y ticks and gridlines
+// set the number of and y ticks and gridlines
+var my_nXticks = d3.timeMonth.every(1);
 var my_nYticks = 5;
 
 // set the padding around the ticks
@@ -52,7 +53,7 @@ var my_tickSize = 15;
 // gridlines in x axis function
 function make_x_gridlines() {
       return d3.axisBottom(x)
-          .ticks();
+          .ticks(my_nXticks);
 }
 
 // gridlines in y axis function
@@ -92,8 +93,8 @@ function YoY_diff(latest_number, old_number) {
   if (isNaN(num)){
     return num = '';
   } else {
-      // add "+" in front if positive and add % sign
-  num = "(" + printableNumber(num) + " vs. 2019)";
+    // add "+" in front if positive and add % sign
+    num = "(" + printableNumber(num) + " vs. 2019)";
   }
   return num;
 }
@@ -205,7 +206,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
 
   // When reading the csv, I must format variables:
   function(d){
-    return { date : parseDate(d.date), subway_2020 : d.subway_2020, subway_2019 : d.subway_2019, text : d.text, bike_2020 : d.bike_2020, bike_2019 : d.bike_2019, ICSA : d.ICSA, flights : d.flights, ICSA_exists : d.ICSA_exists, retail_rec : d.retail_rec, groc_pharm : d.groc_pharm, parks : d.parks, transit : d.transit, workplaces : d.workplaces, Residential : d.Residential }
+    return { date : parseDate(d.date), subway_2020 : d.subway_2020, subway_2019 : d.subway_2019, text : d.text, bike_2020 : d.bike_2020, bike_2019 : d.bike_2019, ICSA_2020 : d.ICSA_2020, ICSA_2019 : d.ICSA_2019, flights : d.flights, ICSA_20_exists : d.ICSA_20_exists, ICSA_19_exists : d.ICSA_19_exists, retail_rec : d.retail_rec, groc_pharm : d.groc_pharm, parks : d.parks, transit : d.transit, workplaces : d.workplaces, Residential : d.Residential }
   },
 
   // Now I can use this dataset:
@@ -213,8 +214,8 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
   
   // subway plot
     // Scale the range of the data
-    x.domain(d3.extent(data, function(d) { return d.date; })).nice();
-    y.domain( [0, 6] );
+    x.domain(d3.extent(data, function(d) { return d.date; }));
+    y.domain( [0, 7] );
     
     // add the X gridlines
     svg_S.append("g")			
@@ -239,7 +240,9 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x)
         .tickPadding(my_tickPadsize)
-        .tickSize(my_tickSize));
+        .tickSize(my_tickSize)
+        .ticks(my_nXticks)
+        .tickFormat(d3.timeFormat("%b")));
 
     // Add Y axis
     svg_S.append("g")
@@ -306,7 +309,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     // add label for first death
     svg_S.append("text")
         .attr("class", "plot_label")
-        .attr("x", (width * 0.49))             
+        .attr("x", (width * 0.505))             
         .attr("y", (height * 0.92))
         .attr("text-anchor", "right")  
         .style("font-size", "12px") 
@@ -315,8 +318,8 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .text("First US death");
       svg_S.append("text")
         .attr("class", "plot_label")
-        .attr("x", (width * 0.56))             
-        .attr("y", (height * 0.97))
+        .attr("x", (width * 0.575))             
+        .attr("y", (height * 0.98))
         .attr("text-anchor", "right")  
         .style("font-size", "12px") 
         .style("font-weight", "700") 
@@ -327,18 +330,18 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     svg_S.append("text")
         .attr("class", "plot_label")
         .attr("x", (width * 0.94))             
-        .attr("y", (height * 0.07))
+        .attr("y", (height * 0.09))
         .attr("text-anchor", "left")  
         .style("font-size", "12px") 
         .style("font-weight", "700") 
         .style("fill", "#333333")
         .text("2019");
     
-    // add label for 2019
+    // add label for 2020
     svg_S.append("text")
         .attr("class", "plot_label")
-        .attr("x", (width * 0.87))             
-        .attr("y", (height * 0.77))
+        .attr("x", (width * 0.90))             
+        .attr("y", (height * 0.78))
         .attr("text-anchor", "left")  
         .style("font-size", "12px") 
         .style("font-weight", "700") 
@@ -475,7 +478,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
   // citibike plot
   
     // Scale the range of the data
-    x.domain(d3.extent(data, function(d) { return d.date; })).nice();
+    x.domain(d3.extent(data, function(d) { return d.date; }));
     y.domain( [0, 100] );
     
     // add the X gridlines
@@ -501,7 +504,9 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x)
         .tickPadding(my_tickPadsize)
-        .tickSize(my_tickSize));
+        .tickSize(my_tickSize)
+        .ticks(my_nXticks)
+        .tickFormat(d3.timeFormat("%b")));
 
     // Add Y axis
     svg_C.append("g")
@@ -689,7 +694,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
   // unemployment plot
   
     // Scale the range of the data
-    x.domain(d3.extent(data, function(d) { return d.date; })).nice();
+    x.domain(d3.extent(data, function(d) { return d.date; }));
     y.domain( [0, 7] );
     
 
@@ -716,7 +721,9 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x)
         .tickPadding(my_tickPadsize)
-        .tickSize(my_tickSize));
+        .tickSize(my_tickSize)
+        .ticks(my_nXticks)
+        .tickFormat(d3.timeFormat("%b")));
 
     // Add Y axis
     svg_unemp.append("g")
@@ -733,20 +740,49 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     svg_unemp.append("line")
       .call(styleDeath);
 
+    // Add the 2019 line 
+    svg_unemp.append("path")
+      .datum(data)
+      .call(styleLine)
+      .attr("stroke", "#333333")
+      .attr("stroke-width", 1)
+      .attr("opacity", 0.5)
+      .attr("class", "path_unemp path_unemp19")
+      .attr("d", d3.line()
+        .x(function(d) { return x(d.date) })
+        .y(function(d) { return y(d.ICSA_2019) })
+        .curve(d3.curveMonotoneX)
+        
+        // define (ie draw) the line at values not equal to NA
+        .defined(function(d) { return d.ICSA_2019 != "NA"})
+        );
+
     // Add the line
     var line_unemp = svg_unemp.append("path")
       .datum(data)
       .call(styleLine)
       .attr("stroke", "#2b7551")
+      .attr("class", "path_unemp path_unemp20")
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
-        .y(function(d) { return y(d.ICSA) })
+        .y(function(d) { return y(d.ICSA_2020) })
         .curve(d3.curveMonotoneX)
         
         // define (ie draw) the line at values not equal to NA
-        .defined(function(d) { return d.ICSA > 0 })
+        .defined(function(d) { return d.ICSA_2020 > 0 })
         );
-        
+
+    // Add the 2019 points
+    svg_unemp
+      .append("g")
+      .selectAll("dot")
+      .data(data)
+      .enter()
+      .append("circle")
+        .attr("cx", function(d) { return x(d.date) } )
+        .attr("cy", function(d) { return y(d.ICSA_2019) } )
+        .attr("class", function(d, i) {return "pt_unemp19" + i;});
+
     // Add the points
     var circle_unemp = svg_unemp
       .append("g")
@@ -755,8 +791,8 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .enter()
       .append("circle")
         .attr("cx", function(d) { return x(d.date) } )
-        .attr("cy", function(d) { return y(d.ICSA) } )
-        .attr("class", function(d, i) {return "pt_unemp" + i;})
+        .attr("cy", function(d) { return y(d.ICSA_2020) } )
+        .attr("class", function(d, i) {return "pt_unemp20 pt_unemp" + i;})
         .attr("r", 4)
         .attr("stroke", "#2b7551")
         .attr("stroke-width", 2)
@@ -765,13 +801,31 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         // Three function that change the tooltip when user hover / move / leave a cell
         .on('mouseover', function(d, i) {
             console.log("mouseover on", this);
+            
+            // de-emphasis lines and circles
+            d3.selectAll("path.path_unemp")
+              .attr('opacity', de_emphasize_opacity);
+            d3.selectAll("circle.pt_unemp20")
+              .attr('stroke-opacity', de_emphasize_opacity);
+            svg_C.selectAll("line.death_bar")
+              .attr('opacity', de_emphasize_opacity);
+            
             // make the mouseover'd element big
-            d3.selectAll("circle.pt_unemp" + i)
+            d3.selectAll("circle.pt_unemp20" + i)
               .transition()
               .duration(75)
               .attr('r', 8)
               .attr('fill', '#333333')
               .attr('stroke-opacity', 0);
+          
+          // highlight the 2019 point
+            d3.selectAll("circle.pt_unemp19" + i)
+              .transition()
+              .duration(75)
+              .attr('r', 6)
+              .attr('fill', '#737373')
+              .attr('stroke-opacity', 0)
+              .attr('opacity', 1);
             
             // this makes the tooltip show
             Tooltip.style("opacity", 1);
@@ -780,21 +834,42 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .on('mousemove', function(d, i) {
           // this makes the tooltip move
           Tooltip
-            .html("<b>" + d.text + "</b><br>" + 
-                  Math.round(d.ICSA * 10, 2) / 10 + " million unemployment claims <br>")
+            .html(
+              "<b>" + d.text + "</b><br>" + 
+                  Math.round(d.ICSA_2020 * 10, 2) / 10 + " million unemployment claims " 
+                  + YoY_diff(d.ICSA_2020, d.ICSA_2019)
+                  )
             .style("left", d3.event.pageX + 10 + "px")
             .style("top", d3.event.pageY + "px");
         })
         
         .on('mouseout', function(d, i) {
             console.log("mouseout", this);
+            
+            
             // return the mouseover'd element to the original format
-            d3.selectAll("circle.pt_unemp" + i)
+            d3.selectAll("circle.pt_unemp20" + i)
               .transition()
               .duration(200)
               .attr('r', 4)
               .attr('fill', 'white')
               .attr('stroke-opacity', 1);
+              
+            // return the 2019 dot
+            d3.selectAll("circle.pt_unemp19" + i)
+              .transition()
+              .duration(200)
+              .attr('opacity', 0);
+              
+            // re-emphasis lines and circles
+            d3.selectAll("path.path_unemp")
+              .attr('opacity', 1);
+            d3.selectAll("path.path_unemp19")
+              .attr('opacity', 0.5);
+            d3.selectAll("circle.pt_unemp20")
+              .attr('stroke-opacity', 1);
+            svg_C.selectAll("line.death_bar")
+              .attr('opacity', 1);
               
               // this makes the tooltip disappear
               Tooltip.style("opacity", 0);
@@ -803,13 +878,13 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
   // this removes the circles where we don't have ICSA values
   circle_unemp.filter(function(d) { 
 	  console.log(d);
-	return d.ICSA_exists != "TRUE"}).remove();
+	return d.ICSA_20_exists != "TRUE"}).remove();
 	
           
   // flights plot
   
     // Scale the range of the data
-    x.domain(d3.extent(data, function(d) { return d.date; })).nice();
+    x.domain(d3.extent(data, function(d) { return d.date; }));
     y.domain( [0, 140] );
 
     // add the X gridlines
@@ -835,7 +910,9 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x)
         .tickPadding(my_tickPadsize)
-        .tickSize(my_tickSize));
+        .tickSize(my_tickSize)
+        .ticks(my_nXticks)
+        .tickFormat(d3.timeFormat("%b")));
 
     // Add Y axis
     svg_flights.append("g")
@@ -954,7 +1031,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     
   
     // Scale the range of the data
-    x.domain(d3.extent(data, function(d) { return d.date; })).nice();
+    x.domain(d3.extent(data, function(d) { return d.date; }));
     y.domain( [-0.6, 0.6] );
 
     // add the X gridlines
@@ -980,7 +1057,9 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x)
         .tickPadding(my_tickPadsize)
-        .tickSize(my_tickSize));
+        .tickSize(my_tickSize)
+        .ticks(my_nXticks)
+        .tickFormat(d3.timeFormat("%b")));
 
     // Add Y axis
     svg_trends.append("g")
@@ -1089,7 +1168,7 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
 
   // When reading the csv, I must format variables:
   function(d){
-    return { date : parseDate(d.date), text : d.text, Abandoned_vehicle_2020 : d.Abandoned_vehicle_2020, Abandoned_vehicle_2019 : d.Abandoned_vehicle_2019, Blocked_driveway_2020 : d.Blocked_driveway_2020, Blocked_driveway_2019 : d.Blocked_driveway_2019, Consumer_complaint_2020 : d.Consumer_complaint_2020, Consumer_complaint_2019 : d.Consumer_complaint_2019, Derelict_bicycle_2020 : d.Derelict_bicycle_2020, Derelict_bicycle_2019 : d.Derelict_bicycle_2019, Derelict_vehicles_2020 : d.Derelict_vehicles_2020, Derelict_vehicles_2019 : d.Derelict_vehicles_2019, For_hire_vehicle_complaint_2020 : d.For_hire_vehicle_complaint_2020, For_hire_vehicle_complaint_2019 : d.For_hire_vehicle_complaint_2019, General_2020 : d.General_2020, General_2019 : d.General_2019, Illegal_parking_2020 : d.Illegal_parking_2020, Illegal_parking_2019 : d.Illegal_parking_2019, Lost_property_2020 : d.Lost_property_2020, Lost_property_2019 : d.Lost_property_2019, Noise_commercial_2020 : d.Noise_commercial_2020, Noise_commercial_2019 : d.Noise_commercial_2019, Noise_street_sidewalk_2020 : d.Noise_street_sidewalk_2020, Noise_street_sidewalk_2019 : d.Noise_street_sidewalk_2019, Non_emergency_police_matter_2020 : d.Non_emergency_police_matter_2020, Non_emergency_police_matter_2019 : d.Non_emergency_police_matter_2019, Panhandling_2020 : d.Panhandling_2020, Panhandling_2019 : d.Panhandling_2019, Rodent_2020 : d.Rodent_2020, Rodent_2019 : d.Rodent_2019, School_maintenance_2020 : d.School_maintenance_2020, School_maintenance_2019 : d.School_maintenance_2019, Street_condition_2020 : d.Street_condition_2020, Street_condition_2019 : d.Street_condition_2019, Taxi_complaint_2020 : d.Taxi_complaint_2020, Taxi_complaint_2019 : d.Taxi_complaint_2019 }
+    return { date : parseDate(d.date), text : d.text, Abandoned_vehicle_2020 : d.Abandoned_vehicle_2020, Abandoned_vehicle_2019 : d.Abandoned_vehicle_2019, Blocked_driveway_2020 : d.Blocked_driveway_2020, Blocked_driveway_2019 : d.Blocked_driveway_2019, Consumer_complaint_2020 : d.Consumer_complaint_2020, Consumer_complaint_2019 : d.Consumer_complaint_2019, Derelict_bicycle_2020 : d.Derelict_bicycle_2020, Derelict_bicycle_2019 : d.Derelict_bicycle_2019, Derelict_vehicles_2020 : d.Derelict_vehicles_2020, Derelict_vehicles_2019 : d.Derelict_vehicles_2019, For_hire_vehicle_complaint_2020 : d.For_hire_vehicle_complaint_2020, For_hire_vehicle_complaint_2019 : d.For_hire_vehicle_complaint_2019, General_2020 : d.General_2020, General_2019 : d.General_2019, Illegal_parking_2020 : d.Illegal_parking_2020, Illegal_parking_2019 : d.Illegal_parking_2019, Lost_property_2020 : d.Lost_property_2020, Lost_property_2019 : d.Lost_property_2019, Noise_commercial_2020 : d.Noise_commercial_2020, Noise_commercial_2019 : d.Noise_commercial_2019, Noise_street_sidewalk_2020 : d.Noise_street_sidewalk_2020, Noise_street_sidewalk_2019 : d.Noise_street_sidewalk_2019, Non_emergency_police_matter_2020 : d.Non_emergency_police_matter_2020, Non_emergency_police_matter_2019 : d.Non_emergency_police_matter_2019, Rodent_2020 : d.Rodent_2020, Rodent_2019 : d.Rodent_2019, School_maintenance_2020 : d.School_maintenance_2020, School_maintenance_2019 : d.School_maintenance_2019, Street_condition_2020 : d.Street_condition_2020, Street_condition_2019 : d.Street_condition_2019, Taxi_complaint_2020 : d.Taxi_complaint_2020, Taxi_complaint_2019 : d.Taxi_complaint_2019 }
   },
 
   // Now I can use this dataset:
@@ -1107,9 +1186,13 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
     this.svg_311.selectAll('circle').remove();
     // remove existing y axis
     this.svg_311.selectAll('g').remove();
-  
+    // remove arrow line
+    this.svg_311.selectAll('line').remove();
+    // remove arrow head
+    this.svg_311.selectAll('defs').remove();
+    
     // Scale the range of the data
-    x.domain(d3.extent(data, function(d) { return d.date; })).nice();
+    x.domain(d3.extent(data, function(d) { return d.date; }));
     y.domain( [0, 
       d3.max([
         d3.max(data, function (d) { return d[chosen_Y_2020] * 1.1; }),
@@ -1140,7 +1223,9 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x)
         .tickPadding(my_tickPadsize)
-        .tickSize(my_tickSize));
+        .tickSize(my_tickSize)
+        .ticks(my_nXticks)
+        .tickFormat(d3.timeFormat("%b")));
 
     // Add Y axis
     svg_311.append("g")
@@ -1156,6 +1241,61 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
     // add vertical bar for first death
     svg_311.append("line")
       .call(styleDeath);
+
+    // add label for social distancing calls
+    if (chosen_Y == 'Non_emergency_police_matter'){
+
+        function SD_style(selection){
+            selection
+              .attr("class", "plot_label")
+              .attr("text-anchor", "right")  
+              .style("font-size", "12px") 
+              .style("font-weight", "700") 
+              .style("fill", "#333333");
+          }
+        
+        // labels
+        svg_311.append("text")
+            .call(SD_style)
+            .attr("x", (width * 0.74))             
+            .attr("y", (height * 0.18))
+            .text("Mostly calls to");
+        svg_311.append("text")
+            .call(SD_style)
+            .attr("x", (width * 0.76))             
+            .attr("y", (height * 0.24))
+            .text("report social");
+        svg_311.append("text")
+            .call(SD_style)
+            .attr("x", (width * 0.67))             
+            .attr("y", (height * 0.30))
+            .text(" distancing infractions")
+            
+        // arrow head
+        svg_311.append("svg_311:defs").append("svg_311:marker")
+            .call(SD_style)
+            .attr("id", "triangle")
+            .attr("refX", 6)
+            .attr("refY", 6)
+            .attr("markerWidth", 30)
+            .attr("markerHeight", 30)
+            .attr("orient", "auto")
+            .append("path")
+            .attr("d", "M 0 0 12 6 0 12 3 6")
+            .style("fill", "#333333");
+        
+        // line              
+        svg_311.append("line")
+          .call(SD_style)
+          .attr("x1", (width * 0.90))
+          .attr("y1", (height * 0.22))
+          .attr("x2", (width * 0.94))
+          .attr("y2", (height * 0.22))          
+          .attr("stroke-width", 1)
+          .attr("stroke", "#333333")
+          .attr("marker-end", "url(#triangle)");
+  
+    }
 
     // Add the 2019 line 
     svg_311.append("path")
@@ -1224,6 +1364,10 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
               .attr('opacity', de_emphasize_opacity);
             d3.selectAll("circle.pt_31120")
               .attr('stroke-opacity', de_emphasize_opacity);
+            svg_311.selectAll("text.plot_label")
+              .attr('opacity', de_emphasize_opacity);
+            svg_311.selectAll('line.plot_label')
+              .attr('opacity', de_emphasize_opacity);
             svg_311.selectAll("line.death_bar")
               .attr('opacity', de_emphasize_opacity);
             
@@ -1283,6 +1427,10 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
               .attr('opacity', 0.5);              
             d3.selectAll("circle.pt_31120")
               .attr('stroke-opacity', 1);
+            svg_311.selectAll("text.plot_label")
+              .attr('opacity', 1);
+            svg_311.selectAll('line.plot_label')
+              .attr('opacity', 1);
             svg_311.selectAll("line.death_bar")
               .attr('opacity', 1);
               
