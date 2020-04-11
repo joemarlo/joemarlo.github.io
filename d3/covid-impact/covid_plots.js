@@ -807,7 +807,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
               .attr('opacity', de_emphasize_opacity);
             d3.selectAll("circle.pt_unemp20")
               .attr('stroke-opacity', de_emphasize_opacity);
-            svg_C.selectAll("line.death_bar")
+            svg_unemp.selectAll("line.death_bar")
               .attr('opacity', de_emphasize_opacity);
             
             // make the mouseover'd element big
