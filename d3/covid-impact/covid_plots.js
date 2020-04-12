@@ -868,7 +868,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
               .attr('opacity', 0.5);
             d3.selectAll("circle.pt_unemp20")
               .attr('stroke-opacity', 1);
-            svg_C.selectAll("line.death_bar")
+            svg_unemp.selectAll("line.death_bar")
               .attr('opacity', 1);
               
               // this makes the tooltip disappear
