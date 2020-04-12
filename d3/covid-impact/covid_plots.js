@@ -571,7 +571,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         );
         
     // Add the 2019 points
-    svg_C
+    var circle_bikes19 = svg_C
       .append("g")
       .selectAll("dot")
       .data(data)
@@ -684,6 +684,10 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
   circle_bikes.filter(function(d) { 
 	  console.log(d);
 	return d.bike_2020 == "NA" }).remove();
+	
+	circle_bikes19.filter(function(d) { 
+	  console.log(d);
+	return d.bike_2019 == "NA" }).remove();
   
   /*
   conn_bike_lines.filter(function(d) { 

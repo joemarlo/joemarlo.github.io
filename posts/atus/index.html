@@ -99,9 +99,16 @@
          <p><em>How we spend our days is how we spend our lives</em></p>
 <hr>
 <p>Our lives are completely occupied by a certain major current event so it&rsquo;s a good moment to step back and take a look at how we normally spend our lives. The <a href="https://www.bls.gov/tus/">American Time Use Survey</a> (ATUS) measures how Americans spend their time doing various activities such as work, volunteering, leisure, and socializing. It can answer some great questions that aren&rsquo;t addressed in many other surveys. How often do people really spend watching television everyday? Surprisingly a lot. Up to five hours a day for older Americans. Below are a handful of interesting insights, and I&rsquo;ll share how I approach this survey as it can be intimidating to newcomers.</p>
+<br>
+<!--
 <p align="center">
 <img src="/img/posts/ATUS/TV_by_age_sex.svg" width=80%>
 </p>
+-->
+<h4 id="average-time-watching-television-per-day">Average time watching television per day</h4>
+<br>
+<div <div id="TV" style="position: static"></div>
+<p align="right" style="font-size:60%;"><i>Data from 2003-2018 American Time Use Survey</i></p>
 <br>
 <h2 id="findings">Findings</h2>
 <p>Let&rsquo;s start with a few hypotheses so this isn&rsquo;t just a data mining exercise. Broadly, I was curious about differences in time spent between sexes, between low and high income households, in time spent working vs. leisure, and unemployment trends.</p>
@@ -633,6 +640,13 @@ get_SE(df = atussum_0318,
 <hr>
 <p><em>2020 March</em><br>
 <em>Find the code here: <a href="https://github.com/joemarlo/ATUS">github.com/joemarlo/ATUS</a></em></p>
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3-selection-multi.v0.4.min.js"></script>
+<!-- Load d3 plots -->
+<script src="/d3/ATUS/ATUS_plots.js"></script>
+<!-- Load custom CSS -->
+<link rel="stylesheet" type="text/css" href="/posts-css/ATUS.css">
          
       </div>
     </div>
