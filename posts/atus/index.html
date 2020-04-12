@@ -126,7 +126,7 @@
 </ul>
 <br>
 <details>
-  <summary><mark><font color="grey">Click for survey info and caveats</font></mark></summary>
+  <summary><mark><font color="grey">Click for survey info, caveats, and interpretation guidance</font></mark></summary>
 <blockquote>
 <h4 id="survey-information">Survey information</h4>
 <ul>
@@ -141,6 +141,14 @@
 <li>Measures primary activity so some activities are not accurately captured. For example, listening to music is rarely recorded because typically it is a secondary task. If I&rsquo;m listening to music, I&rsquo;m probably also doing housework or cooking.</li>
 <li>It&rsquo;s self reported data so <a href="https://en.wikipedia.org/wiki/Response_bias">standard biases apply</a></li>
 <li>Most of the plot fit lines are third order polynomial fits for sake of simplicity. This can overfit and whipsaw near the ends. Some of the fit lines are local regression which are more resilient.</li>
+</ul>
+<br>
+<h4 id="metric-interpretations">Metric interpretations</h4>
+<p>There are three main metrics presented in the plots:</p>
+<ul>
+<li><strong>Minutes</strong> and <strong>average minutes</strong>: the average number of minutes spent in this activity per day for this population</li>
+<li><strong>Participation rate</strong>: the proportion of people in this population participating in the activity on any given day</li>
+<li><strong>Minutes per participant</strong>: the average number of minutes for participants in this population who participate in the activity on any given day. E.g. for people who watched television on a day, how many minutes did they watch. Whereas the above plot shows the average number of minutes for everyone, including those who did not watch. Minutes per participant = Average minutes / participation rate</li>
 </ul>
 </blockquote>
 </details>
@@ -592,7 +600,7 @@ $$Var(\hat{Y}_o) = \frac{4}{160} \sum_{i=1}^{160}(\hat{Y}_i - \hat{Y}_o)^2$$<br>
     groups = groups,
     activities = activities,
     simplify = TRUE
-  )$weighted.minutes
+  )
   
   # repeat the statistic calculation using each weight
   yIs &lt;- apply(atuswgts_0318[, -1], MARGIN = 2, FUN = function(wgt) {
