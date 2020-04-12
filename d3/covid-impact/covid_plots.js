@@ -260,8 +260,9 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .call(styleDeath);
       
     // add line between 2019 and 2020 points
-    /*
-    var conn_lines = svg_S.selectAll("line")
+    var conn_lines = svg_S
+      .append("g")
+      .selectAll("line")
       .data(data)
       .enter()
       .append("line")
@@ -272,7 +273,6 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .attr("y1", function(d) { return y(d.subway_2019) } )
         .attr("x2", function(d) { return x(d.date) } )
         .attr("y2", function(d) { return y(d.subway_2020) } );
-    */
       
     // Add 2019 line
     svg_S.append("path")
@@ -469,11 +469,10 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
 	  console.log(d);
 	return d.subway_2019 == "NA" }).remove();
 
-/*
   conn_lines.filter(function(d) { 
 	  console.log(d);
-	return d.subway_2019 == "NA" }).remove();
-*/
+	return d.subway_2019 == "NA" || d.subway_2020 == "NA"}).remove();
+
 
   // citibike plot
   
@@ -523,10 +522,10 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     svg_C.append("line")
       .call(styleDeath);
 
-      
     // add line between 2019 and 2020 points
-    /*
-    var conn_bike_lines = svg_C.selectAll("line")
+    var conn_bike_lines = svg_C
+      .append("g")
+      .selectAll("line")
       .data(data)
       .enter()
       .append("line")
@@ -536,7 +535,6 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .attr("y1", function(d) { return y(d.bike_2019) } )
         .attr("x2", function(d) { return x(d.date) } )
         .attr("y2", function(d) { return y(d.bike_2020) } );
-    */
 
     // Add the 2019 line
     svg_C.append("path")
@@ -689,11 +687,9 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
 	  console.log(d);
 	return d.bike_2019 == "NA" }).remove();
   
-  /*
   conn_bike_lines.filter(function(d) { 
 	  console.log(d);
 	return d.bike_2020 == "NA" || d.bike_2019 == "NA" }).remove();
-  */
   
   // unemployment plot
   
@@ -743,6 +739,20 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     // add vertical bar for first death
     svg_unemp.append("line")
       .call(styleDeath);
+
+    // add line between 2019 and 2020 points
+    var conn_unemp_lines = svg_unemp
+      .append("g")
+      .selectAll("line")
+      .data(data)
+      .enter()
+      .append("line")
+        .call(styleConn)
+        .attr("class", function(d, i) {return "line_unemp_conn line_unemp_conn" + i;})
+        .attr("x1", function(d) { return x(d.date) } )
+        .attr("y1", function(d) { return y(d.ICSA_2019) } )
+        .attr("x2", function(d) { return x(d.date) } )
+        .attr("y2", function(d) { return y(d.ICSA_2020) } );
 
     // Add the 2019 line 
     svg_unemp.append("path")
@@ -796,7 +806,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .append("circle")
         .attr("cx", function(d) { return x(d.date) } )
         .attr("cy", function(d) { return y(d.ICSA_2020) } )
-        .attr("class", function(d, i) {return "pt_unemp20 pt_unemp" + i;})
+        .attr("class", function(d, i) {return "pt_unemp20 pt_unemp20" + i;})
         .attr("r", 4)
         .attr("stroke", "#2b7551")
         .attr("stroke-width", 2)
@@ -821,7 +831,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
               .attr('r', 8)
               .attr('fill', '#333333')
               .attr('stroke-opacity', 0);
-          
+
           // highlight the 2019 point
             d3.selectAll("circle.pt_unemp19" + i)
               .transition()
@@ -829,6 +839,10 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
               .attr('r', 6)
               .attr('fill', '#737373')
               .attr('stroke-opacity', 0)
+              .attr('opacity', 1);
+              
+            // highlight the selected points connection
+            d3.selectAll("line.line_unemp_conn" + i)
               .attr('opacity', 1);
             
             // this makes the tooltip show
@@ -875,8 +889,12 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
             svg_unemp.selectAll("line.death_bar")
               .attr('opacity', 1);
               
-              // this makes the tooltip disappear
-              Tooltip.style("opacity", 0);
+            // remove the selected points connection
+            d3.selectAll("line.line_unemp_conn" + i)
+              .attr('opacity', 0);
+              
+            // this makes the tooltip disappear
+            Tooltip.style("opacity", 0);
           });
           
   // this removes the circles where we don't have ICSA values
@@ -884,6 +902,9 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
 	  console.log(d);
 	return d.ICSA_20_exists != "TRUE"}).remove();
 	
+	  conn_unemp_lines.filter(function(d) { 
+	  console.log(d);
+	return d.ICSA_2020 == "NA" || d.ICSA_2019 == "NA" }).remove();
           
   // flights plot
   
@@ -1301,6 +1322,21 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
   
     }
 
+    // add line between 2019 and 2020 points
+    var conn_311_lines = svg_311
+      .append("g")
+      .selectAll("line")
+      .data(data)
+      .enter()
+      .append("line")
+        .call(styleConn)
+        .attr("class", function(d, i) {return "line_311_conn line_311_conn" + i;})
+        .attr("x1", function(d) { return x(d.date) } )
+        .attr("y1", function(d) { return y(d[chosen_Y_2019]) } )
+        .attr("x2", function(d) { return x(d.date) } )
+        .attr("y2", function(d) { return y(d[chosen_Y_2020]) } );
+
+
     // Add the 2019 line 
     svg_311.append("path")
       .datum(data)
@@ -1392,6 +1428,10 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
               .attr('stroke-opacity', 0)
               .attr('opacity', 1);
             
+            // highlight the selected points connection
+            d3.selectAll("line.line_311_conn" + i)
+              .attr('opacity', 1);
+            
             // this makes the tooltip show
             Tooltip.style("opacity", 1);
           })
@@ -1438,6 +1478,10 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
             svg_311.selectAll("line.death_bar")
               .attr('opacity', 1);
               
+            // remove the selected points connection
+            d3.selectAll("line.line_311_conn" + i)
+              .attr('opacity', 0);
+              
               // this makes the tooltip disappear
               Tooltip.style("opacity", 0);
           });
@@ -1451,6 +1495,11 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
   circle_trend19.filter(function(d) { 
 	  console.log(d);
 	return d[chosen_Y_2019]== "NA" }).remove();
+	
+	 conn_311_lines.filter(function(d) { 
+	  console.log(d);
+	return d[chosen_Y_2019] == "NA" || d[chosen_Y_2020 == "NA"]}).remove();
+	
 	
 	}
 

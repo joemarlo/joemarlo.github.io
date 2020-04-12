@@ -127,7 +127,6 @@ function printHourMinute(n){
   return hour + ":" + pad(minute, 2);
 }
 
-
 // Define the tooltip
 var Tooltip = d3.select("body")
   .append("div")
@@ -155,15 +154,15 @@ var svg = d3.select("div#TV")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-//Read the data
+// read the data
 d3.csv("/d3/ATUS/d3_tv.csv",
 
-  // When reading the csv, I must format variables:
+  // read csv and format variables
   function(d){
     return { TEAGE : d.TEAGE, Male : d.Male, Female : d.Female, Male_smooth : d.Male_smooth, Female_smooth : d.Female_smooth };
   },
 
-  // Now I can use this dataset:
+  // use the data as 'data'
   function(data) {
   
   // TV plot
@@ -421,7 +420,7 @@ d3.csv("/d3/ATUS/d3_tv.csv",
               Tooltip.style("opacity", 0);
           });
 
-	    // Add male line
+	  // Add male line
     svg.append("path")
       .datum(data)
       .call(styleLine)
