@@ -86,6 +86,11 @@ function tickThousands(d) {
   return this.parentNode.nextSibling ? `${s}` : `${s}k`;
 }
 
+// append '%' to the  last tick
+function tickPercent(d){
+  const s = (d * 100).toFixed(0); //toFixed(2); //d3.format(".0%");
+  return this.parentNode.nextSibling ? `${s}` : `${s}%`;
+}
 
 // Style the plot line
 function styleLine(selection) {
@@ -225,7 +230,10 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
   // Now I can use this dataset:
   function(data) {
   
-  // subway plot
+  ///////////////////////////////////////////////////////////////////////////
+  ///////////////////////// subway plot /////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////
+  
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.date; }));
     y.domain( [0, 7] );
@@ -488,7 +496,9 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
 	return d.subway_2019 == "NA" || d.subway_2020 == "NA"}).remove();
 
 
-  // citibike plot
+  ///////////////////////////////////////////////////////////////////////////
+  ///////////////////////// citibike plot ///////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////
   
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.date; }));
@@ -706,7 +716,9 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
 	  console.log(d);
 	return d.bike_2020 == "NA" || d.bike_2019 == "NA" }).remove();
   
-  // unemployment plot
+  ///////////////////////////////////////////////////////////////////////////
+  /////////////////////// unemployment plot /////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////
   
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.date; }));
@@ -922,7 +934,9 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
 	  console.log(d);
 	return d.ICSA_2020 == "NA" || d.ICSA_2019 == "NA" }).remove();
           
-  // flights plot
+  ///////////////////////////////////////////////////////////////////////////
+  ///////////////////////// flights plot ////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////
   
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.date; }));
@@ -1060,7 +1074,9 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
   // Now I can use this dataset:
   function(data) {
 
-	  // google trends plot
+	///////////////////////////////////////////////////////////////////////////
+  ////////////////////// google trends plot /////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////
   
     // remove existing text
     this.svg_trends.selectAll('grid').remove();
@@ -1110,7 +1126,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .tickPadding(my_tickPadsize)
         .tickSize(my_tickSize)
         .ticks(my_nYticks)
-        .tickFormat(d3.format(".0%")));
+        .tickFormat(tickPercent));
       
     // text label for the y axis
     svg_trends.append("text").call(drawYlabel).text("Daily activity compared to baseline");
@@ -1197,7 +1213,9 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
 }
 
 
-
+  ///////////////////////////////////////////////////////////////////////////
+  ///////////////////////// 311 plot ////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////
 
 // wrapper function to update google trends plot
 function update311(chosen_Y){
