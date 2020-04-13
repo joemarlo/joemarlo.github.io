@@ -70,7 +70,7 @@ function drawYlabel(selection) {
     .attr("x",0 - (height / 2))
     .attr("dy", "1em")
     .attr("text-anchor", "middle")
-    .attr("fill", "#333333")
+    .attr("fill", "#737373")
     .attr("font-size", 16);
 }
 
@@ -1544,4 +1544,5 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
 
 update('retail_rec');
 update311('Non_emergency_police_matter');
+
 

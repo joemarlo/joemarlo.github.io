@@ -52,8 +52,8 @@ function drawXlabel(selection) {
             "translate(" + (width/2) + " ," + 
                            (height + margin.top + 40) + ")")
     .attr("text-anchor", "middle")
-    .attr("fill", "#333333")
-    .attr("font-size", 12)
+    .attr("fill", "#737373")
+    .attr("font-size", 14)
     .text("Age");
 }
 
@@ -65,8 +65,8 @@ function drawYlabel(selection) {
     .attr("x",0 - (height / 2))
     .attr("dy", "1em")
     .attr("text-anchor", "middle")
-    .attr("fill", "#333333")
-    .attr("font-size", 12)
+    .attr("fill", "#737373")
+    .attr("font-size", 14)
     .text("Hours:minutes");
 }
 
