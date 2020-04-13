@@ -71,8 +71,21 @@ function drawYlabel(selection) {
     .attr("dy", "1em")
     .attr("text-anchor", "middle")
     .attr("fill", "#333333")
-    .attr("font-size", 14);
+    .attr("font-size", 16);
 }
+
+// append 'M' to the  last tick 
+function tickMillions(d) {
+  const s = d.toFixed(0);
+  return this.parentNode.nextSibling ? `${s}` : `${s}M`;
+}
+
+// append 'k' to the  last tick 
+function tickThousands(d) {
+  const s = d.toFixed(0);
+  return this.parentNode.nextSibling ? `${s}` : `${s}k`;
+}
+
 
 // Style the plot line
 function styleLine(selection) {
@@ -250,10 +263,11 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .call(d3.axisLeft(y)
         .tickPadding(my_tickPadsize)
         .tickSize(my_tickSize)
-        .ticks(my_nYticks));
+        .ticks(my_nYticks)
+        .tickFormat(tickMillions));
       
     // text label for the y axis
-    svg_S.append("text").call(drawYlabel).text("Subway ridership (millions)");
+    svg_S.append("text").call(drawYlabel).text("Subway ridership");
     
     // add vertical bar for first death
     svg_S.append("line")
@@ -513,10 +527,11 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .call(d3.axisLeft(y)
         .tickPadding(my_tickPadsize)
         .tickSize(my_tickSize)
-        .ticks(my_nYticks));
+        .ticks(my_nYticks)
+        .tickFormat(tickThousands));
       
     // text label for the y axis
-    svg_C.append("text").call(drawYlabel).text("Citibike ridership (thousands)");
+    svg_C.append("text").call(drawYlabel).text("Citibike ridership");
 
     // add vertical bar for first death
     svg_C.append("line")
@@ -731,10 +746,11 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .call(d3.axisLeft(y)
         .tickPadding(my_tickPadsize)
         .tickSize(my_tickSize)
-        .ticks(my_nYticks));
+        .ticks(my_nYticks)
+        .tickFormat(tickMillions));
       
     // text label for the y axis
-    svg_unemp.append("text").call(drawYlabel).text("Weekly unemployment claims (million)");
+    svg_unemp.append("text").call(drawYlabel).text("Weekly unemployment claims");
 
     // add vertical bar for first death
     svg_unemp.append("line")
@@ -945,10 +961,11 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
       .call(d3.axisLeft(y)
         .tickPadding(my_tickPadsize)
         .tickSize(my_tickSize)
-        .ticks(my_nYticks));
+        .ticks(my_nYticks)
+        .tickFormat(tickThousands));
       
     // text label for the y axis
-    svg_flights.append("text").call(drawYlabel).text("Daily commercial flights (thousands)");
+    svg_flights.append("text").call(drawYlabel).text("Daily commercial flights");
 
     // add vertical bar for first death
     svg_flights.append("line")
