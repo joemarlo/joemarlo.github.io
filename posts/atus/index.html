@@ -382,7 +382,7 @@
 <li>Personal activities, not elsewhere classified</li>
 <li>Personal emergencies</li>
 <li>Personal care emergencies, not elsewhere classified</li>
-<li>Personal Care, not elsewhere classified</li>
+<li>Personal care, not elsewhere classified</li>
 </ul>
 <p>Given there is so much to explore in the ATUS, it was important to have a few flexible functions that return time-use estimates with little hassle. The biggest challenge when writing these functions is properly applying the survey weights. Extra care needs to be exercised when determining when and how to apply these weights. The below code walks through how the weights are applied; the results have been compared to the <a href="https://www.bls.gov/tus/#tables">official summary estimates from the BLS</a> where applicable.</p>
 <h3 id="getting-average-time-estimates">Getting average time estimates</h3>
@@ -572,7 +572,8 @@ $$P_j = \frac{\sum_i W_i I_{ij}}{\sum_i W_i}$$<br>
         sum()
       
       # sum all distinct weights
-      denom &lt;- select(.x, TUCASEID, weight.var) %&gt;%
+      denom &lt;- .x %&gt;% 
+        select(TUCASEID, weight.var) %&gt;%
         distinct() %&gt;%
         pull(weight.var) %&gt;%
         sum()
