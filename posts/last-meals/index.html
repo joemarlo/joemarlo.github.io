@@ -338,12 +338,31 @@ deduped.ngrams %&gt;%
   ggplot(aes(x = reorder(word, n), y = n, fill = n)) +
   geom_col() +
   scale_fill_gradient(low = &quot;#0b2919&quot;, high = &quot;#2b7551&quot;) +
+  geom_text(aes(label = n),
+            hjust = 1.5,
+            color = &quot;white&quot;) +
+  geom_curve(aes(x = 6.5, y = 40, 
+                 xend = 9, yend = 43),
+             curvature = 0.4, color = '#428fa1', size = 1.25,
+             arrow = arrow(type = 'closed', length = unit(0.4, &quot;cm&quot;))) +
+  annotate(&quot;label&quot;, x = 6, y = 35, 
+           fill = '#428fa1',
+           label = &quot;'Ice cream' takes the\ntop spot with 43 occurrences\nin last meal requests&quot;,
+           fontface = &quot;bold&quot;,
+           color = 'white',
+           size = 4,
+           label.size = 1.25,
+           label.padding = unit(0.75, &quot;lines&quot;)) +
   labs(title = &quot;Top 10 most common items in last meal requests&quot;,
        subtitle = &quot;Data from 130 U.S. inmates since 1927&quot;,
+       caption = &quot;marlo.works&quot;,
        x = NULL,
        y = &quot;Count&quot;) +
   coord_flip() +
-  theme(legend.position = &quot;none&quot;)
+  theme(legend.position = &quot;none&quot;,
+        plot.caption = element_text(face = &quot;italic&quot;,
+                                    size = 6,
+                                    color = 'grey50'))
 </code></pre><p align="center">
 <img src="/img/posts/last-meals/Common_last_meals.svg" width=80%>
 </p>
