@@ -135,9 +135,9 @@ button i.fa {
   list-style: none;
 }
 .btn-ghost {
-  color: #b0b3b8;
+  color: #4a635c;
   background-color: transparent;
-  border-color: #b0b3b8;
+  border-color: #4a635c;
 }
 .btn-ghost:hover,
 .btn-ghost:focus,
@@ -383,7 +383,7 @@ SIDEBAR + RIGHT COLUMN
 }
 .content-column {
   /* Joe changed this from 'padding-top' */
-  padding: 40px;
+  padding-top: 40px;
   /* Joe added this */
   background: #fff;
 }
