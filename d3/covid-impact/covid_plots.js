@@ -96,7 +96,7 @@ function tickPercent(d){
 function styleLine(selection) {
   selection
     .attr("fill", "none")
-    .attr("stroke", "#2b7551")
+    .attr("stroke", "#4a635c")
     .attr("stroke-width", 2);
 }
 
@@ -367,7 +367,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .attr("text-anchor", "left")  
         .style("font-size", "12px") 
         .style("font-weight", "700") 
-        .style("fill", "#2b7551") 
+        .style("fill", "#4a635c") 
         .text("2020");
         
     // Add the 2019 points
@@ -393,7 +393,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         // assign two classes 'pt_subway20' and 'pt_subway20i'
         .attr("class", function(d, i) {return "pt_subway20 pt_subway20" + i;})
         .attr("r", 4)
-        .attr("stroke", "#2b7551")
+        .attr("stroke", "#4a635c")
         .attr("stroke-width", 2)
         .attr("fill", "white")
         // Three function that change the tooltip when user hover / move / leave a cell
@@ -803,7 +803,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     var line_unemp = svg_unemp.append("path")
       .datum(data)
       .call(styleLine)
-      .attr("stroke", "#2b7551")
+      .attr("stroke", "#4a635c")
       .attr("class", "path_unemp path_unemp20")
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
@@ -836,7 +836,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .attr("cy", function(d) { return y(d.ICSA_2020) } )
         .attr("class", function(d, i) {return "pt_unemp20 pt_unemp20" + i;})
         .attr("r", 4)
-        .attr("stroke", "#2b7551")
+        .attr("stroke", "#4a635c")
         .attr("stroke-width", 2)
         .attr("fill", "white")
         
@@ -989,7 +989,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     svg_flights.append("path")
       .datum(data)
       .call(styleLine)
-      .attr("stroke", "#2b7551")
+      .attr("stroke", "#4a635c")
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.flights) })
@@ -1010,7 +1010,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .attr("cy", function(d) { return y(d.flights) } )
         .attr("class", function(d, i) {return "pt_flights" + i;})
         .attr("r", 4)
-        .attr("stroke", "#2b7551")
+        .attr("stroke", "#4a635c")
         .attr("stroke-width", 2)
         .attr("fill", "white")
         
@@ -1139,7 +1139,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
     svg_trends.append("path")
       .datum(data)
       .call(styleLine)
-      .attr("stroke", "#2b7551")
+      .attr("stroke", "#4a635c")
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d[chosen_Y]) })
@@ -1160,7 +1160,7 @@ d3.csv("/d3/covid-impact/data/sub_citi_unemp_flights.csv",
         .attr("cy", function(d) { return y(d[chosen_Y]) } )
         .attr("class", function(d, i) {return "pt_trends" + i;})
         .attr("r", 4)
-        .attr("stroke", "#2b7551")
+        .attr("stroke", "#4a635c")
         .attr("stroke-width", 2)
         .attr("fill", "white")
         
@@ -1393,7 +1393,7 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
     svg_311.append("path")
       .datum(data)
       .call(styleLine)
-      .attr("stroke", "#2b7551")
+      .attr("stroke", "#4a635c")
       .attr("class", "path_311")
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
@@ -1426,7 +1426,7 @@ d3.csv("/d3/covid-impact/data/threeOneOne.csv",
         .attr("cy", function(d) { return y(d[chosen_Y_2020]) } )
         .attr("class", function(d, i) {return "pt_31120 pt_31120" + i;})
         .attr("r", 4)
-        .attr("stroke", "#2b7551")
+        .attr("stroke", "#4a635c")
         .attr("stroke-width", 2)
         .attr("fill", "white")
         

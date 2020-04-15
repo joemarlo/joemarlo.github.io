@@ -21,7 +21,7 @@
 /* button styles */
 
 .button {
-  background-color: #2b7551; 
+  background-color: #4a635c; 
   border: none;
   color: white;
   padding: 2px 8px;
@@ -38,7 +38,7 @@
 }
 
 .button:active {
-  background-color: #2b7551;
+  background-color: #4a635c;
   box-shadow: 0 1px #333333;
   transform: translateY(1px);
 }
@@ -47,7 +47,7 @@
 /* dropdown styles */
 
 .dropbtn {
-  background-color: #2b7551;
+  background-color: #4a635c;
   color: white;
   padding: 2px 16px;
   font-size: 12px;
