@@ -34,7 +34,7 @@
 }
 
 .button:hover {
-  background-color: #43a173;
+  background-color: #84a198;
 }
 
 .button:active {
@@ -80,5 +80,5 @@
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: #43a173;}
+.dropdown:hover .dropbtn {background-color: #84a198;}
 
