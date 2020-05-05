@@ -96,10 +96,9 @@
     <div class="col-lg-9">
       <div class="content-column-content">
          <h1>Enumerating the economic and social shifts of March 2020</h1>
-         <p><em>Work-in-progress | The ex-health impact of Covid-19</em></p>
+         <p><em>The ex-health impact of Covid-19</em></p>
 <hr>
-<p>I&rsquo;m not an epidemiologist so I&rsquo;ll save you a poorly built model attempting to predict the future of the Covid-19. In lieu, I&rsquo;m spending my isolation time tracking down various economic and social data illustrating the vast shifts and adjustments in our lives recently.</p>
-<p>This a working page of plots highlighting the non-health-related impact of Covid-19. Some of the plot interactivity has small bugs — as this post is really just a reason to teach myself d3.js. All plots are drafts.</p>
+<p>I&rsquo;m not an epidemiologist so I&rsquo;ll save you a poorly built model attempting to predict the future of the Covid-19. In lieu, I&rsquo;m spending my isolation time tracking down various economic and social data illustrating the vast shifts and adjustments in our lives recently. Below is a sequence of time-series plots highlighting the non-health-related impact of Covid-19.</p>
 <br>
 <!-- Plot of subway ridership and citibke -->
 <h4 id="daily-nyc-subway-ridership-drops-significantly-in-march-and-citibike-initially-ticked-up-then-dropped">Daily NYC subway ridership drops significantly in March and Citibike initially ticked up then dropped</h4>
@@ -141,7 +140,7 @@ Data from NYC OpenData
 2019 data has been shifted to match 2020 weekdays
 <br>
 </i></p>
-<h4 id="daily-change-in-mobile-phone-location-reveal-our-new-normalbri-idtrendstitle-stylefont-size80retail--recreationi">Daily change in mobile phone location reveal our new normal<br><i id='trendsTitle' style='font-size:80%'>Retail &amp; recreation</i></h4>
+<h4 id="daily-change-in-american-mobile-phone-location-reveal-our-new-normalbri-idtrendstitle-stylefont-size80retail--recreationi">Daily change in American mobile phone location reveal our new normal<br><i id='trendsTitle' style='font-size:80%'>Retail &amp; recreation</i></h4>
 <p><button class="button" onclick="update('retail_rec'); changeText('Retail & recreation')">Retail &amp; recreation</button>
 <button class="button" onclick="update('groc_pharm'); changeText('Grocery & pharmacy')">Grocery &amp; pharmacy</button>
 <button class="button" onclick="update('parks'); changeText('Parks')">Parks</button>
@@ -160,42 +159,21 @@ Data from flightradar24.com
 Includes passenger, cargo, charter, and some business jet flights
 </i>
 </p>
-<h4 id="weekly-unemployment-claims-have-skyrocketed">Weekly unemployment claims have skyrocketed</h4>
+<h4 id="weekly-american-unemployment-claims-have-skyrocketed">Weekly American unemployment claims have skyrocketed</h4>
 <br>
 <div <div id="unemp" style="position: static"></div>
 <p align="right" style="font-size:60%;"><i>Data from St. Louis Federal Reserve</i></p>
 <br>
-<h3 id="to-do">To-do</h3>
-<ul>
-<li>Electricity usage</li>
-<li>NYC crime</li>
-<li><a href="https://trends.google.com/trends/explore?geo=US&amp;q=state%20parks">Interest in parks</a></li>
-<li>Internet usage
-<ul>
-<li><a href="https://www.nytimes.com/interactive/2020/04/07/technology/coronavirus-internet-use.html">NYT on internet usage</a></li>
-<li><a href="https://www.similarweb.com/coronavirus">similarweb on internet usage</a></li>
-<li>traffic to CDC.gov and coronovirus.jhu.edu</li>
-<li>traffic to netflix, youtube, twitch, zoom, espn</li>
-<li>search terms: gym, delivery, alcohol delivery, zoom, home yoga, video games</li>
-</ul>
-</li>
-</ul>
 <br>
-<h3 id="further-readings">Further readings</h3>
-<ul>
-<li>Curbed on <a href="https://ny.curbed.com/2020/3/24/21192454/coronavirus-nyc-transportation-subway-citi-bike-covid-19">subway and citibike</a></li>
-<li>NYT on unemployment <a href="https://www.nytimes.com/interactive/2020/03/26/upshot/coronavirus-millions-unemployment-claims.html">claims</a> and <a href="https://www.nytimes.com/interactive/2020/04/01/upshot/coronavirus-jobless-claims-forecast-predictions.html">forecasting</a></li>
-<li>Air traffic from <a href="https://www.flightradar24.com/blog/charting-the-decline-in-air-traffic-caused-by-covid-19/">flightrader24</a> and <a href="https://www.washingtonpost.com/graphics/2020/business/coronavirus-airline-industry-collapse/">Washington Post</a></li>
-</ul>
 <br>
 <h3 id="data-sources">Data sources</h3>
 <ul>
 <li><a href="http://web.mta.info/developers/turnstile.html">NYC subway</a>. The data is extremely messy. Forking <a href="https://github.com/joemarlo/NYC-data">this database</a> may be helpful if you would like to automatically clean it.</li>
 <li><a href="https://s3.amazonaws.com/tripdata/index.html">NYC Citibike</a></li>
-<li><a href="https://fred.stlouisfed.org/series/ICSA">Unemployment</a></li>
-<li><a href="https://www.flightradar24.com/data/statistics">Flights</a></li>
-<li><a href="https://www.google.com/covid19/mobility/">Google trends</a> and scraped by <a href="https://github.com/nacnudus/google-location-coronavirus">Duncan Garmonsway</a></li>
 <li><a href="https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9">NYC 311 calls</a></li>
+<li><a href="https://www.google.com/covid19/mobility/">Google trends</a> and scraped by <a href="https://github.com/nacnudus/google-location-coronavirus">Duncan Garmonsway</a></li>
+<li><a href="https://www.flightradar24.com/data/statistics">Flights</a></li>
+<li><a href="https://fred.stlouisfed.org/series/ICSA">Unemployment</a></li>
 </ul>
 <br>
 <hr>
