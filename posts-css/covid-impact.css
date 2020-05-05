@@ -82,3 +82,68 @@
 
 .dropdown:hover .dropbtn {background-color: #84a198;}
 
+
+
+
+
+
+
+
+
+
+/* Arrow holder */
+.arrowed {
+	color: black;
+	position: relative;
+	height: 10px; width: 400px;
+	margin: 0 0 -16px 0;
+}
+
+/* centering the arrow */
+.arrowed div {
+	position: absolute;
+	top: 0; bottom: 0; left: 0; right: 0;
+	margin: auto;
+	content: "click for more categories";
+}
+
+.arrowed:after {
+  font-weight: bold;
+  color: black;
+  content: "click for more categories";
+  margin: 0 0 0 0;
+}
+
+/* -- ARROW 6      -- */
+
+.arrow-6 {
+	/* more triangle */
+	height: 10px; width: 10px;
+	border: 1px solid black;
+	border-width: 3px 3px 0 0;
+	transform: rotate(225deg);
+}
+
+.arrow-6:before, .arrow-6:after {
+	content: '';
+	position: absolute;
+	display: block;
+	height: 10px; width: 10px;
+	border-width: 3px 3px 0 0;
+}
+
+.arrow-6:before {
+	border: 1px solid black;
+	border-width: 3px 3px 0 0;
+	/* top - distance minus border */
+	top: 7px; left: -10px;
+}
+
+.arrow-6:after {
+	border: 1px solid black;
+	border-width: 3px 3px 0 0;
+	/* top - distance plus border */
+	top: -13px; left: 10px;
+}
+
+

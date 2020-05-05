@@ -132,7 +132,7 @@
 <p>To calculate the increase in risk of a false positive result, there is a simple formula based on the number of hypotheses you are testing <em>c</em> at a significance level <em>alpha</em>:</p>
 <ul>
 <li>Probability of at least one false positive = 1 - (1 - <em>alpha</em>)<sup>c</sup></li>
-<li>Example: 5 tests = 1 - (1 - 0.05)^5 = 23% chance of a false positive</li>
+<li>Example: 5 tests = 1 - (1 - 0.05)<sup>5</sup> = 23% chance of a false positive</li>
 </ul>
 </blockquote>
 <p>The risk of multiple comparisons can be controlled by introducing the <a href="https://www.stat.berkeley.edu/~mgoldman/Section0402.pdf">Bonferroni correction</a>, which accounts for the additional false positive risk introduced with each additional outcome.</p>
@@ -154,7 +154,7 @@
 <img src="/img/posts/A-B-Testing/effect_comp.svg" width=80%>
 </p>
 <br>
-<p>Now, if the true difference between both versions was one second spent on the website, is this meaningful enough to your team? Will it translate it into higher revenue that can justify rolling out this new version? Sometimes implementing a new version of a product can be costly, so it’s imperative to review whether or not it’s worth it. You should think not only of statistical significance, but the effect size.</p>
+<p>Now, if the true difference between both versions was one second spent on the website, is this meaningful enough to your team? Will it translate into higher revenue that can justify rolling out this new version? Sometimes implementing a new version of a product can be costly, so it’s imperative to review whether or not it’s worth it. You should think not only of statistical significance, but the effect size.</p>
 <br>
 <h4 id="large-sample-small-effect">Large sample, small effect</h4>
 <p>Incredibly small effects reach statistical significance as sample size grows. If you usually work with large sample sizes, a statistically significant result many not necessarily signal a meaningful change.</p>
@@ -175,11 +175,11 @@
 <img src="/img/posts/A-B-Testing/interaction.svg" width=80%>
 </p>
 <br>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="final-thoughts">Final thoughts</h2>
 <p>A/B testing is a powerful tool that is frequently praised for its simplicity and ease of analysis. However, misguided conclusions can be made when optional stopping, multiple comparisons, effect size, and possible interactions are ignored.</p>
 <p>When unaccounted for:</p>
 <ul>
-<li>Frequently checking your data mid experiment (optional stoppage) and conducting multiple comparisons without correction drastically increases the rate of false positives.</li>
+<li>Frequently checking your data mid experiment (optional stoppage) and conducting multiple comparisons without correction drastically increases the rate of false positives</li>
 <li>Statistical significance and meaningful difference are not the same</li>
 <li>Randomization alone is not enough to uncover hidden interactions within A/B tests</li>
 </ul>
