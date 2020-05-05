@@ -6,18 +6,18 @@
     <description>Recent content on Marlo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 31 Mar 2020 10:04:35 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 27 Apr 2020 17:22:08 -0500</lastBuildDate>
     
 	<atom:link href="https://joemarlo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Enumerating the economic and social shifts of March 2020</title>
-      <link>https://joemarlo.github.io/posts/covid-impact/</link>
-      <pubDate>Tue, 31 Mar 2020 10:04:35 -0500</pubDate>
+      <title>Common pitfalls of A/B testing</title>
+      <link>https://joemarlo.github.io/posts/a-b-testing/</link>
+      <pubDate>Mon, 27 Apr 2020 17:22:08 -0500</pubDate>
       
-      <guid>https://joemarlo.github.io/posts/covid-impact/</guid>
-      <description>&lt;p&gt;&lt;em&gt;The ex-health impact of Covid-19&lt;/em&gt;&lt;/p&gt;</description>
+      <guid>https://joemarlo.github.io/posts/a-b-testing/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Why you could be doing it wrong&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -36,6 +36,15 @@
       
       <guid>https://joemarlo.github.io/posts/last-meals/</guid>
       <description>&lt;p&gt;&lt;em&gt;Examining favorite foods through last meal requests&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Enumerating the economic and social shifts of March 2020</title>
+      <link>https://joemarlo.github.io/posts/covid-impact/</link>
+      <pubDate>Tue, 31 Mar 2020 10:04:35 -0500</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/covid-impact/</guid>
+      <description>&lt;p&gt;&lt;em&gt;The ex-health impact of Covid-19&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
