@@ -161,6 +161,79 @@
 <p align="center">
 <img src="/img/posts/A-B-Testing/effect_size.svg" width=80%>
 </p>
+<!-- 
+<br>
+
+## Pulling it together
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus mauris ultrices eros in cursus turpis. Cras semper auctor neque vitae. Etiam dignissim diam quis enim lobortis scelerisque. 
+
+Egestas sed tempus urna et pharetra pharetra massa. Orci sagittis eu volutpat odio facilisis mauris sit amet massa. Condimentum id venenatis a condimentum vitae sapien pellentesque habitant morbi. Risus at ultrices mi tempus imperdiet nulla. 
+
+Introduce "accuracy"
+-->
+<!-- Sliders in a grid -->
+<!--
+<div class="grid-container">
+  
+  <div class="slidecontainer">
+    <input type="range" list="tickmarks_stops" min="1" max="20" value="1" step="1" class="slider" id="slider_stops">
+    <div class="slidetext" <p>Number of stops: <span id="value_stops"></span></p></div>
+  </div>
+  
+  <div class="slidecontainer">
+    <input type="range" min="1" max="20" value="1" step="1" class="slider" id="slider_comparisons">
+    <div class="slidetext" <p>Number of comparisons: <span id="value_comparisons"></span></p></div>
+  </div>
+  
+  <div class="slidecontainer">
+    <input type="range" min="0" max="0.10" value="0.02" step="0.01" class="slider" id="slider_effectsize">
+    <div class="slidetext" <p>Effect size: <span id="value_effectsize"></span></p></div>
+  </div>
+  
+  <div class="slidecontainer">
+    <input type="range" min="1000" max="10000" value="1000" step="1000" class="slider" id="slider_samplesize">
+    <div class="slidetext"<p>Sample size: <span id="value_samplesize"></span></p></div>
+  </div>
+  
+</div>
+
+<!-- Results -->
+<!--
+<p><h4>Probability of finding at least one effect: <span id="expected_probability"></span></h4></p>
+
+<br>
+
+<!-- d3 density plots -->
+<!--
+<div <div id="main_plot" style="position: static" align="center"></div>
+<p align="right" style="font-size:60%;">
+<i>
+Assumptions: 
+<br>
+- Standard deviation of distributions is X
+<br>
+- Results estimated by X simulations
+</i>
+</p>
+<br>
+
+
+<br>
+<br>
+<br>
+
+
+
+
+<br>
+<!-- this is the Shiny app-->
+<!--
+<div class="iframe-container"> 
+  <iframe class="resp-iframe" src="http://127.0.0.1:7507/" allowfullscreen></iframe>
+</div>
+
+-->
 <br>
 <h2 id="randomization-is-not-always-enough">Randomization is not always enough</h2>
 <p>The power of randomization is that it allows you to make causal conclusions. However, randomization is not enough to uncover hidden patterns within your test.</p>
@@ -187,7 +260,16 @@
 <br>
 <hr>
 <p><em>2020 May</em><br>
-<em>Find the code here: <a href="https://github.com/gperrett/A-B-Testing">github.com/gperrett/A-B-Testing</a></em></p>
+<em>Find the code here: <a href="https://github.com/joemarlo/A-B-Testing-with-d3">github.com/joemarlo/A-B-Testing-with-d3</a></em></p>
+<!-- script for slider text --> 
+<script src="/d3/A-B-Testing/sliders.js"></script>
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://unpkg.com/d3-simple-slider"></script>
+<!-- Load d3 plots -->
+<script src="/d3/A-B-Testing/AB_testing.js"></script>
+<!-- Load custom CSS -->
+<link rel="stylesheet" type="text/css" href="/posts-css/A-B-Testing.css">
          
       </div>
     </div>
