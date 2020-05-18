@@ -67,7 +67,6 @@ pre code {
   }
 }
 
-
 /* remove text at bottom of masonry */
 @media (max-width: 767px){
   .box-masonry-description {
