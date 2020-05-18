@@ -55,3 +55,22 @@ pre code {
     font-weight: 700;
   }
 }
+
+/* resizing of homescreen brick images  */
+@media (max-width: 767px){
+  .box-masonry .img-responsive {
+    margin: 0 auto;
+    object-fit: cover;
+    object-position: 100% 80%;
+    width: 100%;
+    height: 100px;
+  }
+}
+
+
+/* remove text at bottom of masonry */
+@media (max-width: 767px){
+  .box-masonry-description {
+    display: none
+  }
+}
