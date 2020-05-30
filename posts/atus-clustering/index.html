@@ -135,6 +135,7 @@ The cluster analysis used 16 years of ATUS data totaling to a sample of over 201
 <p align="center">
 <img src="/img/posts/ATUS-clustering/Hierarchical_cluster_bw.svg" width=90%>
 </p>
+<p>Frequently, variables are scaled prior to cluster analysis. In this particular context, variables are already recorded on the same scale so no centering or transformations were included and variables were left in their original untransformed format.</p>
 <br>
 <h3 id="choosing-the-right-number-of-clusters">Choosing the right number of clusters</h3>
 <p>Identifying the final number of clusters is a nuanced and subjective exercise. That being said, mathematical and quantitative guidelines exist to aid this decision. To determine the number of groups, the Calinski-Harabasz index, Silhouette width and Gap-statistic were consulted.</p>
@@ -145,7 +146,6 @@ The cluster analysis used 16 years of ATUS data totaling to a sample of over 201
 <br>
 <h3 id="other-methods">Other methods</h3>
 <p>Hierarchical clustering is only one of many clustering methods. We considered the popular K-means algorithm as well as model-based clustering. A hierarchical approach offered the best fit to this particular data set. Within the Time Use Survey, many respondents indicate zero minutes spent on several activities. The K-means algorithm assumes all variables have an equal variance and does not handle zero-inflated variables well. These assumptions do not fit the specifics of time use. Similarly, model based clustering has more rigid assumptions that variables come from a multivariate normal data generating process. Hierarchical clustering avoids these assumptions and is a good fit for this particular clustering problem.</p>
-<p>Frequently, variables are scaled prior to cluster analysis. In this particular context, variables are already recorded on the same scale so no centering or transformations were included and variables were left in their original untransformed format.</p>
 <br>
 <h2 id="examining-the-clusters">Examining the clusters</h2>
 <h3 id="what-activities-define-each-cluster">What activities define each cluster?</h3>
