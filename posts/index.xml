@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Marlo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 29 May 2020 14:20:03 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2020 13:49:44 -0400</lastBuildDate>
     
 	<atom:link href="https://joemarlo.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,15 @@
       
       <guid>https://joemarlo.github.io/posts/atus-clustering/</guid>
       <description>&lt;p&gt;&lt;em&gt;A cluster analysis of how Americans spend their weekends&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Bayesian approach to predicting Citi Bike rides</title>
+      <link>https://joemarlo.github.io/posts/bayesian-citi-bike/</link>
+      <pubDate>Sat, 30 May 2020 13:49:44 -0400</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/bayesian-citi-bike/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Understanding Citi Bike through weather&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -39,21 +48,21 @@
     </item>
     
     <item>
-      <title>Text analysis of last meals</title>
-      <link>https://joemarlo.github.io/posts/last-meals/</link>
-      <pubDate>Wed, 19 Feb 2020 11:16:00 -0500</pubDate>
-      
-      <guid>https://joemarlo.github.io/posts/last-meals/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Examining favorite foods through last meal requests&lt;/em&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Enumerating the economic and social shifts of March 2020</title>
       <link>https://joemarlo.github.io/posts/covid-impact/</link>
       <pubDate>Tue, 31 Mar 2020 10:04:35 -0500</pubDate>
       
       <guid>https://joemarlo.github.io/posts/covid-impact/</guid>
       <description>&lt;p&gt;&lt;em&gt;The ex-health impact of Covid-19&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Text analysis of last meals</title>
+      <link>https://joemarlo.github.io/posts/last-meals/</link>
+      <pubDate>Wed, 19 Feb 2020 11:16:00 -0500</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/last-meals/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Examining favorite foods through last meal requests&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

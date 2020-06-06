@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Bayesian approach to predicting Citi Bike rides</title>
+<meta name="description" content="Personal portfolio of Joe Marlo">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/owl.theme.css">
+<link rel="icon" href= "https://joemarlo.github.io/favicon.ico" /> 
+
+
+  <link href="https://joemarlo.github.io/css/style.custom.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://joemarlo.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://joemarlo.github.io/img/favicon.png">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://joemarlo.github.io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://joemarlo.github.io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://joemarlo.github.io/favicon-16x16.png">
+
+
+
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="https://joemarlo.github.io">Marlo</a></h1>
+    
+      <p class="sidebar-p">I'm a statistics grad student @ NYU. <br> Based in New York.</p>
+    
+    <ul class="sidebar-menu">
+      
+        <li><a href="https://joemarlo.github.io/posts/">Posts</a></li>
+      
+        <li><a href="https://joemarlo.github.io/about/">About</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  
+  
+  
+  <a href="https://www.linkedin.com/in/jmarlo" data-animate-hover="pulse" class="external">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+  
+  <a href="https://www.github.com/joemarlo" data-animate-hover="pulse" class="external">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2020 Joe Marlo
+        
+        <br> Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://joemarlo.github.io">Marlo</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-9">
+      <div class="content-column-content">
+         <h1>Bayesian approach to predicting Citi Bike rides</h1>
+         <p><em>Understanding Citi Bike through weather</em></p>
+<hr>
+<p>Citi Bike is the <a href="https://www1.nyc.gov/html/dot/downloads/pdf/mobility-report-singlepage-2019.pdf">number three</a> mode of public transportation in New York City behind the subway and buses. There were 1.2 million Citi Bike trips in February 2020 equaling to <a href="https://d21xlh2maitm24.cloudfront.net/nyc/February-2020-Citi-Bike-Monthly-Report.pdf?mtime=20200313132246">40,000 daily trips</a>. Unlike it&rsquo;s larger transit counterparts, Citi Bike daily ridership is difficult to predict as it is a mixture of commuter and leisure riders — the former is tied to weekdays and the latter is tied to the weather.</p>
+<p>Given this limited information of just weather and weekday, can Citi Bike ridership be accurately predicted?</p>
+<h2 id="key-findings">Key findings</h2>
+<p>A Bayesian negative binomial model can predict the number of daily Citi Bike trips using just the weather and day of the week. It clearly captures the seasonality of bike rides, and it provides a credible interval that covers almost every actual observation. The model suggests there are more trips on weekdays, less during rainy days, more as the temperature increases, and less as the wind increases. These are all intuitive drivers of Citi Bike trips. However, using point estimates alone, the RMSE of 14,001 is too large for many practical uses.</p>
+<p align="center">
+<img src="/img/posts/Bayesian-Citi-Bike/NG_out_of_sample_preds.svg" width=90%>
+</p>
+<br>
+<h2 id="analysis-process">Analysis process</h2>
+<ul>
+<li><a href="#citi-bike-data"><strong>The data</strong></a></li>
+<li><a href="#model-selection"><strong>Model selection</strong></a></li>
+<li><a href="#drawing-from-the-prior-predictive-distribution"><strong>Drawing from the prior predictive distribution</strong></a></li>
+<li><a href="#conditioning-on-the-observed-data"><strong>Conditioning on the observed data</strong></a></li>
+<li><a href="#data-characteristics"><strong>Data characteristics</strong></a></li>
+<li><a href="#evaluating-the-negative-binomial-model"><strong>Evaluating the negative binomial model</strong></a></li>
+<li><a href="#predicting-new-data"><strong>Predicting new data</strong></a></li>
+<li><a href="#an-alternative-model-poisson"><strong>An alternative model: Poisson</strong></a></li>
+<li><a href="#final-thoughts"><strong>Final thoughts</strong></a></li>
+<li><a href="#addendum-a-frequentist-comparison"><strong>Addendum: a frequentist comparison</strong></a></li>
+</ul>
+<br>
+<h2 id="citi-bike-data">Citi Bike data</h2>
+<p>Citi Bike publishes real-time and <a href="https://www.citibikenyc.com/system-data">monthly datasets</a> detailing each bike trip taken since 2013. Information includes the date, start- and end-times, departure and arrival stations, subscriber status, rider sex and rider birth year. Ridership has been steadily growing with an average daily ridership of 26,238 in 2013 compared to 56,306 in 2019. To minimize the impact of this omitted growth variable while maximizing the size of the training set, only data from 2017, 2018, and 2019 will be included. The data is then aggregated and <a href="https://github.com/joemarlo/NYC-data/blob/master/Analyses/Bayesian-Citibike/Dataset_for_bayesian_project.R">bike trip counts are calculated for each day</a>. A random sample of 80% is used to train the model and the remaining 20% is used for model prediction evaluation.</p>
+<h3 id="weather-data">Weather data</h3>
+<p>The Citi Bike dataset does not contain weather data. Weather information is obtained from the National Oceanic and Atmospheric Administration (NOAA) for the Central Park weather station. Information includes the daily precipitation, average temperature, and maximum gust speed. The data is collected during the day (i.e. ex post). The final model will be used for prediction so a practical application would require a weather forecast (i.e. ex ante). This discontinuity is acceptable as one-day weather forecasts are quite accurate.</p>
+<h3 id="final-dataset">Final dataset</h3>
+<p>The <a href="https://github.com/joemarlo/NYC-data/blob/master/Analyses/Bayesian-Citibike/Daily_Citibike_counts.csv">final dataset</a> consists of 938 observations and five variables.</p>
+<!-- table of variables-->
+<div class="table-responsive">
+<table class="table table-hover" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Variable </th>
+   <th style="text-align:left;"> Type </th>
+   <th style="text-align:left;"> Description </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Trip_count </td>
+   <td style="text-align:left;"> continuous </td>
+   <td style="text-align:left;"> Count of daily Citi Bike trips </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Weekday </td>
+   <td style="text-align:left;"> boolean </td>
+   <td style="text-align:left;"> 1 = weekday, 0 = weekend </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Precipitation </td>
+   <td style="text-align:left;"> boolean </td>
+   <td style="text-align:left;"> 1 = rain, 0 = no rain </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Temp </td>
+   <td style="text-align:left;"> integer </td>
+   <td style="text-align:left;"> Average daily temperature in Fahrenheit </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Gust_speed </td>
+   <td style="text-align:left;"> continuous </td>
+   <td style="text-align:left;"> Maximum gust speed in miles per hour </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<br>
+<h2 id="model-selection">Model selection</h2>
+<p>The outcome variable is a simple count of how many bike trips occurred in a single day. Count data is frequently modeled using a Poisson model or the more flexible negative binomial model. The data is assumed to not be zero-inflated as it seems unlikely there would be many days, if any, where there were no Citi Bike trips.</p>
+<p>First, we will fit a negative binomial then evaluate it against a Poisson using expected log predictive density, effective number of model parameters, and Pareto k values via leave-one-out cross-validation.</p>
+<p>The model form in R syntax:</p>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<blockquote>
+<p><span style="font-family:'Inconsolata', 'Roboto', 'Georgia', 'Times New Roman';">Trip count ~ Weekday + Precipitation + Temperature + Gust speed</span></p>
+</blockquote>
+<p>The primarily tool for this analysis is the excellent <code>R</code> package for Bayesian generalized models <a href="https://mc-stan.org/users/interfaces/brms"><code>brms</code></a> — which interfaces with <a href="https://mc-stan.org/">Stan</a>.</p>
+<br>
+<h2 id="drawing-from-the-prior-predictive-distribution">Drawing from the prior predictive distribution</h2>
+<p>Specifying priors is the first step of a Bayesian analysis. Each coefficient plus the intercept and shape parameter need a respective prior. Passing the model specification to <code>brms::get_prior()</code> returns the priors that need to be set along with their default values. These should be replaced with our own priors.</p>
+<blockquote>
+<p><strong>Interpreting coefficients (and priors)</strong><br>
+Negative binomial models&rsquo; outcomes are specified in log counts so the coefficients need to be interpreted accordingly. For example, if the coefficient estimate is 0.50 then for a one-unit increase in this predictor variable, the difference in the expected log count of the number of bike trips is expected to increase by 0.50 — given everything else is held constant. When setting priors it&rsquo;s more helpful to think about the coefficient like this:</p>
+<ul>
+<li>If our outcome variable is 50,000 bike trips and we believe changing only this one predictor will have a positive effect of 33,000 bike trips then the coefficient estimate for this predictor would be: <strong>log(83,000) - log(50,000) = 0.50</strong></li>
+</ul>
+</blockquote>
+<!-- https://stats.idre.ucla.edu/r/dae/negative-binomial-regression/ -->
+<br>
+<h3 id="specifying-priors">Specifying priors</h3>
+<p>Temperature and gust speed are not likely to have large effects on the outcome for each one unit increase. Temperature is in Fahrenheit and gust speed is in miles per hour. A one unit increase in either of these is unlikely to have a measurable effect on the trips. Both are set to normal(0, 0.01).</p>
+<p>Weekday and precipitation, I believe, are more likely to have a larger effect since these are binary variables. However, their effects will be inverses of each other: weekdays have more commuter riders and rainy days have less overall riders. The priors are set to normal(0.5, 0.1) and normal(-0.5, 0.1) respectively.</p>
+<!-- table of variables-->
+<div class="table-responsive">
+<table class="table table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Prior </th>
+   <th style="text-align:left;"> Class </th>
+   <th style="text-align:left;"> Coef </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> normal(0, 0.01) </td>
+   <td style="text-align:left;"> b </td>
+   <td style="text-align:left;"> Gust_speed </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> normal(-0.5, 0.1) </td>
+   <td style="text-align:left;"> b </td>
+   <td style="text-align:left;"> Precipitation </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> normal(0, 0.01) </td>
+   <td style="text-align:left;"> b </td>
+   <td style="text-align:left;"> Temp </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> normal(0.5, 0.1) </td>
+   <td style="text-align:left;"> b </td>
+   <td style="text-align:left;"> Weekday </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> normal(10, 1) </td>
+   <td style="text-align:left;"> Intercept </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> exponential(10) </td>
+   <td style="text-align:left;"> shape </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<p>We can draw from this model using <code>brms::brm()</code> with the optional arguments <code>family = 'negbinomial'</code> and <code>sample_prior = &quot;only&quot;</code>. The resulting estimates are inline with our priors except for maybe that shape parameter seems a little off. More on that later.</p>
+<pre><code>prior_estimate &lt;- brm(Trip_count ~ Weekday + Precipitation + Temp + Gust_speed,
+                      data = Citibike_train, family = 'negbinomial',
+                      prior = priors, sample_prior = &quot;only&quot;)
+</code></pre><p align="center">
+<img src="/img/posts/Bayesian-Citi-Bike/prior_estimates.svg" width=90%>
+</p>
+<p>And finally, we compute the expected value using <code>brms::pp_expect()</code>. The below plot shows these draws from the prior distribution of the conditional expectation are reasonable. Examining the deciles shows that the middle 90% are covering a reasonable range of data. The values are little low but close to the actuals: the mean draw is 38,778 whereas the mean daily ridership for 2017-2019 is closer to 50,000.</p>
+<pre><code>prior_draws &lt;- pp_expect(draws, nsamples = 4000)
+</code></pre><p align="center">
+<img src="/img/posts/Bayesian-Citi-Bike/prior_draws.svg" width=90%>
+</p>
+<br>
+<h2 id="conditioning-on-the-observed-data">Conditioning on the observed data</h2>
+<p>Since the priors are reasonable we can now condition on the data. This is simple using the <code>brms</code> package; simply call <code>brms::update()</code> on the model with the argument <code>sample_prior = &quot;no&quot;</code>.</p>
+<pre><code>post_nb &lt;- update(prior_estimate, sample_prior = &quot;no&quot;)
+</code></pre><p>The model converges and Rhat values are each 1.00. The effective-sample-sizes are all large as well, ranging from 2,800 to 5,500. Importantly, we see the estimates are close to the priors.</p>
+<p>The largest surprise is that precipitation has a larger effect on the outcome than weekday which may indicate that the hypothesized weekday commuters do not have as strong a positive effect as rain has a negative effect.</p>
+<!-- table of model parameters-->
+<div class="table-responsive">
+<table class="table table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> Estimate </th>
+   <th style="text-align:right;"> Est.Error </th>
+   <th style="text-align:right;"> l-95% CI </th>
+   <th style="text-align:right;"> u-95% CI </th>
+   <th style="text-align:right;"> Rhat </th>
+   <th style="text-align:right;"> Bulk_ESS </th>
+   <th style="text-align:right;"> Tail_ESS </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Intercept </td>
+   <td style="text-align:right;"> 9.41 </td>
+   <td style="text-align:right;"> 0.08 </td>
+   <td style="text-align:right;"> 9.25 </td>
+   <td style="text-align:right;"> 9.58 </td>
+   <td style="text-align:right;"> 1.000 </td>
+   <td style="text-align:right;"> 4,933 </td>
+   <td style="text-align:right;"> 3,338 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Weekday </td>
+   <td style="text-align:right;"> 0.24 </td>
+   <td style="text-align:right;"> 0.03 </td>
+   <td style="text-align:right;"> 0.19 </td>
+   <td style="text-align:right;"> 0.30 </td>
+   <td style="text-align:right;"> 1.000 </td>
+   <td style="text-align:right;"> 4,006 </td>
+   <td style="text-align:right;"> 2,828 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Precipitation </td>
+   <td style="text-align:right;"> -0.36 </td>
+   <td style="text-align:right;"> 0.03 </td>
+   <td style="text-align:right;"> -0.42 </td>
+   <td style="text-align:right;"> -0.30 </td>
+   <td style="text-align:right;"> 1.003 </td>
+   <td style="text-align:right;"> 4,007 </td>
+   <td style="text-align:right;"> 2,830 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Temp </td>
+   <td style="text-align:right;"> 0.02 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 0.02 </td>
+   <td style="text-align:right;"> 0.02 </td>
+   <td style="text-align:right;"> 1.000 </td>
+   <td style="text-align:right;"> 4,433 </td>
+   <td style="text-align:right;"> 3,095 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Gust_speed </td>
+   <td style="text-align:right;"> -0.01 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> -0.02 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 1.000 </td>
+   <td style="text-align:right;"> 5,583 </td>
+   <td style="text-align:right;"> 2,635 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> shape </td>
+   <td style="text-align:right;"> 8.39 </td>
+   <td style="text-align:right;"> 0.43 </td>
+   <td style="text-align:right;"> 7.59 </td>
+   <td style="text-align:right;"> 9.24 </td>
+   <td style="text-align:right;"> 1.003 </td>
+   <td style="text-align:right;"> 4,003 </td>
+   <td style="text-align:right;"> 2,773 </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<p>There&rsquo;s a few drawbacks to these priors. Notably, the shape parameter was misspecified, and the temperature and weekday beliefs may have been too strong (i.e. the resulting distributions of prior estimates are too narrow). It would have been more appropriate to have slightly wider priors, and the shape parameter should have been set with rate = 0.1 instead of rate = 10. Rate = 0.1 corresponds to a mean of approximately 10 which was the goal. Below, the darker grey fill are the posterior estimates and the black lines are the prior estimates.</p>
+<p align="center">
+<img src="/img/posts/Bayesian-Citi-Bike/posterior_estimates.svg" width=90%>
+</p>
+<p>The posterior draws are well within range — these values are, effectively, 4,000 estimates of the model&rsquo;s prediction for each observation so they should follow the data closely. The middle 90% [26,141, 82,748] fits the data well; the middle 90% of the actual data is [25,881, 75,358]. Additionally, the mean (52,636) and median (49,902) are close to the actual data (51,528 and 53,809 respectively).</p>
+<p align="center">
+<img src="/img/posts/Bayesian-Citi-Bike/posterior_draws.svg" width=90%>
+</p>
+<br>
+<h2 id="data-characteristics">Data characteristics</h2>
+<p>Since we&rsquo;ve fit the model we can now examine the data closely. The trip count is roughly normally distributed but slightly left-skewed with a mean of 51,824. There are more trips on weekdays and less for rainy days. Trips are positively correlated (0.76) with temperature and negatively correlated (-0.44) with gust speed. Temperature is left skewed and gust speed is right skewed.</p>
+<p align="center">
+<img src="/img/posts/Bayesian-Citi-Bike/pairs.svg" width=90%>
+</p>
+<br>
+<h2 id="evaluating-the-negative-binomial-model">Evaluating the negative binomial model</h2>
+<p>The model meets all the standard criteria. Executing leave-one-out cross-validation via <code>brms::loo()</code> we see the Pareto k estimates for the negative binomial model are fine with values less than 0.5 indicating no high leverage data points. The expected log predictive density (<code>elpd_loo</code>) is approximately -8,000 — this will be important when comparing against the Poisson model. And the expected number of parameters in the model, <code>p_loo</code>, is approximately six. Note that <code>looic</code> is just <code>elpd_loo</code> multiplied by -2 and is used similarly.</p>
+<!-- table of neg binom diagnostics-->
+<div class="table-responsive">
+<table class="table table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> Estimate </th>
+   <th style="text-align:right;"> SE </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> elpd_loo </td>
+   <td style="text-align:right;"> -8,330.8 </td>
+   <td style="text-align:right;"> 21.51 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> p_loo </td>
+   <td style="text-align:right;"> 5.7 </td>
+   <td style="text-align:right;"> 0.76 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> looic </td>
+   <td style="text-align:right;"> 16,661.6 </td>
+   <td style="text-align:right;"> 43.03 </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<br>
+<p align="center">
+<img src="/img/posts/Bayesian-Citi-Bike/PSIS_ng.svg" width=90%>
+</p>
+<p>The model estimates are in-line with the actual observations, and it clearly captures the seasonality of trips. The credible interval may be wide but the middle of the estimates are close to the actuals.</p>
+<p align="center">
+<img src="/img/posts/Bayesian-Citi-Bike/NG_preds.svg" width=90%>
+</p>
+<br>
+<h2 id="predicting-new-data">Predicting new data</h2>
+<p>The goal of this exercise is accurate prediction. The data was originally split 80% (757 observations) for training and 20% (181 observations) for testing.</p>
+<p>Posterior predictions are made using <code>brms::posterior_predict()</code> with argument <code>newdata = Citibike_test</code> data. Similar to the in-sample estimates, the out-of-sample estimates fit the data well but with a wide credible interval.</p>
+<p align="center">
+<img src="/img/posts/Bayesian-Citi-Bike/NG_out_of_sample_preds.svg" width=90%>
+</p>
+<br>
+<h2 id="an-alternative-model-poisson">An alternative model: Poisson</h2>
+<p>Count data is most frequently associated with Poisson models, which are a special case of negative binomial. Below, the negative binomial model is refitted as a Poisson using the same model form.</p>
+<!-- table of poisson parametrs -->
+<div class="table-responsive">
+<table class="table table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> Estimate </th>
+   <th style="text-align:right;"> Est.Error </th>
+   <th style="text-align:right;"> l-95% CI </th>
+   <th style="text-align:right;"> u-95% CI </th>
+   <th style="text-align:right;"> Rhat </th>
+   <th style="text-align:right;"> Bulk_ESS </th>
+   <th style="text-align:right;"> Tail_ESS </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Intercept </td>
+   <td style="text-align:right;"> 9.65 </td>
+   <td style="text-align:right;"> 0.001 </td>
+   <td style="text-align:right;"> 9.65 </td>
+   <td style="text-align:right;"> 9.66 </td>
+   <td style="text-align:right;"> 1.001 </td>
+   <td style="text-align:right;"> 4,018 </td>
+   <td style="text-align:right;"> 3,070 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Weekday </td>
+   <td style="text-align:right;"> 0.19 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.19 </td>
+   <td style="text-align:right;"> 0.19 </td>
+   <td style="text-align:right;"> 1.001 </td>
+   <td style="text-align:right;"> 1,388 </td>
+   <td style="text-align:right;"> 1,593 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Precipitation </td>
+   <td style="text-align:right;"> -0.29 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> -0.29 </td>
+   <td style="text-align:right;"> -0.29 </td>
+   <td style="text-align:right;"> 1.003 </td>
+   <td style="text-align:right;"> 1,010 </td>
+   <td style="text-align:right;"> 1,422 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Temp </td>
+   <td style="text-align:right;"> 0.02 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 0.02 </td>
+   <td style="text-align:right;"> 0.02 </td>
+   <td style="text-align:right;"> 1.000 </td>
+   <td style="text-align:right;"> 4,124 </td>
+   <td style="text-align:right;"> 3,082 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Gust_speed </td>
+   <td style="text-align:right;"> -0.01 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> -0.01 </td>
+   <td style="text-align:right;"> -0.01 </td>
+   <td style="text-align:right;"> 1.002 </td>
+   <td style="text-align:right;"> 3,676 </td>
+   <td style="text-align:right;"> 2,567 </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<p>Compared to the negative binomial model it has a significantly worse ELPD, is more complicated (considerably larger <code>p_loo</code> value), and has a substantial number of large Pareto k.  532 or 70% of the observations have Pareto k values larger than 0.5 indicating the posterior distribution is sensitive. 373 or 49% of the observations have values over 1.</p>
+<!-- table of poisson diagnositics -->
+<div class="table-responsive">
+<table class="table table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> Poisson
+Estimate </th>
+   <th style="text-align:right;"> Poisson
+SE </th>
+   <th style="text-align:right;"> Negative binomial
+Estimate </th>
+   <th style="text-align:right;"> Negative binomial
+SE </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> elpd_loo </td>
+   <td style="text-align:right;"> -1,236,590 </td>
+   <td style="text-align:right;"> 64,663 </td>
+   <td style="text-align:right;"> -8,330.8 </td>
+   <td style="text-align:right;"> 21.513 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> p_loo </td>
+   <td style="text-align:right;"> 11,250 </td>
+   <td style="text-align:right;"> 483 </td>
+   <td style="text-align:right;"> 5.7 </td>
+   <td style="text-align:right;"> 0.764 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> looic </td>
+   <td style="text-align:right;"> 2,473,179 </td>
+   <td style="text-align:right;"> 129,326 </td>
+   <td style="text-align:right;"> 16,661.6 </td>
+   <td style="text-align:right;"> 43.025 </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<br>
+<p align="center">
+<img src="/img/posts/Bayesian-Citi-Bike/PSIS_pois.svg" width=90%>
+</p>
+<p>The Poisson model is estimating the data well but is severely overfitting.</p>
+<p align="center">
+<img src="/img/posts/Bayesian-Citi-Bike/Pois_preds.svg" width=90%>
+</p>
+<br>
+<h3 id="prediction-comparison">Prediction comparison</h3>
+<p>Simplifying the predictions down to just the point estimates, we see the predictions are similar. Using the mean estimates for each out-of-sample observation, the root-mean-squared-error (RMSE) of the negative binomial and the Poisson are close. However, the severe overfitting of the poisson relative to the negative binomial is evident below.</p>
+<!-- table of RMSEs -->
+<div class="table-responsive">
+<table class="table table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> RMSE </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Negative binomial </td>
+   <td style="text-align:left;"> 14,001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Poisson </td>
+   <td style="text-align:left;"> 12,605 </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<br>
+<div class="frame">
+   <img src="/img/posts/Bayesian-Citi-Bike/Pred_comparison.svg">
+</div>
+<br>
+<br>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>Between these two models the negative binomial is superior. Negative-binomial models allow the variance of the distribution to be larger than the mean. This is important in the Citi Bike data as it is over-dispersed: the mean is 51,824 and the variance 418,294,720.</p>
+<p>Both models suggest that there are more riders on weekdays, less riders during rain, more riders as temperature increases, and slightly less riders as the wind increases in speed.  Overall model performance is mediocre, though. The negative binomial model captures much of the variation due to weather and day of the week. However, the RMSE of 14,001 is rather large so it may not be an effective model in practice.</p>
+<br>
+<br>
+<br>
+<h3 id="addendum-a-frequentist-comparison">Addendum: a frequentist comparison</h3>
+<p>The frequentist approach to the negative binomial is simple. In practice, just fit the negative binomial model via <code>MASS::glm.nb()</code> with the same model form specified above. The coefficient estimates are similar to the Bayesian approach. The standard errors are notably tight and the p-values are effectively zero. These are usually interpreted as all good signs.</p>
+<!-- table of frequentist model -->
+<div class="table-responsive">
+<table class="table table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> Estimate </th>
+   <th style="text-align:right;"> Std. Error </th>
+   <th style="text-align:right;"> z value </th>
+   <th style="text-align:right;"> Pr(&gt;|z|) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:right;"> 9.45 </td>
+   <td style="text-align:right;"> 0.08 </td>
+   <td style="text-align:right;"> 122.47 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Weekday </td>
+   <td style="text-align:right;"> 0.22 </td>
+   <td style="text-align:right;"> 0.02 </td>
+   <td style="text-align:right;"> 9.09 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Precipitation </td>
+   <td style="text-align:right;"> -0.34 </td>
+   <td style="text-align:right;"> 0.03 </td>
+   <td style="text-align:right;"> -11.62 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Temp </td>
+   <td style="text-align:right;"> 0.02 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> 30.20 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Gust_speed </td>
+   <td style="text-align:right;"> -0.01 </td>
+   <td style="text-align:right;"> 0.00 </td>
+   <td style="text-align:right;"> -3.55 </td>
+   <td style="text-align:right;"> 0.0004 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> shape </td>
+   <td style="text-align:right;"> 10.75 </td>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;">  </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<p>And the RMSE is slightly improved over the Bayesian negative binomial model.</p>
+<!-- table of RMSEs -->
+<div class="table-responsive">
+<table class="table table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> RMSE </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Negative binomial - Frequentist </td>
+   <td style="text-align:left;"> 13,923 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Negative binomial - Bayesian </td>
+   <td style="text-align:left;"> 14,001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Poisson - Bayesian </td>
+   <td style="text-align:left;"> 12,605 </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<p>However, after plotting the data it is obvious the model is tremendously overfitting similar to the Bayesian Poisson model.</p>
+<p align="center">
+<img src="/img/posts/Bayesian-Citi-Bike/Freq_preds.svg" width=90%>
+</p>
+<br>
+<h4 id="a-perk-of-bayesian">A perk of Bayesian</h4>
+<p>Bayesians assume model parameters are random and data is fixed whereas Frequentists assume parameters are fixed and data random. The benefit of the Bayesian approach allows us to make probabilistic statements about these parameters. For example, what is the probability that <code>Weekday</code> has a positive effect greater than 0.25? <strong>0.41</strong>.</p>
+<p align="center">
+<img src="/img/posts/Bayesian-Citi-Bike/weekday_probability.svg" width=90%>
+</p>
+<p>A similar approach can be applied to the predictions. We can gather a better understanding of the models&rsquo; predictions by examining the breadth. For example, what do we think is the probability that on a <strong>rainy weekend</strong> day with a temperature of <strong>60F</strong> and a gust speed of <strong>10mph</strong> that more than 40,000 bike trips will be taken? The Bayesian approach can answer this question by sampling from the posterior distribution and then calculating the proportion of samples greater than 40,000: <strong>0.11</strong>.</p>
+<p align="center">
+<img src="/img/posts/Bayesian-Citi-Bike/probability.svg" width=90%>
+</p>
+<p>To wrap it all up, the plot below shows the spread of each models&rsquo; predictions. The predictions have been standardized so 0 represents a perfect prediction, and the ranges — represented by dark to light green — cover roughly 69%, 96%, and 99% of the predictions for that observation. The methods are not directly comparable between Frequentist and Bayesian but this still gives an idea of the spread of each model&rsquo;s predictions. The Bayesian negative binomial model always covers the actual value — represented by the dark vertical line at x = 0.</p>
+<p align="center">
+<img src="/img/posts/Bayesian-Citi-Bike/relative_error.svg" width=90%>
+</p>
+<br>
+<hr>
+<p><em>2020 May</em><br>
+<em>Find the code here: <a href="https://github.com/joemarlo/NYC-data/tree/master/Analyses/Bayesian-Citibike">github.com/joemarlo/NYC-data/Analyses/Bayesian-Citibike</a></em></p>
+<!-- Load custom CSS -->
+<link rel="stylesheet" type="text/css" href="/posts-css/Bayesian-Citi-Bike.css">
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://joemarlo.github.io/js/jquery.min.js"></script>
+<script src="https://joemarlo.github.io/js/bootstrap.min.js"></script>
+<script src="https://joemarlo.github.io/js/jquery.cookie.js"> </script>
+<script src="https://joemarlo.github.io/js/ekko-lightbox.js"></script>
+<script src="https://joemarlo.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://joemarlo.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://joemarlo.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://joemarlo.github.io/js/owl.carousel.min.js"></script>
+<script src="https://joemarlo.github.io/js/front.js"></script>
+
+
+
+</body>
+</html>

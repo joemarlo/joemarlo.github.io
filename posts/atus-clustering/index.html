@@ -3,7 +3,7 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>How does your weekend stack up?</title>
-<meta name="description" content="Blog for stats and visualizations">
+<meta name="description" content="Personal portfolio of Joe Marlo">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
 <meta name="googlebot" content="index,follow,snippet,archive">
@@ -107,7 +107,7 @@
          <p><em>A cluster analysis of how Americans spend their weekends</em></p>
 <hr>
 <p>What are your plans for the weekend? While it is easy to imagine that Americans spend their weekends differently, this is a challenging question to empirically validate.</p>
-<p>Summarizing the average American’s weekend plans is an easy exercise in descriptive statistics. On average, the typical American spends 10 hours sleeping, six hours socializing and relaxing, two hours on household activities and one hour eating and drinking. This picture of the average weekend is shown in the plot below.</p>
+<p>Summarizing the average American’s weekend plans is an easy exercise in descriptive statistics. On average, the typical American spends 10 hours sleeping, six hours socializing and relaxing, two hours on household activities and one hour eating and drinking. This picture of the average weekend is shown below.</p>
 <p align="center">
 <img src="/img/posts/ATUS-clustering/Weekend_time_use_activities.svg" width=90%>
 </p>
@@ -148,7 +148,7 @@ The cluster analysis used 16 years of ATUS data totaling to a sample of over 201
 <p>Hierarchical clustering is only one of many clustering methods. We considered the popular K-means algorithm as well as model-based clustering. A hierarchical approach offered the best fit to this particular data set. Within the Time Use Survey, many respondents indicate zero minutes spent on several activities. The K-means algorithm assumes all variables have an equal variance and does not handle zero-inflated variables well. These assumptions do not fit the specifics of time use. Similarly, model based clustering has more rigid assumptions that variables come from a multivariate normal data generating process. Hierarchical clustering avoids these assumptions and is a good fit for this particular clustering problem.</p>
 <br>
 <h2 id="examining-the-clusters">Examining the clusters</h2>
-<h3 id="what-activities-define-each-cluster">What activities define each cluster?</h3>
+<h3 id="which-activities-define-each-cluster">Which activities define each cluster?</h3>
 <p>After assigning each person to a cluster, different groupings of weekend activities begin to emerge. Shown below, while all six clusters spent approximately equal time sleeping, there are distinct differences in the amount of time spent on work, on household activities, on socialization, and on caring for other members of ones’ household. In the plot, each row represents a distinct cluster and colors denote different activities.</p>
 <p align="center">
 <img src="/img/posts/ATUS-clustering/Weekend_activities_split_by_cluster.svg" width=90%>
@@ -167,7 +167,7 @@ Linking demographic data to cluster assignment has many different uses that rang
 <p>Comparing age, income, sex, children, marital status, and educational attainment between clusters revealed several patterns. While each cluster is made up of all demographics, demographics within each of the first five clusters differ from population averages. The visual below shows how age and income are not evenly dispersed between clusters. Some clusters tend to be younger, others are largely middle-aged and others skew older. Similar differences exist for different levels of household income.</p>
 <br>
 <div class="frame">
-<img src="/img/posts/ATUS-clustering/By_age_by_income.svg">
+  <img src="/img/posts/ATUS-clustering/By_age_by_income.svg">
 </div>
 <br>
 <p>Similarly, we see uneven dispersion in sex, marital status, children, and education levels. Some clusters skew towards female, others contain more married individuals, and others with more education. Notably, Cluster 5 contains almost exclusively individuals that have children in the household.</p>
