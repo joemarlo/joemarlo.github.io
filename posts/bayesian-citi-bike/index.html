@@ -654,10 +654,13 @@ SE </th>
 <p align="center">
 <img src="/img/posts/Bayesian-Citi-Bike/weekday_probability.svg" width=90%>
 </p>
-<p>A similar approach can be applied to the predictions. We can gather a better understanding of the models&rsquo; predictions by examining the breadth. For example, what do we think is the probability that on a <strong>rainy weekend</strong> day with a temperature of <strong>60F</strong> and a gust speed of <strong>10mph</strong> that more than 40,000 bike trips will be taken? The Bayesian approach can answer this question by sampling from the posterior distribution and then calculating the proportion of samples greater than 40,000: <strong>0.11</strong>.</p>
+<!--
+A similar approach can be applied to the predictions. We can gather a better understanding of the models' predictions by examining the breadth. For example, what do we think is the probability that on a **rainy weekend** day with a temperature of **60F** and a gust speed of **10mph** that more than 40,000 bike trips will be taken? The Bayesian approach can answer this question by sampling from the posterior distribution and then calculating the proportion of samples greater than 40,000: **0.11**.
+
 <p align="center">
 <img src="/img/posts/Bayesian-Citi-Bike/probability.svg" width=90%>
 </p>
+-->
 <p>To wrap it all up, the plot below shows the spread of each models&rsquo; predictions. The predictions have been standardized so 0 represents a perfect prediction, and the ranges — represented by dark to light green — cover roughly 69%, 96%, and 99% of the predictions for that observation. The methods are not directly comparable between Frequentist and Bayesian but this still gives an idea of the spread of each model&rsquo;s predictions. The Bayesian negative binomial model always covers the actual value — represented by the dark vertical line at x = 0.</p>
 <p align="center">
 <img src="/img/posts/Bayesian-Citi-Bike/relative_error.svg" width=90%>
