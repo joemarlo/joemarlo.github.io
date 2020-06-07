@@ -196,8 +196,8 @@ Negative binomial models&rsquo; outcomes are specified in log counts so the coef
 <!-- https://stats.idre.ucla.edu/r/dae/negative-binomial-regression/ -->
 <br>
 <h3 id="specifying-priors">Specifying priors</h3>
-<p>Temperature and gust speed are not likely to have large effects on the outcome for each one unit increase. Temperature is in Fahrenheit and gust speed is in miles per hour. A one unit increase in either of these is unlikely to have a measurable effect on the trips. Both are set to normal(0, 0.01).</p>
-<p>Weekday and precipitation, I believe, are more likely to have a larger effect since these are binary variables. However, their effects will be inverses of each other: weekdays have more commuter riders and rainy days have less overall riders. The priors are set to normal(0.5, 0.1) and normal(-0.5, 0.1) respectively.</p>
+<p>Temperature and gust speed are not likely to be associated with large effects on the outcome for each one unit increase. Temperature is in Fahrenheit and gust speed is in miles per hour. A one unit increase in either of these is unlikely to be associated with a measurable effect on the trips. Both are set to normal(0, 0.01).</p>
+<p>Weekday and precipitation, I believe, are more likely to be associated with a larger effect since these are binary variables. However, their associated effects will be inverses of each other: weekdays have more commuter riders and rainy days have less overall riders. The priors are set to normal(0.5, 0.1) and normal(-0.5, 0.1) respectively.</p>
 <!-- table of variables-->
 <div class="table-responsive">
 <table class="table table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
@@ -259,7 +259,7 @@ Negative binomial models&rsquo; outcomes are specified in log counts so the coef
 <p>Since the priors are reasonable we can now condition on the data. This is simple using the <code>brms</code> package; simply call <code>brms::update()</code> on the model with the argument <code>sample_prior = &quot;no&quot;</code>.</p>
 <pre><code>post_nb &lt;- update(prior_estimate, sample_prior = &quot;no&quot;)
 </code></pre><p>The model converges and Rhat values are each 1.00. The effective-sample-sizes are all large as well, ranging from 2,800 to 5,500. Importantly, we see the estimates are close to the priors.</p>
-<p>The largest surprise is that precipitation has a larger effect on the outcome than weekday which may indicate that the hypothesized weekday commuters do not have as strong a positive effect as rain has a negative effect.</p>
+<p>The largest surprise is that precipitation is associated with a larger effect on the outcome than weekday which may indicate that the hypothesized weekday commuters do not have as strong a positive effect as rain has a negative effect.</p>
 <!-- table of model parameters-->
 <div class="table-responsive">
 <table class="table table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
@@ -349,13 +349,13 @@ Negative binomial models&rsquo; outcomes are specified in log counts so the coef
 </p>
 <br>
 <h2 id="data-characteristics">Data characteristics</h2>
-<p>Since we&rsquo;ve fit the model we can now examine the data closely. The trip count is roughly normally distributed but slightly left-skewed with a mean of 51,824. There are more trips on weekdays and less for rainy days. Trips are positively correlated (0.76) with temperature and negatively correlated (-0.44) with gust speed. Temperature is left skewed and gust speed is right skewed.</p>
+<p>Since we&rsquo;ve fit the model we can now examine the data closely. The trip count is roughly normally distributed but slightly left-skewed with a mean of 51,895. There are more trips on weekdays and less for rainy days. Trips are positively correlated (0.77) with temperature and negatively correlated (-0.44) with gust speed. Temperature is left skewed and gust speed is right skewed.</p>
 <p align="center">
 <img src="/img/posts/Bayesian-Citi-Bike/pairs.svg" width=90%>
 </p>
 <br>
 <h2 id="evaluating-the-negative-binomial-model">Evaluating the negative binomial model</h2>
-<p>The model meets all the standard criteria. Executing leave-one-out cross-validation via <code>brms::loo()</code> we see the Pareto k estimates for the negative binomial model are fine with values less than 0.5 indicating no high leverage data points. The expected log predictive density (<code>elpd_loo</code>) is approximately -8,000 — this will be important when comparing against the Poisson model. And the expected number of parameters in the model, <code>p_loo</code>, is approximately six. Note that <code>looic</code> is just <code>elpd_loo</code> multiplied by -2 and is used similarly.</p>
+<p>The model meets all the standard criteria. Executing leave-one-out cross-validation via <code>brms::loo()</code> we see the Pareto k estimates are fine with values less than 0.5 indicating no high leverage data points. The expected log predictive density (<code>elpd_loo</code>) is approximately -8,000 — this will be important when comparing against the Poisson model. And the expected number of parameters in the model, <code>p_loo</code>, is approximately six. Note that <code>looic</code> is just <code>elpd_loo</code> multiplied by -2 and is used similarly.</p>
 <!-- table of neg binom diagnostics-->
 <div class="table-responsive">
 <table class="table table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
@@ -472,7 +472,7 @@ Negative binomial models&rsquo; outcomes are specified in log counts so the coef
 </tbody>
 </table>
 </div>
-<p>Compared to the negative binomial model it has a significantly worse ELPD, is more complicated (considerably larger <code>p_loo</code> value), and has a substantial number of large Pareto k.  532 or 70% of the observations have Pareto k values larger than 0.5 indicating the posterior distribution is sensitive. 373 or 49% of the observations have values over 1.</p>
+<p>Compared to the negative binomial model, it has a significantly worse ELPD, is more complicated (considerably larger <code>p_loo</code> value), and has a substantial number of large Pareto k.  532 or 70% of the observations have Pareto k values larger than 0.5 indicating the posterior distribution is sensitive. 373 or 49% of the observations have values over 1.</p>
 <!-- table of poisson diagnositics -->
 <div class="table-responsive">
 <table class="table table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
@@ -524,7 +524,7 @@ SE </th>
 </p>
 <br>
 <h3 id="prediction-comparison">Prediction comparison</h3>
-<p>Simplifying the predictions down to just the point estimates, we see the predictions are similar. Using the mean estimates for each out-of-sample observation, the root-mean-squared-error (RMSE) of the negative binomial and the Poisson are close. However, the severe overfitting of the poisson relative to the negative binomial is evident below.</p>
+<p>Simplifying the predictions down to just the point estimates, we see the predictions are similar. Using the mean estimates for each out-of-sample observation, the root-mean-squared-error (RMSE) of the negative binomial and the Poisson are close. However, the severe overfitting of the poisson relative to the negative binomial is evident in the below plot.</p>
 <!-- table of RMSEs -->
 <div class="table-responsive">
 <table class="table table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
