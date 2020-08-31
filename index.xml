@@ -6,7 +6,7 @@
     <description>Recent content on Marlo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 30 May 2020 13:49:44 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 31 Aug 2020 11:37:33 -0400</lastBuildDate>
     
 	<atom:link href="https://joemarlo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -63,6 +63,15 @@
       
       <guid>https://joemarlo.github.io/posts/last-meals/</guid>
       <description>&lt;p&gt;&lt;em&gt;Examining favorite foods through last meal requests&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Shiny tips for building interactive applications</title>
+      <link>https://joemarlo.github.io/posts/shiny-tips/</link>
+      <pubDate>Mon, 31 Aug 2020 11:37:33 -0400</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/shiny-tips/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Programming tips for statisticians&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
