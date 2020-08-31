@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Shiny tips for building interactive applications</title>
+<title>Shiny tips for building complex applications</title>
 <meta name="description" content="Personal portfolio of Joe Marlo">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
@@ -103,7 +103,7 @@
   <div class="row">
     <div class="col-lg-9">
       <div class="content-column-content">
-         <h1>Shiny tips for building interactive applications</h1>
+         <h1>Shiny tips for building complex applications</h1>
          <p><em>Programming tips for statisticians</em></p>
 <hr>
 <p><a href="https://shiny.rstudio.com/">Shiny</a> is one of the best ways to build interactive web apps. It leverages R to run data analysis and provides an interface to interact with the traditional web languages Javascript, CSS, and HTML. There’s a strong online community, however there are a few Shiny tips I wish I had known before I recently embarked on creating a complex Shiny app myself.</p>
@@ -117,7 +117,7 @@
 <p>This, as it turns out, was a quite complex project, and with the benefit of hindsight, these are the Shiny programming tips that would have helped me and hopefully can help you.</p>
 <br>
 <h3 id="reactivevalues-and-reactivevaluestolist">reactiveValues() and reactiveValuesToList()</h3>
-<p>The tool allows the student to modify data via filtering, random sampling, stratified sampling, and manually removing outliers. Since there are multiple methods there needs to be an ability to save datasets in one method and then load the data within another method. Additionally, we encourage the student to experiment with different sampling designs so there shouldn’t be a practical limit to the amount of datasets saved.</p>
+<p>The tool allows students to modify data via filtering, random sampling, stratified sampling, and manually removing outliers. Since there are multiple methods there needs to be an ability to save datasets in one method and then load the data within another method. Additionally, we encourage the students to experiment with different sampling designs so there shouldn’t be a practical limit to the amount of datasets saved.</p>
 <p>Shiny has a reactive framework which can be disorienting to those coming from the linear scripting world of R, MATLAB, and the like. In a typical R script you can create an object simply by <code>my_object &lt;- 5</code> or create a list object by <code>my_list &lt;- list()</code> and then add objects to that list by <code>my_list &lt;- c(5, my_list)</code>. The reactive context makes this more difficult as the user could add any number of items to the list in a non-linear fashion.</p>
 <p>Shiny provides a function for this behavior. <a href="https://shiny.rstudio.com/reference/shiny/0.11/reactiveValues.html"><code>reactiveValues()</code></a> can be used on the server side of the Shiny app and used to store objects. In my case, I needed to save datasets and their respective names, which are determined by the user.</p>
 <pre><code># initialize list of saved datasets
@@ -128,14 +128,14 @@ datasets_available$data &lt;- c(datasets_available$data, list(dataset_to_save))
 
 # add input string to list of dataset names
 datasets_available$data_names &lt;- c(datasets_available$data_names, save_name)
-</code></pre><p><code>dataset_to_save</code> and <code>save_name</code>, in my case, is the dataset object and an input string from the user respectively. However, this could be inputs or other objects in the server-side code. The list <code>datasets_available$datasets_available$data_names</code> can then later be leveraged in a dropdown to display the datasets to the user.</p>
+</code></pre><p><code>dataset_to_save</code> and <code>save_name</code>, in my case, is the dataset object and an input string from the user respectively. However, this could be inputs or other objects in the server-side code. The list <code>datasets_available$data_names</code> can then later be leveraged in a dropdown to display the datasets to the user.</p>
 <pre><code># updated dropdown with current list of datasets
 updateSelectInput(
   session = session,
   inputId = id, 
   choices = datasets_available$data_names
 )
-</code></pre><p>And all of this can be wrapped in an <code>lapply()</code> so it can be applied to multiple instances of dropdowns across many different pages. See the <a href="https://github.com/joemarlo/DS4SI-tool/blob/master/DS4SI-tool/server.R#L15">repo page</a> for the exact code if you’re interested in recreating it.</p>
+</code></pre><p>And this can be wrapped in an <code>lapply()</code> so multiple instances of dropdowns can be updated across many different pages. See the <a href="https://github.com/joemarlo/DS4SI-tool/blob/master/DS4SI-tool/server.R#L15">repo page</a> for the exact code if you’re interested in recreating it.</p>
 <p>And finally the user can access their data via a reactive function per each page.</p>
 <pre><code>choosen_data &lt;- reactive({
   datasets_available$data[[match(input$selected_data, datasets_available$data_names)]]
@@ -152,7 +152,7 @@ slider_id_list &lt;- c(“slider_id_one”, “slider_id_two”, “slider_id_th
 reactiveValuesToList(input)[slider_id_list]
 </code></pre><br>
 <h3 id="functionize-as-much-code-as-possible">Functionize as much code as possible</h3>
-<p>This should be obvious to experienced coders. There’s the <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY principle</a> in software programming to help keep code maintainable. In the Shiny context, I found it even more important than in typical statistical computing. For example, the tool shows the same histograms more than three times across different pages. In this case, a single function can be defined to draw the histogram plot based on inputted data and then be used with various outputs.</p>
+<p>This should be obvious to experienced coders. There’s the <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY principle</a> in software programming to keep code maintainable. In the Shiny context, I found it even more important than in typical statistical computing. For example, the tool shows the same histograms more than three times across different pages. In this case, a single function can be defined to draw the histogram plot based on inputted data and then be used with various outputs.</p>
 <pre><code># function to create histograms. Saved in functions.R script
 draw_histograms &lt;- function(data){
   data %&gt;% ggplot(aes(...)) + geom_hist()
@@ -165,7 +165,7 @@ output$sampling_plots &lt;- renderPlot(draw_histograms(sampling_data()))
 <p>Code can also be further abstracted using <a href="https://shiny.rstudio.com/articles/modules.html">modules</a> which account for namespace issues that functions can’t directly address.</p>
 <br>
 <h3 id="good-naming-conventions-go-a-long-way">Good naming conventions go a long way</h3>
-<p>Large Shiny apps are going to have dozens of variables and UI objects. The pedagogical tool has over 60 and it’s easy to lose track of which come from where. I have found a procedural method to naming works best. In this case, following a naming convention of [relevant_page]_[object type]_[name] worked best. The names can become quite long, but trading specificity for brevity is worthwhile when you’re trying to figure what that variable you defined three weeks ago actually represents.</p>
+<p>Large Shiny apps are going to have dozens of variables and UI objects. The pedagogical tool has over 60 and it’s easy to lose track of what they represent. I have found a procedural method to naming works best. In this case, following a naming convention of [relevant_page]_[object type]_[name] worked best. For example, <code>invitations_button_send</code> is the send button on the invitations page. The names can become quite long, but trading specificity for brevity is worthwhile when you’re trying to figure what that variable you defined three weeks ago actually represents.</p>
 <p>In addition to organization and sanity, this method allows you to easily use mapping functions on objects. For example, you want to update the label on three different buttons scattered across three pages. Simply throw it in a <code>lapply()</code> call and modify the ID within each ‘loop’.</p>
 <pre><code># list of prefixes used for saving related objects
 data_save_name_prefixes &lt;- c(
@@ -214,7 +214,8 @@ if (input$exploration_select_plot_type == 'Histogram'){
       p &lt;- p + geom_histogram(...) 
     }
 </code></pre><br>
-<p>Similarly, this way of thinking is helpful when determining rendering UI elements. The tool allows <a href="https://stattrek.com/statistics/dictionary.aspx?definition=stratified_sampling">stratified sampling</a> on one or two variables. Each of these require an independent slider to determine the sample size per stratum. These have to be rendered in real time as there are 28 possible sliders and most are not relevant to a user for a given selection. Instead of nesting <code>if then</code> statements to select which sliders to show, the sliders can be determined by tallying the combinations of slider variables and then mapping over those combinations to create a slider per each. Full code <a href="https://github.com/joemarlo/DS4SI-tool/blob/master/DS4SI-tool/server.R#L596">here</a>.</p>
+<p>This is much more concise than writing plot functions for each plot type, accounting for each combination of grouping, fill color, facetting, etc. The combinatorics get nasty.</p>
+<p>Similarly, this mindset is helpful when rendering dependent UI elements. The tool allows <a href="https://stattrek.com/statistics/dictionary.aspx?definition=stratified_sampling">stratified sampling</a> on one or two variables. Each of these require an independent slider to determine the sample size per stratum, and they have to be rendered in real time as there are 28 possible sliders and most are not relevant to a user for a given selection. Instead of nesting <code>if then</code> statements to select which sliders to show, the sliders can be determined by tallying the combinations of slider variables and then mapping over those combinations to create a slider per each. Full code <a href="https://github.com/joemarlo/DS4SI-tool/blob/master/DS4SI-tool/server.R#L596">here</a>.</p>
 <pre><code># table of strata combinations that exist for the selected dataset
 strata_combos &lt;- reactive({
     
@@ -243,7 +244,7 @@ output$sampling_strata_sliders &lt;- renderUI({
 })
 </code></pre><br>
 <h3 id="folder-structure">Folder structure</h3>
-<p>And finally, for large Shiny apps such as this tool, it’s important to organize the files in a split file structure rather than the typical app.R single file structure. Shiny knows to automatically load server.R, ui.R, and global.R in the base directory and to load everything in the /R subfolder (think of it akin to <code>source()</code>). The /www folder is also special; it contains typical web code such as CSS (and JavaScript if you have some) and is similarly automatically loaded. Custom subfolders like /markdowns need to be loaded directly by the ui.R script.</p>
+<p>And finally, for large Shiny apps such as this tool, it’s important to organize the files in a split file structure rather than the typical app.R single file structure. Shiny knows to automatically load server.R, ui.R, and global.R in the base directory and to load everything in the /R subfolder (think of files saved here as automatically being <code>source()</code>'ed). The /www folder is also special; it contains typical web code such as CSS (and JavaScript if you have some) and is similarly automatically loaded. Custom subfolders like /markdowns need to be loaded directly by the ui.R script.</p>
 <ul>
 <li>/DS4SI-tool
 <ul>
