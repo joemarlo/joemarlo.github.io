@@ -106,13 +106,17 @@
          <h1>Shiny tips for building complex applications</h1>
          <p><em>Programming tips for statisticians</em></p>
 <hr>
-<p><a href="https://shiny.rstudio.com/">Shiny</a> is one of the best ways to build interactive web apps. It leverages R to run data analysis and provides an interface to interact with the traditional web languages Javascript, CSS, and HTML. There’s a strong online community, however there are a few Shiny tips I wish I had known before I recently embarked on creating a complex Shiny app myself.</p>
+<p><a href="https://shiny.rstudio.com/">Shiny</a> is one of the best ways to build interactive web apps. It leverages R to run data analysis and provides an interface to interact with the traditional web languages Javascript, CSS, and HTML. There’s a strong online community providing assistance, however there are a few Shiny tips I wish I had known before I recently embarked on creating a complex Shiny app myself.</p>
 <p>In conjunction with <a href="https://steinhardt.nyu.edu/people/jennifer-hill">Dr. Jennifer Hill</a>, I’ve been using Shiny to build a <a href="https://jmarlo.shinyapps.io/DS4SI-tool/">pedagogical tool</a> that teaches students the tradeoffs that need to be weighed and made when designing randomized control trials. The tool follows a choose-your-own-adventure theme guiding the students through data exploring, plotting, and slicing-and-dicing via filtering and random sampling to ultimately create a sample of locations to invite to a hypothetical randomized control trial. To engage students in the process and provide real time feedback, the locations then accept or decline the invitation — randomly determined with R’s <code>rbinom()</code> with probability defined by a predetermined metric for each location combined with how persuasive they were in writing a memo to the location managers.</p>
 <p align="center">
 <a href="https://jmarlo.shinyapps.io/DS4SI-tool/">
-<img src="/img/posts/shiny-tips/screenshot.png" width=80%>
+<img src="/img/posts/shiny-tips/landing.png" width=90%>
 </a>
 </p>
+<i>
+<p align="right" style="font-size:70%;">
+The tool's landing page
+</i>
 <br>
 <p>This, as it turns out, was a quite complex project, and with the benefit of hindsight, these are the Shiny programming tips that would have helped me and hopefully can help you.</p>
 <br>
@@ -129,7 +133,7 @@ datasets_available$data &lt;- c(datasets_available$data, list(dataset_to_save))
 # add input string to list of dataset names
 datasets_available$data_names &lt;- c(datasets_available$data_names, save_name)
 </code></pre><p><code>dataset_to_save</code> and <code>save_name</code>, in my case, is the dataset object and an input string from the user respectively. However, this could be inputs or other objects in the server-side code. The list <code>datasets_available$data_names</code> can then later be leveraged in a dropdown to display the datasets to the user.</p>
-<pre><code># updated dropdown with current list of datasets
+<pre><code># update dropdown with current list of datasets
 updateSelectInput(
   session = session,
   inputId = id, 
@@ -192,10 +196,14 @@ lapply(data_save_name_prefixes, function(id){
 <h3 id="dont-always-think-in-if-then-statements">Don’t always think in <code>if then</code> statements</h3>
 <p>It’s easy to fall into the <code>if then</code> death spiral of nested statements to account for every scenario a user may go down. I found it simpler to manage the user interface and build objects as they go. For example, on the Data exploration page of the tool the user can build their own plots. It’s all driven by <code>ggplot2</code> and leverages the layering mechanism to selectively modify the final plot.</p>
 <p align="center">
-<img src="/img/posts/shiny-tips/ggplot.png" width=80%>
+<img src="/img/posts/shiny-tips/ggplot.png" width=90%>
 </p>
+<i>
+<p align="right" style="font-size:70%;">
+The Data exploration page containing the ggplot output
+</i>
 <br>
-<p>On the UI side, the code only shows the inputs available for the type of selected plot. And on the server side, the code leverages few if then statements build up a ggplot object. Here’s a simplified version. The full version with all the various plot types can be found <a href="https://github.com/joemarlo/DS4SI-tool/blob/master/DS4SI-tool/server.R#L304">here</a>.</p>
+<p>On the UI side, the code only shows the inputs available for the type of selected plot. And on the server side, the code leverages few <code>if then</code> statements build up a ggplot object. Here’s a simplified version. The full version with all the various plot types can be found <a href="https://github.com/joemarlo/DS4SI-tool/blob/master/DS4SI-tool/server.R#L304">here</a>.</p>
 <pre><code># create base ggplot object
 p &lt;- ggplot(plot_data, aes_string(x = input$exploration_variable_x))
     
@@ -214,9 +222,9 @@ if (input$exploration_select_plot_type == 'Histogram'){
       p &lt;- p + geom_histogram(...) 
     }
 </code></pre><br>
-<p>This is much more concise than writing plot functions for each plot type, accounting for each combination of grouping, fill color, facetting, etc. The combinatorics get nasty.</p>
+<p>This is much more concise than writing plot functions for each plot type, accounting for each combination of grouping, fill color, facetting, etc. The combinatorics become exorbitant.</p>
 <p>Similarly, this mindset is helpful when rendering dependent UI elements. The tool allows <a href="https://stattrek.com/statistics/dictionary.aspx?definition=stratified_sampling">stratified sampling</a> on one or two variables. Each of these require an independent slider to determine the sample size per stratum, and they have to be rendered in real time as there are 28 possible sliders and most are not relevant to a user for a given selection. Instead of nesting <code>if then</code> statements to select which sliders to show, the sliders can be determined by tallying the combinations of slider variables and then mapping over those combinations to create a slider per each. Full code <a href="https://github.com/joemarlo/DS4SI-tool/blob/master/DS4SI-tool/server.R#L596">here</a>.</p>
-<pre><code># table of strata combinations that exist for the selected dataset
+<pre><code># table of strata combinations that exist for the selected dataset and strata input variables
 strata_combos &lt;- reactive({
     
   # create vector of the pairwise variable names

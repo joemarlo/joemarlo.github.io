@@ -66,15 +66,6 @@
     </item>
     
     <item>
-      <title>Shiny tips for building complex applications</title>
-      <link>https://joemarlo.github.io/posts/shiny-tips/</link>
-      <pubDate>Mon, 31 Aug 2020 11:37:33 -0400</pubDate>
-      
-      <guid>https://joemarlo.github.io/posts/shiny-tips/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Programming tips for statisticians&lt;/em&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Clustering NBA players</title>
       <link>https://joemarlo.github.io/posts/nba/</link>
       <pubDate>Mon, 27 Jan 2020 13:09:49 -0500</pubDate>
@@ -90,6 +81,15 @@
       
       <guid>https://joemarlo.github.io/posts/social-security/</guid>
       <description>&lt;p&gt;&lt;em&gt;Optimizing Social Security and market Monte Carlos&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Shiny tips for building complex applications</title>
+      <link>https://joemarlo.github.io/posts/shiny-tips/</link>
+      <pubDate>Mon, 31 Aug 2020 11:37:33 -0400</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/shiny-tips/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Programming tips for statisticians&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
