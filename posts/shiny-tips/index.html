@@ -169,7 +169,7 @@ output$sampling_plots &lt;- renderPlot(draw_histograms(sampling_data()))
 <p>Code can also be further abstracted using <a href="https://shiny.rstudio.com/articles/modules.html">modules</a> which account for namespace issues that functions can’t directly address.</p>
 <br>
 <h3 id="good-naming-conventions-go-a-long-way">Good naming conventions go a long way</h3>
-<p>Large Shiny apps are going to have dozens of variables and UI objects. The pedagogical tool has over 60 and it’s easy to lose track of what they represent. I have found a procedural method to naming works best. In this case, following a naming convention of [relevant_page]_[object type]_[name] worked best. For example, <code>invitations_button_send</code> is the send button on the invitations page. The names can become quite long, but trading specificity for brevity is worthwhile when you’re trying to figure what that variable you defined three weeks ago actually represents.</p>
+<p>Large Shiny apps are going to have dozens of variables and UI objects. The pedagogical tool has over 120 and it’s easy to lose track of what they represent. I have found a procedural method to naming works best. In this case, following a naming convention of [relevant_page]_[object type]_[name] worked best. For example, <code>invitations_button_send</code> is the send button on the invitations page. The names can become quite long, but trading specificity for brevity is worthwhile when you’re trying to figure what that variable you defined three weeks ago actually represents.</p>
 <p>In addition to organization and sanity, this method allows you to easily use mapping functions on objects. For example, you want to update the label on three different buttons scattered across three pages. Simply throw it in a <code>lapply()</code> call and modify the ID within each ‘loop’.</p>
 <pre><code># list of prefixes used for saving related objects
 data_save_name_prefixes &lt;- c(
@@ -236,8 +236,6 @@ strata_combos &lt;- reactive({
     
   # tally the names
   strata_combos &lt;- as.data.frame(table(name_combos))
-
-  ...
 
   return(strata_combos)    
 })
