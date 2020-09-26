@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Stonks only go up, but does Robinhood usage follow?</title>
+<meta name="description" content="Personal portfolio of Joe Marlo">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/owl.theme.css">
+<link rel="icon" href= "https://joemarlo.github.io/favicon.ico" /> 
+
+
+  <link href="https://joemarlo.github.io/css/style.custom.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://joemarlo.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://joemarlo.github.io/img/favicon.png">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://joemarlo.github.io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://joemarlo.github.io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://joemarlo.github.io/favicon-16x16.png">
+
+
+
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="https://joemarlo.github.io">Marlo</a></h1>
+    
+      <p class="sidebar-p">I'm a statistics grad student @ NYU. <br> Based in New York.</p>
+    
+    <ul class="sidebar-menu">
+      
+        <li><a href="https://joemarlo.github.io/posts/">Posts</a></li>
+      
+        <li><a href="https://joemarlo.github.io/about/">About</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  
+  
+  
+  <a href="https://www.linkedin.com/in/jmarlo" data-animate-hover="pulse" class="external">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+  
+  <a href="https://www.github.com/joemarlo" data-animate-hover="pulse" class="external">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2020 Joe Marlo
+        
+        <br> Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://joemarlo.github.io">Marlo</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-9">
+      <div class="content-column-content">
+         <h1>Stonks only go up, but does Robinhood usage follow?</h1>
+         <p><em>Using Bayesian MLMs to see the link between r/wallstreetbets and Robinhood</em></p>
+<hr>
+<br>
+<p>Amid the economic uncertainty, increased time spent at home, and $1,200 stimulus checks, the spring and summer of 2020 witnessed noticeable increases in retail stock and ETF trading. The majority of this rise has taken place on the popular trading app <a href="https://robinhood.com/us/en/">Robinhood</a>, which allows retail traders to trade commission-free.</p>
+<br>
+<div class="frame">
+  <img src="/img/posts/stonks/RH_usage.png">
+</div>
+<br>
+<br>
+<p>The rise of retail trading, much of which has occurred on Robinhood, shook the market with seemingly irrational trades such as a <a href="https://www.forbes.com/advisor/investing/robinhood-bankrupt-hertz/">large number of retail traders buying assets in Hertz after the company filed for bankruptcy</a>. As retail investors become more relevant to market insight, the popular subreddit <a href="https://www.reddit.com/r/wallstreetbets/">r/wallstreetbets</a> (WSB), which self-describes as &ldquo;Like 4chan found a Bloomberg Terminal&rdquo;, has received increasing attention as a source of information to explain the mindset of retail traders. As of today, the subreddit has over 1.5 million followers and has been described by a <a href="https://www.bloomberg.com/news/articles/2020-09-15/big-investors-are-dying-to-know-what-the-little-guys-are-doing">Bloomberg piece</a> as a &ldquo;must-read&rdquo; to understand the mindset of retail traders.</p>
+<br>
+<h3 id="research-question">Research question</h3>
+<p>Several cases of mainstream financial reporting imply a link between WSB and Robinhood users, however, this link has been largely anecdotal or based on a few selected cases. The extent to which discussions on WSB predicts changes in the number of Robinhood users holding particular stocks — or stonks, following WSB vernacular — remains an open question. Put another way, if I know a given stock was talked about today on WSB, does that improve my predictions about how many Robinhood users will hold that stock?</p>
+<br>
+<h3 id="analysis">Analysis</h3>
+<p>To identify which tickers were discussed on WSB, all posts to the Daily Discussion section from March 1 through June 1, were scraped from Reddit. WSB posts were then merged with data on the number of Robinhood users holding each security. Robinhood data was obtained from the website <a href="https://robintrack.net">Robintrack</a> which obtains Robinhood usage data from the Robinhood API. The final data set includes daily counts of the number of Robinhood users holding the top 400 tickers for all days from March 1 - June 1 and a binary indicator representing if each ticker was discussed on WSB.</p>
+<p>After creating the data set, Bayesian Negative Binomial Mixed-Effects models were used to test if a post on WSB about a given ticker predicts changes in the amount of Robinhood users holding that ticker. Several possibilities exist for modeling the relationship between WSB and a ticker&rsquo;s popularity on Robinhood. <a href="http://www.stat.columbia.edu/~gelman/research/unpublished/loo_stan.pdf">Leave One Out Cross Validation (LOO)</a> was used to inform model selection. It is possible that the predictive power of WSB may vary between different tickers and could also change over time. The final model is flexible enough to account for these possibilities by including a fixed effect for WSB along with random effects for ticker and week that allows the effect of WSB to differ across ticker and over time.</p>
+<p>Results from the model are presented in the figure below. The top section of the figure indicates that, on average, knowing that a ticker was posted about on WSB does not provide substantial predictive information on the number of Robinhood users holding that ticker. The negative mean of the WSB variable actually suggests that WSB is more likely to be associated with decreased popularity on Robinhood, however, there is too much uncertainty (represented by the 80% credible interval shaded blue) to make a firm conclusion about the direction.</p>
+<p>The bottom portion of the figure presents week- and ticker-specific effects of WSB. Red points reflect predictions without WSB, while blue points include the WSB variable. The red line across the figure represents the average Robinhood popularity across tickers and across weeks. Taken together, there is clear evidence that some tickers are more popular than others and that the popularity of tickers changes over time, however, posts on WSB do not appear to predict changes in the popularity of a given ticker among Robinhood users.</p>
+<br>
+<div class="frame">
+  <img src="/img/posts/stonks/wsb_combined.png">
+</div>
+<br>
+<br>
+<br>
+<h3 id="considering-sentiment">Considering sentiment</h3>
+<p>A weakness of the analysis described above is that it assumes all posts on WSB carry equal weight. This is a tenuous assumption. Some posts on WSB are explicitly bullish while others are explicitly bearish. Sentiment analysis can be used to get a more nuanced representation of how a given ticker is being discussed at a particular point in time. By creating a WSB specific content dictionary and using the social media designated sentiment analysis algorithm <a href="http://comp.social.gatech.edu/papers/icwsm14.vader.hutto.pdf">VADER</a> the valence of each WSB post can be taken into account. Scores above zero indicate more positive sentiment while scores below zero represent more negative sentiment. Sentiment scores of the top tickers mentioned on WSB confirm that tickers have a balance of both positive and negative posts.</p>
+<br>
+<div class="frame">
+  <img src="/img/posts/stonks/scores_by_top_mentions.png">
+</div>
+<br>
+<br>
+<p>It is possible that tickers discussed more positively on WSB are more likely to coincide with increased popularity on Robinhood. To test this, all tickers discussed on WSB were compared using their sentiment score as a predictor for Robinhood popularity. Another Negative Binomial Bayesian Mixed-Effects model was fit. This model included a fixed effect for sentiment score, along with random effects for week and ticker and varying slopes for sentiment score for both week and ticker. This model produces an average effect for sentiment score while also allowing the effect of sentiment score to vary over time and to vary between tickers.</p>
+<p>Results from the second model are summarized in the figure below. The population average effect of sentiment score suggests that, on average, knowing the sentiment of a WSB post does not substantially improve the ability to predict changes in the popularity of a ticker. The trend of sentiment score suggests that a positive sentiment is more likely to predict increased popularity, however, there is too much uncertainty (shown by the shaded blue region) to reach a firm conclusion about the direction of sentiment.</p>
+<p>The bottom section of the figure presents ticker and week specific effects. The lack of difference between red points (which do not include sentiment as a predictor) and blue points (which factor in sentiment score) suggest that including information about sentiment does not provide strong evidence of changes in Robinhood popularity. Again, the red line represents the average Robinhood popularity across tickers and across weeks. There is clear evidence that some tickers are more popular than others and that the number of Robinhood changes over time, however, there is little difference between sentiment scores.</p>
+<br>
+<div class="frame">
+  <img src="/img/posts/stonks/sentiment_combined.png">
+</div>
+<br>
+<br>
+<br>
+<h3 id="takeaway-and-limitations">Takeaway and limitations</h3>
+<p>In total these two analyses suggest that the link between a ticker&rsquo;s popularity on WSB and a ticker&rsquo;s popularity on Robinhood is highly uncertain. This contrasts the prevailing media narrative. On average, knowing that a specific ticker was posted about on WSB and knowing the sentiment of a given post does not provide strong enough evidence to make actionable predictions about a ticker&rsquo;s popularity on Robinhood.</p>
+<p>These findings need to be considered in light of several key limitations:</p>
+<p>First, these analyses are not designed to evaluate any causal links between WSB and Robinhood, instead these analyses have been centered around using WSB to predict popularity on Robinhood. While these two constructs, cause and prediction, appear similar there are important distinctions between to two. For more detail on these distinction, refer to the book <a href="https://avehtari.github.io/ROS-Examples/">Regression and Other Stories</a>.</p>
+<p>Second, all analyses were focused on the number of users holding a given ticker rather than the amount of total assets invested. It is possible that WSB predicts high volume investing but not widespread popularity.</p>
+<p>Third, our data set only included data from the 400 most popular tickers on Robinhood and analyses were conducted on a stratified random sample of those ticker (strata based on ticker popularity). This sampling approach was required for computational feasibility. WSB may be more predictive of lesser known and more unpopular tickers not included in the 400 most popular tickers.</p>
+<p>Finally, our models assume that any effect of a post to WSB is limited to the day of that post. It is possible that posts on WSB may predict longer term changes in Robinhood popularity and these changes would not be reflected in our model.</p>
+<br>
+<hr>
+<p><em>2020 September</em><br>
+<em>Find the code here: <a href="https://github.com/joemarlo/stonks-nlp">github.com/joemarlo/stonks-nlp</a></em></p>
+<!-- Load custom CSS -->
+<link rel="stylesheet" type="text/css" href="/posts-css/ATUS-clustering.css">
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://joemarlo.github.io/js/jquery.min.js"></script>
+<script src="https://joemarlo.github.io/js/bootstrap.min.js"></script>
+<script src="https://joemarlo.github.io/js/jquery.cookie.js"> </script>
+<script src="https://joemarlo.github.io/js/ekko-lightbox.js"></script>
+<script src="https://joemarlo.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://joemarlo.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://joemarlo.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://joemarlo.github.io/js/owl.carousel.min.js"></script>
+<script src="https://joemarlo.github.io/js/front.js"></script>
+
+
+
+</body>
+</html>
