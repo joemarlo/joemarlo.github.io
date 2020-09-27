@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Inequities in the fall of NYC subway ridership</title>
+<meta name="description" content="Personal portfolio of Joe Marlo">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/owl.theme.css">
+<link rel="icon" href= "https://joemarlo.github.io/favicon.ico" /> 
+
+
+  <link href="https://joemarlo.github.io/css/style.custom.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://joemarlo.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://joemarlo.github.io/img/favicon.png">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://joemarlo.github.io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://joemarlo.github.io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://joemarlo.github.io/favicon-16x16.png">
+
+
+
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="https://joemarlo.github.io">Marlo</a></h1>
+    
+      <p class="sidebar-p">I'm a statistics grad student @ NYU. <br> Based in New York.</p>
+    
+    <ul class="sidebar-menu">
+      
+        <li><a href="https://joemarlo.github.io/posts/">Posts</a></li>
+      
+        <li><a href="https://joemarlo.github.io/about/">About</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  
+  
+  
+  <a href="https://www.linkedin.com/in/jmarlo" data-animate-hover="pulse" class="external">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+  
+  <a href="https://www.github.com/joemarlo" data-animate-hover="pulse" class="external">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2020 Joe Marlo
+        
+        <br> Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://joemarlo.github.io">Marlo</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-9">
+      <div class="content-column-content">
+         <h1>Inequities in the fall of NYC subway ridership</h1>
+         <p><em>Mapping the decline of subway ridership in the Covid era</em></p>
+<hr>
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+<p>[This post is still in draft]</p>
+<p>Ridership on New York City&rsquo;s subway system has declined significantly amid the Coronavirus pandemic. The Metropolitan Transportation Authority (MTA), which runs the subway, is in the <a href="https://www.nytimes.com/2020/07/21/nyregion/mta-subway-financial-cuts.html">midst of a fiscal crisis</a> — reportedly facing a $16 billion deficit due to the decline.</p>
+<p>It&rsquo;s easy to see the severity of the situation after visualizing the daily ridership over 2020. Over the course of one month, which included a New York statewide stay-at-home order, the MTA witnessed an unprecedented fall in straphangers. But is the decline in ridership spread equally  across NYC&rsquo;s diverse residents and neighborhoods?</p>
+<p align="center">
+<img src="/img/posts/covid-nyc-ridership/ridership_timeseries.svg" width=90%>
+</p>
+<br>
+<p>Putting finite numbers on this fall, we can take the difference in means between the period before the precipice and once ridership flattens out: an 88% mean decline in population level ridership.</p>
+<p align="center">
+<img src="/img/posts/covid-nyc-ridership/ridership_timeseries_bars.svg" width=90%>
+</p>
+<br>
+<p>Extending this basic methodology to each subway station reveals a distinct pattern playing out across the boroughs. Manhattan — home to the wealthy and the transient — saw the largest declines in ridership while the outer-boroughs — especially the Bronx — still saw large but relatively the smallest declines. A <a href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi diagram</a> (below left) is overlaid on the map to estimate the encompassing neighborhoods around a given subway station. This provides a reasonable approximation of the persons who are likely trafficking the station.</p>
+<p>To dig deeper into understanding who these persons are, projecting the points on to the <a href="https://www.census.gov/programs-surveys/geography/guidance/geo-areas/pumas.html">Census Public Use Microdata Areas</a> (PUMA, below right) allows us to tie the ridership to demographic variables that the Census tracks through the <a href="https://www.census.gov/programs-surveys/acs">American Community Survey</a> (ACS) such as income, age, job industry, and &hellip;.</p>
+<p align="center">
+<div class="row">
+ <div class="column">
+  <img src="/img/posts/covid-nyc-ridership/change_in_ridership.png"  style="width:100%">
+  <p align="right" style="font-size:70%;">
+  <i>
+  <br>
+  Regions mapped by proximity to subway station
+  </i>
+  </p>
+ </div>
+ <div class="column">
+    <img src="/img/posts/covid-nyc-ridership/change_in_ridership_by_PUMA.png" style="width:100%">
+    <p align="right" style="font-size:70%;">
+    <i>
+    <br>
+    Regions mapped by Census PUMA code
+    </i>
+    </p>
+ </div>
+</div>
+</p>
+<p>The first question to be addressed: are smaller decreases in ridership explained by essential worker status? Essential worker status can be approximated (below left) based on the industry residents labor in. Aligning these industries to the <a href="https://coronavirus.delaware.gov/wp-content/uploads/sites/177/2020/04/DE-Industry-List-4.21.pdf">Delaware essential industry list</a> (one of the few discrete lists available), the proportion of essential workers can be estimated. It&rsquo;s difficult to verify the accuracy but it seems roughly in line with the US estimate from the Economic Policy Institute which claims <a href="https://www.epi.org/blog/who-are-essential-workers-a-comprehensive-look-at-their-wages-demographics-and-unionization-rates/">55 million American workers are essential</a>.</p>
+<p>Second, how does ridership correlate with income? Below right.</p>
+<p>The income story is right in line with expectations with Manhattan and the northern parts of Brooklyn clearly representing the wealthiest neighborhoods. The essential worker map is a mixed bag; parts of Brooklyn and Manhattan are much more essential that expected. And some are much less essential than expected such as East Williamsburg and Bushwick in Brooklyn and Manhattan near Columbia University. However, the Bronx and south Brooklyn are more essential which aligns with the ridership map.</p>
+<p align="center">
+<div class="row">
+ <div class="column">
+  <img src="/img/posts/covid-nyc-ridership/essential_worker.png"  style="width:100%">
+ </div>
+ <div class="column">
+    <img src="/img/posts/covid-nyc-ridership/income.png" style="width:100%">
+ </div>
+</div>
+</p>
+<h3 id="i-just-do-correlations">I just do correlations</h3>
+<ul>
+<li>quantifiying effect of essential worker status on subway ridership</li>
+<li>Manhattan is a outlier: hypothesized as explained by commuting/work hub vs residents</li>
+</ul>
+<p align="center">
+<img src="/img/posts/covid-nyc-ridership/change_in_ridership_vs_income.png" width=65%>
+</p><p align="center">
+<img src="/img/posts/covid-nyc-ridership/change_in_ridership_vs_income.png" width=70%>
+</p>
+<p align="center">
+<img src="/img/posts/covid-nyc-ridership/essential_vs_ridership.png" width=85%>
+</p>
+<br>
+<h3 id="pulling-it-all-together">Pulling it all together</h3>
+<div id='map' style='width: 100%; height: 600px;'></div>
+<br>
+<br>
+<br>
+<h3 id="limitations">Limitations</h3>
+<ul>
+<li>Does not account for non-resident commuters traveling through (mostly) Manhattan</li>
+<li>causality</li>
+<li>data is messing. Calculating ridership and matching to station location has room for error</li>
+<li>caution on extending ridership as a general &ldquo;social distancing&rdquo; or &lsquo;social consideration&rsquo; metric</li>
+</ul>
+<br>
+<hr>
+<p><em>2020 September</em><br>
+<em>Find the code here: <a href="https://github.com/joemarlo/NYC-data/tree/master/Analyses/COVID-neighborhoods">github.com/joemarlo/NYC-data/</a></em></p>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1Ijoiam9lbWFybG8iLCJhIjoiY2tmazR1cnltMHBwcjJ6bWpoemxkemU2MiJ9.je3oLLKlEn3Y6dyEAIfJ-Q';
+  // Set bounds to New York, New York
+  var bounds = [
+    [-74.15, 40.52], // Southwest coordinates
+    [-73.68, 40.95] // Northeast coordinates
+    ];
+
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/joemarlo/ckfk4xv1o2uk419o09qcf9an7',
+    center: [-73.975, 40.75],
+    zoom: 10,
+    maxZoom: 12,
+    maxBounds: bounds // Sets bounds as max
+    });
+</script>
+<style>
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+ float: left;
+ width: 50%;
+ padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+ content: "";
+ clear: both;
+ display: table;
+}
+</style>
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://joemarlo.github.io/js/jquery.min.js"></script>
+<script src="https://joemarlo.github.io/js/bootstrap.min.js"></script>
+<script src="https://joemarlo.github.io/js/jquery.cookie.js"> </script>
+<script src="https://joemarlo.github.io/js/ekko-lightbox.js"></script>
+<script src="https://joemarlo.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://joemarlo.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://joemarlo.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://joemarlo.github.io/js/owl.carousel.min.js"></script>
+<script src="https://joemarlo.github.io/js/front.js"></script>
+
+
+
+</body>
+</html>
