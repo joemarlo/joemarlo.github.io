@@ -108,24 +108,24 @@
 <hr>
 <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
-<p>[This post is still in draft]</p>
 <p>Ridership on New York City&rsquo;s subway system has declined significantly amid the Coronavirus pandemic. The Metropolitan Transportation Authority (MTA), which runs the subway, is in the <a href="https://www.nytimes.com/2020/07/21/nyregion/mta-subway-financial-cuts.html">midst of a fiscal crisis</a> — reportedly facing a $16 billion deficit due to the decline.</p>
 <p>It&rsquo;s easy to see the severity of the situation after visualizing the daily ridership over 2020. Over the course of one month, which included a New York statewide stay-at-home order, the MTA witnessed an unprecedented fall in straphangers. But is the decline in ridership spread equally  across NYC&rsquo;s diverse residents and neighborhoods?</p>
 <p align="center">
 <img src="/img/posts/covid-nyc-ridership/ridership_timeseries.svg" width=90%>
 </p>
 <br>
-<p>Putting finite numbers on this fall, we can take the difference in means between the period before the precipice and once ridership flattens out: an 88% mean decline in population level ridership.</p>
+<p>Putting finite numbers on this fall, we can take the difference in means between the period before the precipice and the period once ridership flattens out: an 88% mean decline in system-wide ridership.</p>
 <p align="center">
 <img src="/img/posts/covid-nyc-ridership/ridership_timeseries_bars.svg" width=90%>
 </p>
 <br>
+<h3 id="neighborhood-differences">Neighborhood differences</h3>
 <p>Extending this basic methodology to each subway station reveals a distinct pattern playing out across the boroughs. Manhattan — home to the wealthy and the transient — saw the largest declines in ridership while the outer-boroughs — especially the Bronx — still saw large but relatively the smallest declines. A <a href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi diagram</a> (below left) is overlaid on the map to estimate the encompassing neighborhoods around a given subway station. This provides a reasonable approximation of the persons who are likely trafficking the station.</p>
-<p>To dig deeper into understanding who these persons are, projecting the points on to the <a href="https://www.census.gov/programs-surveys/geography/guidance/geo-areas/pumas.html">Census Public Use Microdata Areas</a> (PUMA, below right) allows us to tie the ridership to demographic variables that the Census tracks through the <a href="https://www.census.gov/programs-surveys/acs">American Community Survey</a> (ACS) such as income, age, job industry, and &hellip;.</p>
+<p>To dig deeper into understanding who these persons are, projecting the points on to the <a href="https://www.census.gov/programs-surveys/geography/guidance/geo-areas/pumas.html">Census Public Use Microdata Areas</a> (PUMA, below right) allows us to tie the ridership to demographic variables tracked by the Census via the <a href="https://www.census.gov/programs-surveys/acs">American Community Survey</a> (ACS) such as income, job industry, etc.</p>
 <p align="center">
 <div class="row">
  <div class="column">
-  <img src="/img/posts/covid-nyc-ridership/change_in_ridership.png"  style="width:100%">
+  <img src="/img/posts/covid-nyc-ridership/change_in_ridership.svg"  style="width:100%">
   <p align="right" style="font-size:70%;">
   <i>
   <br>
@@ -134,7 +134,7 @@
   </p>
  </div>
  <div class="column">
-    <img src="/img/posts/covid-nyc-ridership/change_in_ridership_by_PUMA.png" style="width:100%">
+    <img src="/img/posts/covid-nyc-ridership/change_in_ridership_by_PUMA.svg" style="width:100%">
     <p align="right" style="font-size:70%;">
     <i>
     <br>
@@ -144,44 +144,57 @@
  </div>
 </div>
 </p>
-<p>The first question to be addressed: are smaller decreases in ridership explained by essential worker status? Essential worker status can be approximated (below left) based on the industry residents labor in. Aligning these industries to the <a href="https://coronavirus.delaware.gov/wp-content/uploads/sites/177/2020/04/DE-Industry-List-4.21.pdf">Delaware essential industry list</a> (one of the few discrete lists available), the proportion of essential workers can be estimated. It&rsquo;s difficult to verify the accuracy but it seems roughly in line with the US estimate from the Economic Policy Institute which claims <a href="https://www.epi.org/blog/who-are-essential-workers-a-comprehensive-look-at-their-wages-demographics-and-unionization-rates/">55 million American workers are essential</a>.</p>
-<p>Second, how does ridership correlate with income? Below right.</p>
-<p>The income story is right in line with expectations with Manhattan and the northern parts of Brooklyn clearly representing the wealthiest neighborhoods. The essential worker map is a mixed bag; parts of Brooklyn and Manhattan are much more essential that expected. And some are much less essential than expected such as East Williamsburg and Bushwick in Brooklyn and Manhattan near Columbia University. However, the Bronx and south Brooklyn are more essential which aligns with the ridership map.</p>
+<p>The first question to be addressed: are smaller decreases in ridership explained by essential worker status? Essential worker status can be approximated (below left) based on the industry residents labor in. Aligning these industries to the <a href="https://coronavirus.delaware.gov/wp-content/uploads/sites/177/2020/04/DE-Industry-List-4.21.pdf">Delaware essential industry list</a> (one of the few discrete lists available), the proportion of essential workers can be estimated. It&rsquo;s difficult to verify the accuracy but it is in line with the US-wide estimate from the Economic Policy Institute which claims <a href="https://www.epi.org/blog/who-are-essential-workers-a-comprehensive-look-at-their-wages-demographics-and-unionization-rates/">55 million American workers are essential</a>.</p>
+<p>Second, how does ridership correlate with income? Below right. The <a href="https://www.nytimes.com/interactive/2020/05/15/upshot/who-left-new-york-coronavirus.html">New York Times found</a> that income was a strong predictor of the emptying of a neighborhood during Covid. Their analysis was based on smartphone location data of residents and excluded commuters.</p>
+<p>The income story is right in line with expectations with Manhattan and the northern parts of Brooklyn clearly representing the wealthiest neighborhoods. The essential worker map is a mixed bag; parts of Brooklyn and Manhattan contain more essential workers than expected. And some contain less than expected such as East Williamsburg and Bushwick in Brooklyn and Manhattan near Columbia University. However, the Bronx and south Brooklyn contain the most which aligns well with the ridership map.</p>
 <p align="center">
 <div class="row">
  <div class="column">
-  <img src="/img/posts/covid-nyc-ridership/essential_worker.png"  style="width:100%">
+  <img src="/img/posts/covid-nyc-ridership/essential_worker.svg"  style="width:100%">
  </div>
  <div class="column">
-    <img src="/img/posts/covid-nyc-ridership/income.png" style="width:100%">
+    <img src="/img/posts/covid-nyc-ridership/income.svg" style="width:100%">
  </div>
 </div>
 </p>
-<h3 id="i-just-do-correlations">I just do correlations</h3>
-<ul>
-<li>quantifiying effect of essential worker status on subway ridership</li>
-<li>Manhattan is a outlier: hypothesized as explained by commuting/work hub vs residents</li>
-</ul>
+<br>
+<h3 id="trends">Trends</h3>
+<p>Just as the New York Times found on neighborhood activity, there is a clear trend between a neighborhood&rsquo;s household income and the decline in subway ridership at the surrounding stations using a simple regression with log income (below left). However, this correlation falls apart once you control the borough (below right) indicating that income alone is not enough to accurately predict ridership. Notably, the Bronx and Queens have different levels of ridership change at the same income levels.</p>
 <p align="center">
-<img src="/img/posts/covid-nyc-ridership/change_in_ridership_vs_income.png" width=65%>
-</p><p align="center">
-<img src="/img/posts/covid-nyc-ridership/change_in_ridership_vs_income.png" width=70%>
+<div class="row">
+ <div class="column">
+  <img src="/img/posts/covid-nyc-ridership/change_in_ridership_vs_income.svg"  style="width:100%">
+ </div>
+ <div class="column">
+    <img src="/img/posts/covid-nyc-ridership/change_in_ridership_vs_income_borough.svg" style="width:100%">
+ </div>
+</div>
 </p>
+<br>
+<p>Unlike income, essential worker status does not appear to have a strong correlation with ridership change across the city (below left). After controlling for borough, the Bronx and Brooklyn have clear positive relationships and Manhattan clear negative (below right). Manhattan is a curious case, and I suspect it has something to do with non-resident ridership.</p>
 <p align="center">
-<img src="/img/posts/covid-nyc-ridership/essential_vs_ridership.png" width=85%>
+<div class="row">
+ <div class="column">
+  <img src="/img/posts/covid-nyc-ridership/essential_vs_ridership.svg"  style="width:100%">
+ </div>
+ <div class="column">
+    <img src="/img/posts/covid-nyc-ridership/essential_vs_ridership_borough.svg" style="width:100%">
+ </div>
+</div>
 </p>
 <br>
 <h3 id="pulling-it-all-together">Pulling it all together</h3>
+<p><em>draft</em></p>
 <div id='map' style='width: 100%; height: 600px;'></div>
 <br>
 <br>
 <br>
 <h3 id="limitations">Limitations</h3>
 <ul>
-<li>Does not account for non-resident commuters traveling through (mostly) Manhattan</li>
-<li>causality</li>
-<li>data is messing. Calculating ridership and matching to station location has room for error</li>
-<li>caution on extending ridership as a general &ldquo;social distancing&rdquo; or &lsquo;social consideration&rsquo; metric</li>
+<li>The ridership data only captures riders and does not distinguish between residents and non-residents. Neighborhoods such as lower Manhattan and Midtown that see a substantial amount of non-resident commuters enter the system would be expected to see large declines given that these non-residents are no longer trafficking the stations. This could potentially be remedied by only examining station entries in the morning, however straphangers transferring from rail (NJT, LIRR, Metro-North) would still be captured and nighttime essential workers would be excluded.</li>
+<li>These data are not evaluated on causality merits. While there may be strong correlations between ridership and income, it does not suggest that one directly leads to the other. Similarly, using ridership as a proxy for &ldquo;social distancing&rdquo;, or some similar societal conformity measure, is fraught mostly due to the non-resident point above.</li>
+<li>The subway ridership data is messy. Calculating ridership and matching to station location has room for error. Some stations may not be perfectly mapped.</li>
+<li>Essential worker status is estimated from the ACS respondent&rsquo;s <a href="https://www.census.gov/eos/www/naics/">NAICS</a> industry and the published Delaware list of essential industries. These may not be in full agreement with New York State&rsquo;s guidelines.</li>
 </ul>
 <br>
 <hr>
