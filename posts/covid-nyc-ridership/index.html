@@ -200,23 +200,9 @@
 <hr>
 <p><em>2020 September</em><br>
 <em>Find the code here: <a href="https://github.com/joemarlo/NYC-data/tree/master/Analyses/COVID-neighborhoods">github.com/joemarlo/NYC-data/</a></em></p>
-<script>
-	mapboxgl.accessToken = 'pk.eyJ1Ijoiam9lbWFybG8iLCJhIjoiY2tmazR1cnltMHBwcjJ6bWpoemxkemU2MiJ9.je3oLLKlEn3Y6dyEAIfJ-Q';
-  // Set bounds to New York, New York
-  var bounds = [
-    [-74.15, 40.52], // Southwest coordinates
-    [-73.68, 40.95] // Northeast coordinates
-    ];
-
-  var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/joemarlo/ckfk4xv1o2uk419o09qcf9an7',
-    center: [-73.975, 40.75],
-    zoom: 10,
-    maxZoom: 12,
-    maxBounds: bounds // Sets bounds as max
-    });
-</script>
+<!-- Load Mapbox map -->
+<script src="/d3/covid-nyc-ridership/covid_ridership.js"></script>
+<!-- CSS for side by side images -->
 <style>
 /* Three image containers (use 25% for four, and 50% for two, etc) */
 .column {
