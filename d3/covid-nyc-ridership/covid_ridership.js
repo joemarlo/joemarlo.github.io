@@ -1,3 +1,13 @@
+// Create our number formatter.
+var formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+
+  // These options are needed to round to whole numbers if that's what you want.
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 0,
+});
+
 // js for Mapbox
 mapboxgl.accessToken = 'pk.eyJ1Ijoiam9lbWFybG8iLCJhIjoiY2tmazR1cnltMHBwcjJ6bWpoemxkemU2MiJ9.je3oLLKlEn3Y6dyEAIfJ-Q';
 // Set bounds to New York, New York
@@ -16,4 +26,36 @@ var map = new mapboxgl.Map({
   maxBounds: bounds // Sets bounds as max
   });
 
-  map.addControl(new mapboxgl.FullscreenControl());
+map.addControl(new mapboxgl.FullscreenControl());
+
+map.on('load', function() {
+
+    // for features box
+    map.on('mousemove', function(e) {
+      var PUMA = map.queryRenderedFeatures(e.point, {
+        layers: ['nyc-puma-90k9up']
+      });
+
+      if (PUMA.length > 0) {
+        document.getElementById('pd').innerHTML = '<h5><strong>PUMA: ' + PUMA[0].properties.puma + '</strong></h5><p><strong>' +
+          PUMA[0].properties.ridership_change.toLocaleString(undefined,{style: 'percent', minimumFractionDigits:0}) + ' change in ridership<br>' +
+          formatter.format(PUMA[0].properties.mean_income) + ' mean household income<br>' +
+          PUMA[0].properties.Mean_essential.toLocaleString(undefined,{style: 'percent', minimumFractionDigits:0}) + ' of workers deemed essential</p>';
+      } else {
+        document.getElementById('pd').innerHTML = '<p>Hover over an area to get attributes</p>';
+      }
+
+    });
+
+    /*
+    // for tooltip box
+    map.on('mouseenter', function(e) {
+    var station = map.queryRenderedFeatures(e.point, {
+      layers: ['subway-ridership']
+    });
+    station[0].properties.ridership_change.toLocaleString(undefined,{style: 'percent', minimumFractionDigits:0})
+    */
+
+    map.getCanvas().style.cursor = 'default';
+
+  });

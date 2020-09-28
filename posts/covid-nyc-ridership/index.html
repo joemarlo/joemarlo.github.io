@@ -106,10 +106,11 @@
          <h1>Disparities in the fall of NYC subway ridership</h1>
          <p><em>Mapping the decline of subway ridership in the Covid era</em></p>
 <hr>
+<!-- script and CSS for map -->
 <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
 <p>Ridership on New York City&rsquo;s subway system has declined significantly amid the Coronavirus pandemic. The Metropolitan Transportation Authority (MTA), which runs the subway, is in the <a href="https://www.nytimes.com/2020/07/21/nyregion/mta-subway-financial-cuts.html">midst of a fiscal crisis</a> — reportedly facing a $16 billion deficit due to the decline.</p>
-<p>It&rsquo;s easy to see the severity of the situation after visualizing the daily ridership over 2020. Over the course of one month, which included a New York statewide stay-at-home order, the MTA witnessed an unprecedented fall in straphangers. But is the decline in ridership spread equally  across NYC&rsquo;s diverse residents and neighborhoods?</p>
+<p>It&rsquo;s easy to see the severity of the situation after visualizing the daily ridership over 2020. Within the course of one month, which included a New York statewide stay-at-home order, the MTA witnessed an unprecedented fall in straphangers. But is the decline in ridership spread equally  across NYC&rsquo;s diverse residents and neighborhoods?</p>
 <p align="center">
 <img src="/img/posts/covid-nyc-ridership/ridership_timeseries.svg" width=90%>
 </p>
@@ -184,12 +185,26 @@
 </p>
 <br>
 <h3 id="pulling-it-all-together">Pulling it all together</h3>
-<p><em>draft</em></p>
-<div id='map' style='width: 100%; height: 600px;'></div>
+<p>There does appear to be differences in the decline in ridership across NYC’s diverse neighborhoods. Some of which <em>may</em> be explained by essential worker status and income however it is difficult to place responsibility on a single or even a few variables.</p>
+<p>Explore the data yourself using the interactive map below. Hover over your neighborhood to see how you compare.</p>
+<div id='map' style='width: 100%; height: 600px'>
+<div class='map-overlay' id='features'><h4>Neighborhood attributes</h4><div id='pd'><p>Hover over an area to get attributes!</p></div></div>
+<div class='map-overlay' id='legend'>
+  <strong>Change in ridership</strong>
+  <nav class='legend clearfix'>
+    <span style='background:#760cac;'></span>
+    <span style='background:#09a59d;'></span>
+    <span style='background:#f5d905;'></span>
+    <label>-95%%</label>
+    <label>-85%%</label>
+    <label>-75%</label>
+</div>
+</div>
 <br>
 <br>
 <br>
 <h3 id="limitations">Limitations</h3>
+<p>There are a handful of limitations to this data and analysis to be aware of:</p>
 <ul>
 <li>The ridership data only captures riders and does not distinguish between residents and non-residents. Neighborhoods such as lower Manhattan and Midtown that see a substantial amount of non-resident commuters enter the system would be expected to see large declines given that these non-residents are no longer trafficking the stations. This could potentially be remedied by only examining station entries in the morning, however straphangers transferring from rail (NJT, LIRR, Metro-North) would still be captured and nighttime essential workers would be excluded.</li>
 <li>These data are not evaluated on causality merits. While there may be strong correlations between ridership and income, it does not suggest that one directly leads to the other. Similarly, using ridership as a proxy for &ldquo;social distancing&rdquo;, or some similar societal conformity measure, is fraught mostly due to the non-resident point above.</li>
@@ -202,6 +217,57 @@
 <em>Find the code here: <a href="https://github.com/joemarlo/NYC-data/tree/master/Analyses/COVID-neighborhoods">github.com/joemarlo/NYC-data/</a></em></p>
 <!-- Load Mapbox map -->
 <script src="/d3/covid-nyc-ridership/covid_ridership.js"></script>
+<!-- CSS for map and feature box -->
+<style>
+
+/**
+* Create a position for the map
+* on the page */
+#map {
+  position: relative;
+}
+
+/**
+* Set rules for how the map overlays
+* (information box and legend) will be displayed
+* on the page. */
+.map-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  overflow: auto;
+  border-radius: 3px;
+  z-index: 1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#features {
+  top: 0;
+  height: 190px;
+  margin-top: 20px;
+  width: 250px;
+  padding: 0px 0px 0px 10px;
+}
+
+#legend {
+  bottom: 40px;
+  width: 175px;
+  padding: 5px 5px 5px 5px;
+}
+
+.legend label,
+.legend span {
+  display:block;
+  float:left;
+  height:20px;
+  width:30%;
+  text-align:center;
+  font-size:9px;
+  color:#808080;
+  }
+
+</style>
 <!-- CSS for side by side images -->
 <style>
 /* Three image containers (use 25% for four, and 50% for two, etc) */
