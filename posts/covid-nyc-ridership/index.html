@@ -115,7 +115,7 @@
 <img src="/img/posts/covid-nyc-ridership/ridership_timeseries.svg" width=90%>
 </p>
 <br>
-<p>Putting finite numbers on this fall, we can take the difference in means between the period before the precipice and the period once ridership flattens out: an 88% mean decline in system-wide ridership.</p>
+<p>Putting finite numbers on this fall by calculating the difference in means between the period before the precipice and the period once ridership flattens out: an 88% decline in system-wide ridership.</p>
 <p align="center">
 <img src="/img/posts/covid-nyc-ridership/ridership_timeseries_bars.svg" width=90%>
 </p>
@@ -160,7 +160,7 @@
 </p>
 <br>
 <h3 id="trends">Trends</h3>
-<p>Just as the New York Times found on neighborhood activity, there is a clear trend between a neighborhood&rsquo;s household income and the decline in subway ridership at the surrounding stations using a simple regression with log income (below left). However, this correlation falls apart once you control the borough (below right) indicating that income alone is not enough to accurately predict ridership. Notably, the Bronx and Queens have different levels of ridership change at the same income levels.</p>
+<p>Just as the New York Times found on neighborhood activity, there is a clear trend between a neighborhood&rsquo;s household income and the decline in subway ridership at the surrounding stations using a simple regression with log transformed income (below left). However, this relationship becomes more nuanced once you control for the borough (below right) indicating that income alone is not enough to accurately predict ridership. Notably, the Bronx and Queens have different levels of ridership change at the similar income levels.</p>
 <p align="center">
 <div class="row">
  <div class="column">
@@ -185,7 +185,7 @@
 </p>
 <br>
 <h3 id="pulling-it-all-together">Pulling it all together</h3>
-<p>There do appear to be differences in the decline in subway ridership across NYC’s diverse neighborhoods. Some of which <em>may</em> be explained by essential worker status and household income, however it is difficult to place responsibility on a single or even a few variables.</p>
+<p>There are disparities in the decline in subway ridership across NYC’s diverse neighborhoods. Some of which <em>may</em> be explained by essential worker status and household income, however it is difficult to place responsibility on a single or even a few variables.</p>
 <p>Explore the data yourself using the interactive map below. Hover over your neighborhood to see how you compare.</p>
 <div id='map' style='width: 100%; height: 600px'>
 <div class='map-overlay' id='features'><h4>Neighborhood attributes</h4><div id='pd'><p>Hover over an area to get attributes!</p></div></div>
