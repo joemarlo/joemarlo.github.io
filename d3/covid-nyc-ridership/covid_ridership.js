@@ -26,12 +26,8 @@ var map = new mapboxgl.Map({
   maxBounds: bounds // Sets bounds as max
   });
 
-// only add fullscreen if not on Safari (Safari has issues with CSS)
-var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
-
-if (!isSafari){
-  map.addControl(new mapboxgl.FullscreenControl());
-}
+// remove fullscreen option because issues on Safari
+// map.addControl(new mapboxgl.FullscreenControl());
 
 map.on('load', function() {
 
