@@ -1,9 +1,9 @@
-// Create our number formatter.
+// create dollar formatter
 var formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
 
-  // These options are needed to round to whole numbers if that's what you want.
+  // These options are needed to round to whole numbers
   minimumFractionDigits: 0,
   maximumFractionDigits: 0,
 });
@@ -26,7 +26,12 @@ var map = new mapboxgl.Map({
   maxBounds: bounds // Sets bounds as max
   });
 
-map.addControl(new mapboxgl.FullscreenControl());
+// only add fullscreen if not on Safari (Safari has issues with CSS)
+var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+
+if (!isSafari){
+  map.addControl(new mapboxgl.FullscreenControl());
+}
 
 map.on('load', function() {
 
