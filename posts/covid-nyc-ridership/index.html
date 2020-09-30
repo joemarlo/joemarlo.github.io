@@ -185,6 +185,27 @@
 </p>
 <br>
 <p>A linear model fitted with all three variables — essential worker status, household income, and borough — tells a similar story as the plots above. Controlling for household income and borough, a 1 percentage point increase in essential worker status is associated with a 0.4 percentage point increase in subway ridership. Whereas controlling for essential worker status and borough, every 10% increase in household income is associated with a 0.8 percentage point decline in ridership.</p>
+<details>
+  <summary><mark><font color="#908f8f">Click for more information on the model</font></mark></summary>
+<blockquote>
+<p>The statistical model is specified below. The underlying data generating process is a difference in count data so a Poisson or Negative Binomial may be most appropriate. A simple OLS linear regression was used for simplicity in interpreting coefficients. The residuals are approximately normally distributed and there is no heteroscedasticity.</p>
+<!-- http://docs.mathjax.org/en/latest/basic/mathematics.html -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<font color="#908f8f">
+$$\begin{equation}
+Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + \beta_4 X_4 + \beta_5 X_5 + \epsilon
+\end{equation}$$
+\(Y =\) % change in ridership<br>
+\(X_1 =\) % of workers deemed essential<br>
+\(X_2 =\) log(household income)<br>
+\(X_3 =\) Borough<sub>Brooklyn</sub> <br>
+\(X_4 =\) Borough<sub>Manhattan</sub> <br>
+\(X_5 =\) Borough<sub>Queens</sub> <br>
+</font>
+<br>
 <table class="table table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
@@ -202,7 +223,7 @@
    <td style="text-align:right;"> 0.90 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Essential worker status </td>
+   <td style="text-align:left;"> % of workers deemed essential </td>
    <td style="text-align:right;"> 0.43 </td>
    <td style="text-align:right;"> 0.20 </td>
    <td style="text-align:right;"> 0.04 </td>
@@ -233,13 +254,14 @@
   </tr>
 </tbody>
 </table>
-<blockquote>
 <p>Formally, the coefficients can be interpreted as:</p>
 <ul>
 <li>Controlling for household income and borough, a group of neighborhoods that had a 100 percentage point increase in essential worker status than another group would be expected have to a change in ridership that is 43 percentage points higher.</li>
 <li>Controlling for essential worker status and borough, for a 10% increase in household income, the difference in expected mean ridership change between two groups of neighborhoods will be -0.08 * log(1.10) = -0.77 percentage points.</li>
 </ul>
 </blockquote>
+</details>
+<br>
 <br>
 <h3 id="pulling-it-all-together">Pulling it all together</h3>
 <p>There are disparities in the decline in subway ridership across NYC’s diverse neighborhoods. Some of which can be statistically explained by essential worker status and household income, however it is important not to interpret these causally. The above model does not make a causal claim and may not even capture all the relevant variables. For example, if someone&rsquo;s goal is to conflate ridership with residents' adherence to social distancing, the model does not account for the desertion of Manhattan by the wealthy or the impact of New Jersey and Connecticut commuters.</p>
