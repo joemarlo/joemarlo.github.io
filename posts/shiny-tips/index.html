@@ -251,7 +251,7 @@ output$sampling_strata_sliders &lt;- renderUI({
 })
 </code></pre><br>
 <h3 id="folder-structure">Folder structure</h3>
-<p>And finally, for large Shiny apps such as this tool, it’s important to organize the files in a split file structure rather than the typical app.R single file structure. Shiny knows to automatically load server.R, ui.R, and global.R in the base directory and to load everything in the /R subfolder (think of files saved here as automatically being <code>source()</code>&lsquo;ed). The /www folder is also special; it contains typical web code such as CSS (and JavaScript if you have some) and is similarly automatically loaded. Custom subfolders like /markdowns need to be loaded directly by the ui.R script.</p>
+<p>And finally, for large Shiny apps such as this tool, it’s important to organize the files in a split file structure rather than the typical app.R single file structure. Shiny knows to automatically load server.R, ui.R, and global.R in the base directory and to load everything in the /R subfolder (think of files saved here as automatically being <code>source()</code>'ed). The /www folder is also special; it contains typical web code such as CSS (and JavaScript if you have some) and is similarly automatically loaded. Custom subfolders like /markdowns need to be loaded directly by the ui.R script.</p>
 <ul>
 <li>/DS4SI-tool
 <ul>
