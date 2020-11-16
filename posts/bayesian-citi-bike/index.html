@@ -188,7 +188,7 @@
 <p>Specifying priors is the first step of a Bayesian analysis. Each coefficient plus the intercept and shape parameter need a respective prior. Passing the model specification to <code>brms::get_prior()</code> returns the priors that need to be set along with their default values. These should be replaced with our own priors.</p>
 <blockquote>
 <p><strong>Interpreting coefficients (and priors)</strong><br>
-Negative binomial models&rsquo; outcomes are specified in log counts so the coefficients need to be interpreted accordingly. For example, if the coefficient estimate is 0.50 then for a one-unit increase in this predictor variable, the difference in the expected log count of the number of bike trips is expected to increase by 0.50 — given everything else is held constant. When setting priors it&rsquo;s more helpful to think about the coefficient like this:</p>
+Negative binomial models' outcomes are specified in log counts so the coefficients need to be interpreted accordingly. For example, if the coefficient estimate is 0.50 then for a one-unit increase in this predictor variable, the difference in the expected log count of the number of bike trips is expected to increase by 0.50 — given everything else is held constant. When setting priors it&rsquo;s more helpful to think about the coefficient like this:</p>
 <ul>
 <li>If our outcome variable is 50,000 bike trips and we believe changing only this one predictor will have a positive effect of 33,000 bike trips then the coefficient estimate for this predictor would be: <strong>log(83,000) - log(50,000) = 0.50</strong></li>
 </ul>
@@ -661,7 +661,7 @@ A similar approach can be applied to the predictions. We can gather a better und
 <img src="/img/posts/Bayesian-Citi-Bike/probability.svg" width=90%>
 </p>
 -->
-<p>To wrap it all up, the plot below shows the spread of each models&rsquo; predictions. The predictions have been standardized so 0 represents a perfect prediction, and the ranges — represented by dark to light green — cover roughly 69%, 96%, and 99% of the predictions for that observation. The methods are not directly comparable between Frequentist and Bayesian but this still gives an idea of the spread of each model&rsquo;s predictions. The Bayesian negative binomial model always covers the actual value — represented by the dark vertical line at x = 0.</p>
+<p>To wrap it all up, the plot below shows the spread of each models' predictions. The predictions have been standardized so 0 represents a perfect prediction, and the ranges — represented by dark to light green — cover roughly 69%, 96%, and 99% of the predictions for that observation. The methods are not directly comparable between Frequentist and Bayesian but this still gives an idea of the spread of each model&rsquo;s predictions. The Bayesian negative binomial model always covers the actual value — represented by the dark vertical line at x = 0.</p>
 <p align="center">
 <img src="/img/posts/Bayesian-Citi-Bike/relative_error.svg" width=90%>
 </p>

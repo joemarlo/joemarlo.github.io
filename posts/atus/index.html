@@ -411,9 +411,9 @@ $$\bar{T}_j = \frac{\sum_i W_i T_{ij}}{\sum_i W_i}$$<br>
 <br>
 <p>What that means in practice is we multiply the respondent&rsquo;s weight by their time in the activity, repeat for each respondent, sum those values and then divide by the sum of all the weights. In <code>R</code>, and given that <code>atussum_0318</code> is the summary activity file from 2003-2018, we can estimate the sleep activity (denoted <code>t010101</code>) by:</p>
 <pre><code># select identifier, weight, and sleep
-atussum_0318 %&gt;% 
+atussum_0318 %&gt;%
  select(TUCASEID, TUFNWGTP, 't010101') %&gt;%
- summarize(weighted.minutes = sum(TUFNWGTP * t010101) / sum(TUFNWGTP)) 
+ summarize(weighted.minutes = sum(TUFNWGTP * t010101) / sum(TUFNWGTP))
 </code></pre><pre><code># A tibble: 1 x 1
   weighted.minutes
              &lt;dbl&gt;
@@ -423,12 +423,12 @@ atussum_0318 %&gt;%
 <pre><code># select all activities
 activities &lt;- str_subset(names(atussum_0318), '^t[0-9]')
 
-atussum_0318 %&gt;% 
+atussum_0318 %&gt;%
    select(TUCASEID, TUFNWGTP, activities) %&gt;%
    pivot_longer(cols = -c('TUCASEID', 'TUFNWGTP'),
                 names_to = &quot;activity&quot;,
                 values_to = 'time') %&gt;%
-   group_by(activity) %&gt;% 
+   group_by(activity) %&gt;%
    summarize(weighted.minutes = sum(TUFNWGTP * time) / sum(TUFNWGTP)) %&gt;%
    ungroup()
 </code></pre><pre><code># A tibble: 431 x 2
@@ -438,11 +438,11 @@ atussum_0318 %&gt;%
  2 t010102           3.78   
  3 t010199           0.00520
  4 t010201          40.6    
- 5 t010299           0.0439 
+ 5 t010299           0.0439
  6 t010301           4.62   
  7 t010399           0.166  
  8 t010401           0.546  
- 9 t010499           0.0151 
+ 9 t010499           0.0151
 10 t010501           0.00203
 # … with 421 more rows
 </code></pre><br>
@@ -450,12 +450,12 @@ atussum_0318 %&gt;%
 <pre><code># group by sex and age
 groups &lt;- c('TESEX', 'TEAGE')
 
-atussum_0318 %&gt;% 
+atussum_0318 %&gt;%
   select(TUCASEID, TUFNWGTP, groups, activities) %&gt;%
   pivot_longer(cols = -c('TUCASEID', 'TUFNWGTP', groups),
                names_to = &quot;activity&quot;,
                values_to = 'time') %&gt;%
-  group_by_at(vars(activity, groups)) %&gt;% 
+  group_by_at(vars(activity, groups)) %&gt;%
   summarize(weighted.minutes = sum(TUFNWGTP * time) / sum(TUFNWGTP)) %&gt;%
   ungroup()
 </code></pre><pre><code># A tibble: 57,754 x 4
@@ -491,20 +491,20 @@ print(simplify)
  9 t010499  Personal Care
 10 t010501  Personal Care
 # … with 421 more rows
-</code></pre><pre><code>atussum_0318 %&gt;% 
+</code></pre><pre><code>atussum_0318 %&gt;%
   select(TUCASEID, TUFNWGTP, groups, activities) %&gt;%
   pivot_longer(cols = -c('TUCASEID', 'TUFNWGTP', groups),
                names_to = &quot;activity&quot;,
                values_to = 'time') %&gt;%
-  group_by_at(vars(activity, groups)) %&gt;% 
+  group_by_at(vars(activity, groups)) %&gt;%
   summarize(weighted.minutes = sum(TUFNWGTP * time) / sum(TUFNWGTP)) %&gt;%
-  ungroup() %&gt;% 
+  ungroup() %&gt;%
   left_join(x = .,
             y = simplify,
-            by = 'activity') %&gt;% 
-  select(activity = description, groups, weighted.minutes) %&gt;% 
+            by = 'activity') %&gt;%
+  select(activity = description, groups, weighted.minutes) %&gt;%
   group_by_at(vars(activity, groups)) %&gt;%
-  summarize(weighted.minutes = sum(weighted.minutes)) %&gt;% 
+  summarize(weighted.minutes = sum(weighted.minutes)) %&gt;%
   ungroup()
 </code></pre><pre><code># A tibble: 2,010 x 4
    activity                    TESEX TEAGE weighted.minutes
@@ -517,13 +517,13 @@ print(simplify)
  6 Caring For Household Member     1    20             5.45
  7 Caring For Household Member     1    21             6.74
  8 Caring For Household Member     1    22             7.98
- 9 Caring For Household Member     1    23            10.2 
-10 Caring For Household Member     1    24            14.4 
+ 9 Caring For Household Member     1    23            10.2
+10 Caring For Household Member     1    24            14.4
 # … with 2,000 more rows
 </code></pre><br>
 <p>Finally, we can wrap it in a function call <code>get_minutes()</code>. The magic of this functional approach is we can get time-use estimates in as few lines of code as possible:</p>
 <pre><code>television.codes &lt;- c('t120303', 't120304')
-get_minutes(atussum_0318, groups = c('TUYEAR', 'TEAGE'), 
+get_minutes(atussum_0318, groups = c('TUYEAR', 'TEAGE'),
             activities = television.codes, simplify = TRUE)
 </code></pre><pre><code># A tibble: 1,070 x 4
    activity               TUYEAR TEAGE weighted.minutes
@@ -557,18 +557,18 @@ $$P_j = \frac{\sum_i W_i I_{ij}}{\sum_i W_i}$$<br>
 <br>
 <br>
 <p>Applying the participation rate formula is a little more difficult than the mean time estimates. The best method I found was to leverage <a href="https://dplyr.tidyverse.org/reference/group_map.html"><code>dplyr::group_modify</code></a> which applies a function to each grouping variable. The grouping variable is the same as in the time-estimate calculations. I imagine there may be a faster method than mine below such as a matrix approach but this method is consistent with the dplyr pipe syntax.</p>
-<pre><code>atussum_0318 %&gt;% 
+<pre><code>atussum_0318 %&gt;%
   select(TUCASEID, TUFNWGTP, groups, activities) %&gt;%
   pivot_longer(cols = -c('TUCASEID', 'TUFNWGTP', groups),
                names_to = &quot;activity&quot;,
                values_to = 'time') %&gt;%
-  group_by_at(vars(activity, groups)) %&gt;% 
+  group_by_at(vars(activity, groups)) %&gt;%
   summarize(weighted.minutes = sum(TUFNWGTP * time) / sum(TUFNWGTP)) %&gt;%
-  ungroup() %&gt;% 
+  ungroup() %&gt;%
   left_join(x = .,
             y = simplify,
-            by = 'activity') %&gt;% 
-  select(activity = description, groups, weighted.minutes) %&gt;% 
+            by = 'activity') %&gt;%
+  select(activity = description, groups, weighted.minutes) %&gt;%
   group_by_at(vars(activity, groups)) %&gt;%
   group_modify(~ {
       # sum the distinct weights that have time &gt; 0
@@ -578,14 +578,14 @@ $$P_j = \frac{\sum_i W_i I_{ij}}{\sum_i W_i}$$<br>
         distinct() %&gt;%
         pull(weight.var) %&gt;%
         sum()
-      
+
       # sum all distinct weights
-      denom &lt;- .x %&gt;% 
+      denom &lt;- .x %&gt;%
         select(TUCASEID, weight.var) %&gt;%
         distinct() %&gt;%
         pull(weight.var) %&gt;%
         sum()
-      
+
       return(tibble(participation.rate = num / denom))
     }) %&gt;%
     ungroup()
@@ -609,7 +609,7 @@ $$Var(\hat{Y}_o) = \frac{4}{160} \sum_{i=1}^{160}(\hat{Y}_i - \hat{Y}_o)^2$$<br>
 <pre><code>get_SE &lt;- function(df, groups, activities = NULL) {
   # function returns the standard error of the weighted means
   # see get_minutes() for underlying calculations
-  
+
   # calculate the original statistic
   y0 &lt;- get_minutes(
     df = df,
@@ -617,7 +617,7 @@ $$Var(\hat{Y}_o) = \frac{4}{160} \sum_{i=1}^{160}(\hat{Y}_i - \hat{Y}_o)^2$$<br>
     activities = activities,
     simplify = TRUE
   )
-  
+
   # repeat the statistic calculation using each weight
   yIs &lt;- apply(atuswgts_0318[, -1], MARGIN = 2, FUN = function(wgt) {
     df[, 'TUFNWGTP'] &lt;- wgt
@@ -630,16 +630,16 @@ $$Var(\hat{Y}_o) = \frac{4}{160} \sum_{i=1}^{160}(\hat{Y}_i - \hat{Y}_o)^2$$<br>
     return(minutes$weighted.minutes)
     }
   )
-  
+
   # calculate the standard error
   y0$SE &lt;- sqrt((4 / 160) * rowSums((yIs - y0$weighted.minutes) ^ 2))
-  
+
   return(y0)
 }
 
 get_SE(df = atussum_0318,
-       groups = c('TEAGE', 'TESEX'), 
-       activities = c('t120303', 't120304')) %&gt;% 
+       groups = c('TEAGE', 'TESEX'),
+       activities = c('t120303', 't120304')) %&gt;%
   ggplot() + ...
 </code></pre><p align="center">
 <img src="/img/posts/ATUS/TV_by_age_sex_SE.svg" width=80%>
