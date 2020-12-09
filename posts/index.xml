@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Marlo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 26 Sep 2020 17:40:21 -0400</lastBuildDate><atom:link href="https://joemarlo.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 09 Dec 2020 11:16:59 -0500</lastBuildDate><atom:link href="https://joemarlo.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Learning causal inference</title>
+      <link>https://joemarlo.github.io/posts/learning-causal-inference/</link>
+      <pubDate>Wed, 09 Dec 2020 11:16:59 -0500</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/learning-causal-inference/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Building intuition for the causal framework&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Disparities in the fall of NYC subway ridership</title>
       <link>https://joemarlo.github.io/posts/covid-nyc-ridership/</link>
