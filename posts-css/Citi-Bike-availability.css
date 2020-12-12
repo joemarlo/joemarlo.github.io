@@ -1,0 +1,149 @@
+
+/* grid and axis styles */
+
+.grid line {
+  stroke: #e6e6e6;
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
+
+.grid path {
+  stroke: #e6e6e6;
+  stroke-opacity: 0;
+}
+
+.grid text {
+  fill: #737373;
+  font-size: 14px;
+}  
+
+
+/* button styles */
+
+.button {
+  background-color: #4a635c; 
+  border: none;
+  color: white;
+  padding: 2px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  border-radius: 1px;
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #84a198;
+}
+
+.button:active {
+  background-color: #4a635c;
+  box-shadow: 0 1px #333333;
+  transform: translateY(1px);
+}
+
+
+/* dropdown styles */
+
+.dropbtn {
+  background-color: #4a635c;
+  color: white;
+  padding: 2px 16px;
+  font-size: 12px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f4f4f4;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  font-size: 12px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 6px 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #84a198;}
+
+
+
+
+
+
+
+
+
+
+/* Arrow holder */
+.arrowed {
+	color: black;
+	position: relative;
+	height: 10px; width: 400px;
+	margin: 0 0 -16px 0;
+}
+
+/* centering the arrow */
+.arrowed div {
+	position: absolute;
+	top: 0; bottom: 0; left: 0; right: 0;
+	margin: auto;
+	content: "click for more categories";
+}
+
+.arrowed:after {
+  font-weight: bold;
+  color: black;
+  content: "click for more categories";
+  margin: 0 0 0 0;
+}
+
+/* -- ARROW 6      -- */
+
+.arrow-6 {
+	/* more triangle */
+	height: 10px; width: 10px;
+	border: 1px solid black;
+	border-width: 3px 3px 0 0;
+	transform: rotate(225deg);
+}
+
+.arrow-6:before, .arrow-6:after {
+	content: '';
+	position: absolute;
+	display: block;
+	height: 10px; width: 10px;
+	border-width: 3px 3px 0 0;
+}
+
+.arrow-6:before {
+	border: 1px solid black;
+	border-width: 3px 3px 0 0;
+	/* top - distance minus border */
+	top: 7px; left: -10px;
+}
+
+.arrow-6:after {
+	border: 1px solid black;
+	border-width: 3px 3px 0 0;
+	/* top - distance plus border */
+	top: -13px; left: 10px;
+}
+
+
