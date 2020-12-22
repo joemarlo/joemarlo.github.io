@@ -119,7 +119,7 @@
 <p>The Python prediction script is automated to run every 15 minutes using cron. I recommend using <a href="https://crontab.guru/">crontab.guru</a> for help parsing the crontab syntax. And finally the data is uploaded to an Azure database running MySQL. R Shiny connects to the database in the typical R way. Data is visualized using <a href="https://rstudio.github.io/leaflet/">leaflet</a> and <a href="https://plotly.com/ggplot2/getting-started/">ggplotly</a>.</p>
 <p>The full process is summarized into a simple diagram:</p>
 <p align="center">
-<img src="/img/posts/Citi-Bike-availability/diagram.png" width=90%>
+<img src="/img/posts/Citi-Bike-availability/diagram.png" width=80%>
 </p>
 <p>It&rsquo;s a bit cheating to say that Azure costs $0 due to the student credit. If you are running on a tight budget and do not have a large dataset, Dropbox and <a href="https://github.com/karthik/rdrop2">rDrop2</a> package can be swapped for the Azure database. The downside is all the data will be pulled into memory by the Shiny app. Google Drive and <a href="https://googledrive.tidyverse.org/">googledrive</a> package could also provide a similar solution.</p>
 <p>The end product is satisfying: an automated process and a simple web interface to access helpful information for real daily decision making. Separating out the Python and R Shiny parts is a nice and tidy solution. The only interaction between the two is indirectly through the MySQL database. One could go a step further and replace Shiny with <a href="https://plotly.com/dash/">Dash</a> or <a href="https://bokeh.org/">Bokeh</a>. Either way, Python and Shiny&rsquo;s respective strengths are showcased well here. And it&rsquo;s a great side project for that Raspberry Pi many people have laying around.</p>

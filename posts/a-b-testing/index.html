@@ -147,7 +147,7 @@
 <p>To illustrate the implications of uncontrolled multiple comparison, let&rsquo;s conduct another series of simulations, but this time replace varying stops with varying numbers of comparisons. Like before, there is no difference between version A and version B, and any positive result is a false positive.</p>
 <p>The plot below shows the increase in false positives as the number of comparisons increases:</p>
 <ul>
-<li>With as few as five comparisons, the risk of observing at least one false positive has increased from 5% to 20%</li>
+<li>With as few as five comparisons, the risk of observing at least one false positive has increased from 5% to over 20%</li>
 <li>However, when the appropriate correction is implemented, the false positive rate is held constant at 5%</li>
 </ul>
 <br>
@@ -174,7 +174,7 @@
 <p>Juggling all these conditions can become overwhelming. As you might expect they compound on each other and quickly turn into a combinatorics nightmare. If you are performing multiple stops while also comparing more than one distribution it is likely that you may find a false positive. Additionally, the probability of finding a true effect doesn&rsquo;t scale linearly and behaves differently at different sample sizes and variances.</p>
 <p>You can estimate the effects of all these conditions using <a style="font-size:1.1em;" href="https://jmarlo.shinyapps.io/A-B-tool/" target="_blank"><strong>this tool</strong></a>. The tool shows the <em>probability of finding at least one effect</em> given the conditions. Set the effect size to zero and find the false positive rate. Increase the effect size and variance but reduce the sample size and see how infrequently you may be capturing a real effect.</p>
 <!-- this is the Shiny app
-<div class="iframe-container"> 
+<div class="iframe-container">
   <iframe class="resp-iframe" src="https://jmarlo.shinyapps.io/A-B-tool/" allowfullscreen></iframe>
 </div>
 -->
@@ -182,27 +182,27 @@
 <!-- Sliders in a grid -->
 <!--
 <div class="grid-container">
-  
+
   <div class="slidecontainer">
     <input type="range" list="tickmarks_stops" min="1" max="20" value="1" step="1" class="slider" id="slider_stops">
     <div class="slidetext" <p>Number of stops: <span id="value_stops"></span></p></div>
   </div>
-  
+
   <div class="slidecontainer">
     <input type="range" min="1" max="20" value="1" step="1" class="slider" id="slider_comparisons">
     <div class="slidetext" <p>Number of comparisons: <span id="value_comparisons"></span></p></div>
   </div>
-  
+
   <div class="slidecontainer">
     <input type="range" min="0" max="0.10" value="0.02" step="0.01" class="slider" id="slider_effectsize">
     <div class="slidetext" <p>Effect size: <span id="value_effectsize"></span></p></div>
   </div>
-  
+
   <div class="slidecontainer">
     <input type="range" min="1000" max="10000" value="1000" step="1000" class="slider" id="slider_samplesize">
     <div class="slidetext"<p>Sample size: <span id="value_samplesize"></span></p></div>
   </div>
-  
+
 </div>
 
 <!-- Results -->
@@ -216,7 +216,7 @@
 <div <div id="main_plot" style="position: static" align="center"></div>
 <p align="right" style="font-size:60%;">
 <i>
-Assumptions: 
+Assumptions:
 <br>
 - Standard deviation of distributions is X
 <br>
@@ -253,7 +253,7 @@ Assumptions:
 <hr>
 <p><em>2020 May</em><br>
 <em>Find the code here: <a href="https://github.com/joemarlo/A-B-Testing-with-d3">github.com/joemarlo/A-B-Testing-with-d3</a></em></p>
-<!-- script for slider text --> 
+<!-- script for slider text -->
 <script src="/d3/A-B-Testing/sliders.js"></script>
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.min.js"></script>

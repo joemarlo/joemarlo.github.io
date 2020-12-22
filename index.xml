@@ -6,7 +6,25 @@
     <description>Recent content on Marlo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 09 Dec 2020 11:16:59 -0500</lastBuildDate><atom:link href="https://joemarlo.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 11 Dec 2020 09:17:57 -0500</lastBuildDate><atom:link href="https://joemarlo.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Measuring hate speech on social media</title>
+      <link>https://joemarlo.github.io/posts/hate-speech/</link>
+      <pubDate>Fri, 11 Dec 2020 09:17:57 -0500</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/hate-speech/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Machine learning for the social good&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Predicting Citi Bike stock in real time — on the cheap</title>
+      <link>https://joemarlo.github.io/posts/citi-bike-availability/</link>
+      <pubDate>Thu, 10 Dec 2020 18:00:13 -0400</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/citi-bike-availability/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Extracting the best from Python and Shiny&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Learning causal inference</title>
       <link>https://joemarlo.github.io/posts/learning-causal-inference/</link>
@@ -14,15 +32,6 @@
       
       <guid>https://joemarlo.github.io/posts/learning-causal-inference/</guid>
       <description>&lt;p&gt;&lt;em&gt;Building intuition for the causal framework&lt;/em&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Predicting Citi Bike stock in real time — on the cheap</title>
-      <link>https://joemarlo.github.io/posts/citi-bike-availability/</link>
-      <pubDate>Sat, 31 Oct 2020 18:00:13 -0400</pubDate>
-      
-      <guid>https://joemarlo.github.io/posts/citi-bike-availability/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Extracting the best from Python and Shiny&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
