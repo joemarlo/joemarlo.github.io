@@ -135,12 +135,13 @@
 <h4 id="first-step-dictionary">First step: dictionary</h4>
 <p>There is no universally accepted definition of hate speech, as academics and policymakers vary in their interpretations of what constitutes hate. We established an operational definition of hate speech and focused on defining hate speech with a broad interpretation, in order to cover a variety of messages and expressions that target and justify hate towards the LGBTQ+ population.</p>
 <p>A dictionary of terms and phrases that are associated with LGBTQ+ hate speech was built. We consulted <a href="https://hatebase.org/">Hatebase</a> — an active database containing a lexicon of terms identified by internet users as hate speech.</p>
-<p>Regex pattern matching was used to flag tweets that contained language that resembled the pre-selected terms in the lexicon. Of the 92 million collected tweets 167,724 (0.18%) were identified as potential incidents of LGBTQ+ directed  slurs. This approach offers a crude approximation of instances of anti-LGBTQ+ speech. Notably, this approach is not able to separate tweets that explicitly condemn the use of anti-LGBTQ+ language from true incidents of slurs.</p>
+<p><a href="https://en.wikipedia.org/wiki/Regular_expression">Regex pattern matching</a> was used to flag tweets that contained language that resembled the pre-selected terms in the lexicon. Of the 92 million collected tweets 167,724 (0.18%) were identified as potential incidents of LGBTQ+ directed  slurs. This approach offers a crude approximation of instances of anti-LGBTQ+ speech. Notably, this approach is not able to separate tweets that explicitly condemn the use of anti-LGBTQ+ language from true incidents of slurs.</p>
 <h4 id="second-step-modeling">Second step: modeling</h4>
 <p>Several machine learning models were fit to disentangle true instances of anti-LGBTQ+ tweets from false positives identified by the regex. Prior to model fitting, 6,000 tweets were randomly sampled from the 167,724 tweets flagged in the first step. These 6,000 were coded by the three authors. The coding scheme identified each of the 6,000 tweets as either a true instance of anti-LGBTQ+ language or as a false positive. These labels were then used as training data for logistic regression word embeddings, Naive Bayes and RNN machine learning models. Of the 6,000 labeled tweets, 10% were removed and saved to assess out of sample accuracy while the remaining were used to train each of the candidate models outlined below.</p>
 <p align="center">
 <img src="/img/posts/hate-speech/ROC.png" width=50%>
 </p>
+<p>Of the three candidate models, we selected the RNN due to its balance in <a href="https://en.wikipedia.org/wiki/Precision_and_recall">recall and precision</a>. Moreover, as more labeled training tweets are obtained (in further studies), the predictive power of the RNN will increase. The RNN model identified 32,554 tweets or 0.035% of the sample as containing anti-LGBTQ+ language. This is the equivalent of 35 in 100,000 tweets.</p>
 <table class="table table-hover table-responsive" style="margin-left: auto; margin-right: auto; max-width: 70%">
  <thead>
   <tr>
@@ -167,7 +168,7 @@
   </tr>
 </tbody>
 </table>
-<p>Of the three candidate models, we selected the RNN due to its balance in <a href="https://en.wikipedia.org/wiki/Precision_and_recall">recall and precision</a>. Moreover, as more labeled training tweets are obtained (in further studies), the predictive power of the RNN will increase. The RNN model identified 32,554 tweets or 0.035% of the sample as containing anti-LGBTQ+ language. This is the equivalent of 35 in 100,000 tweets.</p>
+<br>
 <h3 id="incidence-and-prevalence">Incidence and prevalence</h3>
 <p>The prevalence rate varies over time, generally increasing in the early years of Twitter and then decreasing post 2013 (below plot). There is a significant amount of noise in the early years which we believe is driven by the relatively small sample size. There’s a clear inflection point in the rate in mid 2013. The rate increases up until then and then monotonically decreases reaching apparent stability around 2017. Visually, there appears to be local upticks in the rate in mid 2015, mid 2019, and mid 2020. The vertical dashed lines represent the six key dates of interest.</p>
 <p>The inflection point in mid 2013 is the most visually evident trend. Two other dates also show local changes in the prevalence rate: mid 2015 (legalization of same-sex marriage) and mid 2017 (transgender ban).</p>
