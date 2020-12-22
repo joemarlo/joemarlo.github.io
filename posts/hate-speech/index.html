@@ -109,7 +109,7 @@
 <p>The divisive and polarizing rhetoric in the 2016 presidential election sparked concern over popularizing hateful sentiments towards marginalized populations on Twitter. We analyzed ~100 million tweets spanning 14 years to identify hate speech targeted towards the LGBTQ+ community. We then modeled the prevalence and incidence of hate speech surrounding key political events to test if there was a significant change in the patterns.</p>
 <p>Hate speech was identified using dictionary-based methods refined by logistic regression, Naive Bayes, and Recurrent Neural Network (RNN) machine learning classifiers. Quasi-experimental interrupted time series design was used to quantify the incidence and prevalence of hate speech — the former defined as the change in rate of hate speech and the latter the change in the amount of hate speech in a given time period.</p>
 <p>We found no conclusive evidence of changes in prevalence or incidence of hate speech around key events. While some events saw brief upticks in prevalence, overall levels of hate speech remained stable. Our analysis finds exploratory evidence of decreases in incidence of anti-LGBTQ+ hate speech (p &lt; 0.001) over time coinciding with a Twitter policy change allowing users to directly report abuse.</p>
-<p>The incidence and prevalence are visualized in the below plot. Incidence is represented by the change in slopes of the regression lines and prevalence the gap between the two regression lines at the date of interest. The most apparent change — bottom right facet — corresponds to the <a href="https://www.oyez.org/cases/2012/12-307">Windsor vs. United States</a> case decided on June 26, 2013. However, it is confounded by a change in Twitter policy two months later. The <a href="https://blog.twitter.com/official/en_us/a/2013/keep-up-with-conversations-on-twitter.html">novel policy</a> allowed users to directly report individual tweets for abuse.</p>
+<p>The incidence and prevalence are visualized in the below plot. Incidence is represented by the change in slopes of the regression lines and prevalence by the gap between the two regression lines at the date of interest. The most apparent change — bottom right facet — corresponds to the <a href="https://www.oyez.org/cases/2012/12-307">Windsor vs. United States</a> case decided on June 26, 2013. However, it is confounded by a change in Twitter policy two months later. The <a href="https://blog.twitter.com/official/en_us/a/2013/keep-up-with-conversations-on-twitter.html">novel policy</a> allowed users to directly report individual tweets for abuse.</p>
 <p align="center">
 <img src="/img/posts/hate-speech/flagged_tweets_facets_bandwidth.png" width=90%>
 </p>
@@ -127,7 +127,7 @@
 <p>The first challenge was building a suitable dataset. We found no existing datasets that met our requirements; the most burdensome being the size. Our goal was to randomly sample the US population of Twitter users to obtain a representative sample of users and their timelines. We initially believed — based on the CSMaP paper — approximately 250,000 accounts would be necessary to obtain enough tweets that contain hate speech within the intervals of interest. The final dataset consists of approximately 100 million tweets spanning 160,000 accounts from 2006 to 2020. Importantly, the tweets are captured by first identifying users and then collecting their tweet history (i.e. their timeline) rather than collecting tweets regardless of user.</p>
 <p>A simple random sample is not possible due to technical limitations which causes our sampling plan to be quasi-random with a known bias. The frequency of collected tweets plateaus in 2013 and then starts increasing in 2020 (below plot) rather than monotonically increasing over time with Twitter popularity. The associated accounts appear to skew towards 2012-2014 account opening dates (derived from the first known tweet) which may explain the plateau. The latter increase is most likely due to a limitation of being able to collect only the latest 3,240 tweets from a given user.</p>
 <p align="center">
-<img src="/img/posts/hate-speech/tweets_over_time.png" width=70%>
+<img src="/img/posts/hate-speech/tweets_over_time.png" width=75%>
 </p>
 <p>The sampling was further hampered by the Twitter API restrictions which limits API calls to 900 per 15 minutes. A <a href="https://github.com/joemarlo/hate-speech/blob/main/Tweets/pull_tweets.py">Python script</a> executed on a <a href="https://en.wikipedia.org/wiki/Raspberry_Pi">Raspberry Pi microcomputer</a> was used to continuously make API calls for approximately 25 days and store the resulting data in a SQLite database.</p>
 <h3 id="classifying-hate-speech">Classifying hate speech</h3>
@@ -139,7 +139,7 @@
 <h4 id="second-step-modeling">Second step: modeling</h4>
 <p>Several machine learning models were fit to disentangle true instances of anti-LGBTQ+ tweets from false positives identified by the regex. Prior to model fitting, 6,000 tweets were randomly sampled from the 167,724 tweets flagged in the first step. These 6,000 were coded by the three authors. The coding scheme identified each of the 6,000 tweets as either a true instance of anti-LGBTQ+ language or as a false positive. These labels were then used as training data for logistic regression word embeddings, Naive Bayes and RNN machine learning models. Of the 6,000 labeled tweets, 10% were removed and saved to assess out of sample accuracy while the remaining were used to train each of the candidate models outlined below.</p>
 <p align="center">
-<img src="/img/posts/hate-speech/ROC.png" width=50%>
+<img src="/img/posts/hate-speech/ROC.png" width=55%>
 </p>
 <p>Of the three candidate models, we selected the RNN due to its balance in <a href="https://en.wikipedia.org/wiki/Precision_and_recall">recall and precision</a>. Moreover, as more labeled training tweets are obtained (in further studies), the predictive power of the RNN will increase. The RNN model identified 32,554 tweets or 0.035% of the sample as containing anti-LGBTQ+ language. This is the equivalent of 35 in 100,000 tweets.</p>
 <table class="table table-hover table-responsive" style="margin-left: auto; margin-right: auto; max-width: 70%">
@@ -173,7 +173,7 @@
 <p>The prevalence rate varies over time, generally increasing in the early years of Twitter and then decreasing post 2013 (below plot). There is a significant amount of noise in the early years which we believe is driven by the relatively small sample size. There’s a clear inflection point in the rate in mid 2013. The rate increases up until then and then monotonically decreases reaching apparent stability around 2017. Visually, there appears to be local upticks in the rate in mid 2015, mid 2019, and mid 2020. The vertical dashed lines represent the six key dates of interest.</p>
 <p>The inflection point in mid 2013 is the most visually evident trend. Two other dates also show local changes in the prevalence rate: mid 2015 (legalization of same-sex marriage) and mid 2017 (transgender ban).</p>
 <p align="center">
-<img src="/img/posts/hate-speech/flagged_tweets_vlines.png" width=70%>
+<img src="/img/posts/hate-speech/flagged_tweets_vlines.png" width=75%>
 </p>
 <h4 id="analysis">Analysis</h4>
 <p>Changes in anti-LGBTQ+ language after the identified time-points are quantified through changes in prevalence and incidence. Prevalence reflects shifts immediately following one of the identified events, while incidence quantifies changes in rate of anti-LGBTQ+ tweets over time.</p>
@@ -192,9 +192,9 @@ $$Y = \alpha + \beta_{T_i} + \beta_{event} + \beta_{T_i} * \beta_{event} + \epsi
 </font>
 <p>Both of these models require specifying a bandwidth of data points to include in the analyses. We used the R package <a href="https://rdpackages.github.io/rdrobust/">rdrobust</a> to select bandwidth via cross validation. The relevant coefficients testing incidence and prevalence for each of the six events are shown in the below plot. The Bonferroni adjustment was applied to all p values and confidence intervals to control for multiple testing and maintain a significance threshold of 0.05.</p>
 <p align="center">
-<img src="/img/posts/hate-speech/flagged_tweets_estimates.png" width=70%>
+<img src="/img/posts/hate-speech/flagged_tweets_estimates.png" width=80%>
 </p>
-<p>These same measures of incidence and prevalence are visualized in the below plot. Incidence is represented by the change in slopes of the regression lines and prevalence the gap between the two regression lines at the date of interest.</p>
+<p>These same measures of incidence and prevalence are visualized in the below plot. Incidence is represented by the change in slopes of the regression lines and prevalence by the gap between the two regression lines at the date of interest.</p>
 <p align="center">
 <img src="/img/posts/hate-speech/flagged_tweets_facets_bandwidth.png" width=90%>
 </p>
@@ -204,7 +204,7 @@ $$Y = \alpha + \beta_{T_i} + \beta_{event} + \beta_{T_i} * \beta_{event} + \epsi
 <p>The most salient shift in LGBTQ+ language occurs midway through 2013, this point is the beginning of a consistent and gradual reduction in anti-LGBTQ+ language that culminates with a leveling off midway through 2016.  Notably, this sharp reduction in the incidence of anti-LGBTQ+ language coincided with the Windsor vs United States court case. To understand other competing explanations for this sudden shift, we investigate other events that occurred in the same window of time. Investigating potential confounders revealed that in August of 2013, Twitter announced a change in policy allowing users to flag tweets that they found offensive. While the policy was announced in late August of 2013, the implementation was gradual.</p>
 <p>Shown in the below plot, the implementation of the new policy aligns with clear reduction in anti-LGBTQ+ language. Space between the decision of Windsor vs U.S. suggests a constant level of anti-LGBTQ+ speech that only begins to change following the introduction of the novel Twitter policy. This realization adds further skepticism to the observed changes in slope for the two events occurring in 2016. Skeptical priors suggest that the incidence in anti-LGBTQ+ tweets was already reducing and reached a new natural baseline around 2016 after the policy has been universally implemented.</p>
 <p align="center">
-<img src="/img/posts/hate-speech/flagged_tweets_policy_change.png" width=70%>
+<img src="/img/posts/hate-speech/flagged_tweets_policy_change.png" width=80%>
 </p>
 <br>
 <h2 id="final-thoughts">Final thoughts</h2>
