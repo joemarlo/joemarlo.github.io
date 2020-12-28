@@ -89,13 +89,15 @@ function drawBarsAirlinesChart(airlines, scales, config) {
      .attr("y", (d) => yScale(d.AirlineName))
      .attr("width", (d) => xScale(d.Count))
      .attr("fill", "#394E48")
-     .on("mouseenter", function(d) {
-       drawRoutes(d.AirlineID)
-       d3.select(this).style('fill', '#95ada7')
+     .on("mouseenter touchstart", function(d) {
+       drawRoutes(d.AirlineID);
+       d3.select(this).style('fill', '#95ada7');
+       event.preventDefault();
        })
-     .on('mouseleave', function(d){
-       drawRoutes(null)
-       d3.select(this).style('fill', '#394E48')
+     .on('mouseleave touchend', function(d){
+       drawRoutes(null);
+       d3.select(this).style('fill', '#394E48');
+       event.preventDefault();
      })
 }
 
