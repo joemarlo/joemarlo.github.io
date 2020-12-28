@@ -1,0 +1,26 @@
+body {
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    background-color: #fffaf0;
+}
+
+h1, h2, h3, h4 {
+  text-align: center;
+  font-weight: 100;
+}
+
+svg {
+  margin: 15px;
+}
+
+.mainView {
+  display: flex;
+  padding: 15px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
