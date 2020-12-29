@@ -5,3 +5,4 @@ See the below for live examples:
 - https://www.marlo.works/posts/covid-impact/
 - https://www.marlo.works/posts/covid-nyc-ridership/
 - https://www.marlo.works/d3/NYU_d3_course/Project/index
+- https://www.marlo.works/d3/NYU_d3_course/basic_interactivity

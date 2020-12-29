@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="basic.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jstat/latest/jstat.min.js"></script>
+    <script src="basic.js"></script>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto">
+</head>
+
+<body>
+    <div class="mainView">
+        <div>
+            <svg id="main_histogram"></svg>
+        </div>
+        <div class='container'>
+          <div id='container_mean'>
+              <h3>Adjust the mean: <span id="output_mean"></span></h3>
+                <input type="range" min="-100" max="100" value="0" class="slider" id="input_mean">
+          </div>
+          <div id='container_sd'>
+              <h3>Standard deviation: <span id="output_sd"></span></h3>
+                <input type="range" min="1" max="200" value="100" class="slider" id="input_sd">
+          </div>
+          <div id='container_n_data'>
+              <h3>n data points: <span id="output_n_data"></span></h3>
+                <input type="range" min="100" max="10000" step="100" value="5000" class="slider" id="input_n_data">
+          </div>
+          <div id='container_bins'>
+              <h3>n bins: <span id="output_bins"></span></h3>
+                <input type="range" min="5" max="100" step="5" value="50" class="slider" id="input_bins">
+          </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="slider.js"></script>

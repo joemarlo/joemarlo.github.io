@@ -234,10 +234,10 @@ function drawAirports(airports) {
 
 // week 4
 function drawRoutes(airlineID) {
-    let routes = store.routes //TODO: get the routes from store
-    let projection = store.mapProjection //TODO: get the projection from the store
-    let container = d3.select("#Map") //TODO: select the svg with id "Map" (our map container)
-    let selectedRoutes = routes.filter(d => {return d.AirlineID === airlineID}) //TODO: filter the routes to keep only the routes which AirlineID is equal to the parameter airlineID received by the function
+    let routes = store.routes
+    let projection = store.mapProjection
+    let container = d3.select("#Map")
+    let selectedRoutes = routes.filter(d => {return d.AirlineID === airlineID}) 
 
     let bindedData = container.selectAll("line")
         .data(selectedRoutes, d => d.ID) //This second parameter tells D3 what to use to identify the routes, this helps D3 to correctly find which routes have been added or removed.
