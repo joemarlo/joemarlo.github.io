@@ -1,14 +1,6 @@
-
-let store = {}
-
-// function to read data if we'd rather use fixed data
-function loadData() {
-    return Promise.all([
-        d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/1_OneNum.csv")
-    ]).then(datasets => {
-        store.prices = datasets[0];
-        return store;
-    })
+// sleep for X milliseconds
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
 }
 
 // function to simulate normal distribution named "price"
@@ -21,6 +13,19 @@ function getData(n, mean, sd){
   })
   return nums;
 }
+
+/*// or alternatively use static data
+let store = {}
+// function to read data if we'd rather use fixed data
+function loadData() {
+    return Promise.all([
+        d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/1_OneNum.csv")
+    ]).then(datasets => {
+        store.prices = datasets[0];
+        return store;
+    })
+}
+*/
 
 function getConfig() {
    let width = 700;
@@ -41,7 +46,7 @@ function getConfig() {
        .attr("width", width)
        .attr("height", height)
 
-   return { width, height, margin, bodyHeight, bodyWidth, container }
+   return {width, height, margin, bodyHeight, bodyWidth, container}
 }
 
 function getScales(prices, config) {
@@ -55,7 +60,7 @@ function getScales(prices, config) {
  let yScale = d3.scaleLinear()
      .range([bodyHeight, 0])
 
- return { xScale, yScale}
+ return {xScale, yScale}
 }
 
 function drawBars(prices, nbins, scales, config){
@@ -64,7 +69,7 @@ function drawBars(prices, nbins, scales, config){
 
   // set the parameters for the histogram
   let histogram = d3.histogram()
-        .value(function(d) { return d.price; })
+        .value(d => d.price)
         .domain(xScale.domain())
         .thresholds(xScale.ticks(nbins));
 
@@ -79,7 +84,7 @@ function drawBars(prices, nbins, scales, config){
     .call(d3.axisBottom(xScale));
 
   // remove and redraw Y axis
-  yScale.domain([0, d3.max(bins, function(d) { return d.length; })]);
+  yScale.domain([0, d3.max(bins, d => d.length)]);
   d3.selectAll(".leftaxis").remove()
   container.append("g")
     .attr("class", "leftaxis")
@@ -159,4 +164,5 @@ function showData() {
     });
 }
 
-loadData().then(showData);
+//loadData().then(showData);
+sleep(1).then(showData);
