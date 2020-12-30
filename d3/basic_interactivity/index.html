@@ -6,7 +6,6 @@
     <link rel="stylesheet" type="text/css" href="basic.css">
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jstat/latest/jstat.min.js"></script>
-    <script src="basic.js"></script>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto">
 </head>
 
@@ -17,7 +16,7 @@
         </div>
         <div class='container'>
           <div id='container_mean'>
-              <h3>Adjust the mean: <span id="output_mean"></span></h3>
+              <h3>Mean: <span id="output_mean"></span></h3>
                 <input type="range" min="-100" max="100" value="0" class="slider" id="input_mean">
           </div>
           <div id='container_sd'>
@@ -34,7 +33,7 @@
           </div>
         </div>
     </div>
+    <script src="slider.js"></script>
+    <script src="basic.js"></script>
 </body>
 </html>
-
-<script src="slider.js"></script>

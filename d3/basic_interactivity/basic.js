@@ -1,8 +1,3 @@
-// sleep for X milliseconds
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms))
-}
-
 // function to simulate normal distribution named "price"
 function getData(n, mean, sd){
   nums = d3.range(n).map(function(){
@@ -164,5 +159,5 @@ function showData() {
     });
 }
 
+showData()
 //loadData().then(showData);
-sleep(1).then(showData);
