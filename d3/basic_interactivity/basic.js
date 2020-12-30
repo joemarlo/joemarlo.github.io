@@ -67,7 +67,7 @@ function drawBars(prices, nbins, scales, config){
         .domain(xScale.domain())
         .thresholds(xScale.ticks(nbins));
 
-  // And apply this function to data to get the bins
+  // get the binned data
   let bins = histogram(prices);
 
   // remove and redraw X axis
@@ -87,12 +87,12 @@ function drawBars(prices, nbins, scales, config){
       `translate(${margin.left}px, 0px)`
     )
 
-  // Join the rect with the bins data
+  // join data with rect
   let rects = container
     .selectAll("rect")
     .data(bins)
 
-  // Manage the existing bars and eventually the new ones:
+  // add the new bars
   rects
     .enter()
     .append("rect") // Add a new rect for each new elements
@@ -103,7 +103,7 @@ function drawBars(prices, nbins, scales, config){
       .attr("height", function(d) { return bodyHeight - yScale(d.length); })
       .style("fill", "#394E48")
 
-  // If fewer bars in the new histogram, delete the ones not in use anymore
+  // delete the old bars
   rects
     .exit()
     .remove()
@@ -116,12 +116,13 @@ function drawHistogram(prices, nbins) {
 }
 
 function showData() {
-    // initialize number of bins
+    // initialize values
     let current_bins = 50
     let current_mean = 50
     let current_sd = 100
     let n_datapoints = 5000
 
+    // simulate initial data
     getData(n_datapoints, current_mean, current_sd)
     let prices = store.rand
     //let prices = store.prices
@@ -136,7 +137,7 @@ function showData() {
       drawHistogram(prices, current_bins);
     });
 
-    // update mean of distribution on user input
+    // update distribution mean on user input
     d3.select("#input_mean").on("input", function() {
       current_mean = +this.value
       getData(n_datapoints, current_mean, current_sd);
@@ -144,7 +145,7 @@ function showData() {
       drawHistogram(prices, current_bins)
     });
 
-    // update mean of distribution on user input
+    // update distribution sd on user input
     d3.select("#input_sd").on("input", function() {
       current_sd = +this.value
       getData(n_datapoints, current_mean, current_sd);
@@ -152,7 +153,7 @@ function showData() {
       drawHistogram(prices, current_bins)
     });
 
-    // update mean of distribution on user input
+    // update n datapoints on user input
     d3.select("#input_n_data").on("input", function() {
       n_datapoints = +this.value
       getData(n_datapoints, current_mean, current_sd);
