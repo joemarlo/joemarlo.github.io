@@ -11,14 +11,15 @@ function loadData() {
     })
 }
 
-// function to simulate normal distribution
+// function to simulate normal distribution named "price"
 function getData(n, mean, sd){
-  store.rand = d3.range(n).map(function(){
+  nums = d3.range(n).map(function(){
     //num = Math.random()*1000
     num = jStat.normal.sample(mean, sd)
     num = num.toString()
     return {'price': num}
   })
+  return nums;
 }
 
 function getConfig() {
@@ -74,7 +75,7 @@ function drawBars(prices, nbins, scales, config){
   d3.selectAll(".bottomaxis").remove()
   container.append("g")
     .attr("class", "bottomaxis")
-    .attr("transform", "translate(" + margin.left + "," + (bodyHeight) + ")")
+    .attr("transform", "translate(" + margin.left + "," + bodyHeight + ")")
     .call(d3.axisBottom(xScale));
 
   // remove and redraw Y axis
@@ -123,10 +124,9 @@ function showData() {
     let n_datapoints = 5000
 
     // simulate initial data
-    getData(n_datapoints, current_mean, current_sd)
-    let prices = store.rand
+    let prices = getData(n_datapoints, current_mean, current_sd)
     //let prices = store.prices
-    console.log(prices)
+    //console.log(prices)
 
     // initialize plot
     drawHistogram(prices, current_bins);
@@ -140,24 +140,21 @@ function showData() {
     // update distribution mean on user input
     d3.select("#input_mean").on("input", function() {
       current_mean = +this.value
-      getData(n_datapoints, current_mean, current_sd);
-      prices = store.rand
+      prices = getData(n_datapoints, current_mean, current_sd);
       drawHistogram(prices, current_bins)
     });
 
     // update distribution sd on user input
     d3.select("#input_sd").on("input", function() {
       current_sd = +this.value
-      getData(n_datapoints, current_mean, current_sd);
-      prices = store.rand
+      prices = getData(n_datapoints, current_mean, current_sd);
       drawHistogram(prices, current_bins)
     });
 
     // update n datapoints on user input
     d3.select("#input_n_data").on("input", function() {
       n_datapoints = +this.value
-      getData(n_datapoints, current_mean, current_sd);
-      prices = store.rand
+      prices = getData(n_datapoints, current_mean, current_sd);
       drawHistogram(prices, current_bins)
     });
 }
