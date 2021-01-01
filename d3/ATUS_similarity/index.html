@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<html>
+  <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+  <link rel="stylesheet" type="text/css" href="ATUS-similarity.css">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto">
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jstat/latest/jstat.min.js"></script>
+  <script src="//unpkg.com/string-similarity/umd/string-similarity.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<head>
+<body>
+  <div id="container_user_input">
+    <select value="" class="user_input" id="user_input_1">
+      <option value="#9E0142">Sports, Exercise, and Recreation</option>
+      <option value="#D53E4F">Personal Care</option>
+      <option value="#F46D43">Sleep</option>
+      <option value="#FDAE61">Socializing, Relaxing, and Leisure</option>
+      <option value="#FEE08B">Household Activities</option>
+      <option value="#FFFFBF">Work</option>
+      <option value="#E6F598">Professional & Personal Care Services</option>
+      <option value="#ABDDA4">Eating and Drinking</option>
+      <option value="#66C2A5">Caring For Household Member</option>
+      <option value="#3288BD">Consumer Purchases</option>
+      <option value="#5E4FA2">Other</option>"
+    </select>
+    <select value="" class="user_input" id="user_input_2">
+      <option value="#9E0142">Sports, Exercise, and Recreation</option>
+      <option value="#D53E4F">Personal Care</option>
+      <option value="#F46D43">Sleep</option>
+      <option value="#FDAE61">Socializing, Relaxing, and Leisure</option>
+      <option value="#FEE08B">Household Activities</option>
+      <option value="#FFFFBF">Work</option>
+      <option value="#E6F598">Professional & Personal Care Services</option>
+      <option value="#ABDDA4">Eating and Drinking</option>
+      <option value="#66C2A5">Caring For Household Member</option>
+      <option value="#3288BD">Consumer Purchases</option>
+      <option value="#5E4FA2">Other</option>"
+    </select>
+    <select value="" class="user_input" id="user_input_3">
+      <option value="#9E0142">Sports, Exercise, and Recreation</option>
+      <option value="#D53E4F">Personal Care</option>
+      <option value="#F46D43">Sleep</option>
+      <option value="#FDAE61">Socializing, Relaxing, and Leisure</option>
+      <option value="#FEE08B">Household Activities</option>
+      <option value="#FFFFBF">Work</option>
+      <option value="#E6F598">Professional & Personal Care Services</option>
+      <option value="#ABDDA4">Eating and Drinking</option>
+      <option value="#66C2A5">Caring For Household Member</option>
+      <option value="#3288BD">Consumer Purchases</option>
+      <option value="#5E4FA2">Other</option>"
+    </select>
+  </div>
+  <div id='container_string_input' class='container'>
+      <h3>String sequence: <span id="output_string"></span></h3>
+        <!--<input type="text" value="CCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCC" id="input_sequence">-->
+
+        <select value=Test1 class="input" id="input_sequence">
+          <option value='CCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCC'>Test 1</option>
+          <option value='CCCCCCCCCCCCCCCCCFFFFFFFFFFFFFFFFFFFFFFFCCCCCCCC'>Test 2</option>
+          <option value='CCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCC'>Test 3</option>
+          <option value='CCCCCCMMMMMMMMMMMMMMMMMMMMDDDDDDDDDDCCCCCCCCCCCC'>Test 4</option>
+          <option value='CCCCCFFFFFFFFFFFFFFFFFFFFFFFFDDDDDDDCCCCCCCCCCCC'>Test 5</option>
+          <option value='CCCCCCCCEEEEEEEEEEEEEEEEEEEEDDDDDDDDCCCCCCCCCCCC'>Test 6</option>
+        </select>
+        <!--<input type="text" value="Cluster 1" id="input_cluster">-->
+        <input type="button" class="btn" value="Update" id="button_update">
+  </div>
+  <div id="plot_sequence"></div>
+  <script src="functions.js"></script>
+  <script src="plotSequence.js"></script>
+</body>
+</html>
