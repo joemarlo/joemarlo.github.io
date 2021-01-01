@@ -1,13 +1,3 @@
-// change the color of the dropdown based on its value
-var i;
-$('.user_input').change(function(){
-    i = this.id.slice(11);
-    $("#user_input_"+i).css('background-color', $(this).val());
-    $("#user_input_"+i).css('color', $(this).val());
-});
-
-
-
 // create dollar formatter
 var formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -30,18 +20,6 @@ function classifySequence(input_sequence, modal_sequences){
   cluster = "Cluster " + (bestMatch + 1)
   return cluster
 }
-
-tmp = "kalsjdlaks"
-console.log(tmp.split(""))
-
-// modal sequences per cluster
-modal_sequences = ['CCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCC',
-'CCCCCCCCCCCCCCCCCFFFFFFFFFFFFFFFFFFFFFFFCCCCCCCC',
-'CCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDCCCCCCCCCCCC',
-'CCCCCCMMMMMMMMMMMMMMMMMMMMDDDDDDDDDDCCCCCCCCCCCC',
-'CCCCCFFFFFFFFFFFFFFFFFFFFFFFFDDDDDDDCCCCCCCCCCCC',
-'CCCCCCCCEEEEEEEEEEEEEEEEEEEEDDDDDDDDCCCCCCCCCCCC']
-
 
 // https://gist.github.com/robotlolita/8208773
 // Frees the `[].slice` method to accept `this` as the first actual argument,

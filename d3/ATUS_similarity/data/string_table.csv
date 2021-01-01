@@ -1,16 +1,16 @@
-description,activity
-"Sports, Exercise, and Recreation",A
-Personal Care,B
-Sleep,C
-"Socializing, Relaxing, and Leisure",D
-Household Activities,E
-Work,F
-Professional & Personal Care Services,G
-Eating and Drinking,H
-Caring For Household Member,I
-Consumer Purchases,J
-Other,K
-Caring For Nonhousehold Members,L
-Education,M
-Volunteer,N
-Religious and Spiritual,O
+description,activity,val
+"Sports, Exercise, and Recreation",A,#D9A398
+Personal Care,B,#4F96C4
+Sleep,C,#6A3D9A
+"Socializing, Relaxing, and Leisure",D,#F79B5D
+Household Activities,E,#A788C0
+Work,F,#A6CEE3
+Professional & Personal Care Services,G,#4995A8
+Eating and Drinking,H,#FDA33F
+Caring For Household Member,I,#EF595A
+Consumer Purchases,J,#5D9E43
+Other,K,#DE9A89
+Caring For Nonhousehold Members,L,#E63127
+Education,M,#A7D78D
+Volunteer,N,#69BB54
+Religious and Spiritual,O,#FB820F

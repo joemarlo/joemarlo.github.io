@@ -11,7 +11,7 @@ h1, h2, h3, h4 {
 }
 
 svg {
-  margin: 15px;
+  margin: 1px;
 }
 
 .mainView {
@@ -79,17 +79,15 @@ span {
 }
 
 .user_input {
-  width: 10px;
+  width: 14px;
+  height: 16px;
   border-radius: 0;
   box-shadow: none;
-  border: none;
+  border: solid;
+  border-color: white;
+  border-width: 1px;
   margin: 0;
   padding: 0;
-}
-
-#user_input_1 {
-  background-color: #9E0142;
-  color: #9E0142;
 }
 
 /*removes dropdown arrow */
