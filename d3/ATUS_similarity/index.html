@@ -17,19 +17,46 @@
   -->
 <head>
 <body>
+  <div class="corner-ribbon">DRAFT</div>
   <div>
-    <h3>User input</h3>
-    <div id="container_user_input">
+    <div id="container_twenty_questions">
+      <h3>How do you spend your weekdays?</h3>
+      <select class='container_twenty_questions_dropdown'>
+        <option value="Work">Working</option>
+        <option value="Socializing">Socializing</option>
+        <option value="Household activities">On household work or activities</option>
+        <option value="Education">At school</option>
+      </select>
+      <h3>When do you sleep?</h3>
+      <select class='container_twenty_questions_dropdown'>
+        <option value="Night">Night</option>
+        <option value="Day">Day</option>
+      </select>
+      <h5>...</h5>
+      <br><br>
+      <h3>Does this match up with your day? Customize by clicking on each square</h3>
+      <div id="container_user_input"></div>
+      <div id="container_user_input_ticks">
+        <div class="vertical_tick_start"></div>
+      </div>
+      <br>
+      <div id="container_user_input_labels">
+        <div class="vertical_tick_start"></div>
+      </div>
+      <br>
+      <div id='legend'><br></div>
+    </div>
+    <div id='container_string_input' class='container'>
+      <input type="button" class="btn" value="Find similar days" id="button_update">
     </div>
   </div>
-  <div id='container_string_input' class='container'>
-    <input type="button" class="btn" value="Update" id="button_update">
-  </div>
   <div id="plot_sequence"></div>
+  <h3>Who are these people?</h3>
   <div id="plot_histograms"></div>
   <script src="UI.js"></script>
   <script src="functions.js"></script>
   <script src="plotHistograms.js"></script>
-  <script src="plotSequence.js"></script>-
+  <script src="plotSequence.js"></script>
+  <script src="legend.js"></script>
 </body>
 </html>

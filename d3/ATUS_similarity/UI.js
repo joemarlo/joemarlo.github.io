@@ -32,6 +32,8 @@ var arrSelect = [
   {val : "#FB820F", text: 'Religious and Spiritual'}
 ];
 
+let tickLabels = ["4am", 5, 6, 7, 8, 9, 10, 11, "12pm", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "12am", 1, 2, 3]
+
 // iterate through and create the select dropdowns and set them to the approporiate
 // colors to match the default sequence
 for (var i=0; i<48; i++){
@@ -45,10 +47,20 @@ for (var i=0; i<48; i++){
   });
 
   // set default values and colors
-  selected_sequence = arrColors[i].val //"#5E4FA2"
+  selected_sequence = arrColors[i].val
   $('#user_input_'+ (i+1) + ' option[value="' + selected_sequence + '"]').attr("selected", true);
   sel.css('background-color', selected_sequence)
   sel.css('color', selected_sequence)
+
+  // add tick marks under the container
+  var selTick = $('<div>').appendTo('#container_user_input_ticks');
+  selTick.addClass("vertical_tick_empty");
+  if (i % 2 == 0) selTick.addClass("vertical_tick");
+
+  // add labels under ticks
+  var selLabel = $('<div>').appendTo('#container_user_input_labels');
+  selLabel.addClass("vertical_tick_label");
+  if (i % 2 == 0) selLabel.html(tickLabels[i/2]);
 }
 
 // change the color of the dropdown based on its value

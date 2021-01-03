@@ -2,10 +2,10 @@ function getConfig() {
   let width = 700;
   let height = 500;
   let margin = {
-    top: 10,
+    top: 70,
     bottom: 50,
-    left: 20,
-    right: 20
+    left: 0,
+    right: 10
   }
 
   //The body is the area that will be occupied by the bars.
@@ -16,7 +16,7 @@ function getConfig() {
   let container = d3.select("#plot_sequence");
   container = container
     .append("svg")
-    .attr("class", "plot")
+    .attr("class", "plotSequence")
     .attr("width", width)
     .attr("height", height)
 
@@ -45,19 +45,19 @@ function drawRects(data){
   // remove and redraw X axis
   tickValues = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47]
   tickLabels = ["4am", 5, 6, 7, 8, 9, 10, 11, "12pm", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "12am", 1, 2, 3]
-  d3.selectAll(".bottomaxisSequence").remove()
+  d3.selectAll(".bottomAxisSequence").remove()
   container.append("g")
-    .attr("class", "bottomaxisSequence")
+    .attr("class", "bottomAxisSequence")
     .style("font-size", 15)
     .attr("transform", "translate(0," + bodyHeight + ")")
     .call(d3.axisBottom(x)
       .tickSize(2)
       .tickValues(tickValues)
-      .tickFormat(function(d,i){ return tickLabels[i] }))
+      .tickFormat(function(d, i){ return tickLabels[i] }))
     .select(".domain").remove()
 
   // angle the axis tick Labels
-  d3.selectAll("text")
+  d3.select(".bottomAxisSequence").selectAll("text")
     .attr("y", 10)
     .attr("x", 1)
     .attr("dy", ".35em")
@@ -84,12 +84,6 @@ function drawRects(data){
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip")
-    .style("background-color", "white")
-    .style("border", "solid")
-    .style("border-width", "2px")
-    .style("border-radius", "5px")
-    .style("padding", "5px")
-    .style("position", "absolute")
 
   // Three function that change the tooltip when user hover / move / leave a cell
   function mouseover(d){
@@ -101,7 +95,7 @@ function drawRects(data){
   }
   function mousemove(d){
     tooltip
-      .html("Activity: " + d.description + "<br>" +
+      .html("<strong>" + d.description + "</strong><br>" +
             "Age: " + d.age + "<br>" +
             "Sex: " + d.sex + "<br>" +
             "Number of children: " + d.n_child + "<br>" +
@@ -144,7 +138,6 @@ function drawRects(data){
     .attr("height", y.bandwidth() )
     .style("fill", d => d.val)
     .style("stroke-width", 2)
-    .style("stroke", "none")
     .style("stroke", function(d, i){
       if (d.ID == "user"){
         return "white"
@@ -160,28 +153,32 @@ function drawRects(data){
   squares
     .exit()
     .remove()
-}
 
-function addTitle(){
-  let {container} = getConfig()
+  // remove and add title
+  d3.select("#plot_sequence").select(".SequencePlotTitle").selectAll("text").remove()
 
   // Add title to graph
-  container.append("text")
-          .attr("x", 0)
-          .attr("y", -50)
-          .attr("text-anchor", "left")
-          .style("font-size", "22px")
-          .text("A d3.js heatmap");
+  d3.select("svg.plotSequence")
+    .append("text")
+      .attr("class", "SequencePlotTitle")
+      .attr("x", margin.left)
+      .attr("y", (margin.top / 2))
+      .attr("text-anchor", "left")
+      .style("font-size", "18px")
+      .style("fill", "#4d4d4d")
+      .text("The fifty most similar days to yours");
 
   // Add subtitle to graph
-  container.append("text")
-          .attr("x", 0)
-          .attr("y", -20)
-          .attr("text-anchor", "left")
-          .style("font-size", "14px")
-          .style("fill", "grey")
-          .style("max-width", 400)
-          .text("A short description of the take-away message of this chart.");
+  d3.select("svg.plotSequence")
+    .append("text")
+      .attr("class", "SequencePlotTitle")
+      .attr("x", margin.left)
+      .attr("y", (margin.top * 3/4))
+      .attr("text-anchor", "left")
+      .style("font-size", "14px")
+      .style("fill", "grey")
+      .style("max-width", bodyWidth)
+      .text("Each square represents how an individual spent 30 minutes of their day");
 }
 
 function filterData(sequences, demographics, inputSequence, modal_sequences, string_table){
@@ -265,14 +262,13 @@ function showData(data){
 
   // update plot on user input
   d3.select("#button_update").on("click", function() {
-    d3.select("svg.plot").remove()
+    d3.select("#plot_sequence").select("svg").remove()
     d3.selectAll('.tooltip').remove()
     inputSequence = retrieveUserSequence(string_table);
     filtered_data = filterData(sequences, demographics, inputSequence, modal_sequences, string_table)
     drawRects(filtered_data);
     drawHistograms(filtered_data);
   });
-  //addTitle()
 }
 
 // function to read data if we'd rather use fixed data

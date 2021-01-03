@@ -1,35 +1,31 @@
-
 function getConfigHist() {
-   let width = 700;
-   let height = 400;
+   let width = 300;
+   let height = 200;
    let margin = {
        top: 10,
        bottom: 50,
        left: 50,
        right: 20
    }
+
    //The body is the area that will be occupied by the bars.
    let bodyHeight = height - margin.top - margin.bottom;
    let bodyWidth = width - margin.left - margin.right;
 
    //The container is the SVG where we will draw the chart
    let container = d3.select("#plot_histograms" );
-   container = container
-    .append("svg")
-    .attr("width", width)
-    .attr("height", height)
 
    return {width, height, margin, bodyHeight, bodyWidth, container}
 }
 
-function getScalesHist(data, config) {
- let { bodyWidth, bodyHeight, container } = config;
+function getScalesHist(data, config, id) {
+ let { bodyWidth, bodyHeight } = config;
 
  // if data is a number then scale it for a histogram, otherwise for a barplot
- if (Number.isFinite(+data[1].dataToPlot)){
-   let maximumValue = d3.max(data, d => +d.dataToPlot);
-   let minimumValue = d3.min(data, d => +d.dataToPlot);
-   console.log(d3.max(data, d => +d.dataToPlot))
+ if (Number.isFinite(+data[1][id])){
+   let maximumValue = d3.max(data, d => +d[id]);
+   let minimumValue = d3.min(data, d => +d[id]);
+   console.log(d3.max(data, d => +d[id]))
 
    let xScale = d3.scaleLinear()
        .domain([minimumValue, maximumValue]) //[minimumValue, maximumValue]
@@ -44,7 +40,7 @@ function getScalesHist(data, config) {
 
    // count the data
    data.forEach(function(d) {
-       let dataToPlot = d.dataToPlot;
+       let dataToPlot = d[id];
        if(bins[dataToPlot] === undefined) {
            bins[dataToPlot] = 0;
        } else {
@@ -58,7 +54,7 @@ function getScalesHist(data, config) {
    let maximumValue = Math.max.apply(null, vals)
 
    let xScale = d3.scaleBand()
-    .domain(bins) // TODO need to pivot data
+    .domain(bins) // TODO: need to pivot data https://www.d3-graph-gallery.com/graph/barplot_basic.html
     .range([0, bodyWidth])
     .padding(0.2)
 
@@ -68,20 +64,27 @@ function getScalesHist(data, config) {
  }
 }
 
-function drawBars(data, nbins, scales, config){
-  let {margin, container, bodyHeight, bodyWidth} = config;
+function drawBars(data, nbins, scales, config, id){
+  let {margin, container, bodyHeight, bodyWidth, width, height} = config;
   let {xScale, yScale} = scales
+
+  // add svg to the container
+  container = container
+   .append("svg")
+   .attr("class", "plotHist" + id)
+   .attr("width", width)
+   .attr("height", height)
 
   console.log('data input to drawBars', data)
 
   // if the data is a number then plot a histogram, else plot barplot chart
-  isfinite = Number.isFinite(+data[1].dataToPlot)
+  isfinite = Number.isFinite(+data[1][id])
   console.log("is data numeric?", isfinite)
   if (isfinite){
 
     // set the parameters for the histogram
     let histogram = d3.histogram()
-          .value(d => +d.dataToPlot)
+          .value(d => +d[id])
           .domain(xScale.domain())
           .thresholds(xScale.ticks(nbins));
 
@@ -89,9 +92,9 @@ function drawBars(data, nbins, scales, config){
     let bins = histogram(data);
 
     // remove and redraw X axis
-    d3.selectAll(".bottomaxisHist").remove()
+    d3.selectAll(".bottomAxisHist" + id).remove()
     container.append("g")
-      .attr("class", "bottomaxisHist")
+      .attr("class", "bottomAxisHist" + id)
       .attr("transform", "translate(" + margin.left + "," + bodyHeight + ")")
       .call(d3.axisBottom(xScale));
 
@@ -100,7 +103,7 @@ function drawBars(data, nbins, scales, config){
 
     // join data with rect
     let rects = container
-      .selectAll("rectHist")
+      .selectAll("rectHist" + id)
       .data(bins)
 
     // add the new bars
@@ -113,7 +116,7 @@ function drawBars(data, nbins, scales, config){
         .attr("width", function(d) { return xScale(d.x1) - xScale(d.x0) -1 ; })
         .attr("height", function(d) { return bodyHeight - yScale(d.length); })
         .style("fill", "#394E48")
-        .attr("class", "rectHist")
+        .attr("class", "rectHist" + id)
         .on("mouseover", function(d){
           d3.select(this).transition()
             .duration('50')
@@ -137,7 +140,7 @@ function drawBars(data, nbins, scales, config){
 
     // count the data
     data.forEach(function(d) {
-        let dataToPlot = d.dataToPlot;
+        let dataToPlot = d[id];
         if(bins[dataToPlot] === undefined) {
             bins[dataToPlot] = 0;
         } else {
@@ -147,7 +150,7 @@ function drawBars(data, nbins, scales, config){
 
     // join data with rect
     let rects = container
-      .selectAll("rectHist")
+      .selectAll("rectHist" + id)
       .data(bins)
 
     // add the new bars
@@ -155,12 +158,12 @@ function drawBars(data, nbins, scales, config){
       .enter()
       .append("rect") // Add a new rect for each new elements
       .merge(rects) // get the already existing elements as well
-        .attr("x", d => x(d.name))
-        .attr("y", d => y(d.value))
+        .attr("x", d => xScale(d.name))
+        .attr("y", d => yScale(d.value))
         .attr("width", x.bandwidth())
         .attr("height", function(d) { return bodyHeight - yScale(d.value); })
         .style("fill", "#394E48")
-        .attr("class", "rectHist")
+        .attr("class", "rectHist" + id)
         .on("mouseover", function(d){
           d3.select(this).transition()
             .duration('50')
@@ -176,47 +179,18 @@ function drawBars(data, nbins, scales, config){
     rects
       .exit()
       .remove()
-
   }
  }
 
 function drawHistograms(data) {
-  /*
-  data.demographics.age
-  data.demographics.sex
-  data.demographics.education
-  data.demographics.married
-  data.demographics.n_child
-  */
-  //let demographics = data.demographics
-  let demographics = data
-
   // delete old plots
+  d3.select("svg.plotHistage").remove()
+  d3.select("svg.plotHistn_child").remove()
 
-  for (var i=0; i<demographics.length; i++){
-    demographics[i]['dataToPlot'] = demographics[i]['age']
-  }
-
+  // get config, scales then draw the plots
   let config = getConfigHist();
-  let scales = getScalesHist(demographics, config);
-  drawBars(demographics, 20, scales, config);
+  let scales = getScalesHist(data, config, 'age');
+  drawBars(data, 20, scales, config, id='age');
+  scales = getScalesHist(data, config, 'n_child');
+  drawBars(data, 20, scales, config, id='n_child');
 }
-
-function loadData() {
-    return Promise.all([
-        d3.csv("data/sequences.csv"),
-        d3.csv("data/demographics.csv"),
-        d3.csv("data/string_table.csv"),
-        d3.csv("data/modes.csv")
-    ]).then(datasets => {
-        store = {}
-        store.sequences = datasets[0];
-        store.demographics = datasets[1];
-        store.string_table = datasets[2];
-        store.modal_sequences = datasets[3];
-        console.log(store)
-        return store;
-    })
-}
-
-//loadData().then(drawHistograms)
