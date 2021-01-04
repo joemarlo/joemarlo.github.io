@@ -30,12 +30,11 @@ function drawRects(data){
       `translate(${margin.left}px,${margin.top}px)`
     )
 
-  //console.log('rect data:', data);
+  console.log('rect data:', data);
 
   // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
   let myGroups = d3.map(data, function(d){return d.time;}).keys()
   let myVars = d3.map(data, function(d){return d.rank;}).keys()
-  console.log(myVars)
 
   // Build X scales
   let x = d3.scaleBand()
@@ -90,8 +89,8 @@ function drawRects(data){
     tooltip
       .style("opacity", 1)
     d3.select(this)
-      .style("stroke", "black")
-      .style("opacity", 1)
+      .style("stroke-width", 3)
+      .style("opacity", 0.5)
   }
   function mousemove(d){
     tooltip
@@ -111,13 +110,8 @@ function drawRects(data){
     tooltip
       .style("opacity", 0)
     d3.select(this)
-      .style("stroke", function(d, i){
-        if (d.ID == "user"){
-          return "white"
-        }
-        return "none";
-      })
       .style("opacity", 0.8)
+      .style("stroke-width", 1)
   }
 
   // join data with rect
@@ -137,18 +131,17 @@ function drawRects(data){
     .attr("width", x.bandwidth() )
     .attr("height", y.bandwidth() )
     .style("fill", d => d.val)
-    .style("stroke-width", 2)
-    .style("stroke", function(d, i){
-      if (d.ID == "user"){
-        return "white"
-      }
-      return "none";
-    })
+    .style("stroke-width", 1)
+    .style("stroke", 'white')
     .style("opacity", 0.8)
     .on("mouseover", mouseover)
     .on("mousemove", mousemove)
     .on("mouseleave", mouseleave)
+    .transition()
+      .duration(750)
+      .styleTween("fill", d => d3.interpolate("white", d.val))
 
+  squares
 
   // delete the old squares
   squares
@@ -164,7 +157,7 @@ function drawRects(data){
       .attr("class", "sequence_plot_title sequence_plot_title_text")
       .attr("x", margin.left)
       .attr("y", (margin.top / 2))
-      .text("The fifty most similar days to yours");
+      .text("The 25 most similar individuals to you");
 
   // Add subtitle to graph
   d3.select("svg.plotSequence")
@@ -215,7 +208,7 @@ function filterData(sequences, demographics, inputSequence, modal_sequences, str
 
   // left join to get activity names
   data = mergeOn(indexBy('activity', string_table), 'activity', data)
-  console.log("Filtered data:", data)
+  //console.log("Filtered data:", data)
 
   /// sort the data based on string match score
   // first group the data from ID
@@ -249,7 +242,11 @@ function filterData(sequences, demographics, inputSequence, modal_sequences, str
   rankedData = mergeOn(indexBy('ID', stringMatchScores), 'ID', data)
   rankedData.sort(function(a,b) { return +a.rank - +b.rank })
 
-  return rankedData
+  // filter to just the top 50 ranked observations
+  maxRank = d3.max(rankedData, d => d.rank)
+  rankedFilteredData = rankedData.filter(d => {return d.rank >= (maxRank - 25)})
+
+  return rankedFilteredData
 }
 
 // retrieve user input

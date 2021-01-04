@@ -13,6 +13,7 @@ function stringDistance(stringA, stringB){
 
 }
 
+//https://www.npmjs.com/package/js-levenshtein
 //https://www.npmjs.com/package/string-similarity
 // TODO: this is a placeholder
 function classifySequence(input_sequence, modal_sequences){

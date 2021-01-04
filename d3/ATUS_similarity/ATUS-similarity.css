@@ -171,6 +171,12 @@ select {
   text-anchor: middle;
 }
 
+#plot_histograms {
+
+}
+
+
+
 .corner_ribbon{
   width: 200px;
   background: #b0453e;
