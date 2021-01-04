@@ -175,7 +175,15 @@ select {
 
 }
 
+#container_Q3 {
+  height: 0;
+  opacity: 0;
+}
 
+#container_Q4 {
+  height: 0;
+  opacity: 0;
+}
 
 .corner_ribbon{
   width: 200px;

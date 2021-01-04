@@ -69,9 +69,7 @@ function updateInputDropdowns(arrColors){
 
     // set default values and colors
     selected_sequence = arrColors[i].val
-//    sel.removeAttr("selected")
     sel.val(selected_sequence)
-    //$('#user_input_'+ (i+1) + ' option[value="' + selected_sequence + '"]').attr("selected", true);
     sel.css('background-color', selected_sequence)
     sel.css('color', selected_sequence)
   }
@@ -84,7 +82,24 @@ updateInputDropdowns(arrColors);
 //updateInputDropdowns(clusterOther);
 
 // add listeners to render next question
+$('#Q1').change(function(){
+  if ($(this).val() == 'Yes') {
+    $('#container_Q2').css({ 'height' : '70', 'opacity' : '1'})
+    $('#container_Q3').css({ 'height' : '0', 'opacity' : '0'})
+  } else {
+    $('#container_Q2').css({ 'height' : '0', 'opacity' : '0'})
+    $('#container_Q3').css({ 'height' : '70', 'opacity' : '1'})
+  }
+})
+$('#Q3').change(function(){
+  if ($(this).val() == 'Yes') {
+    $('#container_Q4').css({ 'height' : '0', 'opacity' : '0'})
+  } else {
+    $('#container_Q4').css({ 'height' : '70', 'opacity' : '1'})
+  }
+})
 
+console.log('here', $('#Q1').val())
 
 // add listeners to each question
 let elementsArray = document.querySelectorAll("#container_twenty_questions");
