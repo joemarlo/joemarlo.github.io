@@ -1,35 +1,12 @@
 // set default sequence
 var arrColors = [
-  {val : '#6A3D9A'},{val : '#6A3D9A'},{val : '#6A3D9A'},{val : '#6A3D9A'},{val : '#6A3D9A'},
-  {val : '#6A3D9A'},{val : '#6A3D9A'},{val : '#6A3D9A'},{val : '#6A3D9A'},{val : '#6A3D9A'},
-  {val : '#F79B5D'},{val : '#F79B5D'},{val : '#F79B5D'},{val : '#F79B5D'},{val : '#F79B5D'},
-  {val : '#F79B5D'},{val : '#F79B5D'},{val : '#F79B5D'},{val : '#F79B5D'},{val : '#F79B5D'},
-  {val : '#F79B5D'},{val : '#F79B5D'},{val : '#F79B5D'},{val : '#F79B5D'},{val : '#F79B5D'},
-  {val : '#F79B5D'},{val : '#F79B5D'},{val : '#F79B5D'},{val : '#F79B5D'},{val : '#F79B5D'},
-  {val : '#F79B5D'},{val : '#F79B5D'},{val : '#F79B5D'},{val : '#F79B5D'},{val : '#F79B5D'},
-  {val : '#F79B5D'},{val : '#F79B5D'},{val : '#F79B5D'},{val : '#6A3D9A'},{val : '#6A3D9A'},
-  {val : '#6A3D9A'},{val : '#6A3D9A'},{val : '#6A3D9A'},{val : '#6A3D9A'},{val : '#6A3D9A'},
-  {val : '#6A3D9A'},{val : '#6A3D9A'},{val : '#6A3D9A'}
+  {val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'}
 ]
 
 // create 48 select lists
 // first set the select dropdown options
 var arrSelect = [
-  {val : "#D9A398", text: 'Sports, Exercise, and Recreation'},
-  {val : "#4F96C4", text: 'Personal Care'},
-  {val : "#6A3D9A", text: 'Sleep'},
-  {val : "#F79B5D", text: 'Socializing, Relaxing, and Leisure'},
-  {val : "#A788C0", text: 'Household Activities'},
-  {val : "#A6CEE3", text: 'Work'},
-  {val : "#4995A8", text: 'Professional & Personal Care Services'},
-  {val : "#FDA33F", text: 'Eating and Drinking'},
-  {val : "#EF595A", text: 'Caring For Household Member'},
-  {val : "#5D9E43", text: 'Consumer Purchases'},
-  {val : "#DE9A89", text: 'Other'},
-  {val : "#E63127", text: 'Caring For Nonhousehold Members'},
-  {val : "#A7D78D", text: 'Education'},
-  {val : "#69BB54", text: 'Volunteer'},
-  {val : "#FB820F", text: 'Religious and Spiritual'}
+  {val : '#208eb7', text: 'Sports, Exercise, and Recreation'}, {val : '#65e6f9', text: 'Personal Care'}, {val : '#154e56', text: 'Sleep'}, {val : '#58df8c', text: 'Socializing, Relaxing, and Leisure'}, {val : '#966106', text: 'Household Activities'}, {val : '#b5d08d', text: 'Work'}, {val : '#6d3918', text: 'Professional & Personal Care Services'}, {val : '#f24325', text: 'Eating and Drinking'}, {val : '#8e1023', text: 'Caring For Household Member'}, {val : '#c27d92', text: 'Consumer Purchases'}, {val : '#fbcab9', text: 'Other'}, {val : '#ff0087', text: 'Caring For Nonhousehold Members'}, {val : '#fd8f2f', text: 'Education'}, {val : '#bce333', text: 'Volunteer'}, {val : '#798a58', text: 'Religious and Spiritual'}
 ];
 
 let tickLabels = ["4am", 5, 6, 7, 8, 9, 10, 11, "12pm", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "12am", 1, 2, 3]
@@ -52,6 +29,7 @@ for (var i=0; i<48; i++){
   sel.css('background-color', selected_sequence)
   sel.css('color', selected_sequence)
 
+  /*
   // add tick marks under the container
   var selTick = $('<div>').appendTo('#container_user_input_ticks');
   selTick.addClass("vertical_tick_empty");
@@ -61,6 +39,7 @@ for (var i=0; i<48; i++){
   var selLabel = $('<div>').appendTo('#container_user_input_labels');
   selLabel.addClass("vertical_tick_label");
   if (i % 2 == 0) selLabel.html(tickLabels[i/2]);
+  */
 }
 
 // change the color of the dropdown based on its value

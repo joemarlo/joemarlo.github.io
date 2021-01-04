@@ -1,5 +1,5 @@
 function getConfig() {
-  let width = 700;
+  let width = 800;
   let height = 500;
   let margin = {
     top: 70,
@@ -34,7 +34,8 @@ function drawRects(data){
 
   // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
   let myGroups = d3.map(data, function(d){return d.time;}).keys()
-  let myVars = d3.map(data, function(d){return d.ID;}).keys()
+  let myVars = d3.map(data, function(d){return d.rank;}).keys()
+  console.log(myVars)
 
   // Build X scales
   let x = d3.scaleBand()
@@ -65,12 +66,11 @@ function drawRects(data){
     .style("text-anchor", "start");
 
   // remove and redraw x axis label
-  d3.selectAll(".xaxis-label").remove()
+  d3.selectAll(".xaxis_label").remove()
   container.append("text")
-    .attr("class", "xaxis-label")
+    .attr("class", "xaxis_label")
     .attr("transform",
           "translate(" + (bodyWidth*1/2) + " ," + (bodyHeight + (margin.bottom*3/4)) + ")")
-    .style("text-anchor", "middle")
     .text("Time of day")
 
   // Build Y scales and axis:
@@ -123,7 +123,7 @@ function drawRects(data){
   // join data with rect
   let squares = container
     .selectAll("rect")
-    .data(data, function(d) {return d.time+':'+d.ID;})
+    .data(data, function(d) {return d.time+':'+d.rank;})
 
   // add the new bars
   squares
@@ -131,7 +131,7 @@ function drawRects(data){
     .append("rect") // Add a new rect for each new elements
     .merge(squares) // get the already existing elements as well
     .attr("x", d => x(d.time))
-    .attr("y", d => y(d.ID))
+    .attr("y", d => y(d.rank))
     .attr("rx", 0)
     .attr("ry", 0)
     .attr("width", x.bandwidth() )
@@ -149,34 +149,29 @@ function drawRects(data){
     .on("mousemove", mousemove)
     .on("mouseleave", mouseleave)
 
+
   // delete the old squares
   squares
     .exit()
     .remove()
 
   // remove and add title
-  d3.select("#plot_sequence").select(".SequencePlotTitle").selectAll("text").remove()
+  d3.select("#plot_sequence").select(".sequence_plot_title").selectAll("text").remove()
 
   // Add title to graph
   d3.select("svg.plotSequence")
     .append("text")
-      .attr("class", "SequencePlotTitle")
+      .attr("class", "sequence_plot_title sequence_plot_title_text")
       .attr("x", margin.left)
       .attr("y", (margin.top / 2))
-      .attr("text-anchor", "left")
-      .style("font-size", "18px")
-      .style("fill", "#4d4d4d")
       .text("The fifty most similar days to yours");
 
   // Add subtitle to graph
   d3.select("svg.plotSequence")
     .append("text")
-      .attr("class", "SequencePlotTitle")
+      .attr("class", "sequence_plot_title sequence_plot_subtitle_text")
       .attr("x", margin.left)
       .attr("y", (margin.top * 3/4))
-      .attr("text-anchor", "left")
-      .style("font-size", "14px")
-      .style("fill", "grey")
       .style("max-width", bodyWidth)
       .text("Each square represents how an individual spent 30 minutes of their day");
 }
@@ -198,6 +193,7 @@ function filterData(sequences, demographics, inputSequence, modal_sequences, str
   // left join the two datasets
   data = mergeOn(indexBy('ID', demographics), 'ID', sequences)
 
+  // add the user to the data
   // create object out of the user input sequence
   splitSeq = inputSequenceAsString.split("")
   userSequence = [];
@@ -219,9 +215,41 @@ function filterData(sequences, demographics, inputSequence, modal_sequences, str
 
   // left join to get activity names
   data = mergeOn(indexBy('activity', string_table), 'activity', data)
-  //console.log("Filtered data:", data)
+  console.log("Filtered data:", data)
 
-  return data
+  /// sort the data based on string match score
+  // first group the data from ID
+  let grouped = d3.nest()
+    .key(d => d.ID)
+    .entries(data)
+
+  // for each ID, convert the activity to a string
+  let populationSequencesAsStrings = []
+  for (var i=0; i<grouped.length; i++){
+    popSequence = grouped[i]['values']
+    populationSequencesAsStrings[i] = Object.keys(popSequence).map((key) => popSequence[key].activity).join("")
+  }
+
+  // compute the similarity scores from the user input to the population of strings
+  stringMatchScores = stringSimilarity.findBestMatch(inputSequenceAsString, populationSequencesAsStrings).ratings
+
+  /// sort the data by these scores
+  // add ID column to string scores
+  for (var i=0; i<grouped.length; i++){
+    stringMatchScores[i]['ID'] = Object.values(grouped[i])[0]
+  }
+
+  // first rank the scores
+  stringMatchScores = stringMatchScores.sort(function(a,b) { return +a.rating - +b.rating })
+  for (var i=0; i<stringMatchScores.length; i++){
+    stringMatchScores[i]['rank'] = i
+  }
+
+  // join back to original data and sort
+  rankedData = mergeOn(indexBy('ID', stringMatchScores), 'ID', data)
+  rankedData.sort(function(a,b) { return +a.rank - +b.rank })
+
+  return rankedData
 }
 
 // retrieve user input

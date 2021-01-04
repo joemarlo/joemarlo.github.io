@@ -21,6 +21,21 @@ function classifySequence(input_sequence, modal_sequences){
   return cluster
 }
 
+// https://stackoverflow.com/questions/14446511/most-efficient-method-to-groupby-on-an-array-of-objects?page=1&tab=votes#tab-top
+function groupBy(list, keyGetter) {
+    const map = new Map();
+    list.forEach((item) => {
+         const key = keyGetter(item);
+         const collection = map.get(key);
+         if (!collection) {
+             map.set(key, [item]);
+         } else {
+             collection.push(item);
+         }
+    });
+    return map;
+}
+
 // https://gist.github.com/robotlolita/8208773
 // Frees the `[].slice` method to accept `this` as the first actual argument,
 // rather than a special argument.
