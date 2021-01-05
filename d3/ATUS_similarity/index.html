@@ -46,22 +46,17 @@
         <select id='Q4' class='form-control form-control-sm container_twenty_questions_dropdown' >
           <option value="Socializing, relaxation, leisure">Socializing, relaxation, or leisure</option>
           <option value="Household activities">Household activities</option>
-          <option value="Other">None of these</option>
+          <option value="Care for others">Caring for others</option>
+          <option value="Volunteering">Volunteering</option>
+          <!--<option value="Religious">Religious or spiritual activities</option>-->
         </select>
       </div>
       <br><br>
     </div>
     <div>
-      <h3>Is this how your day looks? Customize by clicking on each square</h3>
+      <h3>Is this how your day roughly looks? Customize by clicking on each square</h3>
       <div id="container_user_input"></div>
-      <div id="container_user_input_ticks">
-        <div class="vertical_tick_start"></div>
-      </div>
-      <br>
-      <div id="container_user_input_labels">
-        <div class="vertical_tick_start"></div>
-      </div>
-      <br>
+      <br><br>
       <div id='legend'><br></div>
     </div>
     <h3>Now lets find some people similar to you</h3>
@@ -73,6 +68,7 @@
   <h3>Who are these people?</h3>
   <div id="plot_histograms"></div>
   <script src="UI.js"></script>
+  <script src="levenshtein.js"></script>
   <script src="functions.js"></script>
   <script src="plotHistograms.js"></script>
   <script src="plotSequence.js"></script>

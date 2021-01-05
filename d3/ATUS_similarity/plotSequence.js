@@ -110,7 +110,7 @@ function drawRects(data){
     tooltip
       .style("opacity", 0)
     d3.select(this)
-      .style("opacity", 0.8)
+      .style("opacity", 0.9)
       .style("stroke-width", 1)
   }
 
@@ -133,15 +133,13 @@ function drawRects(data){
     .style("fill", d => d.val)
     .style("stroke-width", 1)
     .style("stroke", 'white')
-    .style("opacity", 0.8)
+    .style("opacity", 0.9)
     .on("mouseover", mouseover)
     .on("mousemove", mousemove)
     .on("mouseleave", mouseleave)
     .transition()
       .duration(750)
       .styleTween("fill", d => d3.interpolate("white", d.val))
-
-  squares
 
   // delete the old squares
   squares
@@ -224,7 +222,11 @@ function filterData(sequences, demographics, inputSequence, modal_sequences, str
   }
 
   // compute the similarity scores from the user input to the population of strings
-  stringMatchScores = stringSimilarity.findBestMatch(inputSequenceAsString, populationSequencesAsStrings).ratings
+  //stringMatchScores = stringSimilarity.findBestMatch(inputSequenceAsString, populationSequencesAsStrings).ratings
+  stringMatchScores = populationSequencesAsStrings.map(string => getEditDistance(inputSequenceAsString, string))
+
+  // invert scores and place in object
+  stringMatchScores = stringMatchScores.map(function(score){return {rating : d3.max(stringMatchScores) - score}})
 
   /// sort the data by these scores
   // add ID column to string scores
@@ -232,7 +234,7 @@ function filterData(sequences, demographics, inputSequence, modal_sequences, str
     stringMatchScores[i]['ID'] = Object.values(grouped[i])[0]
   }
 
-  // first rank the scores
+  // rank the scores
   stringMatchScores = stringMatchScores.sort(function(a,b) { return +a.rating - +b.rating })
   for (var i=0; i<stringMatchScores.length; i++){
     stringMatchScores[i]['rank'] = i

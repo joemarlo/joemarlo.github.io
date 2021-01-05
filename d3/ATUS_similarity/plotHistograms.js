@@ -4,8 +4,8 @@ function getConfigHist() {
    let margin = {
        top: 10,
        bottom: 50,
-       left: 50,
-       right: 20
+       left: 10,
+       right: 10
    }
 
    //The body is the area that will be occupied by the bars.
@@ -33,7 +33,7 @@ function getScalesHist(data, config, id) {
  return {xScale, yScale}
 }
 
-function drawHistBars(data, nbins, scales, config, id){
+function drawHistBars(data, nbins, scales, config, id, axisLabel){
   let {margin, container, bodyHeight, bodyWidth, width, height} = config;
   let {xScale, yScale} = scales
 
@@ -61,6 +61,14 @@ function drawHistBars(data, nbins, scales, config, id){
     .attr("class", "bottomAxisHist" + id)
     .attr("transform", "translate(" + margin.left + "," + bodyHeight + ")")
     .call(d3.axisBottom(xScale));
+
+    // remove and redraw x axis label
+  d3.selectAll(".xaxis_label_hist_"+id).remove()
+  container.append("text")
+      .attr("class", "xaxis_label xaxis_label_hist_"+id)
+      .attr("transform",
+            "translate(" + (bodyWidth*1/2) + " ," + (bodyHeight + (margin.bottom*3/4)) + ")")
+      .text(axisLabel)
 
   // remove and redraw Y axis
   yScale.domain([0, d3.max(bins, d => d.length)]);
@@ -109,7 +117,7 @@ function drawHistograms(data) {
   // get config, scales then draw the plots
   let config = getConfigHist();
   let scales = getScalesHist(data, config, 'age');
-  drawHistBars(data, 20, scales, config, id='age');
+  drawHistBars(data, 20, scales, config, id='age', axisLabel='Age');
   scales = getScalesHist(data, config, 'n_child');
-  drawHistBars(data, 20, scales, config, id='n_child');
+  drawHistBars(data, 20, scales, config, id='n_child', axisLabel='Number of children');
 }

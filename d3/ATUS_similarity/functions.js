@@ -8,16 +8,13 @@ var formatter = new Intl.NumberFormat('en-US', {
   maximumFractionDigits: 0,
 });
 
-//https://medium.com/@sumn2u/string-similarity-comparision-in-js-with-examples-4bae35f13968
-function stringDistance(stringA, stringB){
-
-}
-
-//https://www.npmjs.com/package/js-levenshtein
-//https://www.npmjs.com/package/string-similarity
-// TODO: this is a placeholder
 function classifySequence(input_sequence, modal_sequences){
-  bestMatch = stringSimilarity.findBestMatch(input_sequence, modal_sequences).bestMatchIndex
+  //https://www.npmjs.com/package/string-similarity
+  //bestMatch = stringSimilarity.findBestMatch(input_sequence, modal_sequences).bestMatchIndex
+
+  //https://gist.github.com/andrei-m/982927
+  scores = modal_sequences.map(string => getEditDistance(input_sequence, string))
+  bestMatch = scores.indexOf(Math.min(...scores));
   cluster = "Cluster " + (bestMatch + 1)
   return cluster
 }
