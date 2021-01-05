@@ -145,7 +145,7 @@ select {
   position: absolute;
 }
 
-.sequence_plot_title_text {
+.sequence_plot_title_text, .plot_title_bar_plot{
   font-size: 18px;
   fill: #424242;
   text-anchor: left;
@@ -156,6 +156,7 @@ select {
   fill: #4d4d4d;
   text-anchor: left;
 }
+
 
 .xaxis_label {
   font-size: 0.9em;

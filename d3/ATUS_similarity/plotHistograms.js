@@ -3,7 +3,7 @@ function getConfigHist() {
    let height = 200;
    let margin = {
        top: 10,
-       bottom: 100,
+       bottom: 20,
        left: 10,
        right: 10
    }
@@ -63,16 +63,17 @@ function drawHistBars(data, nbins, scales, configHist, id, axisLabel){
     .attr("transform", "translate(" + margin.left + "," + bodyHeight + ")")
     .call(d3.axisBottom(xScale));
 
-  // remove and redraw x axis label
+  /*// remove and redraw x axis label
   d3.selectAll(".xaxis_label_hist_"+id).remove()
   container.append("text")
       .attr("class", "xaxis_label xaxis_label_hist_"+id)
       .attr("transform",
             "translate(" + (bodyWidth*1/2) + " ," + (bodyHeight + (margin.bottom*3/4)) + ")")
       .text(axisLabel)
+    */
 
   // remove and redraw Y axis
-  yScale.domain([0, d3.max(bins, d => d.length)]);
+  yScale.domain([0, d3.max(bins, d => d.length)*1.2]); //this is a hack b/c I can't figure out why margins aren't working
 
   // join data with rect
   let rects = container
@@ -107,6 +108,14 @@ function drawHistBars(data, nbins, scales, configHist, id, axisLabel){
   rects
     .exit()
     .remove()
+
+  // Add title to graph
+  d3.select("svg.plotHist"+id)
+    .append("text")
+      .attr("class", "plot_title_bar_plot plot_title_bar_plot_text")
+      .attr("x", 0) //margin.left
+      .attr("y", (margin.top * 1.3))
+      .text(axisLabel);
  }
 
 function drawHistograms(data) {
