@@ -3,7 +3,7 @@ function getConfigHist() {
    let height = 200;
    let margin = {
        top: 10,
-       bottom: 50,
+       bottom: 100,
        left: 10,
        right: 10
    }
@@ -18,8 +18,8 @@ function getConfigHist() {
    return {width, height, margin, bodyHeight, bodyWidth, container}
 }
 
-function getScalesHist(data, config, id) {
- let { bodyWidth, bodyHeight } = config;
+function getScalesHist(data, configHist, id) {
+ let { bodyWidth, bodyHeight } = configHist;
  let maximumValue = d3.max(data, d => +d[id]);
  let minimumValue = d3.min(data, d => +d[id]);
  //console.log(d3.max(data, d => +d[id]))
@@ -33,9 +33,10 @@ function getScalesHist(data, config, id) {
  return {xScale, yScale}
 }
 
-function drawHistBars(data, nbins, scales, config, id, axisLabel){
-  let {margin, container, bodyHeight, bodyWidth, width, height} = config;
+function drawHistBars(data, nbins, scales, configHist, id, axisLabel){
+  let {margin, container, bodyHeight, bodyWidth, width, height} = configHist;
   let {xScale, yScale} = scales
+
 
   // add svg to the container
   container = container
@@ -62,7 +63,7 @@ function drawHistBars(data, nbins, scales, config, id, axisLabel){
     .attr("transform", "translate(" + margin.left + "," + bodyHeight + ")")
     .call(d3.axisBottom(xScale));
 
-    // remove and redraw x axis label
+  // remove and redraw x axis label
   d3.selectAll(".xaxis_label_hist_"+id).remove()
   container.append("text")
       .attr("class", "xaxis_label xaxis_label_hist_"+id)
@@ -87,7 +88,6 @@ function drawHistBars(data, nbins, scales, config, id, axisLabel){
       .attr("transform", function(d) { return "translate(" + (xScale(d.x0) + margin.left) + "," + yScale(d.length) + ")"; })
       .attr("width", function(d) { return xScale(d.x1) - xScale(d.x0) -1 ; })
       .attr("height", function(d) { return bodyHeight - yScale(d.length); })
-      //.style("fill", "#394E48")
       .attr("class", "rectHist" + id)
       .on("mouseover", function(d){
         d3.select(this).transition()
@@ -115,9 +115,9 @@ function drawHistograms(data) {
   d3.select("svg.plotHistn_child").remove()
 
   // get config, scales then draw the plots
-  let config = getConfigHist();
-  let scales = getScalesHist(data, config, 'age');
-  drawHistBars(data, 20, scales, config, id='age', axisLabel='Age');
-  scales = getScalesHist(data, config, 'n_child');
-  drawHistBars(data, 20, scales, config, id='n_child', axisLabel='Number of children');
+  let configHist = getConfigHist();
+  let scales = getScalesHist(data, configHist, 'age');
+  drawHistBars(data, 20, scales, configHist, id='age', axisLabel='Age');
+  scales = getScalesHist(data, configHist, 'n_child');
+  drawHistBars(data, null, scales, configHist, id='n_child', axisLabel='Number of children');
 }

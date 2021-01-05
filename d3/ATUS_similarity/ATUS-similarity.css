@@ -158,13 +158,17 @@ select {
 }
 
 .xaxis_label {
-  font-size: 14px;
+  font-size: 0.9em;
   fill: #4d4d4d;
   text-anchor: middle;
 }
 
-#plot_histograms {
+.bottomAxisSequence {
+  font-size: 0.7em;
+}
 
+#plot_histograms {
+  max-width: 80%;
 }
 
 #container_Q3 {
