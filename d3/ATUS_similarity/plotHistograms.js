@@ -44,7 +44,7 @@ function drawHistBars(data, nbins, scales, config, id){
    .attr("width", width)
    .attr("height", height)
 
-  console.log('data input to drawHistBars', data)
+  console.log('Data inputted to drawHistBars():', data)
 
   // set the parameters for the histogram
   let histogram = d3.histogram()

@@ -30,7 +30,7 @@ function drawRects(data){
       `translate(${margin.left}px,${margin.top}px)`
     )
 
-  console.log('rect data:', data);
+  console.log('Data inputted to drawRects():', data);
 
   // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
   let myGroups = d3.map(data, function(d){return d.time;}).keys()
@@ -309,7 +309,7 @@ function loadData() {
         store.demographics = datasets[1];
         store.string_table = datasets[2];
         store.modal_sequences = datasets[3];
-        console.log(store)
+        console.log("Loaded data:", store)
         return store;
     })
 }

@@ -81,25 +81,24 @@ let arrColors = arrColorsFun()
 updateInputDropdowns(arrColors);
 //updateInputDropdowns(clusterOther);
 
-// add listeners to render next question
+// add listeners to render the followup questions
 $('#Q1').change(function(){
   if ($(this).val() == 'Yes') {
-    $('#container_Q2').css({ 'height' : '70', 'opacity' : '1'})
-    $('#container_Q3').css({ 'height' : '0', 'opacity' : '0'})
+    $('#container_Q2').css('display', 'unset')
+    $('#container_Q3').css('display', 'none')
+    $('#container_Q4').css('display', 'none')
   } else {
-    $('#container_Q2').css({ 'height' : '0', 'opacity' : '0'})
-    $('#container_Q3').css({ 'height' : '70', 'opacity' : '1'})
+    $('#container_Q2').css('display', 'none')
+    $('#container_Q3').css('display', 'unset')
   }
 })
 $('#Q3').change(function(){
   if ($(this).val() == 'Yes') {
-    $('#container_Q4').css({ 'height' : '0', 'opacity' : '0'})
+    $('#container_Q4').css('display', 'none')
   } else {
-    $('#container_Q4').css({ 'height' : '70', 'opacity' : '1'})
+    $('#container_Q4').css('display', 'unset')
   }
 })
-
-console.log('here', $('#Q1').val())
 
 // add listeners to each question
 let elementsArray = document.querySelectorAll("#container_twenty_questions");
