@@ -131,5 +131,5 @@ function drawHistograms(data) {
   let scales = getScalesHist(data, configHist, 'age');
   drawHistBars(data, 20, scales, configHist, id='age', axisLabel='Age');
   scales = getScalesHist(data, configHist, 'HH_income');
-  drawHistBars(data, null, scales, configHist, id='HH_income', axisLabel='Household income');
+  drawHistBars(data, null, scales, configHist, id='HH_income', axisLabel='Household income (USD)');
 }
