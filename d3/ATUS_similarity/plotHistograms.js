@@ -124,15 +124,12 @@ function drawHistBars(data, nbins, scales, configHist, id, axisLabel){
 function drawHistograms(data) {
   // delete old plots
   d3.select("svg.plotHistage").remove()
-  d3.select("svg.plotHistn_child").remove()
   d3.select("svg.plotHistHH_income").remove()
 
   // get config, scales then draw the plots
   let configHist = getConfigHist();
   let scales = getScalesHist(data, configHist, 'age');
   drawHistBars(data, 20, scales, configHist, id='age', axisLabel='Age');
-  scales = getScalesHist(data, configHist, 'n_child');
-  drawHistBars(data, null, scales, configHist, id='n_child', axisLabel='Number of children');
   scales = getScalesHist(data, configHist, 'HH_income');
   drawHistBars(data, null, scales, configHist, id='HH_income', axisLabel='Household income');
 }

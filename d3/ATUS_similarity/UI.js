@@ -1,3 +1,21 @@
+/*
+// define example sequences
+<svg width="20" height="10">
+ <rect width="20" height="100" style="fill: rgb(0,0,255);" />
+</svg>
+*/
+// iterate through and create the select dropdowns
+for (var i=0; i<24; i++){
+  // create new div
+  let new_div = $('<div>').appendTo('#container_example')
+  new_div.addClass('example_div')
+  new_div.attr('id', 'example_div'+(i+1))
+
+  // append svg to the div
+  let sel = $('<svg>').appendTo(new_div);
+  $('<rect width="20" height="100" style="fill: rgb(0,0,255);').appendTo(sel)
+}
+
 // define the 7 'typical' sequences that are returned from 20Q. These is generated from generate_html.R
 let proto1 = [ {val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#65e6f9'},{val : '#f24325'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#f24325'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#f24325'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#65e6f9'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'} ]
 
@@ -64,7 +82,7 @@ function createInputDropdowns(){
       sel.append($("<option>").attr('value',this.val).text(this.text));
     });
 
-    // add an svg to add the ticks and time label to
+    // add an svg so we can add ticks and time labels
     svg = d3.select('#user_input_div_'+(i+1))
       .append("svg")
       .attr("height", 50)

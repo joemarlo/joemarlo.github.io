@@ -28,7 +28,7 @@ span {
 }
 
 /* buttons */
-.btn, .btn:hover, .btn:active, .btn:visited {
+#button_update, #button_update:hover, #button_update:active, #button_update:visited {
     background-color: #2f3f42 !important;
     border-radius: 0;
     box-shadow: none;
@@ -45,12 +45,19 @@ span {
     width: 100%;
 }
 
-.btn:hover {
+#button_update:hover {
   background-color: #415359 !important;
 }
 
-.btn:active {
+#button_update:active {
   background-color: #53666e !important;
+}
+
+.example_div {
+  width: 3%;
+  max-width: 14px;
+  height: 30px;
+  float: left;
 }
 
 .user_input_div {
@@ -86,7 +93,6 @@ span {
   fill: #424242;
   stroke: none;
 }
-
 
 .container_twenty_questions_dropdown {
   max-width: 300px;
@@ -143,7 +149,6 @@ select {
   fill: #4d4d4d;
   text-anchor: left;
 }
-
 
 .xaxis_label {
   font-size: 0.8em;

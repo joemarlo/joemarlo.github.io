@@ -1,997 +1,1297 @@
 ID,age,sex,n_child,HH_income,married,race,education,state,cluster
-20030112020689,71,Male,0,0,Yes,White,Bachelors,California,Cluster 6
-20030112020967,21,Male,0,15000,No,White,Some college,California,Cluster 4
+20030101032457,39,Female,0,10000,No,White,Bachelors,New York,Cluster 3
+20030101032957,59,Female,0,7500,Yes,White,No HS,Oklahoma,Cluster 1
+20030111020506,31,Male,2,25000,Yes,White,HS,Alabama,Cluster 5
+20030112021367,57,Female,1,50000,Yes,White,Bachelors,Georgia,Cluster 6
 20030112021530,45,Male,2,75000,Yes,White,HS,Illinois,Cluster 6
-20030112022970,15,Male,2,0,No,White,No HS,Oregon,Cluster 4
+20030112023246,32,Female,3,5000,No,Black,HS,Tennessee,Cluster 6
+20030201030062,26,Female,0,0,No,White,Masters,Illinois,Cluster 4
+20030201030125,15,Male,2,0,No,Black,No HS,New York,Cluster 4
+20030201030160,62,Male,0,35000,Yes,White,Bachelors,Pennsylvania,Cluster 7
 20030201031382,20,Male,1,75000,No,White,Some college,Georgia,Cluster 4
-20030201032103,32,Female,0,75000,No,White,Some college,Minnesota,Cluster 5
+20030201031626,37,Male,0,75000,No,White,No HS,Iowa,Cluster 6
+20030201031663,15,Female,3,40000,No,White,No HS,Kansas,Cluster 4
+20030201032414,16,Male,2,35000,No,Asian,No HS,New Mexico,Cluster 4
 20030201032532,48,Female,0,35000,No,White,Bachelors,New York,Cluster 7
-20030201033021,46,Female,1,60000,Yes,White,HS,Pennsylvania,Cluster 5
-20030201033382,80,Female,0,75000,No,White,Bachelors,Texas,Cluster 1
-20030212022809,18,Male,2,40000,No,White,No HS,Ohio,Cluster 4
-20030302031014,67,Female,0,30000,Yes,White,No HS,Connecticut,Cluster 1
-20030302031933,76,Male,0,75000,Yes,White,Some college,Michigan,Cluster 1
+20030201033367,19,Male,0,30000,No,White,No HS,Texas,Cluster 4
+20030212021990,23,Female,1,40000,No,White,Some college,Michigan,Cluster 6
+20030302030094,53,Male,0,0,No,Black,Some college,Louisiana,Cluster 5
+20030302030627,69,Female,0,10000,Yes,Black,Some college,Arkansas,Cluster 3
+20030302030663,45,Male,0,75000,Yes,White,Bachelors,California,Cluster 5
+20030302031356,16,Female,1,12500,No,White,No HS,Georgia,Cluster 4
 20030302032417,63,Female,0,0,No,Black,Some college,New York,Cluster 2
-20030303031565,40,Male,0,15000,No,White,Bachelors,Indiana,Cluster 1
-20030303032494,18,Female,2,75000,No,White,HS,New York,Cluster 4
-20030402032664,22,Female,0,40000,Yes,White,Some college,North Carolina,Cluster 3
-20030403031032,18,Male,1,75000,No,White,No HS,Connecticut,Cluster 4
+20030302033072,18,Female,1,75000,No,Black,Unknown,Pennsylvania,Cluster 4
+20030302033670,75,Female,0,20000,Yes,White,HS,Wisconsin,Cluster 3
+20030303031960,57,Female,0,75000,No,White,Masters,Michigan,Cluster 3
 20030403031350,31,Male,0,20000,No,White,HS,Georgia,Cluster 2
-20030404030563,47,Male,1,35000,Yes,White,No HS,Alaska,Cluster 7
-20030503032280,37,Male,1,75000,Yes,White,Bachelors,New Jersey,Cluster 5
-20030504030183,49,Female,1,10000,No,Black,HS,Virginia,Cluster 6
-20030504031520,63,Male,0,50000,No,White,No HS,Illinois,Cluster 6
+20030403031687,22,Female,3,10000,No,Black,No HS,Kansas,Cluster 1
+20030403031947,16,Male,2,0,No,Black,No HS,Michigan,Cluster 7
+20030403031975,23,Male,0,50000,No,White,Some college,Michigan,Cluster 5
+20030503030865,40,Male,4,15000,Yes,White,HS,California,Cluster 6
+20030504031338,73,Male,0,35000,No,White,HS,Florida,Cluster 1
 20030504032936,46,Female,1,40000,Yes,White,Some college,Oregon,Cluster 7
+20030504033248,60,Male,0,60000,No,White,Bachelors,Texas,Cluster 7
+20030605030721,24,Male,0,20000,No,White,Some college,California,Cluster 4
 20030605033107,23,Female,0,35000,No,Black,HS,South Carolina,Cluster 2
-20030605033520,75,Male,0,60000,Yes,White,Masters,Virginia,Cluster 1
-20030606030031,37,Male,0,0,Yes,White,Bachelors,Florida,Cluster 7
-20030606031235,17,Male,1,75000,No,White,No HS,Florida,Cluster 7
+20030605033394,20,Male,2,35000,No,White,No HS,Texas,Cluster 3
+20030605033649,47,Male,0,60000,Yes,White,HS,Wisconsin,Cluster 6
+20030606030068,22,Male,1,30000,No,White,HS,Illinois,Cluster 6
 20030606033619,42,Male,0,0,Yes,White,Some college,Wisconsin,Cluster 6
-20030706031143,80,Female,0,50000,No,White,HS,Florida,Cluster 1
-20030706031315,65,Male,0,75000,Yes,White,Some college,Georgia,Cluster 5
 20030706031359,28,Female,3,7500,No,White,No HS,Idaho,Cluster 6
-20030706031954,29,Male,2,0,Yes,White,HS,Michigan,Cluster 3
+20030706032019,18,Male,1,0,No,Black,No HS,Michigan,Cluster 7
+20030706033679,31,Male,0,10000,No,White,HS,Wisconsin,Cluster 6
+20030707031460,20,Female,0,35000,No,White,Some college,Illinois,Cluster 5
 20030807030116,30,Male,0,50000,No,Black,HS,Michigan,Cluster 7
-20030807030831,36,Male,0,25000,No,Other,HS,California,Cluster 3
-20030807031474,76,Female,0,0,Yes,Black,Some college,Illinois,Cluster 1
-20030807031802,32,Female,2,75000,No,Black,Some college,Maryland,Cluster 1
-20030807031935,45,Female,2,0,Yes,White,HS,Michigan,Cluster 3
-20030807031988,26,Male,3,0,Yes,White,No HS,Michigan,Cluster 6
-20030807032563,53,Female,0,40000,Yes,White,HS,New York,Cluster 6
+20030807030687,17,Male,3,25000,No,White,No HS,California,Cluster 1
+20030907030522,66,Female,0,0,No,Black,Bachelors,Alabama,Cluster 3
 20030907030931,17,Female,2,40000,No,White,No HS,California,Cluster 4
-20030907031449,41,Male,3,0,Yes,White,HS,Illinois,Cluster 6
 20030907031926,42,Female,0,30000,No,White,HS,Michigan,Cluster 2
 20030907032152,18,Male,3,75000,No,White,No HS,Montana,Cluster 4
-20030908030837,16,Male,2,75000,No,Asian,No HS,California,Cluster 4
-20030908032895,25,Female,0,40000,No,White,HS,Oregon,Cluster 5
-20030908033347,62,Female,0,12500,No,White,HS,Texas,Cluster 1
-20031009033356,77,Male,0,35000,Yes,White,No HS,Texas,Cluster 1
-20031009033445,44,Female,3,50000,Yes,White,Some college,Utah,Cluster 5
-20031009033447,17,Male,3,50000,No,White,No HS,Utah,Cluster 4
-20031110030195,18,Female,1,5000,No,Black,No HS,Virginia,Cluster 4
-20031110030622,59,Female,0,0,No,White,Masters,Arizona,Cluster 7
+20030908030914,80,Female,0,0,Yes,White,Some college,California,Cluster 1
+20030908031692,19,Male,0,40000,No,White,HS,Kentucky,Cluster 7
+20030908031980,18,Male,1,60000,No,White,Unknown,Michigan,Cluster 7
+20030908032060,48,Male,0,15000,No,Black,HS,Minnesota,Cluster 7
+20030909032049,17,Male,1,75000,No,White,No HS,Minnesota,Cluster 4
+20031008031025,42,Male,2,60000,Yes,White,Bachelors,Colorado,Cluster 6
+20031008031211,18,Male,0,40000,No,White,No HS,Florida,Cluster 6
+20031008032182,80,Male,0,15000,Yes,Black,No HS,Missouri,Cluster 3
+20031008032646,31,Female,0,50000,Yes,White,HS,North Carolina,Cluster 5
+20031008032876,21,Male,0,35000,No,White,HS,Oklahoma,Cluster 1
+20031009031860,33,Male,2,75000,Yes,White,Masters,Massachusetts,Cluster 5
+20031009032472,42,Female,1,60000,Yes,White,HS,New York,Cluster 6
+20031009033311,43,Female,0,40000,Yes,White,Bachelors,Texas,Cluster 3
+20031110031221,48,Male,0,0,Yes,White,Bachelors,Florida,Cluster 6
 20031110031573,51,Male,0,50000,Yes,White,No HS,Indiana,Cluster 2
-20031110031765,48,Female,0,25000,No,Black,Some college,Louisiana,Cluster 6
-20031110031934,56,Female,0,5000,No,White,HS,Michigan,Cluster 5
-20031110032507,69,Female,0,0,Yes,White,Bachelors,New York,Cluster 3
-20031211030818,43,Male,2,25000,Yes,White,Unknown,California,Cluster 3
+20031110032516,18,Female,3,40000,No,White,No HS,New York,Cluster 7
+20031110032760,53,Female,0,40000,No,White,Bachelors,Ohio,Cluster 4
+20031111033556,55,Male,1,0,No,White,Masters,Washington,Cluster 3
+20031210030777,45,Female,0,40000,No,White,No HS,California,Cluster 6
+20031210030891,27,Female,2,30000,Yes,Other,HS,California,Cluster 3
 20031211031927,47,Male,0,25000,No,Black,Unknown,Michigan,Cluster 1
-20031211032002,28,Male,4,35000,Yes,White,No HS,Michigan,Cluster 7
-20031211032615,40,Female,1,35000,No,Other,HS,North Carolina,Cluster 3
-20031211032882,26,Male,0,15000,No,White,Some college,Oregon,Cluster 5
-20031211033598,80,Male,0,10000,No,White,No HS,Wisconsin,Cluster 1
-20040110031214,41,Female,1,60000,Yes,Black,Some college,Florida,Cluster 5
+20031211032521,74,Female,0,40000,No,White,Some college,New York,Cluster 7
+20031212032461,48,Female,0,0,No,White,Some college,New York,Cluster 1
+20040101040534,76,Female,0,60000,No,White,Bachelors,Alabama,Cluster 3
+20040101040737,57,Male,1,60000,Yes,White,Masters,California,Cluster 5
+20040101041871,80,Female,0,100000,Yes,White,Bachelors,North Carolina,Cluster 1
 20040111030933,23,Female,0,0,Yes,White,Bachelors,California,Cluster 4
-20040111031926,45,Female,0,40000,No,White,HS,Michigan,Cluster 1
-20040111033419,24,Male,0,20000,Yes,White,Some college,Utah,Cluster 4
-20040112030555,38,Male,1,25000,No,Black,HS,Alabama,Cluster 1
-20040112031735,41,Female,1,50000,Yes,White,HS,Kentucky,Cluster 5
-20040112032265,27,Female,1,40000,Yes,White,Masters,Nevada,Cluster 5
-20040112033138,27,Female,0,12500,No,White,HS,South Dakota,Cluster 1
-20040201042026,75,Male,0,25000,Yes,White,Bachelors,Oklahoma,Cluster 3
-20040201042104,59,Male,1,0,Yes,White,HS,Pennsylvania,Cluster 6
-20040201042418,59,Female,0,25000,No,Black,HS,Virginia,Cluster 7
-20040302041109,17,Male,3,15000,No,White,No HS,Illinois,Cluster 3
+20040111030961,17,Female,1,75000,No,White,No HS,California,Cluster 4
+20040111032879,49,Male,1,75000,Yes,White,Bachelors,Oregon,Cluster 4
+20040112031761,47,Male,0,0,No,White,HS,Louisiana,Cluster 6
+20040112033655,17,Male,1,150000,No,White,No HS,Wisconsin,Cluster 4
+20040201040016,51,Female,0,7500,No,White,Some college,California,Cluster 7
+20040201040647,36,Female,3,50000,Yes,White,Some college,California,Cluster 3
+20040201040766,37,Female,2,50000,Yes,White,Some college,California,Cluster 3
+20040201041960,21,Male,1,100000,No,White,Some college,Ohio,Cluster 7
+20040202040035,27,Female,1,50000,Yes,Black,Bachelors,Georgia,Cluster 5
+20040212030534,62,Female,0,5000,No,White,No HS,Alabama,Cluster 1
+20040212030913,53,Male,0,0,No,White,Unknown,California,Cluster 6
+20040302040560,56,Male,0,30000,Yes,White,HS,Arizona,Cluster 1
+20040302041021,21,Female,0,0,No,White,Some college,Georgia,Cluster 4
+20040302041076,32,Female,3,60000,Yes,White,HS,Idaho,Cluster 5
 20040302041245,30,Female,1,75000,Yes,White,Bachelors,Kansas,Cluster 3
-20040302041331,58,Male,0,5000,Yes,White,No HS,Louisiana,Cluster 1
-20040302041675,19,Male,1,20000,No,Black,HS,New Jersey,Cluster 7
-20040302041758,17,Female,4,10000,No,White,No HS,New York,Cluster 4
+20040302041259,16,Male,2,0,No,White,No HS,Kansas,Cluster 4
 20040302042004,23,Female,2,60000,Yes,White,Bachelors,Ohio,Cluster 7
-20040302042425,59,Female,0,75000,Yes,White,Unknown,Virginia,Cluster 3
-20040303041274,57,Male,0,0,No,White,No HS,Kentucky,Cluster 7
-20040303041770,43,Male,0,40000,No,White,HS,New York,Cluster 6
+20040303040794,53,Male,0,100000,Yes,White,Masters,California,Cluster 5
+20040402041020,23,Male,0,15000,No,White,Some college,Georgia,Cluster 5
+20040402041534,53,Female,0,100000,Yes,White,Masters,Minnesota,Cluster 7
 20040403040727,19,Female,2,12500,No,White,Unknown,California,Cluster 2
-20040403040762,49,Female,0,10000,No,White,No HS,California,Cluster 3
-20040403042054,57,Male,0,75000,Yes,White,Some college,Oregon,Cluster 1
-20040403042227,48,Male,1,100000,Yes,White,Bachelors,Tennessee,Cluster 5
+20040403040796,80,Female,0,0,No,White,Masters,California,Cluster 3
+20040403041958,54,Male,1,20000,No,White,No HS,Ohio,Cluster 1
+20040403042413,41,Female,2,60000,Yes,White,HS,Utah,Cluster 5
 20040404040778,34,Female,2,75000,Yes,White,Bachelors,California,Cluster 7
+20040404041185,42,Female,1,40000,Yes,White,Some college,Illinois,Cluster 6
 20040404041910,25,Male,0,20000,No,White,Some college,North Carolina,Cluster 4
-20040503040840,16,Female,3,30000,No,White,No HS,Colorado,Cluster 4
-20040503041538,68,Male,0,50000,No,White,Some college,Minnesota,Cluster 5
+20040503041583,35,Male,3,150000,Yes,White,Doctoral,Missouri,Cluster 7
+20040503041936,80,Male,0,20000,No,White,Some college,North Dakota,Cluster 1
+20040504040542,57,Female,2,150000,Yes,White,Unknown,Alaska,Cluster 5
 20040504040595,16,Female,1,10000,No,Black,No HS,Arkansas,Cluster 4
 20040504041159,17,Female,2,50000,No,Black,No HS,Illinois,Cluster 4
+20040504041359,51,Male,0,50000,No,White,Bachelors,Maine,Cluster 5
 20040504041784,25,Male,1,25000,Yes,White,HS,New York,Cluster 7
-20040504042050,63,Male,0,20000,Yes,White,HS,Oregon,Cluster 1
-20040504042244,30,Female,1,75000,Yes,White,Bachelors,Texas,Cluster 3
+20040504041957,42,Female,1,40000,No,White,Some college,Ohio,Cluster 6
+20040504041998,52,Male,0,0,Yes,White,Some college,Ohio,Cluster 1
 20040504042439,15,Female,3,75000,No,White,No HS,Virginia,Cluster 4
-20040504042496,75,Female,0,15000,No,White,HS,West Virginia,Cluster 1
-20040605040636,60,Female,0,40000,Yes,White,Bachelors,California,Cluster 5
-20040605041089,79,Female,0,25000,No,White,HS,Hawaii,Cluster 3
-20040605041381,56,Female,0,75000,Yes,White,HS,Maryland,Cluster 3
-20040605042306,57,Female,0,75000,Yes,White,Masters,Texas,Cluster 5
-20040706040628,25,Male,2,0,No,White,No HS,California,Cluster 6
+20040604040709,35,Male,3,150000,Yes,White,HS,California,Cluster 6
+20040604040837,56,Male,0,100000,Yes,White,Doctoral,Colorado,Cluster 5
+20040604042311,37,Male,0,40000,No,White,No HS,Texas,Cluster 6
+20040605040619,15,Female,1,75000,No,White,No HS,California,Cluster 7
+20040606042210,25,Male,2,15000,Yes,White,No HS,Tennessee,Cluster 1
+20040606042406,35,Female,2,25000,Yes,White,HS,Virginia,Cluster 3
+20040705041300,49,Male,0,150000,Yes,White,Unknown,Kentucky,Cluster 5
+20040705041987,30,Male,0,100000,No,White,Some college,Ohio,Cluster 5
+20040706040102,18,Male,2,12500,No,White,No HS,North Carolina,Cluster 3
+20040706040562,21,Female,0,60000,No,White,Some college,Arizona,Cluster 1
+20040706040823,47,Male,0,75000,No,White,Some college,Colorado,Cluster 6
+20040706040871,21,Male,0,50000,No,White,HS,Delaware,Cluster 1
 20040706041350,24,Male,1,0,No,Black,HS,Maryland,Cluster 2
-20040706041985,49,Female,3,60000,Yes,White,Bachelors,Ohio,Cluster 3
-20040707040769,43,Female,3,100000,Yes,White,Some college,California,Cluster 1
-20040806040540,41,Female,0,60000,No,White,Bachelors,Arizona,Cluster 6
+20040706041581,61,Female,0,0,No,White,Some college,Missouri,Cluster 6
+20040706041928,62,Male,0,0,Yes,White,Unknown,North Carolina,Cluster 1
+20040706042222,54,Female,1,35000,No,Black,Bachelors,Tennessee,Cluster 5
+20040707042473,50,Male,1,40000,Yes,Other,No HS,Washington,Cluster 6
+20040807041025,34,Male,2,100000,Yes,White,Bachelors,Georgia,Cluster 5
 20040807041729,42,Female,1,75000,Yes,White,HS,New York,Cluster 2
-20040807042288,52,Male,1,15000,Yes,White,HS,Texas,Cluster 5
-20040808040727,79,Female,0,75000,Yes,White,Bachelors,California,Cluster 1
-20040907042249,29,Female,0,75000,Yes,Black,Masters,Texas,Cluster 1
-20040908042368,15,Male,1,5000,No,White,No HS,Texas,Cluster 4
+20040807042175,40,Male,0,30000,No,White,HS,South Carolina,Cluster 7
+20040808041614,23,Male,0,0,No,Asian,Masters,Missouri,Cluster 4
+20040908041705,79,Female,0,15000,No,White,No HS,New Jersey,Cluster 1
+20040908041929,33,Male,2,50000,Yes,White,Some college,North Carolina,Cluster 6
+20040908042212,60,Female,0,30000,Yes,White,No HS,South Dakota,Cluster 5
 20041009040015,16,Male,4,20000,No,Black,No HS,Florida,Cluster 4
+20041009040551,28,Male,2,75000,Yes,White,Bachelors,Arizona,Cluster 6
 20041009040579,23,Male,0,75000,No,White,No HS,Arizona,Cluster 6
+20041009040826,15,Male,4,100000,No,White,No HS,Colorado,Cluster 4
+20041009041250,55,Female,0,100000,Yes,White,HS,Iowa,Cluster 6
 20041009041288,26,Male,0,30000,No,White,HS,Kentucky,Cluster 2
-20041009041883,17,Female,2,0,No,White,No HS,North Carolina,Cluster 4
-20041110040702,38,Male,0,75000,Yes,White,Masters,California,Cluster 5
-20041110040734,29,Female,0,0,Yes,Asian,No HS,California,Cluster 6
+20041009041323,72,Female,0,30000,Yes,White,Some college,Louisiana,Cluster 3
+20041009042032,42,Male,0,75000,No,White,Bachelors,Oklahoma,Cluster 6
+20041109042441,35,Male,0,40000,No,Black,Bachelors,Virginia,Cluster 5
+20041110041239,16,Male,2,60000,No,White,No HS,Kansas,Cluster 4
 20041110041509,22,Male,1,35000,Yes,White,HS,Minnesota,Cluster 7
+20041110041989,50,Female,0,75000,Yes,White,HS,Ohio,Cluster 7
+20041110042037,51,Female,0,30000,Yes,White,Doctoral,Oklahoma,Cluster 5
+20041110042363,43,Female,0,10000,No,White,HS,Texas,Cluster 1
+20041111041840,55,Female,0,150000,Yes,White,Masters,New York,Cluster 6
 20041111042089,37,Female,1,50000,Yes,White,HS,Pennsylvania,Cluster 3
-20041111042486,18,Female,1,0,No,White,No HS,West Virginia,Cluster 3
-20041210041063,25,Male,0,100000,No,Asian,Some college,Hawaii,Cluster 4
+20041210040916,39,Female,3,0,Yes,Black,HS,Florida,Cluster 6
+20041211041118,64,Male,0,75000,Yes,Black,HS,Illinois,Cluster 1
+20041211041922,18,Female,0,0,No,White,No HS,North Dakota,Cluster 4
+20041211042414,62,Female,0,40000,No,White,HS,Virginia,Cluster 6
+20041211042507,17,Male,2,100000,No,Asian,No HS,Wisconsin,Cluster 4
+20041212041630,63,Male,0,20000,Yes,White,No HS,New Hampshire,Cluster 1
+20050101050835,16,Female,2,100000,No,White,No HS,Colorado,Cluster 4
 20050101051016,20,Female,3,25000,No,Black,HS,Florida,Cluster 2
+20050101052316,26,Male,3,40000,Yes,White,Some college,Texas,Cluster 3
 20050111040019,29,Female,0,60000,No,Other,Bachelors,California,Cluster 2
 20050111040507,32,Male,5,40000,Yes,White,HS,Alabama,Cluster 2
+20050111042460,33,Male,4,10000,No,White,HS,Washington,Cluster 5
 20050112040025,18,Female,0,150000,No,White,Unknown,Florida,Cluster 7
-20050112041464,54,Male,2,150000,Yes,White,HS,Michigan,Cluster 5
-20050201050944,56,Female,1,60000,Yes,White,Some college,Florida,Cluster 5
-20050201051319,73,Female,0,0,No,White,HS,Louisiana,Cluster 1
-20050212040703,17,Male,1,5000,No,White,No HS,California,Cluster 4
-20050302050739,55,Female,0,60000,Yes,Asian,Some college,California,Cluster 6
+20050112040617,34,Male,0,75000,No,White,Some college,California,Cluster 5
+20050201050035,21,Female,0,12500,No,White,No HS,Florida,Cluster 7
+20050201050042,24,Male,0,0,No,Asian,Bachelors,Illinois,Cluster 4
+20050201050730,17,Female,3,75000,No,White,No HS,California,Cluster 7
+20050201051275,65,Male,0,12500,No,White,HS,Kansas,Cluster 3
+20050201052298,57,Female,0,75000,Yes,White,No HS,Texas,Cluster 6
+20050302050720,33,Male,2,10000,No,White,No HS,California,Cluster 6
+20050302051461,49,Female,0,60000,Yes,White,Some college,Minnesota,Cluster 6
 20050302051875,24,Female,0,25000,No,White,Some college,Ohio,Cluster 7
-20050402050538,52,Female,0,75000,Yes,White,HS,Arizona,Cluster 6
-20050402052504,69,Female,0,15000,Yes,White,HS,Kentucky,Cluster 1
 20050403050085,27,Male,0,100000,No,Black,HS,New Jersey,Cluster 2
-20050403051009,45,Female,2,60000,Yes,White,Bachelors,Georgia,Cluster 3
-20050403051449,44,Female,0,100000,Yes,White,Masters,Michigan,Cluster 6
+20050403050775,51,Male,0,25000,Yes,White,Bachelors,California,Cluster 4
+20050403050935,26,Male,0,35000,No,White,Some college,Florida,Cluster 5
+20050403051299,45,Female,1,75000,Yes,White,Bachelors,Maine,Cluster 4
+20050403051561,19,Female,3,25000,No,White,HS,Missouri,Cluster 6
 20050403051627,44,Female,0,75000,No,White,Masters,New Hampshire,Cluster 5
-20050403051876,38,Female,2,30000,No,White,HS,North Carolina,Cluster 6
-20050403052404,41,Male,0,30000,No,White,Bachelors,Virginia,Cluster 6
-20050404052003,74,Male,0,30000,Yes,White,Bachelors,Oklahoma,Cluster 3
+20050403051732,18,Male,3,30000,No,White,No HS,New York,Cluster 3
+20050403052131,80,Male,0,35000,Yes,White,No HS,Pennsylvania,Cluster 1
+20050403052142,15,Female,2,25000,No,White,No HS,South Carolina,Cluster 4
+20050403052289,42,Female,1,0,No,Black,Some college,Texas,Cluster 3
+20050404050077,23,Female,1,25000,No,White,HS,Michigan,Cluster 5
 20050503050612,41,Male,2,15000,Yes,White,No HS,California,Cluster 2
-20050503051150,23,Male,0,100000,No,White,HS,Illinois,Cluster 6
-20050504050109,47,Female,0,20000,Yes,White,HS,Ohio,Cluster 7
-20050504050818,76,Female,0,30000,Yes,White,Bachelors,Colorado,Cluster 1
-20050504050959,15,Male,1,75000,No,White,No HS,Florida,Cluster 4
-20050504051870,30,Female,1,50000,Yes,White,Masters,North Carolina,Cluster 1
-20050504051907,37,Male,1,75000,No,White,Unknown,Ohio,Cluster 5
+20050503051835,78,Female,0,5000,No,White,No HS,New York,Cluster 1
+20050503052485,16,Male,1,15000,No,Black,No HS,Wisconsin,Cluster 4
+20050504050525,75,Male,0,35000,No,White,No HS,Alabama,Cluster 1
+20050504050730,21,Female,1,20000,Yes,White,HS,California,Cluster 3
+20050504051668,79,Male,0,15000,No,White,Some college,New Jersey,Cluster 3
+20050504051935,21,Male,0,0,No,White,HS,Ohio,Cluster 4
 20050504052472,33,Male,1,75000,Yes,White,HS,West Virginia,Cluster 6
-20050505052252,65,Male,0,25000,Yes,White,HS,Texas,Cluster 3
-20050605052034,39,Female,0,20000,No,Black,Some college,Oklahoma,Cluster 5
-20050706050612,34,Male,3,35000,Yes,White,No HS,California,Cluster 6
-20050706050917,34,Male,0,25000,Yes,White,No HS,Florida,Cluster 7
-20050706051216,52,Male,0,60000,Yes,White,Bachelors,Kansas,Cluster 5
-20050706051907,27,Male,3,20000,Yes,White,No HS,Ohio,Cluster 7
-20050806052200,37,Male,2,20000,Yes,White,HS,Texas,Cluster 1
+20050505051516,37,Female,3,150000,Yes,White,Some college,Minnesota,Cluster 6
+20050604051520,21,Female,2,5000,No,Black,HS,Mississippi,Cluster 1
+20050604052483,70,Male,0,12500,Yes,White,No HS,West Virginia,Cluster 1
+20050605051647,33,Female,0,7500,No,White,HS,New Jersey,Cluster 5
+20050605051722,47,Female,3,75000,Yes,White,Masters,New Mexico,Cluster 5
+20050605052329,15,Female,1,40000,No,Black,No HS,Texas,Cluster 3
+20050605052476,60,Male,0,12500,Yes,White,HS,Washington,Cluster 6
+20050706051577,19,Female,1,15000,No,Black,HS,Nebraska,Cluster 7
+20050706051715,46,Female,0,7500,No,Black,Some college,New York,Cluster 7
+20050706052137,45,Male,2,100000,Yes,White,Bachelors,South Carolina,Cluster 5
+20050706052452,25,Female,1,15000,No,White,Some college,West Virginia,Cluster 1
+20050707050043,31,Female,4,5000,No,Black,HS,Illinois,Cluster 1
+20050707050814,37,Male,0,10000,No,White,HS,Colorado,Cluster 7
+20050806052371,18,Male,2,0,No,White,Some college,Virginia,Cluster 3
 20050807050517,16,Female,2,10000,No,White,No HS,Alabama,Cluster 4
+20050807050738,24,Female,3,15000,Yes,White,Some college,California,Cluster 7
+20050807050929,41,Male,0,50000,No,White,Bachelors,Florida,Cluster 5
+20050807051072,44,Male,3,60000,Yes,White,Some college,Idaho,Cluster 5
+20050807051158,33,Female,4,50000,Yes,White,Masters,Illinois,Cluster 4
 20050807051476,25,Male,0,25000,Yes,White,Some college,Michigan,Cluster 2
-20050808050134,21,Female,0,20000,No,White,Unknown,Pennsylvania,Cluster 7
-20050808050588,18,Male,1,20000,No,White,No HS,Arkansas,Cluster 4
-20050808050697,46,Female,0,150000,No,White,Some college,California,Cluster 6
+20050807051541,65,Female,0,50000,No,White,Masters,Minnesota,Cluster 3
+20050807052372,17,Male,5,50000,No,White,No HS,Utah,Cluster 7
+20050808050056,46,Female,0,20000,Yes,White,Some college,Illinois,Cluster 7
 20050808052158,46,Female,0,50000,Yes,Black,HS,South Carolina,Cluster 2
 20050907050712,32,Male,2,40000,No,White,No HS,California,Cluster 7
-20050907051770,15,Male,2,7500,No,White,No HS,New York,Cluster 4
-20050908051921,33,Male,1,100000,Yes,White,Masters,Ohio,Cluster 6
-20050908052463,49,Male,0,75000,Yes,White,Some college,Washington,Cluster 6
-20050909051949,66,Female,0,10000,No,White,No HS,Pennsylvania,Cluster 3
+20050907051623,27,Male,1,150000,No,White,HS,Nevada,Cluster 6
+20050908050682,49,Female,1,10000,No,White,No HS,California,Cluster 7
+20050908051219,40,Female,2,100000,Yes,White,Bachelors,Iowa,Cluster 5
+20050908051728,15,Male,1,75000,No,White,No HS,New York,Cluster 4
+20050908052300,16,Male,5,12500,No,White,No HS,Texas,Cluster 4
+20050909051436,42,Female,1,60000,Yes,White,Some college,Mississippi,Cluster 3
+20051008051342,35,Female,1,0,Yes,Black,HS,Maryland,Cluster 5
 20051008051372,58,Female,0,60000,Yes,White,Some college,Massachusetts,Cluster 7
 20051009050666,15,Male,4,12500,No,White,No HS,California,Cluster 4
-20051009050758,63,Male,0,10000,No,White,HS,California,Cluster 1
 20051009051053,28,Male,0,12500,No,Other,HS,Hawaii,Cluster 2
-20051009051348,63,Male,0,0,Yes,White,Bachelors,Michigan,Cluster 3
-20051009051646,38,Female,3,0,Yes,Asian,Some college,New York,Cluster 6
-20051009051875,52,Male,2,40000,No,White,Bachelors,Oregon,Cluster 4
-20051010052404,17,Male,1,10000,No,White,No HS,Kentucky,Cluster 1
-20051110051842,17,Male,3,0,No,White,No HS,Ohio,Cluster 4
-20051111051131,15,Female,1,60000,No,White,No HS,Illinois,Cluster 4
-20051211051146,51,Male,0,60000,Yes,White,HS,Indiana,Cluster 6
-20051211051839,47,Male,2,40000,Yes,White,HS,Ohio,Cluster 3
-20051211051974,39,Female,0,30000,Yes,White,HS,Pennsylvania,Cluster 5
-20051211052124,17,Female,1,25000,No,Black,Unknown,Texas,Cluster 4
-20051212051291,48,Female,0,50000,Yes,White,HS,Maryland,Cluster 3
-20060101061189,80,Female,0,15000,No,White,HS,Indiana,Cluster 1
-20060111051054,61,Male,0,0,Yes,White,HS,Illinois,Cluster 6
-20060111051505,17,Male,2,40000,No,White,No HS,Nevada,Cluster 4
+20051010051991,16,Male,1,100000,No,White,No HS,South Carolina,Cluster 4
+20051010052236,19,Female,4,50000,No,Asian,No HS,Virginia,Cluster 4
+20051110051333,17,Female,4,10000,No,Asian,Some college,Massachusetts,Cluster 3
+20051110052038,17,Male,2,0,No,White,No HS,Tennessee,Cluster 4
+20051211050684,80,Male,0,35000,No,White,Bachelors,California,Cluster 1
+20051211050884,59,Female,0,25000,No,Black,Some college,Florida,Cluster 1
+20051211052026,75,Female,0,0,No,White,No HS,Tennessee,Cluster 1
+20051211052060,80,Female,0,10000,No,White,HS,Texas,Cluster 1
+20051212050049,36,Male,1,40000,No,Black,HS,Indiana,Cluster 7
+20060101061011,33,Male,2,60000,Yes,White,Bachelors,Georgia,Cluster 6
+20060111051793,25,Male,0,40000,No,White,Bachelors,Ohio,Cluster 5
 20060111052386,16,Male,1,150000,No,Other,No HS,Hawaii,Cluster 4
 20060112050048,28,Female,1,10000,Yes,Black,HS,Indiana,Cluster 7
-20060112050744,57,Female,0,150000,Yes,White,Bachelors,California,Cluster 1
+20060112050126,26,Female,0,25000,No,White,Some college,Texas,Cluster 5
 20060112050765,36,Male,0,20000,No,White,Bachelors,California,Cluster 2
 20060112051082,21,Male,0,20000,No,White,No HS,Idaho,Cluster 2
-20060112051270,47,Female,0,25000,No,White,HS,Louisiana,Cluster 1
-20060112051361,78,Male,0,50000,No,White,No HS,Michigan,Cluster 1
-20060112051892,54,Male,0,0,Yes,White,Some college,Pennsylvania,Cluster 5
-20060112051927,20,Male,1,75000,No,White,HS,Pennsylvania,Cluster 3
+20060112051861,68,Female,0,35000,Yes,Other,HS,Oklahoma,Cluster 3
+20060112052063,15,Male,1,0,No,White,No HS,Texas,Cluster 4
+20060112052343,19,Female,0,10000,No,White,Some college,Wisconsin,Cluster 1
+20060201060794,32,Male,2,25000,Yes,White,Unknown,California,Cluster 7
 20060201060986,79,Female,0,20000,No,White,HS,Florida,Cluster 1
-20060201061969,34,Male,1,20000,No,White,No HS,Pennsylvania,Cluster 6
-20060202062084,58,Male,0,12500,Yes,White,Some college,Texas,Cluster 1
-20060212050757,56,Female,0,60000,No,White,Some college,California,Cluster 6
-20060212050837,19,Male,0,150000,No,Black,Some college,California,Cluster 6
-20060302060052,19,Male,0,10000,Yes,White,Some college,Kansas,Cluster 4
-20060302061638,35,Female,2,25000,Yes,Black,No HS,New York,Cluster 5
-20060302061903,36,Male,0,75000,No,White,Bachelors,Oregon,Cluster 5
-20060302061959,79,Female,0,0,No,White,No HS,Pennsylvania,Cluster 6
-20060302062554,22,Male,0,12500,No,White,Bachelors,Wisconsin,Cluster 4
+20060201061316,63,Male,0,50000,Yes,White,Bachelors,Massachusetts,Cluster 6
+20060201061542,37,Female,0,20000,No,White,Some college,New Hampshire,Cluster 4
+20060201062334,16,Female,1,100000,No,White,No HS,Washington,Cluster 4
+20060201062563,42,Male,2,100000,Yes,White,Bachelors,Washington,Cluster 5
+20060301062050,72,Male,0,15000,Yes,White,HS,Tennessee,Cluster 1
+20060301062115,46,Male,0,100000,Yes,Black,Some college,Texas,Cluster 6
+20060301062119,22,Male,2,25000,No,White,HS,Texas,Cluster 5
+20060302060076,31,Female,0,0,No,Asian,Masters,New York,Cluster 5
+20060302060829,60,Female,0,150000,Yes,White,Doctoral,California,Cluster 5
+20060302062427,20,Male,0,60000,No,White,Some college,Connecticut,Cluster 7
 20060303060120,30,Male,0,20000,No,Black,HS,Texas,Cluster 2
+20060403060082,61,Male,0,20000,No,Black,HS,New Jersey,Cluster 1
 20060403060808,38,Female,0,15000,Yes,White,HS,California,Cluster 2
-20060403061676,46,Female,2,40000,No,Black,Some college,New York,Cluster 4
-20060403062458,29,Female,1,75000,Yes,White,Masters,Maryland,Cluster 3
-20060504061249,42,Female,0,0,Yes,Black,HS,Louisiana,Cluster 6
-20060504061313,36,Female,2,100000,Yes,Asian,HS,Massachusetts,Cluster 3
-20060504061441,36,Female,2,75000,Yes,White,Masters,Missouri,Cluster 5
-20060504061632,16,Female,1,40000,No,White,No HS,New York,Cluster 4
+20060403061152,16,Male,2,100000,No,White,No HS,Indiana,Cluster 4
+20060403062326,23,Female,2,60000,No,Asian,Some college,Washington,Cluster 6
+20060404062548,54,Female,0,100000,Yes,White,Bachelors,Washington,Cluster 3
+20060504060620,80,Female,0,0,Yes,White,HS,California,Cluster 3
+20060504061031,17,Male,2,100000,No,White,No HS,Georgia,Cluster 4
+20060504061787,64,Male,0,15000,Yes,White,Some college,Ohio,Cluster 6
+20060504062068,28,Male,2,15000,Yes,White,HS,Texas,Cluster 6
 20060505060063,56,Female,0,12500,No,Black,Some college,Michigan,Cluster 7
-20060605060877,63,Female,0,100000,Yes,White,Bachelors,Florida,Cluster 3
-20060605061660,38,Female,1,0,Yes,White,HS,New York,Cluster 1
-20060706060022,25,Female,2,30000,Yes,White,No HS,Florida,Cluster 3
-20060706060111,46,Male,1,7500,Yes,White,HS,South Dakota,Cluster 3
-20060706060694,17,Female,1,150000,No,White,No HS,California,Cluster 4
-20060706060751,41,Male,0,0,No,White,Some college,California,Cluster 5
-20060706060897,60,Female,0,100000,Yes,White,HS,Florida,Cluster 7
+20060605060539,23,Male,0,100000,No,White,Some college,Arizona,Cluster 6
+20060605060673,49,Male,0,20000,No,White,No HS,California,Cluster 7
+20060605061568,17,Male,2,100000,No,White,No HS,New Jersey,Cluster 4
+20060606061920,41,Male,0,10000,No,Black,HS,Pennsylvania,Cluster 7
+20060705061612,64,Female,0,0,Yes,White,Some college,New York,Cluster 3
+20060705061854,16,Female,2,100000,No,White,No HS,Ohio,Cluster 7
+20060706060066,15,Male,2,7500,No,Black,No HS,Mississippi,Cluster 3
 20060706061366,32,Female,2,75000,Yes,White,Some college,Michigan,Cluster 1
-20060706061597,77,Male,0,15000,Yes,White,HS,New York,Cluster 1
-20060706061657,60,Male,1,5000,No,White,HS,New York,Cluster 1
-20060707060132,48,Female,0,60000,No,Black,HS,Maryland,Cluster 6
+20060706062188,48,Male,0,150000,No,White,Bachelors,Utah,Cluster 6
+20060706062308,22,Female,1,0,Yes,White,HS,West Virginia,Cluster 3
+20060707061690,22,Female,1,15000,No,White,HS,New York,Cluster 1
+20060707062129,24,Male,0,15000,No,Black,Some college,Texas,Cluster 3
+20060806061186,28,Male,3,20000,Yes,White,No HS,Iowa,Cluster 6
+20060807061076,44,Female,3,25000,No,Black,HS,Illinois,Cluster 5
 20060807061174,38,Male,0,50000,No,White,HS,Iowa,Cluster 2
-20060807061731,43,Female,1,30000,No,Black,Unknown,North Carolina,Cluster 1
 20060807061764,52,Male,2,150000,Yes,White,Doctoral,North Carolina,Cluster 5
-20060908061078,19,Female,1,20000,No,White,Some college,Georgia,Cluster 3
+20060807062224,31,Female,3,50000,Yes,White,Bachelors,Utah,Cluster 1
+20060907062320,25,Female,0,75000,Yes,Asian,Bachelors,Washington,Cluster 5
+20060908060137,22,Male,0,10000,No,White,Bachelors,Washington,Cluster 5
+20060908060735,19,Male,2,25000,No,White,Unknown,California,Cluster 7
+20060908060977,15,Female,5,15000,No,Black,No HS,Florida,Cluster 4
 20060908061808,20,Female,0,75000,No,White,HS,Ohio,Cluster 2
-20060908061868,17,Female,1,15000,No,White,No HS,Oklahoma,Cluster 4
-20060908062174,37,Male,1,100000,Yes,White,HS,Texas,Cluster 7
-20060908062341,80,Female,0,30000,Yes,White,Unknown,Wisconsin,Cluster 1
-20060909060638,29,Male,0,0,No,White,Bachelors,California,Cluster 5
-20060909061044,23,Male,0,20000,No,White,HS,Georgia,Cluster 1
+20060908062511,16,Female,3,100000,No,White,No HS,South Carolina,Cluster 4
+20060909060122,47,Male,0,0,No,Other,Some college,Oregon,Cluster 6
+20060909061262,38,Female,1,35000,No,Black,Masters,Louisiana,Cluster 5
+20061008060907,41,Male,1,150000,Yes,White,Masters,Florida,Cluster 5
 20061008062202,16,Male,3,50000,No,White,No HS,Texas,Cluster 4
+20061008062351,49,Female,0,0,Yes,White,HS,Wisconsin,Cluster 3
 20061009060802,34,Female,2,100000,Yes,Asian,Bachelors,California,Cluster 2
-20061009061208,22,Female,0,10000,No,White,HS,Kansas,Cluster 5
-20061009061336,54,Male,0,75000,Yes,White,Bachelors,Massachusetts,Cluster 5
+20061009061567,45,Male,2,0,Yes,White,Bachelors,New Jersey,Cluster 1
+20061009061927,32,Female,3,30000,Yes,White,No HS,Pennsylvania,Cluster 3
 20061009061937,18,Male,0,100000,No,Black,HS,Pennsylvania,Cluster 7
-20061009062504,29,Male,0,150000,Yes,White,Doctoral,Nevada,Cluster 5
-20061010062489,44,Female,0,20000,No,White,Bachelors,North Dakota,Cluster 5
-20061109060780,41,Male,0,35000,No,White,Bachelors,California,Cluster 5
+20061010060076,80,Male,0,0,Yes,White,HS,Michigan,Cluster 3
+20061109060040,65,Male,0,5000,No,Black,No HS,Georgia,Cluster 1
+20061109061316,24,Female,3,7500,No,White,No HS,Massachusetts,Cluster 4
+20061109061731,59,Male,0,75000,Yes,White,HS,North Carolina,Cluster 1
 20061109061739,39,Male,0,20000,No,White,No HS,North Carolina,Cluster 5
-20061110060623,17,Male,4,25000,No,White,HS,California,Cluster 4
-20061110061019,37,Male,1,75000,Yes,White,Bachelors,Georgia,Cluster 6
-20061110061376,51,Male,2,100000,Yes,White,Some college,Michigan,Cluster 3
-20061110061711,42,Female,0,75000,Yes,White,Some college,North Carolina,Cluster 5
-20061110061879,34,Female,1,30000,Yes,White,Bachelors,Oregon,Cluster 5
-20070111062270,17,Male,1,150000,No,White,HS,Virginia,Cluster 4
-20070112060739,79,Male,0,50000,No,White,Some college,California,Cluster 3
-20070112061715,64,Female,0,100000,Yes,White,HS,New York,Cluster 1
+20061110060661,47,Female,0,5000,No,White,No HS,California,Cluster 6
+20061110060767,20,Female,6,0,No,White,Unknown,California,Cluster 3
+20061110062161,25,Female,1,0,Yes,White,HS,Texas,Cluster 1
+20061110062301,17,Female,2,25000,No,Other,No HS,Washington,Cluster 1
+20061110062440,65,Male,0,30000,No,Black,No HS,Maryland,Cluster 1
+20061210060037,59,Male,0,0,Yes,White,Some college,Florida,Cluster 6
+20061210060991,40,Male,0,60000,Yes,White,HS,Georgia,Cluster 6
+20061210061430,47,Female,0,0,Yes,White,HS,Mississippi,Cluster 6
+20061211060766,59,Male,0,75000,Yes,White,Bachelors,California,Cluster 3
+20061211061608,47,Female,2,25000,Yes,White,HS,New York,Cluster 6
+20061211061879,48,Female,1,40000,No,White,Some college,Oklahoma,Cluster 5
+20070101071859,17,Male,3,50000,No,White,No HS,Oklahoma,Cluster 4
+20070101072064,17,Male,2,60000,No,White,No HS,Texas,Cluster 4
+20070110061805,30,Male,1,7500,No,White,HS,Ohio,Cluster 5
+20070111060670,35,Male,0,30000,No,White,No HS,California,Cluster 1
+20070111061536,30,Female,3,50000,Yes,White,Some college,New Jersey,Cluster 3
+20070112060771,43,Male,2,150000,Yes,White,Some college,California,Cluster 5
+20070112061509,18,Female,7,60000,No,White,HS,New Hampshire,Cluster 4
+20070112061963,24,Female,0,12500,No,Black,HS,Pennsylvania,Cluster 7
 20070112062013,47,Male,0,20000,No,White,Some college,Tennessee,Cluster 2
-20070201070805,44,Male,2,100000,Yes,White,Some college,California,Cluster 6
-20070201071433,85,Female,0,25000,No,Black,No HS,Mississippi,Cluster 1
+20070112062273,70,Male,0,0,Yes,Black,HS,Virginia,Cluster 1
+20070201070713,60,Female,0,75000,Yes,White,Some college,California,Cluster 3
+20070201070813,51,Female,0,40000,Yes,White,Some college,California,Cluster 3
+20070201071225,47,Male,0,35000,Yes,White,HS,Kentucky,Cluster 7
 20070201071634,25,Male,0,15000,No,White,No HS,New York,Cluster 2
-20070201072448,37,Male,1,40000,No,Black,Masters,Maryland,Cluster 6
 20070212061435,22,Male,1,40000,No,Black,Some college,Mississippi,Cluster 2
-20070212061710,27,Male,0,0,No,White,Bachelors,New York,Cluster 5
-20070301071828,44,Male,0,75000,Yes,White,Bachelors,Ohio,Cluster 7
-20070302070718,44,Male,1,75000,No,White,No HS,California,Cluster 6
+20070301070895,32,Female,0,20000,No,Black,Bachelors,Florida,Cluster 5
+20070302070886,17,Male,1,60000,No,White,No HS,Florida,Cluster 4
 20070302071032,24,Male,0,20000,No,White,Some college,Georgia,Cluster 7
-20070302071163,63,Female,0,75000,Yes,White,Bachelors,Indiana,Cluster 3
-20070302071209,57,Female,0,35000,No,White,Bachelors,Kansas,Cluster 6
-20070303070750,85,Female,0,15000,No,White,No HS,California,Cluster 3
-20070402071910,60,Male,0,0,Yes,White,HS,Pennsylvania,Cluster 1
-20070403070507,61,Female,0,20000,No,White,HS,Alabama,Cluster 7
-20070403071820,36,Female,5,75000,Yes,White,Bachelors,Ohio,Cluster 5
-20070403072355,85,Female,0,12500,No,White,Unknown,Wisconsin,Cluster 1
+20070302071431,44,Male,0,5000,No,Black,No HS,Mississippi,Cluster 1
+20070302071705,40,Female,1,150000,Yes,White,Doctoral,New York,Cluster 6
+20070302071856,25,Male,0,7500,No,White,HS,Oklahoma,Cluster 6
+20070302072027,42,Male,2,60000,Yes,White,HS,Tennessee,Cluster 3
+20070302072193,33,Male,2,30000,Yes,White,HS,Utah,Cluster 6
+20070303071151,71,Female,0,75000,Yes,White,Bachelors,Illinois,Cluster 3
+20070303072421,79,Female,0,0,No,White,HS,Iowa,Cluster 3
+20070403071074,44,Male,1,35000,Yes,White,Some college,Idaho,Cluster 6
+20070403071432,56,Male,0,5000,No,White,Bachelors,Minnesota,Cluster 1
+20070404070087,62,Male,0,150000,Yes,Black,Unknown,North Carolina,Cluster 5
 20070503072394,16,Female,2,60000,No,White,No HS,Connecticut,Cluster 4
-20070504070084,42,Male,3,25000,Yes,Black,Bachelors,New York,Cluster 7
 20070504071188,27,Female,0,20000,No,White,HS,Illinois,Cluster 7
-20070504071632,64,Female,0,75000,Yes,White,HS,New Jersey,Cluster 5
-20070504071956,17,Female,1,40000,No,White,No HS,Ohio,Cluster 4
-20070504072153,21,Male,1,50000,Yes,White,HS,Tennessee,Cluster 7
-20070504072374,29,Male,1,150000,No,Black,HS,Virginia,Cluster 5
-20070605070730,41,Male,1,75000,Yes,Asian,Some college,California,Cluster 7
-20070605071844,72,Female,0,75000,Yes,White,Bachelors,North Carolina,Cluster 1
-20070605071934,19,Male,1,12500,No,White,HS,Ohio,Cluster 7
-20070705070795,85,Male,0,0,No,White,Masters,California,Cluster 3
-20070705070950,53,Male,0,150000,Yes,White,Masters,Florida,Cluster 6
-20070706070699,30,Male,1,0,Yes,White,No HS,California,Cluster 6
-20070706070774,19,Male,3,0,No,White,HS,California,Cluster 6
-20070706071228,61,Male,0,50000,Yes,White,HS,Indiana,Cluster 6
-20070706072325,19,Male,1,100000,No,White,Some college,Texas,Cluster 4
-20070706072342,18,Male,5,50000,No,White,No HS,Utah,Cluster 5
-20070706072599,20,Female,0,10000,No,White,Some college,Minnesota,Cluster 7
+20070504071233,34,Male,2,75000,Yes,White,Masters,Indiana,Cluster 6
+20070504071930,26,Female,1,35000,Yes,White,Bachelors,Ohio,Cluster 5
+20070504072000,80,Female,0,0,No,White,Some college,Oregon,Cluster 1
+20070505070593,47,Male,0,20000,No,White,Some college,Arkansas,Cluster 1
+20070605070636,34,Male,2,150000,Yes,White,Some college,California,Cluster 5
+20070605071082,25,Male,0,50000,No,White,HS,Georgia,Cluster 1
+20070605071124,26,Female,2,30000,Yes,White,No HS,Idaho,Cluster 3
+20070605072038,43,Female,0,0,No,Black,HS,Pennsylvania,Cluster 6
+20070605072481,78,Female,0,7500,No,White,HS,Wisconsin,Cluster 5
 20070707070841,56,Male,0,15000,Yes,White,HS,Colorado,Cluster 7
-20070707072531,61,Female,0,40000,No,Black,Some college,Connecticut,Cluster 5
-20070806071000,20,Female,1,60000,No,White,Some college,Florida,Cluster 4
-20070807071672,75,Male,0,40000,Yes,White,Masters,New Mexico,Cluster 3
-20070807071857,28,Male,0,0,No,White,Masters,North Carolina,Cluster 1
-20070907072063,26,Male,0,35000,No,Black,Some college,Pennsylvania,Cluster 1
-20070908071437,38,Female,2,150000,Yes,Asian,Masters,Michigan,Cluster 5
-20070908072053,58,Male,0,60000,Yes,White,Some college,Rhode Island,Cluster 3
+20070806070828,17,Female,1,35000,No,White,No HS,California,Cluster 4
+20070807070881,70,Female,0,100000,Yes,White,Some college,Florida,Cluster 6
+20070807071338,44,Female,0,50000,No,White,Masters,Maryland,Cluster 3
+20070807071757,23,Male,1,35000,No,Black,HS,New York,Cluster 1
+20070908070972,29,Male,0,12500,No,White,No HS,Florida,Cluster 7
+20070908071315,16,Male,1,75000,No,Black,No HS,Maryland,Cluster 4
+20070908071636,56,Male,0,100000,Yes,White,Bachelors,New Mexico,Cluster 1
 20070908072417,46,Male,2,25000,Yes,White,No HS,Washington,Cluster 2
 20070909071345,45,Male,3,25000,Yes,Black,Bachelors,Massachusetts,Cluster 4
-20071008071074,51,Female,0,100000,Yes,White,HS,Georgia,Cluster 6
-20071009070106,27,Male,2,35000,Yes,White,Some college,Oregon,Cluster 5
-20071009070617,80,Male,0,0,Yes,White,Bachelors,California,Cluster 3
-20071009071463,15,Male,2,15000,No,Black,No HS,Missouri,Cluster 4
-20071009072275,58,Female,0,75000,Yes,White,Some college,Washington,Cluster 7
+20071008071345,47,Female,1,10000,No,Black,Some college,Massachusetts,Cluster 6
+20071009071126,25,Male,2,30000,Yes,White,HS,Illinois,Cluster 5
 20071010072313,24,Female,1,12500,No,White,HS,Wisconsin,Cluster 2
 20071109071357,55,Male,0,50000,Yes,White,HS,Michigan,Cluster 6
-20071110072286,17,Female,1,60000,No,White,No HS,West Virginia,Cluster 4
-20071111071504,71,Male,0,0,No,White,Bachelors,New Jersey,Cluster 1
+20071110071778,16,Male,1,150000,No,White,No HS,Ohio,Cluster 4
+20071110072035,30,Female,3,5000,Yes,White,No HS,Texas,Cluster 7
+20071110072053,41,Female,1,75000,Yes,White,Some college,Texas,Cluster 5
+20071110072254,64,Female,0,0,No,White,Bachelors,Washington,Cluster 6
+20071110072347,21,Female,0,50000,No,White,HS,Connecticut,Cluster 5
+20071211070059,18,Female,0,0,No,White,HS,Indiana,Cluster 7
+20071211070535,20,Female,0,35000,No,White,Some college,Arizona,Cluster 1
+20071211070797,65,Male,0,40000,Yes,White,Some college,California,Cluster 3
 20071211070853,50,Male,0,0,Yes,White,HS,Delaware,Cluster 2
+20071211071133,33,Female,3,0,Yes,White,Bachelors,Illinois,Cluster 3
+20071211071547,42,Male,4,20000,Yes,White,HS,New Mexico,Cluster 3
 20071211071757,37,Female,1,60000,Yes,White,Some college,Ohio,Cluster 2
-20080111070765,23,Female,2,0,No,White,HS,California,Cluster 7
-20080111071716,36,Female,3,100000,Yes,White,Some college,North Carolina,Cluster 3
-20080112070075,24,Female,2,0,No,Black,HS,Indiana,Cluster 1
-20080112071337,58,Female,0,35000,No,Black,No HS,Michigan,Cluster 5
-20080112072284,39,Female,2,35000,No,White,Masters,Wisconsin,Cluster 6
-20080201080985,23,Male,0,40000,No,White,No HS,Florida,Cluster 5
+20071211072119,34,Male,3,75000,Yes,White,Some college,Texas,Cluster 6
+20071211072245,59,Female,0,0,Yes,Other,HS,Washington,Cluster 3
+20080101081373,29,Male,4,30000,Yes,Black,Some college,Michigan,Cluster 6
+20080112070161,33,Female,2,20000,Yes,White,No HS,Tennessee,Cluster 6
+20080112070200,36,Male,0,0,No,Black,HS,South Carolina,Cluster 7
+20080201080151,16,Female,3,40000,No,White,No HS,Texas,Cluster 4
+20080201080664,16,Male,5,15000,No,White,No HS,California,Cluster 4
+20080201080852,26,Male,0,35000,No,White,Some college,Colorado,Cluster 3
 20080201081104,33,Female,2,0,Yes,White,Bachelors,Illinois,Cluster 4
 20080201081117,16,Male,3,150000,No,White,No HS,Illinois,Cluster 4
 20080201081136,49,Female,0,60000,Yes,Asian,Some college,Illinois,Cluster 2
-20080201081903,30,Female,1,100000,Yes,White,Masters,Oregon,Cluster 3
-20080202080171,48,Male,0,7500,No,Black,Some college,Colorado,Cluster 1
-20080301082368,24,Female,2,25000,Yes,White,HS,Kansas,Cluster 3
-20080302081095,68,Male,0,0,No,Black,Some college,Illinois,Cluster 1
-20080302081410,56,Female,0,40000,Yes,White,Some college,Minnesota,Cluster 7
-20080302081886,16,Female,2,30000,No,White,No HS,Pennsylvania,Cluster 4
-20080302082043,28,Female,0,20000,No,White,Some college,Texas,Cluster 7
-20080303082224,45,Male,0,0,No,White,Some college,Virginia,Cluster 6
+20080201081824,43,Female,0,15000,No,White,Some college,Ohio,Cluster 6
+20080201082200,40,Male,3,0,Yes,White,Bachelors,Virginia,Cluster 5
+20080301080965,50,Female,0,0,No,White,HS,Florida,Cluster 5
+20080302081308,73,Female,0,25000,Yes,White,HS,Massachusetts,Cluster 3
+20080302082283,15,Female,3,15000,No,White,No HS,Washington,Cluster 4
+20080303081133,53,Male,0,75000,Yes,White,HS,Illinois,Cluster 6
 20080402080997,47,Female,0,20000,No,Black,Some college,Georgia,Cluster 6
-20080403081758,29,Female,0,15000,No,White,Some college,Ohio,Cluster 4
+20080403080177,65,Male,0,20000,Yes,White,HS,Washington,Cluster 1
+20080403080772,24,Male,0,75000,No,White,Some college,California,Cluster 1
+20080403081008,59,Female,0,150000,Yes,White,Unknown,Georgia,Cluster 5
 20080403081939,16,Male,3,150000,No,White,No HS,Rhode Island,Cluster 4
 20080403082003,50,Female,4,40000,No,Black,HS,Tennessee,Cluster 2
+20080403082282,80,Male,0,25000,Yes,White,No HS,Washington,Cluster 1
+20080504080525,80,Male,0,20000,Yes,White,HS,Virginia,Cluster 3
 20080504080546,29,Female,4,15000,Yes,White,Some college,Missouri,Cluster 7
-20080504080801,17,Female,2,100000,No,White,No HS,Texas,Cluster 4
-20080504082486,22,Female,1,0,No,White,HS,Washington,Cluster 7
-20080605080614,54,Male,0,150000,Yes,White,HS,Florida,Cluster 1
-20080605080850,43,Female,1,60000,Yes,White,Some college,Texas,Cluster 4
-20080605080854,24,Male,0,75000,No,White,HS,Indiana,Cluster 6
+20080504081102,59,Male,0,100000,Yes,White,Masters,Alabama,Cluster 5
+20080504081710,58,Male,0,40000,No,Other,HS,Washington,Cluster 6
+20080505082412,47,Female,2,75000,Yes,White,Masters,New Jersey,Cluster 6
 20080605081106,40,Female,0,35000,Yes,White,HS,Colorado,Cluster 2
-20080605081395,70,Male,1,20000,Yes,White,No HS,Texas,Cluster 3
 20080605081415,42,Female,0,60000,No,White,Some college,Pennsylvania,Cluster 2
+20080605081441,16,Female,2,150000,No,White,No HS,California,Cluster 4
 20080605081619,25,Male,0,0,Yes,White,Some college,North Dakota,Cluster 2
-20080606082299,85,Female,0,10000,No,White,No HS,California,Cluster 1
-20080705082100,39,Female,1,35000,No,White,HS,New Jersey,Cluster 5
-20080706080586,42,Male,0,0,No,Black,Bachelors,New Jersey,Cluster 1
+20080605081903,76,Male,0,20000,Yes,Black,Some college,Texas,Cluster 1
+20080605082130,40,Female,3,75000,Yes,Black,Bachelors,Michigan,Cluster 5
+20080605082142,61,Male,0,40000,Yes,White,Some college,California,Cluster 1
+20080705081344,24,Female,0,100000,Yes,White,HS,Pennsylvania,Cluster 6
+20080706080557,48,Male,0,75000,Yes,White,Some college,Wisconsin,Cluster 5
 20080706081387,49,Female,2,40000,Yes,Other,No HS,Oregon,Cluster 2
-20080706081556,18,Female,0,150000,No,White,Unknown,Texas,Cluster 1
-20080706081642,66,Female,0,75000,Yes,White,Masters,California,Cluster 3
-20080807080551,79,Female,0,75000,No,White,Some college,Tennessee,Cluster 3
-20080807082010,80,Male,2,75000,No,White,No HS,Texas,Cluster 1
-20080807082249,35,Male,2,100000,Yes,White,Some college,California,Cluster 6
-20080907081416,29,Female,1,35000,Yes,Black,HS,New York,Cluster 6
-20080908080952,63,Female,0,40000,Yes,White,HS,Pennsylvania,Cluster 1
-20080908081373,52,Male,1,150000,Yes,White,Doctoral,New Jersey,Cluster 5
-20080908081611,46,Male,2,100000,No,White,Masters,Massachusetts,Cluster 5
-20081008081292,42,Female,2,35000,Yes,White,Some college,Texas,Cluster 5
-20081009081974,21,Male,0,150000,No,White,Some college,Pennsylvania,Cluster 6
-20081110080008,44,Male,1,60000,Yes,White,Some college,Illinois,Cluster 1
-20081110081048,39,Male,2,60000,Yes,White,Bachelors,Connecticut,Cluster 5
-20081110081304,15,Male,3,15000,No,White,No HS,Pennsylvania,Cluster 4
-20081110082270,64,Female,0,60000,Yes,White,Some college,Nevada,Cluster 1
-20081110082354,72,Male,0,0,No,White,HS,New York,Cluster 5
-20081111080102,32,Male,2,25000,Yes,Black,No HS,Washington,Cluster 6
+20080706081419,21,Male,1,25000,No,White,Some college,New York,Cluster 1
+20080706081478,16,Male,3,35000,No,White,No HS,Massachusetts,Cluster 7
+20080706081546,60,Female,0,25000,No,White,Bachelors,Washington,Cluster 7
+20080706082192,48,Male,0,7500,No,White,Some college,Minnesota,Cluster 3
+20080707081241,47,Male,0,100000,No,White,Unknown,Maryland,Cluster 3
+20080807081453,44,Female,2,150000,Yes,Asian,Masters,California,Cluster 5
+20080907080503,47,Male,2,150000,Yes,White,HS,Louisiana,Cluster 7
+20080907080839,47,Female,0,60000,Yes,Other,HS,West Virginia,Cluster 5
+20080907082195,30,Male,0,30000,No,Black,No HS,North Carolina,Cluster 5
+20080908080687,85,Male,0,12500,No,White,No HS,Delaware,Cluster 1
+20080908080963,20,Male,0,15000,No,White,HS,Pennsylvania,Cluster 1
+20080908081482,33,Male,0,20000,No,Black,Some college,Washington,Cluster 1
+20080908081621,69,Male,0,100000,Yes,White,Masters,Nevada,Cluster 1
+20081008081001,16,Male,1,100000,No,White,No HS,Connecticut,Cluster 4
+20081008082276,16,Female,2,75000,No,White,No HS,Arizona,Cluster 4
+20081009080648,47,Male,0,50000,No,White,Masters,Vermont,Cluster 3
+20081009080712,32,Male,4,150000,Yes,White,Doctoral,Michigan,Cluster 5
+20081009081148,15,Male,2,25000,No,Black,No HS,Texas,Cluster 4
+20081009081771,50,Male,1,20000,Yes,Black,HS,Ohio,Cluster 6
+20081009081978,47,Female,0,60000,Yes,White,HS,Louisiana,Cluster 3
+20081010081608,80,Female,0,7500,No,White,No HS,Indiana,Cluster 3
+20081109081680,23,Male,0,35000,No,White,Some college,Ohio,Cluster 6
+20081109082315,33,Female,1,25000,Yes,White,Bachelors,New York,Cluster 1
+20081110080657,35,Female,3,0,No,White,Some college,Washington,Cluster 5
+20081110080795,24,Male,0,100000,No,White,HS,Indiana,Cluster 5
+20081110082481,38,Female,3,50000,Yes,White,Some college,Indiana,Cluster 1
+20081111080805,63,Male,0,0,Yes,White,Some college,Massachusetts,Cluster 3
 20081111081416,66,Male,0,50000,Yes,White,Some college,New Jersey,Cluster 7
 20081210081655,35,Male,3,60000,Yes,Other,HS,Utah,Cluster 2
 20081210081971,25,Female,0,25000,No,Black,Some college,Louisiana,Cluster 5
-20081211081278,32,Male,0,40000,No,Black,Bachelors,Georgia,Cluster 5
+20081210082202,35,Male,0,35000,No,White,Some college,Texas,Cluster 5
+20081211081707,51,Male,0,150000,Yes,White,HS,California,Cluster 1
 20081211082120,54,Female,0,35000,Yes,White,HS,West Virginia,Cluster 7
 20081211082313,45,Female,2,75000,Yes,White,No HS,New York,Cluster 2
-20081212081981,51,Male,0,50000,Yes,White,HS,Maryland,Cluster 6
-20090101091448,63,Female,0,30000,Yes,White,HS,Oklahoma,Cluster 7
+20081212081657,35,Female,0,60000,No,Asian,HS,Nevada,Cluster 6
+20090101091059,45,Female,2,60000,Yes,White,HS,Wisconsin,Cluster 6
+20090101091112,32,Female,2,60000,Yes,Asian,Bachelors,Arkansas,Cluster 3
+20090101091542,80,Male,0,50000,No,White,HS,Minnesota,Cluster 6
+20090111081021,15,Male,3,0,No,White,No HS,New York,Cluster 4
 20090111081814,53,Male,2,0,Yes,White,Bachelors,California,Cluster 7
-20090111081974,16,Female,3,40000,No,White,No HS,Nebraska,Cluster 1
-20090112080809,18,Female,0,50000,No,White,No HS,Wyoming,Cluster 4
-20090112081874,25,Female,3,12500,No,Black,Some college,Texas,Cluster 4
+20090112080082,38,Male,0,10000,No,White,No HS,Florida,Cluster 1
+20090112080676,23,Male,0,75000,No,White,Some college,Minnesota,Cluster 7
+20090112080860,19,Male,1,75000,No,White,Some college,Maryland,Cluster 6
+20090112081395,19,Male,0,60000,No,White,HS,Wisconsin,Cluster 5
+20090112081717,32,Female,3,35000,Yes,White,Masters,Oklahoma,Cluster 4
 20090112082043,32,Female,1,30000,Yes,White,Bachelors,Wisconsin,Cluster 2
-20090112082500,19,Male,3,15000,No,White,No HS,Indiana,Cluster 4
-20090201090032,25,Male,1,50000,No,Black,No HS,South Carolina,Cluster 1
+20090112082180,78,Male,0,35000,No,Black,Some college,New York,Cluster 3
+20090201090690,37,Female,2,75000,Yes,White,HS,Ohio,Cluster 3
 20090201090775,15,Male,1,75000,No,White,No HS,California,Cluster 4
+20090201090844,52,Male,0,60000,Yes,Black,HS,Oklahoma,Cluster 6
+20090201091130,49,Male,0,50000,Yes,White,No HS,Alabama,Cluster 7
 20090201092096,47,Male,1,60000,Yes,White,HS,Tennessee,Cluster 6
-20090202091523,39,Male,0,40000,No,White,HS,Maryland,Cluster 7
-20090301091094,20,Female,0,10000,No,White,Some college,California,Cluster 7
+20090201092340,80,Female,0,5000,No,Black,No HS,Alabama,Cluster 1
+20090202091655,76,Female,0,0,Yes,White,HS,Ohio,Cluster 3
+20090301090887,28,Female,3,100000,No,White,Some college,Pennsylvania,Cluster 6
+20090301091303,29,Male,0,75000,Yes,White,Bachelors,Florida,Cluster 7
+20090301092357,22,Female,0,40000,No,Black,HS,Louisiana,Cluster 7
+20090302090040,27,Male,0,0,Yes,White,HS,Florida,Cluster 5
+20090302090746,57,Female,0,0,Yes,Black,HS,New Jersey,Cluster 6
+20090302090983,43,Female,3,40000,Yes,White,Some college,New Jersey,Cluster 6
 20090302091172,37,Male,0,35000,No,Black,HS,Massachusetts,Cluster 2
-20090302092024,85,Female,0,0,No,White,HS,Oregon,Cluster 3
-20090403091699,67,Male,0,60000,Yes,White,Some college,California,Cluster 6
-20090403092471,51,Female,0,0,Yes,White,HS,Michigan,Cluster 1
-20090404091293,16,Male,1,75000,No,White,No HS,California,Cluster 4
-20090504090555,15,Male,2,30000,No,White,No HS,New York,Cluster 4
-20090504090558,70,Male,0,40000,Yes,White,Some college,Washington,Cluster 3
-20090504090985,15,Female,2,30000,No,White,No HS,Florida,Cluster 4
-20090504091597,31,Male,2,5000,No,White,No HS,California,Cluster 6
-20090504092358,62,Female,0,0,No,Black,Unknown,California,Cluster 5
-20090505090044,23,Female,2,25000,No,White,HS,Maryland,Cluster 5
+20090302091245,53,Male,0,50000,Yes,White,Some college,Tennessee,Cluster 3
+20090302092005,32,Female,0,60000,Yes,White,Bachelors,South Carolina,Cluster 5
+20090302092259,20,Female,3,7500,No,Black,Some college,Connecticut,Cluster 1
+20090302092314,49,Female,2,35000,No,White,Some college,Michigan,Cluster 5
+20090402090647,27,Male,0,40000,No,Black,HS,New York,Cluster 5
+20090402090718,39,Female,0,10000,No,White,Bachelors,Texas,Cluster 7
+20090403090860,47,Female,1,60000,Yes,Other,Some college,Minnesota,Cluster 6
+20090403090982,21,Female,0,0,No,Black,Some college,North Carolina,Cluster 4
+20090503090555,18,Male,0,75000,No,White,No HS,West Virginia,Cluster 1
+20090504090950,23,Female,0,75000,No,White,HS,Ohio,Cluster 7
+20090504091061,44,Male,0,50000,No,White,Unknown,Nebraska,Cluster 5
+20090504091474,54,Female,5,20000,No,White,No HS,California,Cluster 5
 20090505090047,34,Male,0,40000,No,White,No HS,Kansas,Cluster 2
+20090505090759,50,Female,0,75000,Yes,White,Some college,California,Cluster 5
+20090604091728,16,Male,2,0,No,White,HS,New York,Cluster 4
+20090605091107,30,Female,0,100000,Yes,White,Masters,Florida,Cluster 6
+20090605091339,50,Female,2,75000,Yes,White,Masters,Nebraska,Cluster 3
+20090605091533,51,Male,0,20000,No,White,HS,Florida,Cluster 1
+20090605091762,38,Female,2,60000,Yes,Other,Some college,Pennsylvania,Cluster 3
 20090605091908,55,Female,0,40000,Yes,White,HS,Ohio,Cluster 2
-20090606091530,33,Male,0,100000,No,White,Bachelors,California,Cluster 3
-20090705091609,22,Male,2,150000,No,White,Some college,California,Cluster 7
-20090706090095,22,Female,0,0,No,White,Unknown,Illinois,Cluster 7
-20090706091339,44,Female,2,25000,Yes,Black,HS,Georgia,Cluster 7
+20090605092160,20,Male,0,75000,No,White,Some college,New Jersey,Cluster 1
+20090705091064,52,Male,0,25000,Yes,White,No HS,California,Cluster 7
+20090706090678,70,Female,0,0,Yes,White,HS,Connecticut,Cluster 3
+20090706090815,18,Male,0,40000,No,White,No HS,Missouri,Cluster 7
+20090706091226,56,Male,0,75000,Yes,White,HS,Pennsylvania,Cluster 6
 20090706091443,26,Male,0,0,No,White,Some college,Ohio,Cluster 7
-20090706091780,79,Male,0,40000,Yes,White,Masters,Oklahoma,Cluster 1
-20090706092254,46,Female,1,50000,Yes,White,Some college,Texas,Cluster 7
-20090807090507,35,Female,1,50000,No,White,HS,Missouri,Cluster 7
-20090807091083,22,Female,0,20000,No,White,HS,Texas,Cluster 3
-20090807091108,41,Female,2,35000,Yes,White,Some college,South Dakota,Cluster 5
-20090807091420,51,Male,0,75000,No,White,Some college,Indiana,Cluster 6
-20090807091577,34,Male,2,0,Yes,White,Some college,Nebraska,Cluster 5
+20090706092094,72,Female,0,0,No,Other,Some college,New York,Cluster 3
+20090706092185,21,Male,0,20000,No,Black,Unknown,Texas,Cluster 3
+20090706092453,52,Male,0,35000,No,White,HS,Florida,Cluster 5
+20090807090106,58,Male,1,25000,Yes,White,Some college,Pennsylvania,Cluster 3
+20090807090930,51,Male,1,0,Yes,Black,Some college,Virginia,Cluster 1
+20090807091441,35,Female,2,15000,Yes,White,HS,Virginia,Cluster 3
 20090807091674,40,Male,0,0,No,White,Some college,New York,Cluster 6
-20090807091743,48,Female,1,100000,Yes,White,HS,California,Cluster 3
-20090807091997,18,Female,3,25000,No,White,Some college,California,Cluster 4
-20090807092141,16,Male,1,100000,No,White,No HS,Wisconsin,Cluster 7
-20090807092325,32,Female,4,0,Yes,White,No HS,Texas,Cluster 3
-20090907091032,60,Male,0,10000,Yes,White,No HS,Maryland,Cluster 1
-20090907091512,66,Male,0,5000,No,Black,No HS,California,Cluster 1
-20090908091340,54,Female,0,50000,Yes,White,Bachelors,Florida,Cluster 3
-20090908091645,46,Male,2,35000,Yes,Asian,Masters,Texas,Cluster 1
+20090807091750,37,Female,3,0,Yes,White,No HS,Texas,Cluster 7
+20090908090129,75,Female,0,0,Yes,White,HS,Nebraska,Cluster 3
 20090908091653,53,Male,0,30000,Yes,White,HS,Alabama,Cluster 7
-20090908091781,78,Male,0,25000,No,White,Masters,Georgia,Cluster 3
 20090908091945,56,Male,0,15000,No,White,No HS,New York,Cluster 2
+20090909090830,56,Female,0,75000,Yes,White,Masters,West Virginia,Cluster 6
 20091009090525,30,Male,0,0,No,White,HS,Massachusetts,Cluster 7
-20091009090606,31,Female,0,35000,No,White,Some college,Wisconsin,Cluster 7
-20091009091060,50,Male,2,40000,Yes,White,HS,Kentucky,Cluster 6
-20091009091109,56,Male,0,40000,Yes,Black,Bachelors,New Jersey,Cluster 5
-20091009092273,33,Male,5,40000,Yes,White,Some college,New Jersey,Cluster 3
+20091009091239,85,Male,0,60000,Yes,White,Masters,Texas,Cluster 1
+20091009091296,30,Male,0,0,No,White,Some college,Florida,Cluster 7
+20091009091920,15,Female,2,0,No,White,No HS,New York,Cluster 4
+20091009091981,37,Female,1,0,Yes,White,HS,Missouri,Cluster 1
+20091009092125,44,Male,0,100000,No,White,No HS,Texas,Cluster 1
 20091009092394,50,Male,1,40000,Yes,White,HS,Tennessee,Cluster 7
 20091010091152,70,Female,0,20000,No,White,Bachelors,Connecticut,Cluster 3
-20091110090961,35,Male,0,150000,No,White,Bachelors,Colorado,Cluster 6
-20091110091193,17,Female,2,50000,No,White,No HS,Indiana,Cluster 4
+20091109090815,67,Male,0,60000,Yes,White,Some college,Massachusetts,Cluster 6
+20091110090053,29,Male,0,40000,Yes,White,Bachelors,Florida,Cluster 4
+20091110091191,21,Female,2,20000,No,White,Some college,California,Cluster 4
 20091110091299,71,Male,0,100000,Yes,White,Masters,Wisconsin,Cluster 3
-20091110091592,65,Female,0,10000,No,Black,No HS,Louisiana,Cluster 6
-20091110091805,76,Male,0,0,No,White,Masters,Indiana,Cluster 1
-20091211091518,25,Female,0,30000,Yes,White,Bachelors,Illinois,Cluster 7
-20091211091666,24,Female,1,25000,No,White,HS,New York,Cluster 7
+20091110091566,17,Male,1,25000,No,White,No HS,New York,Cluster 1
+20091110091593,32,Male,2,40000,Yes,Asian,Bachelors,California,Cluster 6
+20091210091296,78,Female,0,25000,Yes,White,HS,Oklahoma,Cluster 3
+20091211090650,58,Female,0,75000,Yes,Black,Doctoral,Michigan,Cluster 4
+20091211091376,17,Male,4,20000,No,Black,No HS,New York,Cluster 1
 20091211091755,46,Female,0,10000,No,White,HS,Mississippi,Cluster 1
-20091211092022,22,Female,1,40000,No,White,Some college,Washington,Cluster 3
-20100111091329,46,Male,1,40000,No,White,HS,Tennessee,Cluster 6
-20100111091817,43,Female,2,0,No,White,Masters,Nevada,Cluster 6
-20100112090907,31,Female,3,50000,Yes,White,Some college,Indiana,Cluster 3
-20100112091534,68,Female,0,75000,Yes,White,Bachelors,Connecticut,Cluster 4
+20091211092260,20,Female,0,0,No,White,Some college,Michigan,Cluster 4
+20091212090068,16,Female,4,50000,No,White,No HS,Florida,Cluster 1
+20100101101284,16,Female,3,60000,No,White,No HS,Iowa,Cluster 7
+20100101101368,15,Female,1,50000,No,White,No HS,Wisconsin,Cluster 4
+20100112090601,24,Female,0,25000,Yes,White,Some college,Michigan,Cluster 5
+20100112091289,54,Male,0,35000,No,White,No HS,Arkansas,Cluster 7
+20100112091724,65,Male,0,60000,Yes,White,Some college,California,Cluster 1
+20100112092135,79,Male,0,30000,Yes,White,No HS,Texas,Cluster 1
 20100112092466,42,Male,1,40000,Yes,White,HS,Pennsylvania,Cluster 2
-20100201102033,34,Female,0,75000,Yes,White,No HS,Washington,Cluster 5
-20100202100907,55,Female,0,0,No,White,No HS,Indiana,Cluster 6
-20100301102039,68,Female,0,0,Yes,White,HS,Illinois,Cluster 1
+20100201100771,42,Male,0,35000,No,White,Bachelors,Florida,Cluster 5
+20100201101026,42,Male,0,30000,Yes,White,No HS,Pennsylvania,Cluster 6
+20100201101626,43,Male,0,150000,No,White,Bachelors,New York,Cluster 5
+20100201102423,70,Male,0,0,Yes,White,HS,Missouri,Cluster 1
+20100202102254,47,Female,1,150000,Yes,White,Some college,Florida,Cluster 3
+20100212092194,70,Male,0,150000,Yes,Black,Masters,Georgia,Cluster 6
+20100301100687,37,Male,1,0,No,Other,Some college,Ohio,Cluster 6
+20100301101991,33,Male,2,75000,Yes,Asian,Bachelors,California,Cluster 5
 20100302100551,36,Female,1,75000,Yes,White,Masters,Louisiana,Cluster 6
 20100302100651,35,Female,0,40000,No,White,Some college,Washington,Cluster 2
-20100302101177,48,Male,0,40000,Yes,White,Bachelors,Florida,Cluster 5
-20100302101515,45,Male,0,60000,Yes,White,Bachelors,Washington,Cluster 5
-20100302101612,18,Female,1,0,No,White,No HS,New York,Cluster 4
+20100302100682,59,Female,0,10000,No,Black,No HS,Massachusetts,Cluster 3
 20100302101684,56,Male,0,0,No,White,HS,Pennsylvania,Cluster 2
-20100302101926,72,Female,0,0,No,White,Bachelors,New York,Cluster 3
-20100303100554,24,Female,0,20000,No,White,Some college,West Virginia,Cluster 4
-20100303102132,35,Male,1,100000,Yes,White,HS,Maryland,Cluster 7
-20100312090662,52,Female,0,0,No,White,Masters,Washington,Cluster 4
-20100403102140,71,Female,0,75000,No,White,Bachelors,New Jersey,Cluster 3
-20100503102049,55,Female,0,40000,Yes,White,Some college,Colorado,Cluster 6
-20100504100813,18,Male,1,60000,No,White,No HS,Kentucky,Cluster 4
-20100504101410,17,Male,3,150000,No,White,No HS,New Jersey,Cluster 4
-20100504101645,46,Female,1,150000,Yes,Asian,Masters,New Jersey,Cluster 3
+20100302101799,25,Male,0,60000,No,White,Unknown,North Carolina,Cluster 5
+20100302101994,18,Female,3,150000,No,White,Some college,Tennessee,Cluster 4
+20100302102501,16,Male,2,0,No,Black,No HS,Maryland,Cluster 4
+20100402101063,29,Female,0,0,No,White,HS,California,Cluster 7
+20100403100042,47,Male,0,5000,No,White,No HS,Florida,Cluster 1
+20100403101622,18,Male,0,60000,No,White,No HS,California,Cluster 4
+20100403101641,35,Male,0,150000,No,White,Masters,New York,Cluster 7
+20100403101784,55,Male,2,75000,Yes,White,Some college,Florida,Cluster 7
+20100403102485,66,Female,0,15000,Yes,White,No HS,Tennessee,Cluster 3
+20100404101065,61,Female,0,35000,Yes,White,Some college,California,Cluster 3
+20100404102115,22,Female,1,7500,No,White,Some college,Washington,Cluster 4
+20100504100025,47,Female,0,20000,No,Black,HS,Virginia,Cluster 3
+20100504101746,49,Female,1,150000,Yes,White,Unknown,Georgia,Cluster 5
 20100504101978,72,Female,0,20000,Yes,White,HS,North Carolina,Cluster 3
-20100505102353,24,Female,0,15000,No,White,Some college,Colorado,Cluster 7
-20100605100683,18,Female,1,100000,No,White,No HS,Florida,Cluster 1
-20100605101253,80,Female,0,20000,Yes,White,Some college,Texas,Cluster 3
-20100605101465,80,Male,0,150000,Yes,White,Some college,Florida,Cluster 1
-20100605102525,45,Female,1,40000,Yes,Other,Some college,California,Cluster 3
-20100706101564,67,Male,0,40000,Yes,White,No HS,Massachusetts,Cluster 1
+20100504102024,63,Female,0,150000,Yes,White,Masters,Colorado,Cluster 3
+20100505100612,51,Female,0,10000,No,White,Bachelors,Wyoming,Cluster 1
+20100505101029,37,Female,3,60000,Yes,White,HS,North Dakota,Cluster 7
+20100505101388,85,Female,0,50000,No,White,Bachelors,Illinois,Cluster 3
+20100605101058,30,Male,0,60000,Yes,Asian,HS,Hawaii,Cluster 7
+20100605101449,29,Male,2,20000,Yes,White,HS,Virginia,Cluster 5
+20100706101191,60,Female,0,30000,No,White,HS,New York,Cluster 1
+20100706101192,80,Female,0,75000,Yes,White,Some college,North Carolina,Cluster 1
 20100706101775,34,Female,2,75000,Yes,White,Some college,Texas,Cluster 3
 20100706102212,37,Male,3,25000,Yes,White,No HS,Texas,Cluster 6
-20100707101990,52,Female,0,75000,Yes,White,Some college,Nevada,Cluster 6
-20100707102299,80,Male,0,60000,Yes,White,No HS,California,Cluster 3
-20100807101481,20,Female,1,20000,Yes,White,HS,Colorado,Cluster 7
+20100706102467,15,Male,5,150000,No,White,No HS,Ohio,Cluster 1
+20100707100018,45,Female,0,30000,Yes,White,HS,Alabama,Cluster 1
+20100707101871,30,Male,2,0,Yes,White,HS,Minnesota,Cluster 5
+20100806102015,38,Female,1,20000,No,Black,HS,Georgia,Cluster 4
+20100807100818,66,Female,0,12500,No,White,HS,North Carolina,Cluster 3
+20100807101001,53,Male,0,150000,Yes,White,Some college,Illinois,Cluster 6
+20100807101383,20,Female,1,15000,No,White,HS,Tennessee,Cluster 1
+20100807101590,32,Female,3,100000,Yes,White,Bachelors,California,Cluster 6
 20100807101789,25,Male,3,50000,No,Black,No HS,Pennsylvania,Cluster 2
+20100807102228,43,Female,2,60000,Yes,White,HS,Iowa,Cluster 5
+20100808100979,28,Female,2,7500,No,White,No HS,Florida,Cluster 6
 20100808101059,45,Female,2,40000,Yes,Asian,Bachelors,Texas,Cluster 2
+20100907101479,42,Male,3,40000,Yes,White,Unknown,Colorado,Cluster 6
+20100908100152,45,Male,0,25000,Yes,Black,HS,Mississippi,Cluster 1
 20100908100501,31,Female,1,40000,Yes,White,Some college,Missouri,Cluster 7
-20100908100731,77,Female,0,40000,No,White,Bachelors,Virginia,Cluster 3
-20100908101333,41,Male,0,100000,Yes,White,Bachelors,Oregon,Cluster 5
-20100908101954,15,Female,1,150000,No,White,No HS,Texas,Cluster 4
-20100908102256,52,Male,1,100000,Yes,White,Bachelors,Oregon,Cluster 5
-20100908102355,80,Male,0,30000,Yes,White,Some college,New York,Cluster 1
-20100909101167,76,Female,0,15000,No,White,Some college,Connecticut,Cluster 1
-20101009101099,29,Male,2,20000,Yes,White,No HS,Arizona,Cluster 6
+20100908100759,20,Female,1,12500,No,White,Some college,Wisconsin,Cluster 1
+20100908100998,59,Male,0,150000,Yes,White,Unknown,California,Cluster 5
+20100908101708,17,Male,4,40000,No,White,No HS,Iowa,Cluster 4
+20100909100769,80,Male,0,100000,Yes,White,HS,Alabama,Cluster 1
+20100909101288,17,Female,1,35000,No,Other,No HS,Ohio,Cluster 4
+20101008100826,51,Male,3,20000,Yes,White,No HS,Wisconsin,Cluster 1
+20101008102237,60,Male,0,35000,Yes,White,Some college,Nebraska,Cluster 3
+20101009100042,61,Male,0,12500,No,White,Some college,Kentucky,Cluster 1
+20101009100529,21,Male,0,75000,No,White,Some college,West Virginia,Cluster 3
+20101009101313,19,Male,0,40000,No,White,Some college,California,Cluster 4
+20101009101993,51,Female,1,40000,No,White,Some college,Virginia,Cluster 1
+20101009102102,55,Male,0,40000,Yes,White,HS,Michigan,Cluster 7
 20101009102347,32,Male,1,60000,Yes,White,Some college,Nevada,Cluster 7
-20101009102519,15,Male,1,30000,No,White,No HS,Kentucky,Cluster 4
+20101109100048,47,Female,1,0,No,Black,No HS,Georgia,Cluster 3
 20101109100708,28,Male,2,75000,No,Other,HS,Wyoming,Cluster 2
-20101109101621,32,Female,1,100000,Yes,White,Some college,Texas,Cluster 7
+20101109101524,44,Male,0,60000,No,White,Masters,Illinois,Cluster 6
 20101109102512,46,Male,2,75000,Yes,Black,Some college,Pennsylvania,Cluster 2
-20101110100045,59,Female,0,150000,No,White,Some college,Florida,Cluster 6
+20101110100660,74,Female,0,60000,Yes,Black,Some college,Michigan,Cluster 3
 20101110100754,52,Female,0,35000,Yes,White,HS,Indiana,Cluster 7
-20101110102144,42,Male,3,150000,Yes,White,Bachelors,California,Cluster 5
+20101110100879,17,Female,5,60000,No,White,Unknown,Maryland,Cluster 4
+20101110101378,59,Female,0,75000,No,White,Some college,Florida,Cluster 5
+20101110101505,25,Female,3,5000,No,Black,Some college,Pennsylvania,Cluster 4
+20101110101812,63,Female,0,30000,Yes,White,HS,North Carolina,Cluster 3
 20101110102466,17,Male,2,40000,No,White,No HS,South Carolina,Cluster 4
+20101110102488,34,Male,2,50000,Yes,Other,Some college,Oklahoma,Cluster 1
+20101111100520,80,Female,0,30000,No,White,HS,Florida,Cluster 1
 20101210100918,29,Male,0,75000,No,Black,Some college,Texas,Cluster 7
-20101211100074,22,Female,0,10000,No,White,Bachelors,South Carolina,Cluster 7
-20101211100812,53,Male,4,30000,Yes,White,Some college,Massachusetts,Cluster 6
-20101211100985,27,Male,0,25000,No,White,Some college,Michigan,Cluster 4
 20101211101620,60,Female,0,12500,No,White,Some college,New York,Cluster 7
-20101211101775,56,Male,0,100000,No,Other,Bachelors,New York,Cluster 5
-20101211102243,32,Female,2,35000,No,Black,Some college,Florida,Cluster 5
-20101211102247,56,Male,0,75000,Yes,White,No HS,Connecticut,Cluster 3
+20101211102084,35,Female,3,50000,Yes,White,Some college,Pennsylvania,Cluster 3
+20101211102258,52,Female,0,75000,Yes,White,Bachelors,Massachusetts,Cluster 5
+20101211102427,54,Male,0,10000,Yes,White,HS,Florida,Cluster 1
+20101212101584,23,Male,0,20000,No,Other,Some college,Oklahoma,Cluster 3
 20110101111041,24,Male,0,75000,No,White,Some college,Iowa,Cluster 7
+20110101111750,35,Male,2,40000,Yes,White,HS,North Carolina,Cluster 5
+20110111101394,15,Male,2,35000,No,White,No HS,California,Cluster 4
 20110111101963,15,Female,1,60000,No,Black,No HS,California,Cluster 4
-20110112100982,43,Female,1,100000,Yes,White,Masters,Texas,Cluster 6
-20110112101687,41,Male,0,25000,No,White,Unknown,Texas,Cluster 3
-20110112101834,45,Male,1,40000,Yes,White,HS,Missouri,Cluster 7
-20110112101930,17,Female,1,40000,No,White,No HS,Arizona,Cluster 4
-20110201110967,21,Male,0,60000,No,White,Some college,Indiana,Cluster 3
+20110112100133,15,Female,1,20000,No,Other,No HS,Michigan,Cluster 4
+20110112100666,18,Male,1,100000,No,White,No HS,Texas,Cluster 4
+20110112101257,38,Male,0,40000,No,Black,Bachelors,North Carolina,Cluster 7
+20110112102392,58,Male,0,40000,Yes,White,HS,Pennsylvania,Cluster 6
+20110112102426,53,Male,3,100000,Yes,White,HS,Indiana,Cluster 7
+20110201110006,24,Female,0,30000,No,White,Bachelors,Tennessee,Cluster 7
+20110201110592,58,Female,0,50000,Yes,White,Bachelors,Florida,Cluster 3
+20110201110683,78,Female,0,25000,Yes,White,No HS,Indiana,Cluster 3
+20110201111541,18,Male,3,30000,No,Black,No HS,Pennsylvania,Cluster 4
+20110201112093,16,Female,4,100000,No,White,No HS,New York,Cluster 1
 20110201112190,58,Female,0,75000,Yes,White,Unknown,Arizona,Cluster 6
-20110212101845,48,Male,2,60000,Yes,White,Bachelors,Texas,Cluster 5
-20110302110127,30,Male,3,75000,Yes,White,Bachelors,North Carolina,Cluster 5
-20110302110863,29,Male,0,75000,No,White,Doctoral,Idaho,Cluster 5
+20110201112464,20,Male,0,15000,No,White,HS,Texas,Cluster 5
+20110212101820,46,Male,1,50000,Yes,White,Some college,Texas,Cluster 6
+20110212101905,42,Male,0,20000,No,White,No HS,Florida,Cluster 6
+20110301110875,23,Male,0,100000,No,White,Some college,California,Cluster 5
+20110301112489,16,Male,2,30000,No,White,No HS,Connecticut,Cluster 4
+20110302110671,67,Female,0,60000,Yes,White,HS,Mississippi,Cluster 3
+20110302111076,17,Male,5,0,No,White,No HS,Illinois,Cluster 4
+20110302111110,15,Female,3,20000,No,White,No HS,California,Cluster 4
 20110302111220,26,Male,0,75000,No,White,Some college,Tennessee,Cluster 4
-20110302111431,40,Female,2,150000,Yes,Asian,Some college,California,Cluster 5
-20110302111677,59,Female,0,30000,No,White,Bachelors,New York,Cluster 5
-20110302111961,21,Male,0,100000,No,White,Some college,Oklahoma,Cluster 7
-20110302112192,29,Male,0,100000,No,White,Bachelors,New Jersey,Cluster 5
-20110303111466,22,Male,0,50000,No,White,Some college,Ohio,Cluster 1
-20110402111870,16,Female,1,150000,No,White,No HS,California,Cluster 3
-20110403110605,63,Male,0,40000,Yes,White,HS,Minnesota,Cluster 5
-20110503110809,56,Female,0,40000,Yes,White,HS,Texas,Cluster 7
-20110503112468,19,Female,1,35000,No,White,Some college,Pennsylvania,Cluster 7
+20110302112134,64,Male,0,50000,Yes,White,Bachelors,Georgia,Cluster 6
+20110302112242,18,Female,3,60000,No,Black,No HS,Tennessee,Cluster 7
+20110302112322,35,Male,3,25000,No,White,Some college,Colorado,Cluster 7
+20110303112449,43,Male,0,40000,No,White,HS,Missouri,Cluster 7
+20110403110588,40,Female,2,75000,Yes,White,HS,Virginia,Cluster 6
+20110503110598,68,Female,0,35000,No,Black,HS,South Carolina,Cluster 1
 20110503112517,53,Female,0,25000,Yes,White,Bachelors,Florida,Cluster 2
-20110504111574,53,Female,1,75000,Yes,White,Some college,New Jersey,Cluster 5
-20110504111575,52,Male,2,75000,Yes,White,HS,California,Cluster 7
+20110504110613,73,Male,0,20000,No,White,Doctoral,California,Cluster 5
+20110504111428,73,Male,0,60000,Yes,White,Masters,Kentucky,Cluster 3
 20110504111978,64,Female,0,60000,No,White,Some college,Georgia,Cluster 2
-20110604111826,35,Female,0,75000,Yes,White,Masters,Texas,Cluster 7
+20110504112372,56,Male,2,25000,Yes,White,HS,California,Cluster 6
+20110605110159,20,Female,0,12500,No,Black,No HS,Florida,Cluster 4
 20110605110574,55,Female,1,15000,Yes,White,HS,Pennsylvania,Cluster 2
-20110605111312,73,Female,0,100000,Yes,White,Some college,Wisconsin,Cluster 7
+20110605110874,49,Female,2,50000,Yes,White,Some college,Arkansas,Cluster 1
+20110605110902,18,Female,0,20000,No,White,No HS,Maryland,Cluster 1
 20110605111887,22,Female,0,60000,No,White,Some college,California,Cluster 7
-20110705111184,28,Female,0,150000,Yes,Asian,Unknown,New York,Cluster 3
-20110706110596,56,Female,0,60000,No,White,Bachelors,New York,Cluster 5
-20110706110828,22,Female,4,10000,No,Black,HS,Arkansas,Cluster 1
-20110706111460,45,Male,0,100000,No,White,HS,Florida,Cluster 6
-20110706111482,21,Male,2,75000,Yes,White,Bachelors,California,Cluster 1
-20110706112007,85,Female,0,75000,No,White,HS,Pennsylvania,Cluster 3
+20110705111267,39,Male,2,75000,Yes,White,HS,Michigan,Cluster 7
+20110706111285,33,Female,1,150000,Yes,White,Unknown,North Carolina,Cluster 5
+20110706111778,38,Female,3,0,Yes,White,Bachelors,Pennsylvania,Cluster 3
+20110706111782,57,Female,0,15000,Yes,White,HS,Indiana,Cluster 7
 20110707110152,52,Female,1,100000,Yes,White,Some college,Indiana,Cluster 7
+20110707111020,43,Female,0,5000,No,White,Some college,California,Cluster 3
 20110707111559,22,Male,2,75000,No,White,HS,Texas,Cluster 7
+20110805110586,42,Male,2,150000,Yes,White,Bachelors,Ohio,Cluster 5
+20110806111056,55,Male,0,50000,Yes,White,HS,California,Cluster 7
+20110806111189,17,Male,1,150000,No,White,No HS,Pennsylvania,Cluster 1
 20110807110514,22,Female,0,50000,No,White,Some college,Washington,Cluster 7
 20110807110628,29,Male,0,35000,No,White,Some college,Minnesota,Cluster 2
+20110807111288,60,Male,0,100000,Yes,White,HS,Ohio,Cluster 6
+20110807111708,43,Female,0,30000,Yes,White,Some college,Florida,Cluster 3
+20110807112071,62,Male,0,40000,No,Black,Some college,Wisconsin,Cluster 1
+20110808111037,62,Male,0,75000,Yes,White,Some college,California,Cluster 5
+20110808111439,33,Female,3,40000,Yes,Black,Bachelors,Texas,Cluster 5
 20110907110552,27,Male,0,75000,No,Asian,Bachelors,California,Cluster 7
-20110907112125,50,Female,0,150000,No,White,Bachelors,Washington,Cluster 6
-20110908110007,16,Female,4,15000,No,White,No HS,Pennsylvania,Cluster 4
-20110908110112,63,Female,0,20000,No,White,HS,Wyoming,Cluster 5
-20110908110114,34,Male,1,40000,No,Black,Bachelors,New York,Cluster 4
-20110908111017,18,Male,0,7500,No,White,No HS,South Carolina,Cluster 4
-20110908111053,34,Male,2,75000,Yes,White,Masters,Arizona,Cluster 5
-20110908111072,71,Male,0,40000,No,White,HS,Mississippi,Cluster 6
-20110908111276,47,Female,0,60000,No,Black,Bachelors,Virginia,Cluster 5
-20110908111975,26,Male,0,5000,No,White,Bachelors,California,Cluster 7
-20110909111679,77,Male,0,75000,Yes,White,HS,Iowa,Cluster 1
+20110908110605,54,Female,1,100000,Yes,White,Bachelors,Maryland,Cluster 6
+20110908111617,53,Male,0,75000,Yes,White,Some college,Louisiana,Cluster 3
+20110908111627,48,Female,0,75000,Yes,White,HS,Virginia,Cluster 6
+20110908112074,85,Female,0,12500,No,White,HS,California,Cluster 3
+20110908112182,22,Female,0,15000,Yes,White,Some college,Michigan,Cluster 4
+20111008110564,51,Male,0,20000,No,Black,Some college,California,Cluster 7
 20111008112210,46,Female,0,20000,No,Black,Some college,Georgia,Cluster 5
-20111009110991,58,Male,0,40000,Yes,White,HS,Illinois,Cluster 3
-20111009111034,47,Female,0,60000,No,White,Bachelors,Ohio,Cluster 6
-20111009112174,34,Male,1,150000,Yes,White,Doctoral,California,Cluster 5
-20111009112176,39,Male,2,75000,No,White,No HS,Maryland,Cluster 6
-20111009112220,51,Female,0,40000,No,White,Some college,Florida,Cluster 5
+20111009110979,27,Female,4,100000,Yes,White,Some college,Ohio,Cluster 3
+20111009111141,51,Male,1,150000,Yes,White,Some college,Indiana,Cluster 7
+20111009111189,77,Male,1,60000,Yes,White,HS,California,Cluster 1
+20111009111448,49,Female,0,150000,Yes,White,Some college,North Carolina,Cluster 5
+20111009111666,54,Female,0,12500,Yes,Black,No HS,North Carolina,Cluster 3
+20111009111975,18,Female,0,100000,No,White,HS,Kansas,Cluster 4
+20111009112453,80,Female,0,35000,No,White,Some college,California,Cluster 1
+20111010112221,64,Male,0,60000,Yes,White,Some college,Massachusetts,Cluster 6
 20111109111055,46,Female,0,75000,Yes,White,Some college,Illinois,Cluster 6
-20111110110843,33,Male,2,60000,No,Other,HS,Texas,Cluster 6
-20111110111176,16,Female,1,75000,No,White,No HS,Texas,Cluster 4
+20111109111952,18,Female,0,100000,No,White,HS,Florida,Cluster 3
+20111110110601,77,Male,0,10000,Yes,White,Unknown,Minnesota,Cluster 1
+20111110111167,36,Female,4,60000,Yes,Black,Masters,Georgia,Cluster 7
 20111110111612,33,Male,3,100000,No,White,HS,Massachusetts,Cluster 2
-20111110111641,42,Female,3,100000,Yes,White,Bachelors,New York,Cluster 4
-20111110111808,61,Male,0,40000,Yes,White,Bachelors,Oregon,Cluster 7
-20111110111876,53,Female,0,50000,No,White,Some college,California,Cluster 5
+20111110112214,36,Female,1,75000,Yes,White,Bachelors,Idaho,Cluster 5
 20111111110913,50,Female,0,25000,Yes,White,Bachelors,Colorado,Cluster 4
-20111211111080,67,Male,0,25000,Yes,White,Masters,Texas,Cluster 3
-20111211111632,76,Female,0,7500,No,White,Bachelors,Texas,Cluster 3
+20111111111546,35,Male,3,60000,Yes,White,HS,Texas,Cluster 6
+20111210110144,25,Male,0,12500,No,White,HS,Texas,Cluster 4
+20111210112250,16,Female,1,35000,No,Black,No HS,New York,Cluster 4
+20111211110079,66,Male,0,40000,No,White,HS,Nevada,Cluster 3
+20111211110123,41,Female,2,100000,No,Black,Some college,Texas,Cluster 6
+20120101120757,29,Male,0,100000,Yes,White,Bachelors,California,Cluster 3
 20120101121101,55,Male,0,75000,Yes,White,HS,Connecticut,Cluster 7
-20120101121117,25,Female,1,60000,No,Black,Some college,Washington,Cluster 5
-20120112110736,23,Female,0,50000,Yes,White,Bachelors,Illinois,Cluster 5
-20120112111945,53,Female,0,30000,Yes,White,Bachelors,Texas,Cluster 1
-20120112112059,39,Female,2,75000,Yes,White,HS,Oregon,Cluster 1
-20120112112314,59,Female,0,60000,Yes,White,HS,California,Cluster 1
+20120111111076,30,Male,5,40000,Yes,White,No HS,Utah,Cluster 7
+20120111112005,59,Female,0,150000,Yes,White,Bachelors,Illinois,Cluster 5
+20120112110108,19,Male,0,10000,No,White,Some college,Colorado,Cluster 1
+20120112110894,34,Male,1,100000,Yes,White,Bachelors,Georgia,Cluster 3
+20120112111066,85,Female,0,15000,No,White,Some college,Indiana,Cluster 1
+20120112111073,31,Female,1,10000,No,White,HS,Florida,Cluster 7
+20120112111246,56,Male,0,150000,Yes,White,Masters,Maryland,Cluster 6
+20120112111770,23,Female,1,30000,No,White,Unknown,Delaware,Cluster 3
+20120112112153,69,Male,0,50000,Yes,White,Some college,South Carolina,Cluster 1
+20120112112163,71,Female,0,15000,Yes,White,HS,Michigan,Cluster 3
+20120112112179,54,Male,0,60000,Yes,White,Some college,Maryland,Cluster 6
 20120112112482,57,Female,0,60000,Yes,Black,Some college,Connecticut,Cluster 7
-20120112112490,57,Female,0,7500,No,Black,Unknown,Georgia,Cluster 1
-20120201120155,42,Male,0,50000,Yes,Other,Some college,North Dakota,Cluster 7
-20120201120817,43,Male,3,60000,Yes,White,No HS,Texas,Cluster 1
-20120201121112,67,Male,0,75000,Yes,White,Bachelors,Massachusetts,Cluster 3
-20120201121426,30,Male,2,75000,Yes,White,Bachelors,Georgia,Cluster 6
+20120201120129,20,Male,1,40000,No,White,HS,New York,Cluster 1
+20120201121433,43,Female,0,60000,Yes,White,No HS,Ohio,Cluster 1
 20120201121556,22,Female,0,75000,No,White,Some college,North Carolina,Cluster 7
+20120201121947,74,Female,0,10000,No,White,Some college,Wisconsin,Cluster 3
+20120201122031,54,Female,0,50000,No,White,HS,Illinois,Cluster 1
 20120201122244,52,Male,0,60000,Yes,Asian,Bachelors,Maryland,Cluster 7
-20120201122302,46,Female,0,20000,No,Other,Some college,Georgia,Cluster 1
-20120302120701,33,Male,4,15000,Yes,White,HS,North Carolina,Cluster 5
-20120302120957,17,Female,1,75000,No,White,No HS,Connecticut,Cluster 4
-20120302121040,74,Female,0,100000,Yes,White,Some college,Texas,Cluster 1
-20120302122371,58,Female,0,150000,Yes,White,Masters,California,Cluster 6
-20120302122445,65,Female,0,20000,No,White,Bachelors,Massachusetts,Cluster 5
+20120302120555,59,Female,0,150000,Yes,White,Masters,Virginia,Cluster 5
+20120302122152,61,Male,0,75000,No,White,Doctoral,New York,Cluster 5
+20120302122343,32,Female,2,40000,Yes,Asian,Bachelors,Georgia,Cluster 3
 20120303121350,64,Female,0,15000,Yes,White,HS,Virginia,Cluster 1
-20120402120849,15,Male,2,40000,No,White,No HS,Connecticut,Cluster 4
-20120402122320,62,Male,1,100000,Yes,White,Some college,California,Cluster 6
-20120403120766,33,Female,1,100000,Yes,White,Masters,Tennessee,Cluster 3
-20120403121051,59,Female,0,100000,Yes,White,Some college,Colorado,Cluster 3
-20120403121197,20,Female,2,20000,No,White,Some college,Florida,Cluster 4
-20120403121250,24,Male,0,20000,No,White,HS,Kentucky,Cluster 5
-20120403121934,29,Female,0,40000,No,Black,Some college,North Carolina,Cluster 1
-20120403121960,38,Male,0,12500,No,White,No HS,Pennsylvania,Cluster 6
-20120404120761,27,Female,2,20000,Yes,White,Bachelors,Idaho,Cluster 3
+20120303121430,67,Male,0,12500,No,Black,HS,Michigan,Cluster 3
+20120402121733,18,Female,3,25000,No,White,No HS,Florida,Cluster 1
+20120403121657,66,Male,1,50000,Yes,White,No HS,Virginia,Cluster 6
+20120403122172,65,Female,0,20000,Yes,White,Some college,Pennsylvania,Cluster 3
+20120403122213,17,Female,2,40000,No,White,No HS,Idaho,Cluster 4
+20120403122252,85,Female,0,150000,Yes,White,No HS,California,Cluster 3
+20120404121542,50,Female,0,150000,Yes,White,Some college,Florida,Cluster 5
 20120404121833,21,Male,3,25000,No,White,Some college,Idaho,Cluster 7
-20120503122375,23,Male,0,7500,No,Asian,Bachelors,North Carolina,Cluster 5
-20120504120001,37,Female,2,35000,Yes,White,No HS,New York,Cluster 5
-20120504120709,48,Male,1,100000,Yes,White,Bachelors,Florida,Cluster 6
-20120504120897,45,Male,3,10000,Yes,White,No HS,Texas,Cluster 7
-20120505120500,62,Male,0,60000,Yes,White,Some college,California,Cluster 1
-20120605120546,54,Female,0,60000,Yes,White,HS,Illinois,Cluster 3
-20120605120550,60,Male,0,100000,Yes,White,Bachelors,Rhode Island,Cluster 6
-20120605120676,34,Male,0,40000,No,White,Some college,Ohio,Cluster 5
-20120605122054,27,Female,0,50000,No,White,Some college,Missouri,Cluster 7
-20120605122179,64,Female,0,100000,No,White,Some college,Pennsylvania,Cluster 1
-20120705121424,28,Male,0,100000,No,White,Some college,Wyoming,Cluster 7
+20120404122284,55,Male,0,40000,Yes,White,Some college,Florida,Cluster 3
+20120504120135,47,Female,0,5000,No,White,No HS,Michigan,Cluster 1
+20120504120524,29,Male,0,60000,No,White,Some college,Minnesota,Cluster 5
+20120504121471,16,Male,3,15000,No,Black,No HS,Texas,Cluster 4
+20120504121590,40,Male,2,150000,Yes,White,Bachelors,Georgia,Cluster 1
+20120504121908,51,Male,0,12500,No,White,Some college,Colorado,Cluster 1
+20120504122164,17,Male,1,75000,No,White,No HS,Kentucky,Cluster 7
+20120504122357,29,Female,2,75000,Yes,White,HS,California,Cluster 7
+20120604120705,16,Female,2,40000,No,Black,No HS,Georgia,Cluster 1
+20120605121031,26,Male,1,75000,No,Black,Bachelors,Georgia,Cluster 7
+20120605121881,36,Male,3,60000,Yes,White,Some college,Oregon,Cluster 5
+20120605122255,18,Female,0,150000,No,White,No HS,Iowa,Cluster 7
+20120606122031,70,Female,0,20000,Yes,White,No HS,Iowa,Cluster 1
+20120705121171,31,Female,2,60000,Yes,White,Some college,Alabama,Cluster 5
 20120706120043,51,Female,2,12500,No,Black,Unknown,Florida,Cluster 7
-20120706122109,29,Male,0,75000,No,White,Some college,Texas,Cluster 5
+20120706121479,16,Male,2,150000,No,White,No HS,Illinois,Cluster 4
 20120706122308,19,Male,0,5000,No,Black,HS,Kentucky,Cluster 2
-20120706122343,41,Female,4,5000,Yes,White,HS,California,Cluster 4
+20120706122509,56,Male,0,150000,Yes,White,Some college,California,Cluster 6
+20120706122524,55,Female,0,100000,Yes,White,Masters,Illinois,Cluster 5
 20120707121649,65,Female,0,75000,Yes,White,Bachelors,Ohio,Cluster 5
-20120807121038,43,Male,0,50000,Yes,White,No HS,California,Cluster 6
-20120807121664,17,Female,1,40000,No,White,No HS,Alabama,Cluster 1
+20120807120690,66,Female,0,15000,No,White,Some college,Nebraska,Cluster 3
+20120807120910,55,Male,0,75000,Yes,White,HS,Indiana,Cluster 6
+20120807121000,62,Male,0,50000,Yes,White,Some college,Colorado,Cluster 6
 20120807122217,36,Female,2,30000,Yes,Asian,HS,Florida,Cluster 4
+20120807122477,69,Male,0,40000,Yes,White,Some college,Maryland,Cluster 3
+20120808122181,85,Female,0,20000,No,White,HS,Georgia,Cluster 3
+20120808122217,51,Male,0,10000,No,White,Masters,Illinois,Cluster 1
+20120907121987,39,Male,1,60000,No,Other,No HS,Washington,Cluster 5
+20120907122107,53,Male,1,150000,Yes,White,Bachelors,California,Cluster 5
 20120908120044,15,Male,1,75000,No,White,No HS,New Jersey,Cluster 4
-20120908122232,40,Male,0,75000,No,White,Bachelors,California,Cluster 5
-20121009121456,21,Female,0,0,No,Asian,Some college,Massachusetts,Cluster 4
-20121009121962,57,Male,0,40000,No,Black,HS,Georgia,Cluster 6
-20121009122333,58,Male,0,50000,No,White,HS,New York,Cluster 7
+20120908120139,21,Female,0,20000,No,White,HS,Michigan,Cluster 4
+20120908121199,29,Female,0,0,No,White,Masters,NA,Cluster 4
+20120908121412,24,Female,0,75000,No,White,Some college,New Jersey,Cluster 7
+20120908122395,17,Male,4,30000,No,Other,No HS,Nebraska,Cluster 4
+20120909120524,30,Male,2,60000,Yes,White,Bachelors,Georgia,Cluster 7
+20121009120810,57,Female,0,100000,Yes,White,Bachelors,Minnesota,Cluster 6
+20121009121311,18,Female,0,20000,No,White,HS,Texas,Cluster 3
+20121009122210,51,Male,1,75000,Yes,White,HS,Texas,Cluster 7
+20121010121133,31,Female,0,75000,No,White,Bachelors,Maryland,Cluster 6
+20121010121666,54,Male,0,30000,Yes,White,Bachelors,Oklahoma,Cluster 6
+20121010121759,32,Male,0,100000,Yes,White,Bachelors,Florida,Cluster 3
+20121010122127,29,Female,2,15000,Yes,White,No HS,California,Cluster 3
+20121010122384,26,Male,0,60000,Yes,White,Bachelors,Alabama,Cluster 6
 20121109120692,49,Female,0,40000,No,Black,HS,South Carolina,Cluster 2
-20121109121426,18,Female,1,100000,No,White,No HS,Minnesota,Cluster 4
 20121110121038,26,Male,1,40000,Yes,White,Some college,Wisconsin,Cluster 2
+20121110121080,40,Male,0,50000,Yes,White,Bachelors,Missouri,Cluster 7
 20121110121449,33,Female,2,100000,Yes,White,Some college,Washington,Cluster 3
+20121110121495,23,Female,0,35000,No,Black,Some college,Virginia,Cluster 5
 20121110121806,41,Male,2,60000,Yes,White,Some college,Washington,Cluster 7
 20121110121972,25,Female,1,7500,No,White,Some college,North Carolina,Cluster 7
 20121110122128,25,Male,0,7500,No,White,Bachelors,Massachusetts,Cluster 4
 20121110122470,26,Female,1,40000,No,White,Some college,Nevada,Cluster 7
-20121210122174,23,Male,0,20000,No,White,Some college,New York,Cluster 7
+20121111120833,25,Male,0,60000,No,White,HS,Pennsylvania,Cluster 3
+20121111120836,50,Female,0,35000,No,White,Some college,West Virginia,Cluster 6
+20121210121102,63,Female,0,25000,Yes,White,No HS,Florida,Cluster 7
+20121210121405,43,Male,2,40000,Yes,White,HS,Maryland,Cluster 5
 20121211120682,22,Male,1,150000,No,White,Bachelors,California,Cluster 4
 20121211120736,45,Male,1,15000,No,White,No HS,California,Cluster 2
-20121211121639,30,Female,0,50000,No,White,HS,Iowa,Cluster 5
-20130101132075,17,Female,2,20000,No,Asian,Unknown,Utah,Cluster 4
-20130111122356,20,Female,2,50000,No,White,Some college,Oregon,Cluster 1
-20130112121183,51,Female,0,75000,Yes,White,HS,Oregon,Cluster 6
-20130112121382,44,Female,2,100000,Yes,White,Bachelors,Pennsylvania,Cluster 6
-20130112121438,79,Female,0,12500,No,White,No HS,Tennessee,Cluster 1
-20130112122403,64,Male,0,60000,No,White,No HS,Kentucky,Cluster 3
+20121211121036,65,Female,0,150000,Yes,White,HS,South Carolina,Cluster 5
+20121211121232,33,Female,5,25000,No,White,Some college,Michigan,Cluster 6
+20121211121370,19,Female,3,35000,No,Black,No HS,New York,Cluster 4
+20121211121407,85,Male,2,20000,Yes,White,Unknown,Ohio,Cluster 1
+20130111120974,36,Female,0,60000,Yes,Asian,Bachelors,California,Cluster 5
+20130111121141,26,Female,0,35000,Yes,White,Bachelors,Michigan,Cluster 5
+20130111121564,34,Male,2,25000,Yes,Asian,HS,Virginia,Cluster 7
+20130111122137,35,Male,2,60000,No,White,HS,California,Cluster 6
+20130112120068,16,Female,1,10000,No,White,No HS,Arizona,Cluster 4
+20130112120581,57,Male,0,40000,No,White,Some college,Washington,Cluster 6
+20130112121233,47,Female,0,150000,Yes,White,Masters,South Carolina,Cluster 5
+20130112121439,48,Male,1,60000,Yes,White,HS,New Mexico,Cluster 6
+20130112122285,47,Male,2,60000,Yes,White,Bachelors,Ohio,Cluster 5
 20130201130601,24,Female,0,15000,No,White,Some college,California,Cluster 4
+20130201130689,67,Male,0,75000,Yes,Black,Some college,Washington,Cluster 7
+20130201131133,60,Female,0,50000,No,White,Some college,Florida,Cluster 3
+20130201131256,56,Female,0,40000,No,Other,Unknown,Florida,Cluster 1
+20130201131396,15,Female,3,100000,No,White,No HS,Ohio,Cluster 4
+20130201131615,30,Male,3,25000,Yes,White,HS,Georgia,Cluster 6
 20130201131822,18,Female,1,150000,No,White,No HS,Kansas,Cluster 4
-20130201132279,62,Female,0,150000,Yes,White,Masters,New Jersey,Cluster 3
-20130202130646,37,Female,2,150000,Yes,White,Masters,Texas,Cluster 3
+20130201132200,36,Female,0,50000,No,White,Bachelors,Massachusetts,Cluster 6
+20130201132234,42,Female,2,150000,Yes,White,Some college,Utah,Cluster 3
 20130212121791,25,Female,0,100000,No,White,Bachelors,Tennessee,Cluster 2
 20130301131646,56,Male,0,50000,No,White,Some college,Michigan,Cluster 2
-20130302130613,72,Male,0,75000,Yes,White,Bachelors,California,Cluster 1
-20130302130963,17,Male,1,40000,No,White,No HS,Oregon,Cluster 4
+20130302131892,61,Male,0,15000,Yes,White,Unknown,Texas,Cluster 7
 20130302132304,44,Male,2,150000,Yes,White,Masters,Illinois,Cluster 2
-20130303130558,61,Female,0,50000,Yes,White,Masters,Washington,Cluster 1
-20130403130089,29,Male,2,60000,No,White,HS,Florida,Cluster 7
-20130403130508,48,Female,1,100000,Yes,Asian,Bachelors,New York,Cluster 5
+20130303130575,80,Male,0,60000,No,White,Bachelors,Indiana,Cluster 1
+20130303132213,80,Male,0,30000,Yes,White,HS,Ohio,Cluster 1
+20130403130506,17,Female,3,25000,No,White,Unknown,Nebraska,Cluster 4
+20130403130646,33,Male,0,100000,No,White,HS,Virginia,Cluster 5
 20130403130748,50,Male,0,35000,No,White,Some college,Minnesota,Cluster 6
+20130403130825,26,Female,0,60000,No,Black,Bachelors,Illinois,Cluster 6
+20130403131011,17,Female,2,75000,No,White,Unknown,Minnesota,Cluster 4
 20130403131128,23,Female,2,20000,Yes,Other,Unknown,Texas,Cluster 2
-20130403132109,38,Male,3,150000,Yes,White,Masters,California,Cluster 6
+20130403131667,33,Female,4,60000,Yes,White,Some college,New York,Cluster 3
+20130403131884,22,Female,1,75000,No,White,Some college,Minnesota,Cluster 7
+20130403132012,48,Male,1,75000,Yes,White,Some college,Kentucky,Cluster 1
+20130403132245,80,Female,0,30000,No,White,HS,Illinois,Cluster 3
+20130403132454,85,Female,0,10000,No,White,No HS,Virginia,Cluster 1
 20130404131188,46,Male,0,30000,No,Black,Some college,Ohio,Cluster 2
+20130504130851,41,Female,2,30000,No,White,HS,Texas,Cluster 5
+20130504130884,53,Male,0,20000,Yes,White,No HS,Texas,Cluster 7
+20130504130967,15,Female,5,7500,No,Black,No HS,Ohio,Cluster 4
+20130504132075,45,Male,2,35000,Yes,White,No HS,Kansas,Cluster 6
 20130504132369,23,Male,0,7500,No,White,Some college,Colorado,Cluster 4
-20130605131950,33,Male,3,40000,Yes,White,Some college,Texas,Cluster 5
 20130605132015,19,Male,0,35000,No,Black,HS,Delaware,Cluster 7
-20130606132482,58,Male,0,35000,No,Black,Some college,Indiana,Cluster 7
+20130605132107,17,Male,3,40000,No,White,No HS,Florida,Cluster 3
+20130605132371,48,Male,0,35000,No,White,Some college,California,Cluster 1
+20130705130119,22,Male,0,10000,No,Black,HS,New York,Cluster 6
+20130705130571,21,Male,0,150000,No,White,Some college,Michigan,Cluster 7
 20130705130997,35,Female,4,30000,Yes,White,No HS,Texas,Cluster 3
-20130706132205,60,Male,0,50000,No,White,HS,New Hampshire,Cluster 1
-20130706132261,48,Female,1,50000,No,White,Masters,Georgia,Cluster 3
-20130805132311,34,Male,2,20000,Yes,White,Unknown,New Jersey,Cluster 6
-20130807130006,47,Female,0,35000,Yes,White,No HS,West Virginia,Cluster 3
+20130705131930,18,Male,2,35000,No,White,No HS,California,Cluster 5
+20130705132042,57,Male,0,40000,Yes,White,No HS,California,Cluster 6
+20130706130053,50,Male,0,75000,No,Black,HS,Alabama,Cluster 1
+20130706131973,31,Male,0,25000,No,Black,Some college,Minnesota,Cluster 7
+20130806132122,30,Male,2,25000,No,Asian,Some college,Arizona,Cluster 1
 20130807130674,47,Female,1,100000,Yes,White,Bachelors,Illinois,Cluster 1
-20130807130974,44,Male,2,75000,No,White,HS,Minnesota,Cluster 5
-20130807131041,64,Female,0,20000,Yes,White,HS,Idaho,Cluster 3
-20130807131922,42,Male,4,15000,Yes,White,HS,California,Cluster 3
-20130908130157,42,Male,0,75000,No,White,Some college,Florida,Cluster 5
-20130909131611,32,Male,0,75000,No,White,Bachelors,Florida,Cluster 6
-20131008131957,17,Female,2,100000,No,White,No HS,Illinois,Cluster 4
-20131009131632,28,Female,0,30000,Yes,White,Masters,California,Cluster 7
-20131009132244,27,Male,0,35000,Yes,White,HS,Kentucky,Cluster 6
-20131109131065,52,Female,0,20000,No,Other,HS,Nevada,Cluster 6
-20131109132525,66,Male,0,60000,Yes,White,HS,Louisiana,Cluster 3
-20131110131781,29,Male,0,60000,No,White,Doctoral,New York,Cluster 6
+20130807130777,19,Male,0,150000,No,Asian,Some college,California,Cluster 3
+20130807131236,46,Male,0,12500,Yes,White,Unknown,Tennessee,Cluster 1
+20130807131402,49,Female,1,40000,Yes,Black,Bachelors,Missouri,Cluster 6
+20130807132472,35,Female,3,40000,Yes,White,Some college,New York,Cluster 1
+20130808130045,20,Female,0,12500,No,White,Some college,New York,Cluster 3
+20130908132366,56,Male,0,150000,Yes,White,Masters,Alabama,Cluster 7
+20130909131031,18,Female,1,40000,No,White,HS,Utah,Cluster 5
+20130909131534,76,Male,0,35000,Yes,White,HS,Connecticut,Cluster 1
+20131009131806,55,Female,0,60000,Yes,White,HS,North Carolina,Cluster 6
+20131009131913,62,Male,0,7500,Yes,White,No HS,Texas,Cluster 1
+20131009131999,24,Male,0,40000,No,White,Bachelors,Texas,Cluster 5
+20131010132256,62,Male,0,20000,Yes,White,Some college,South Carolina,Cluster 3
+20131109130957,26,Male,0,75000,No,White,Some college,Texas,Cluster 4
+20131109131418,63,Male,0,75000,Yes,White,Some college,Wisconsin,Cluster 6
+20131109131525,48,Male,0,15000,No,Black,HS,Georgia,Cluster 3
+20131110130989,24,Female,0,35000,No,Black,Bachelors,Illinois,Cluster 7
+20131110131694,15,Female,3,100000,No,White,No HS,Colorado,Cluster 4
 20131110131837,39,Male,0,15000,No,Black,No HS,Michigan,Cluster 3
 20131110132223,42,Male,0,75000,No,White,Bachelors,Arizona,Cluster 2
-20131110132503,39,Female,3,150000,Yes,White,Masters,Illinois,Cluster 6
+20131110132397,41,Male,2,150000,Yes,White,Masters,Texas,Cluster 4
+20131110132466,78,Female,0,60000,Yes,White,Bachelors,Maine,Cluster 3
+20131110132470,20,Male,1,60000,No,White,Some college,California,Cluster 4
 20131111130020,15,Female,2,50000,No,White,No HS,California,Cluster 4
-20131210131291,38,Female,1,30000,No,White,HS,Idaho,Cluster 7
-20131211132085,61,Male,0,30000,Yes,White,HS,New York,Cluster 1
-20131211132206,35,Female,0,20000,No,Black,HS,Virginia,Cluster 7
+20131211130787,39,Male,2,75000,Yes,White,Masters,California,Cluster 5
+20131211130844,18,Male,0,150000,No,White,HS,Michigan,Cluster 6
+20131211131049,52,Female,1,150000,Yes,White,Masters,Nebraska,Cluster 5
+20131211131878,55,Male,0,60000,Yes,White,Bachelors,Connecticut,Cluster 6
+20131211131903,64,Female,0,15000,Yes,White,HS,Ohio,Cluster 1
+20131211132058,47,Female,2,75000,Yes,White,Masters,California,Cluster 5
 20131212130823,41,Male,2,60000,No,White,HS,Oregon,Cluster 1
-20131212132118,41,Male,2,150000,Yes,White,Masters,Massachusetts,Cluster 6
-20140101142319,65,Female,0,35000,No,White,Bachelors,Illinois,Cluster 3
-20140110131331,39,Female,4,100000,Yes,White,Some college,Massachusetts,Cluster 1
-20140111130560,60,Male,0,100000,Yes,White,HS,Massachusetts,Cluster 5
-20140111130585,15,Male,2,10000,No,White,No HS,Virginia,Cluster 4
-20140112130725,40,Male,3,25000,Yes,White,Some college,Florida,Cluster 5
+20131212132458,85,Female,0,75000,No,White,Masters,California,Cluster 1
+20140111130618,28,Male,1,20000,Yes,White,Masters,Ohio,Cluster 5
 20140112130763,55,Female,0,60000,No,White,Some college,Pennsylvania,Cluster 2
-20140112132343,28,Male,1,75000,Yes,White,Bachelors,Kansas,Cluster 6
-20140201141873,25,Male,0,100000,No,Asian,Bachelors,Florida,Cluster 4
-20140201142100,74,Female,0,25000,Yes,White,Bachelors,Massachusetts,Cluster 1
-20140201142201,17,Male,1,15000,No,Black,No HS,New York,Cluster 4
+20140112132261,19,Female,0,50000,No,White,Some college,Texas,Cluster 7
+20140201140034,15,Male,3,60000,No,White,No HS,Kentucky,Cluster 4
+20140201140113,53,Female,0,60000,No,White,HS,Ohio,Cluster 5
+20140201140513,46,Female,4,100000,No,White,Bachelors,Minnesota,Cluster 3
+20140201141029,26,Female,0,40000,No,Black,Some college,Illinois,Cluster 1
+20140201141187,50,Female,3,150000,Yes,White,Bachelors,Georgia,Cluster 3
+20140201141455,20,Female,1,100000,No,Asian,Some college,Nebraska,Cluster 4
 20140202141683,63,Male,0,40000,Yes,White,Some college,Nevada,Cluster 1
-20140212131504,59,Male,0,30000,No,Black,Some college,Wisconsin,Cluster 3
-20140301141395,35,Female,2,15000,No,Black,HS,New York,Cluster 3
 20140302140553,47,Female,1,25000,No,Black,Some college,Mississippi,Cluster 4
 20140302141041,76,Male,0,25000,Yes,White,No HS,New York,Cluster 1
-20140302141427,16,Male,1,25000,No,White,No HS,Colorado,Cluster 4
-20140303141892,20,Male,1,75000,No,Other,Some college,California,Cluster 1
-20140401141960,79,Female,0,30000,No,White,Some college,Missouri,Cluster 3
-20140403140856,53,Female,0,10000,No,Black,No HS,Texas,Cluster 6
-20140403141567,15,Male,1,50000,No,Black,No HS,Michigan,Cluster 4
-20140404140762,69,Male,0,60000,Yes,White,Bachelors,Arizona,Cluster 3
-20140503142461,39,Male,1,100000,Yes,White,Bachelors,Wisconsin,Cluster 6
-20140504141169,71,Female,0,20000,Yes,Black,HS,Mississippi,Cluster 1
-20140504141520,22,Male,0,100000,No,White,HS,Illinois,Cluster 6
-20140504142106,16,Male,1,150000,No,White,No HS,Florida,Cluster 4
+20140302142182,24,Male,0,60000,No,White,Some college,Montana,Cluster 5
+20140302142228,47,Female,0,25000,No,White,Masters,California,Cluster 4
+20140302142480,16,Male,3,150000,No,White,No HS,California,Cluster 4
+20140402141471,48,Female,0,50000,No,Black,Some college,Texas,Cluster 3
+20140402141565,41,Male,1,60000,Yes,White,HS,Florida,Cluster 5
+20140403140013,45,Female,0,40000,No,White,Some college,Michigan,Cluster 7
+20140403140081,51,Male,0,40000,Yes,White,Unknown,California,Cluster 6
+20140403141178,35,Female,3,30000,Yes,Black,Some college,Missouri,Cluster 7
+20140403141782,43,Male,1,150000,Yes,White,Some college,New Jersey,Cluster 3
+20140403142200,19,Female,0,75000,No,White,HS,New Jersey,Cluster 1
+20140503140653,29,Female,0,75000,No,Black,Some college,Maryland,Cluster 5
+20140503142288,31,Female,0,50000,Yes,White,Some college,New York,Cluster 1
+20140504141239,23,Female,0,150000,No,White,Bachelors,Massachusetts,Cluster 4
+20140504141313,54,Male,0,75000,Yes,White,Bachelors,California,Cluster 5
+20140504141570,27,Male,1,20000,No,White,HS,California,Cluster 6
+20140504142275,20,Male,1,60000,Yes,White,HS,Georgia,Cluster 6
 20140504142296,15,Male,8,60000,No,White,No HS,Maryland,Cluster 4
-20140505141458,73,Female,0,50000,Yes,White,HS,North Carolina,Cluster 1
-20140604142267,20,Female,0,75000,No,White,Some college,New York,Cluster 5
-20140604142370,21,Male,0,150000,No,White,Some college,Florida,Cluster 6
-20140605141323,36,Male,2,100000,Yes,Black,Bachelors,California,Cluster 5
-20140606141199,85,Female,0,40000,No,White,HS,Connecticut,Cluster 1
-20140606142288,44,Male,0,50000,No,White,HS,Virginia,Cluster 6
+20140504142359,17,Male,1,60000,No,White,No HS,Texas,Cluster 4
+20140505140760,24,Female,0,40000,Yes,White,Bachelors,Texas,Cluster 6
+20140604140653,17,Female,2,100000,No,White,No HS,Indiana,Cluster 3
+20140604140907,53,Male,0,25000,No,White,Bachelors,Nevada,Cluster 5
+20140604141336,25,Male,0,150000,No,White,Bachelors,Florida,Cluster 5
+20140604141714,23,Male,0,150000,No,White,Some college,Texas,Cluster 6
+20140605140679,50,Female,0,60000,No,White,Some college,Florida,Cluster 5
+20140605141015,16,Male,1,75000,No,White,No HS,Florida,Cluster 5
+20140605141937,74,Male,0,35000,Yes,White,Some college,Texas,Cluster 7
+20140605142015,44,Male,1,50000,Yes,White,HS,Vermont,Cluster 5
+20140606141098,33,Male,4,40000,Yes,White,HS,Illinois,Cluster 7
+20140606141588,21,Female,1,30000,Yes,White,HS,Florida,Cluster 1
 20140705141372,38,Male,2,150000,Yes,Other,Bachelors,Hawaii,Cluster 6
-20140706140057,45,Male,0,50000,No,White,HS,Georgia,Cluster 7
-20140706140140,57,Female,1,40000,No,White,Some college,Kentucky,Cluster 3
-20140706141449,49,Male,0,100000,Yes,White,Masters,Oregon,Cluster 5
+20140705141497,16,Male,1,30000,No,White,No HS,Nebraska,Cluster 5
+20140706140766,25,Male,0,40000,No,White,Bachelors,Texas,Cluster 5
+20140706140818,21,Male,0,35000,No,Black,Some college,Pennsylvania,Cluster 7
 20140706142433,40,Male,1,60000,Yes,Black,Bachelors,Maryland,Cluster 7
-20140807140652,53,Female,0,25000,Yes,White,No HS,California,Cluster 7
-20140807141518,43,Female,0,50000,No,Black,Some college,Maryland,Cluster 6
+20140807140020,26,Male,0,50000,No,Black,Bachelors,New York,Cluster 7
+20140807140640,26,Male,0,50000,No,Black,Bachelors,Florida,Cluster 3
+20140807140902,58,Male,0,50000,Yes,White,Some college,Texas,Cluster 1
 20140807142225,46,Female,0,40000,Yes,White,Some college,Mississippi,Cluster 2
-20140808140553,68,Male,0,100000,Yes,White,HS,Virginia,Cluster 3
-20140808141652,65,Female,0,35000,Yes,White,Some college,Ohio,Cluster 3
-20140907141204,34,Female,2,100000,Yes,White,Some college,Indiana,Cluster 3
+20140907141304,15,Male,1,60000,No,White,No HS,Kentucky,Cluster 4
 20140907141797,18,Female,0,40000,No,White,Unknown,Arkansas,Cluster 4
-20140907142068,52,Female,1,150000,Yes,Asian,Some college,Virginia,Cluster 5
-20140908140084,48,Male,0,40000,Yes,White,Some college,Florida,Cluster 5
+20140907142114,47,Male,2,100000,Yes,White,Some college,North Dakota,Cluster 5
+20140908140695,23,Female,1,30000,No,White,Some college,Colorado,Cluster 5
+20140908140813,18,Male,0,100000,No,White,No HS,Michigan,Cluster 4
 20140908141038,16,Male,2,75000,No,White,No HS,Minnesota,Cluster 4
 20140908141228,25,Female,1,50000,No,Black,HS,Tennessee,Cluster 7
-20140909140512,73,Female,0,150000,Yes,White,HS,Texas,Cluster 1
-20140909142261,32,Female,2,35000,No,White,HS,Utah,Cluster 3
-20141008140659,18,Male,0,50000,No,Black,No HS,Texas,Cluster 4
+20140908142306,48,Male,2,15000,No,White,Some college,Oregon,Cluster 3
+20140908142367,26,Male,0,10000,No,White,Unknown,Arizona,Cluster 6
+20140908142383,43,Male,2,150000,Yes,White,Some college,Michigan,Cluster 6
+20140909141615,18,Female,0,75000,No,White,HS,California,Cluster 7
+20141008140691,16,Male,2,30000,No,White,No HS,Tennessee,Cluster 4
 20141008142087,32,Male,2,75000,Yes,White,Some college,Washington,Cluster 2
-20141009141001,44,Male,0,15000,No,Other,HS,Colorado,Cluster 1
-20141009141248,57,Male,0,5000,No,White,Some college,Kentucky,Cluster 3
-20141009141602,68,Female,0,30000,Yes,White,Some college,New York,Cluster 3
-20141009141644,80,Male,0,60000,Yes,White,Bachelors,Florida,Cluster 3
-20141110140770,52,Male,0,75000,Yes,White,HS,Arkansas,Cluster 6
+20141009140547,57,Female,0,75000,No,White,Bachelors,Rhode Island,Cluster 4
+20141009141368,34,Female,4,0,No,Black,Some college,Connecticut,Cluster 1
+20141010141182,62,Male,0,40000,Yes,White,No HS,Oklahoma,Cluster 1
+20141110140511,48,Female,0,100000,No,White,Bachelors,Maryland,Cluster 6
+20141110141186,46,Female,0,15000,No,White,No HS,California,Cluster 1
+20141110141366,52,Female,0,100000,No,White,HS,Texas,Cluster 5
 20141110141380,56,Female,0,100000,No,White,HS,New York,Cluster 2
-20141110141427,40,Female,0,25000,No,White,Some college,Oregon,Cluster 1
-20141111140512,70,Male,0,75000,Yes,White,Masters,Washington,Cluster 1
-20141111142250,77,Male,0,20000,Yes,White,HS,Iowa,Cluster 1
-20141211140054,62,Male,0,40000,No,White,HS,Florida,Cluster 3
-20141211141022,17,Male,1,75000,No,White,No HS,Indiana,Cluster 4
+20141110141395,35,Female,1,30000,Yes,White,HS,South Carolina,Cluster 7
+20141110141450,49,Female,0,75000,Yes,White,HS,Colorado,Cluster 3
+20141110142514,56,Male,0,5000,Yes,White,No HS,Pennsylvania,Cluster 1
+20141210141254,56,Male,0,75000,Yes,White,Bachelors,Missouri,Cluster 5
+20141210142179,64,Female,0,50000,Yes,White,HS,New Jersey,Cluster 1
+20141211140936,28,Male,2,75000,No,White,Some college,Texas,Cluster 5
 20141211141108,24,Female,0,30000,No,Black,Some college,Arkansas,Cluster 7
+20141211141317,68,Male,0,150000,No,White,Bachelors,Oklahoma,Cluster 5
 20141211141390,46,Female,3,35000,Yes,Black,Some college,Wisconsin,Cluster 2
-20141211142265,64,Male,0,50000,Yes,White,No HS,Connecticut,Cluster 6
-20141212140121,52,Male,0,40000,No,White,Some college,Texas,Cluster 5
-20150111141306,16,Male,4,75000,No,Black,No HS,North Carolina,Cluster 4
-20150112140917,50,Female,0,75000,Yes,Black,Some college,Pennsylvania,Cluster 5
-20150112141106,36,Male,2,25000,Yes,Black,No HS,Tennessee,Cluster 6
-20150112141818,19,Male,1,60000,No,Asian,Some college,California,Cluster 1
-20150112141955,85,Female,0,20000,No,White,HS,Washington,Cluster 1
-20150112142050,60,Female,0,25000,Yes,White,No HS,California,Cluster 5
-20150201150568,56,Male,0,20000,Yes,White,HS,Michigan,Cluster 3
+20141211141761,80,Male,0,30000,No,White,HS,Oregon,Cluster 3
+20141211141766,35,Male,2,150000,Yes,White,Bachelors,Wisconsin,Cluster 5
+20141211141791,17,Male,2,60000,No,White,No HS,Connecticut,Cluster 4
+20141211141827,50,Female,1,75000,Yes,White,Masters,Indiana,Cluster 3
+20141211141897,38,Female,1,150000,Yes,White,Doctoral,Alabama,Cluster 3
+20150101151659,48,Male,0,60000,No,White,Some college,Pennsylvania,Cluster 6
+20150111141042,41,Male,0,20000,No,Black,Unknown,South Carolina,Cluster 1
+20150112140712,54,Male,0,75000,Yes,White,Some college,Washington,Cluster 6
+20150112141303,72,Female,0,40000,Yes,White,HS,Alabama,Cluster 3
+20150201150129,43,Female,0,40000,Yes,White,No HS,California,Cluster 5
 20150201150920,55,Male,0,40000,Yes,Black,HS,Alabama,Cluster 1
-20150201151431,58,Male,1,60000,No,Asian,Some college,California,Cluster 6
-20150201151884,57,Female,0,150000,Yes,White,Masters,Connecticut,Cluster 5
-20150201152408,70,Female,0,10000,No,White,Some college,Maine,Cluster 3
+20150201151343,30,Female,1,60000,Yes,White,Some college,Oregon,Cluster 5
+20150201151602,64,Male,0,100000,No,White,Bachelors,NA,Cluster 5
 20150201152452,27,Male,0,10000,No,White,HS,Illinois,Cluster 1
-20150201152492,39,Male,4,25000,Yes,White,Some college,Florida,Cluster 7
+20150202151747,45,Female,0,12500,No,Black,No HS,New York,Cluster 1
+20150202152110,39,Female,2,10000,No,White,HS,Florida,Cluster 6
 20150212142258,32,Female,0,150000,No,White,Unknown,Michigan,Cluster 7
 20150301152171,36,Male,0,15000,No,White,HS,Pennsylvania,Cluster 7
-20150302151812,60,Female,0,15000,No,White,Some college,Maryland,Cluster 5
-20150302151907,15,Male,2,10000,No,White,No HS,Texas,Cluster 4
-20150302152194,55,Male,0,60000,Yes,White,HS,Minnesota,Cluster 6
-20150302152346,21,Female,4,20000,No,Black,Some college,New York,Cluster 4
-20150402152271,21,Female,3,75000,No,White,HS,Tennessee,Cluster 3
-20150403150156,66,Male,2,50000,No,White,No HS,Texas,Cluster 6
-20150403150646,48,Female,2,35000,Yes,Asian,Some college,Maryland,Cluster 5
+20150302150645,67,Male,0,60000,Yes,White,Masters,Minnesota,Cluster 1
+20150302150698,23,Female,0,10000,No,White,Masters,Alabama,Cluster 4
+20150302150778,41,Female,3,100000,Yes,Black,Masters,North Carolina,Cluster 3
+20150302150912,63,Male,0,75000,Yes,White,Some college,New York,Cluster 1
+20150302151029,68,Female,0,150000,Yes,White,Masters,Virginia,Cluster 1
+20150302151645,56,Male,1,50000,Yes,White,HS,North Carolina,Cluster 7
+20150302151724,40,Male,0,40000,No,White,Masters,Alabama,Cluster 5
+20150302151761,24,Female,1,25000,No,White,Some college,Indiana,Cluster 3
+20150302152008,16,Female,1,75000,No,White,No HS,Michigan,Cluster 4
+20150303151248,47,Male,1,150000,Yes,White,Some college,Virginia,Cluster 7
+20150402152048,17,Male,2,50000,No,White,No HS,Ohio,Cluster 4
+20150403150512,53,Female,1,60000,Yes,White,Bachelors,New York,Cluster 3
+20150403150747,68,Female,0,150000,Yes,White,Masters,Indiana,Cluster 3
 20150403150990,35,Female,3,30000,No,White,No HS,Oklahoma,Cluster 1
-20150403151044,35,Male,0,20000,No,White,HS,California,Cluster 1
 20150403151045,43,Female,0,75000,Yes,White,Some college,Iowa,Cluster 5
-20150403152237,73,Male,0,25000,Yes,White,Some college,Illinois,Cluster 6
-20150403152466,61,Female,0,20000,Yes,White,HS,Pennsylvania,Cluster 6
+20150403151807,65,Male,0,75000,Yes,White,Bachelors,West Virginia,Cluster 4
+20150403152225,16,Female,1,60000,No,White,No HS,Kansas,Cluster 3
 20150404150052,85,Male,0,10000,Yes,White,HS,New Jersey,Cluster 3
-20150503151241,29,Female,0,100000,No,White,Masters,New Jersey,Cluster 5
+20150404151686,33,Female,0,40000,No,Other,Some college,New York,Cluster 5
+20150503152189,21,Female,3,10000,No,White,No HS,North Carolina,Cluster 7
 20150503152437,17,Female,7,75000,No,White,No HS,Idaho,Cluster 4
+20150504150959,46,Male,2,30000,Yes,Black,HS,New Jersey,Cluster 3
 20150504151646,47,Male,1,40000,Yes,White,HS,Alabama,Cluster 2
-20150504151711,56,Female,0,50000,Yes,White,HS,Pennsylvania,Cluster 3
-20150504152086,68,Male,0,60000,No,White,HS,New Jersey,Cluster 3
-20150504152232,60,Female,0,100000,Yes,White,Some college,Pennsylvania,Cluster 3
-20150505151181,75,Female,0,40000,Yes,White,Some college,Texas,Cluster 4
 20150604150781,27,Female,1,75000,Yes,Asian,Bachelors,Arizona,Cluster 7
-20150604152431,51,Male,0,20000,No,White,HS,Texas,Cluster 3
+20150604151824,30,Male,0,40000,Yes,White,HS,Pennsylvania,Cluster 5
 20150605150613,48,Male,1,25000,No,White,Some college,Pennsylvania,Cluster 1
-20150605150660,22,Female,0,30000,Yes,White,Some college,Tennessee,Cluster 3
-20150606151916,22,Male,0,0,No,Asian,Some college,New York,Cluster 4
-20150705151239,73,Female,0,100000,Yes,White,Masters,Wisconsin,Cluster 3
-20150705152299,41,Male,1,7500,Yes,White,No HS,Kansas,Cluster 6
-20150706151189,16,Male,1,150000,No,White,No HS,Illinois,Cluster 1
+20150605151557,23,Female,1,10000,No,White,HS,Minnesota,Cluster 7
+20150605151641,51,Male,0,100000,Yes,White,Some college,Michigan,Cluster 6
+20150605151910,60,Female,0,35000,Yes,White,Some college,California,Cluster 6
+20150605152096,54,Male,0,150000,Yes,White,Masters,Ohio,Cluster 5
+20150705151118,23,Female,0,150000,No,White,Bachelors,New York,Cluster 7
+20150705151851,56,Female,0,100000,No,Asian,Bachelors,California,Cluster 6
+20150706150100,34,Female,2,7500,No,White,Some college,Wisconsin,Cluster 3
+20150706150510,85,Female,0,10000,No,White,No HS,Missouri,Cluster 1
+20150706150579,51,Female,0,60000,No,White,Bachelors,California,Cluster 7
+20150706151506,49,Female,0,25000,No,Black,HS,Florida,Cluster 1
 20150706151704,41,Female,0,30000,No,White,Bachelors,South Carolina,Cluster 5
-20150707152037,37,Male,2,60000,No,Black,Bachelors,New Jersey,Cluster 7
-20150805151728,20,Female,2,12500,No,White,Some college,Texas,Cluster 7
+20150706152434,17,Male,2,75000,No,White,No HS,Mississippi,Cluster 3
+20150807150555,68,Male,0,100000,Yes,White,Bachelors,Texas,Cluster 3
 20150807151278,38,Male,3,25000,Yes,White,No HS,New York,Cluster 5
-20150807151363,32,Male,4,40000,Yes,White,No HS,Tennessee,Cluster 6
-20150807151977,30,Male,0,50000,No,White,Some college,New York,Cluster 5
-20150807152151,71,Female,0,10000,No,White,HS,North Carolina,Cluster 1
-20150807152211,50,Male,0,75000,Yes,White,HS,Pennsylvania,Cluster 5
-20150807152271,61,Female,0,35000,Yes,White,Bachelors,New Jersey,Cluster 5
-20150808152013,60,Female,0,20000,No,White,HS,Alabama,Cluster 7
-20150908150970,80,Male,0,30000,Yes,White,Some college,Alabama,Cluster 1
-20150908152031,55,Female,0,15000,No,White,HS,Kentucky,Cluster 1
+20150807151336,74,Male,0,50000,Yes,White,HS,Wisconsin,Cluster 3
+20150807151673,60,Female,0,75000,Yes,White,HS,Pennsylvania,Cluster 3
+20150807151878,68,Female,0,150000,Yes,White,Doctoral,Maine,Cluster 3
+20150807152104,23,Male,0,0,No,White,Some college,Arizona,Cluster 7
+20150807152282,85,Female,0,75000,Yes,White,HS,Oregon,Cluster 1
+20150808152366,50,Male,0,40000,No,White,Bachelors,California,Cluster 1
+20150908151786,41,Female,1,150000,No,White,Bachelors,Washington,Cluster 3
+20150908152068,35,Female,2,100000,Yes,White,Bachelors,Illinois,Cluster 3
+20150908152187,32,Female,1,75000,Yes,White,Bachelors,Washington,Cluster 6
+20150909151549,35,Female,2,15000,No,White,HS,Texas,Cluster 7
+20151008150553,41,Male,1,15000,Yes,White,HS,California,Cluster 5
 20151008151419,38,Male,3,40000,No,White,HS,North Carolina,Cluster 6
-20151009150967,58,Female,0,25000,Yes,White,HS,Idaho,Cluster 3
-20151009151482,52,Female,1,150000,Yes,White,Bachelors,Georgia,Cluster 5
-20151009151570,30,Female,2,15000,Yes,White,Masters,Missouri,Cluster 3
-20151009151620,64,Male,0,75000,Yes,White,Masters,Massachusetts,Cluster 3
+20151009150501,56,Female,0,150000,Yes,White,Bachelors,California,Cluster 6
+20151009150550,35,Female,3,75000,Yes,Other,Some college,California,Cluster 7
 20151009151966,56,Female,0,100000,No,White,Some college,Texas,Cluster 1
-20151110150660,53,Male,0,75000,Yes,White,HS,West Virginia,Cluster 6
-20151110151625,54,Female,0,60000,Yes,White,Some college,Arizona,Cluster 5
-20151110152000,24,Male,1,35000,No,Black,HS,New York,Cluster 1
-20151111152053,34,Male,0,35000,No,White,Some college,California,Cluster 7
-20151210150820,25,Male,1,15000,No,Black,HS,Florida,Cluster 7
+20151009152029,48,Male,1,150000,Yes,White,Doctoral,Virginia,Cluster 5
+20151010152029,18,Female,1,100000,No,White,HS,Oklahoma,Cluster 7
+20151110151281,17,Male,2,15000,No,White,No HS,Florida,Cluster 4
+20151110151347,19,Female,1,60000,No,White,HS,New York,Cluster 4
+20151110151644,34,Male,0,60000,No,White,Bachelors,Colorado,Cluster 5
+20151110152249,15,Female,2,40000,No,Other,No HS,New York,Cluster 4
+20151211150126,61,Male,0,15000,Yes,White,No HS,Arkansas,Cluster 1
+20151211150687,43,Male,1,75000,Yes,White,Some college,Kentucky,Cluster 6
+20151211150732,34,Female,4,10000,No,Black,No HS,Minnesota,Cluster 4
+20151211151822,58,Female,0,30000,Yes,Black,No HS,North Carolina,Cluster 3
+20151211151958,22,Female,0,35000,No,White,Bachelors,California,Cluster 7
+20151211152302,41,Female,2,150000,Yes,White,Bachelors,Texas,Cluster 5
+20151211152311,36,Female,0,100000,Yes,White,Bachelors,Ohio,Cluster 5
 20151212150857,54,Male,0,25000,No,White,Some college,Washington,Cluster 2
-20151212152025,31,Male,1,100000,Yes,Asian,Bachelors,Missouri,Cluster 5
-20160112151945,29,Female,3,60000,Yes,White,Some college,Texas,Cluster 7
-20160201160059,43,Female,1,30000,No,Black,HS,New York,Cluster 3
-20160201160895,34,Female,3,30000,Yes,White,HS,California,Cluster 3
-20160201161745,33,Female,2,75000,Yes,White,Masters,Texas,Cluster 3
-20160212151409,21,Male,0,100000,No,White,Some college,Alabama,Cluster 3
-20160301162212,22,Female,2,20000,No,White,Some college,North Carolina,Cluster 7
-20160301162285,27,Male,0,20000,No,White,Some college,Oklahoma,Cluster 5
+20151212152155,44,Male,0,5000,No,Black,No HS,Virginia,Cluster 7
+20160101161157,61,Male,0,50000,No,White,HS,Florida,Cluster 3
+20160101161311,48,Female,0,60000,Yes,White,Some college,Wisconsin,Cluster 5
+20160111151495,53,Male,0,30000,No,Black,HS,Kentucky,Cluster 1
+20160111152075,40,Male,2,40000,Yes,Asian,HS,Pennsylvania,Cluster 7
+20160112150119,38,Male,6,15000,Yes,White,Some college,California,Cluster 3
+20160112151225,27,Female,0,35000,Yes,White,Bachelors,New Jersey,Cluster 7
+20160112151537,58,Female,1,25000,No,Black,Unknown,Pennsylvania,Cluster 3
+20160112151729,37,Male,1,40000,Yes,White,Bachelors,South Carolina,Cluster 5
+20160112151998,16,Male,3,150000,No,White,No HS,California,Cluster 4
+20160112152295,24,Female,0,30000,No,White,Some college,Kansas,Cluster 4
+20160201161024,69,Female,3,12500,No,Black,HS,Mississippi,Cluster 1
+20160201162125,64,Female,0,50000,Yes,White,Masters,Massachusetts,Cluster 3
+20160202162198,70,Male,0,35000,Yes,White,Bachelors,Florida,Cluster 3
+20160301162049,35,Female,0,15000,No,White,Unknown,Tennessee,Cluster 6
+20160302160009,42,Female,1,25000,Yes,White,HS,Louisiana,Cluster 1
+20160302160724,18,Female,0,50000,No,Black,HS,Arkansas,Cluster 4
 20160302160750,16,Female,2,100000,No,White,No HS,Indiana,Cluster 4
 20160302160861,33,Male,2,35000,Yes,Black,HS,Wisconsin,Cluster 2
 20160302161171,44,Male,2,40000,Yes,Black,HS,New Jersey,Cluster 2
-20160302162015,30,Male,0,60000,Yes,White,Some college,Kentucky,Cluster 3
-20160303162442,18,Female,0,150000,No,Asian,No HS,New Jersey,Cluster 4
-20160401162399,52,Female,0,75000,Yes,White,HS,Vermont,Cluster 6
-20160403160011,33,Male,1,150000,No,Black,Some college,New York,Cluster 5
-20160403160828,73,Male,0,40000,Yes,White,Some college,Virginia,Cluster 1
-20160403161059,52,Male,0,25000,No,White,HS,California,Cluster 7
-20160403162230,19,Female,3,60000,No,Asian,HS,Texas,Cluster 4
+20160302161869,23,Female,1,0,No,Black,Bachelors,Kentucky,Cluster 7
+20160403160513,42,Male,3,100000,Yes,White,Masters,Michigan,Cluster 5
+20160403160541,16,Female,3,75000,No,White,No HS,Kentucky,Cluster 4
+20160403161435,65,Male,0,100000,Yes,White,HS,New Hampshire,Cluster 6
+20160403161705,48,Male,0,40000,No,White,Bachelors,Missouri,Cluster 7
+20160403161805,15,Female,2,25000,No,White,No HS,North Carolina,Cluster 4
 20160403162386,30,Male,0,10000,No,White,Masters,Connecticut,Cluster 3
-20160503161046,39,Male,1,150000,Yes,White,HS,Washington,Cluster 5
-20160504160907,56,Female,0,50000,Yes,White,HS,Indiana,Cluster 3
-20160505160506,28,Female,2,20000,Yes,White,HS,Texas,Cluster 3
-20160505161976,59,Female,0,30000,Yes,Black,HS,Georgia,Cluster 1
+20160404160145,19,Female,3,25000,No,Black,No HS,Texas,Cluster 4
+20160404160943,22,Female,0,35000,Yes,White,Bachelors,Texas,Cluster 4
+20160404162037,41,Male,2,12500,Yes,White,No HS,Arizona,Cluster 6
+20160503162530,25,Female,0,40000,No,Other,Masters,Tennessee,Cluster 3
+20160504161159,48,Male,0,100000,No,White,Some college,Maryland,Cluster 5
+20160603162150,25,Male,2,75000,No,Black,Some college,Missouri,Cluster 7
 20160603162357,57,Female,0,60000,No,White,Some college,North Dakota,Cluster 2
-20160604161927,33,Male,0,75000,No,White,Some college,Florida,Cluster 7
+20160604162436,17,Female,1,100000,No,White,No HS,New Jersey,Cluster 4
 20160605160715,33,Male,1,60000,Yes,White,HS,Oklahoma,Cluster 2
+20160605161132,70,Male,0,60000,Yes,White,HS,New York,Cluster 3
 20160605161147,44,Male,0,75000,No,White,Some college,Utah,Cluster 7
-20160705161987,45,Male,2,75000,Yes,White,Masters,Nebraska,Cluster 5
-20160706160090,34,Female,2,60000,Yes,Black,Some college,Delaware,Cluster 7
-20160706161233,32,Female,0,100000,No,White,Some college,South Dakota,Cluster 5
-20160706162448,62,Female,0,60000,Yes,Asian,HS,Nevada,Cluster 3
-20160706162469,49,Male,0,15000,No,White,Some college,Oklahoma,Cluster 1
-20160707160607,38,Female,0,75000,No,White,HS,California,Cluster 4
-20160707162238,62,Male,0,12500,Yes,Black,No HS,South Carolina,Cluster 3
+20160605161977,29,Female,0,100000,No,Black,HS,Illinois,Cluster 7
+20160605162169,25,Male,0,40000,No,Black,HS,Arkansas,Cluster 7
+20160706160791,78,Female,0,60000,No,White,Unknown,New Mexico,Cluster 5
+20160706161181,32,Male,0,60000,No,Black,Bachelors,Maryland,Cluster 7
+20160706161559,40,Male,0,5000,No,Other,Some college,New Mexico,Cluster 7
+20160706161756,32,Male,4,25000,Yes,White,No HS,Pennsylvania,Cluster 6
 20160806160533,28,Male,1,15000,Yes,White,Some college,Mississippi,Cluster 2
-20160807161718,75,Female,0,40000,Yes,White,HS,Michigan,Cluster 3
+20160806162152,60,Male,0,100000,No,White,Doctoral,Pennsylvania,Cluster 5
+20160807160707,36,Female,1,100000,Yes,White,Masters,Georgia,Cluster 5
+20160807161453,15,Female,3,100000,No,White,No HS,Indiana,Cluster 4
+20160807161799,59,Female,0,40000,Yes,White,Some college,Virginia,Cluster 6
+20160807161906,58,Male,0,60000,Yes,White,HS,California,Cluster 6
+20160807162209,15,Male,5,40000,No,White,No HS,Texas,Cluster 4
+20160807162287,60,Male,0,0,Yes,White,Some college,Minnesota,Cluster 7
+20160807162500,56,Male,0,20000,Yes,White,Bachelors,Indiana,Cluster 7
+20160808160915,38,Male,0,100000,Yes,White,HS,Illinois,Cluster 6
+20160808161383,16,Male,1,100000,No,White,No HS,Wisconsin,Cluster 1
 20160907160888,42,Male,2,75000,Yes,Other,Some college,New Mexico,Cluster 6
+20160908160762,16,Male,3,20000,No,White,No HS,Texas,Cluster 4
 20160908160855,18,Female,0,75000,No,White,HS,Michigan,Cluster 7
-20160908160890,77,Female,0,15000,No,White,Some college,Massachusetts,Cluster 6
-20160908161773,48,Female,0,150000,No,White,Doctoral,Illinois,Cluster 5
-20160908162177,23,Male,0,50000,No,White,Some college,Nevada,Cluster 7
+20160908162251,54,Female,0,75000,No,White,Masters,Illinois,Cluster 5
 20160908162391,23,Female,0,100000,Yes,White,Bachelors,Florida,Cluster 7
-20160908162467,79,Female,0,15000,No,White,HS,Pennsylvania,Cluster 1
+20160908162401,53,Female,1,75000,Yes,White,Masters,Missouri,Cluster 3
 20160909160757,31,Female,1,60000,Yes,Asian,HS,Illinois,Cluster 1
-20161009160532,66,Female,1,35000,Yes,Asian,HS,Pennsylvania,Cluster 6
-20161009160753,27,Male,0,75000,No,White,HS,Arizona,Cluster 5
-20161009160881,37,Female,2,75000,Yes,Asian,Masters,New Jersey,Cluster 1
-20161010160800,63,Female,0,100000,Yes,White,Some college,Iowa,Cluster 3
-20161109161095,17,Female,4,20000,No,White,Unknown,California,Cluster 4
+20161009160764,15,Female,1,20000,No,White,No HS,New Mexico,Cluster 4
+20161009161744,39,Male,1,150000,Yes,White,Doctoral,Arizona,Cluster 5
+20161009161841,21,Male,1,150000,No,Asian,Some college,Texas,Cluster 4
+20161009161845,31,Female,2,40000,Yes,White,Bachelors,Oklahoma,Cluster 6
+20161010161149,74,Female,0,20000,No,White,HS,Wyoming,Cluster 3
+20161010161406,66,Male,0,60000,Yes,White,Bachelors,Missouri,Cluster 3
+20161010162191,76,Female,0,20000,Yes,White,Some college,Ohio,Cluster 1
+20161109160134,21,Female,0,50000,No,White,Some college,New Jersey,Cluster 7
 20161109161914,30,Female,2,25000,No,White,HS,NA,Cluster 2
-20161110160751,42,Female,0,60000,No,White,HS,Illinois,Cluster 7
-20161110160764,30,Female,2,150000,Yes,White,Unknown,Texas,Cluster 3
+20161109161980,51,Female,0,50000,Yes,White,HS,Kansas,Cluster 3
 20161110160824,29,Male,1,100000,Yes,Black,Some college,Florida,Cluster 2
 20161110161303,37,Male,0,25000,No,White,HS,Texas,Cluster 2
-20161110161952,56,Female,0,60000,No,White,Some college,Texas,Cluster 7
 20161110162234,26,Female,3,15000,No,Black,HS,Georgia,Cluster 2
 20161211160545,29,Male,0,50000,No,White,No HS,Florida,Cluster 5
-20161211161473,41,Female,1,100000,Yes,White,Unknown,Florida,Cluster 5
+20161211160606,28,Male,0,35000,No,White,Bachelors,Pennsylvania,Cluster 6
 20161211161920,37,Female,0,75000,Yes,White,Bachelors,Pennsylvania,Cluster 2
-20161211162229,18,Male,1,75000,No,White,Some college,Illinois,Cluster 7
-20161211162402,45,Male,2,30000,Yes,White,HS,Pennsylvania,Cluster 1
-20161212161159,77,Female,0,40000,No,White,HS,Indiana,Cluster 3
-20170101171233,40,Female,0,100000,No,White,Bachelors,Massachusetts,Cluster 6
+20161211162332,24,Female,0,10000,No,White,HS,Iowa,Cluster 5
+20170101172007,52,Female,0,75000,Yes,White,HS,Minnesota,Cluster 5
 20170111162038,15,Female,1,15000,No,White,No HS,Wisconsin,Cluster 4
-20170112161768,18,Female,1,15000,No,White,HS,Georgia,Cluster 6
+20170112160646,54,Male,0,75000,Yes,White,HS,Texas,Cluster 6
+20170112160965,70,Male,0,10000,No,White,Bachelors,Indiana,Cluster 1
+20170112161415,71,Male,0,75000,No,White,Unknown,New York,Cluster 1
+20170112161464,17,Male,2,75000,No,Other,No HS,New York,Cluster 4
 20170112161862,25,Male,0,35000,No,Black,HS,Alabama,Cluster 7
-20170112162518,54,Female,0,30000,No,White,Some college,California,Cluster 6
-20170201170971,28,Male,0,25000,No,White,Bachelors,Colorado,Cluster 4
+20170201170575,15,Male,1,100000,No,White,No HS,Wisconsin,Cluster 4
 20170201171340,21,Female,0,75000,No,White,Some college,Texas,Cluster 4
-20170201171363,67,Female,0,50000,Yes,White,HS,Texas,Cluster 3
-20170201171870,52,Male,0,60000,No,White,Some college,Illinois,Cluster 1
-20170212161787,31,Female,2,75000,Yes,White,Masters,Ohio,Cluster 6
-20170212162180,25,Female,0,60000,No,White,Bachelors,Virginia,Cluster 5
-20170301171256,26,Female,0,75000,Yes,White,Bachelors,Minnesota,Cluster 3
+20170201171390,36,Male,3,100000,Yes,White,Masters,Wisconsin,Cluster 5
+20170201172148,27,Female,1,35000,Yes,White,Some college,California,Cluster 4
+20170212161290,55,Male,0,150000,Yes,White,HS,Pennsylvania,Cluster 6
+20170212162206,61,Female,0,10000,Yes,Black,Bachelors,Tennessee,Cluster 5
 20170301172534,66,Male,0,40000,Yes,Black,HS,South Carolina,Cluster 2
-20170302172214,76,Female,0,40000,Yes,White,Masters,Indiana,Cluster 1
-20170302172400,17,Male,1,75000,No,White,No HS,Minnesota,Cluster 4
+20170302170828,18,Female,1,40000,No,Asian,No HS,Washington,Cluster 4
+20170302171987,41,Female,1,7500,Yes,White,No HS,California,Cluster 1
+20170302172230,23,Male,0,35000,No,White,Some college,New York,Cluster 4
+20170302172476,64,Female,0,150000,Yes,White,Bachelors,Texas,Cluster 3
 20170303170914,27,Male,0,25000,No,White,HS,Kansas,Cluster 2
-20170402172497,32,Male,1,40000,No,Black,HS,Mississippi,Cluster 7
+20170402171788,37,Male,2,60000,Yes,White,HS,Pennsylvania,Cluster 1
+20170403170547,35,Male,0,30000,No,Asian,Some college,Florida,Cluster 7
 20170403170609,42,Male,0,7500,No,Black,Bachelors,New Hampshire,Cluster 2
-20170403172225,43,Male,0,100000,Yes,White,Bachelors,Michigan,Cluster 5
-20170403172388,22,Female,0,0,No,White,Some college,New York,Cluster 4
-20170504170162,24,Male,0,10000,No,White,Bachelors,Colorado,Cluster 5
-20170504171702,59,Male,0,100000,Yes,White,Masters,Florida,Cluster 6
-20170504171844,36,Female,1,75000,Yes,White,Masters,New York,Cluster 3
-20170604171031,58,Male,0,100000,Yes,Asian,Some college,Washington,Cluster 1
-20170604172313,17,Female,3,60000,No,Black,No HS,New York,Cluster 1
+20170403170682,69,Female,0,75000,Yes,Black,HS,Texas,Cluster 3
+20170503171387,17,Male,2,60000,No,Black,No HS,Illinois,Cluster 4
+20170504170520,67,Female,0,50000,No,White,Some college,New York,Cluster 5
+20170504171674,19,Male,0,50000,No,White,HS,North Carolina,Cluster 7
+20170504172045,51,Female,1,10000,No,White,No HS,Florida,Cluster 6
+20170504172047,17,Male,1,60000,No,Asian,No HS,North Carolina,Cluster 4
+20170504172430,51,Male,0,75000,Yes,White,HS,Minnesota,Cluster 1
+20170605170769,52,Female,1,60000,Yes,White,Some college,California,Cluster 3
+20170605171835,79,Male,0,30000,No,White,HS,New Jersey,Cluster 1
 20170605172246,49,Male,2,100000,Yes,White,No HS,Wisconsin,Cluster 6
 20170605172272,40,Male,0,60000,No,Black,HS,Virginia,Cluster 2
-20170705172045,58,Male,0,150000,Yes,Black,Some college,Massachusetts,Cluster 6
-20170706170636,20,Female,0,60000,No,White,Some college,Oklahoma,Cluster 4
-20170706170814,27,Female,0,50000,Yes,Black,Bachelors,Missouri,Cluster 7
+20170705171861,55,Female,1,150000,No,White,No HS,Mississippi,Cluster 6
+20170705172374,27,Male,0,150000,Yes,White,Bachelors,Ohio,Cluster 6
+20170706170748,70,Female,0,20000,No,White,Some college,Ohio,Cluster 7
+20170706171872,33,Male,2,150000,Yes,White,Bachelors,Pennsylvania,Cluster 5
 20170706172039,41,Female,0,60000,No,White,Some college,California,Cluster 7
-20170707171802,28,Male,0,150000,No,Asian,Bachelors,California,Cluster 5
-20170807170001,54,Male,0,0,No,White,HS,California,Cluster 1
-20170807171000,31,Female,2,100000,Yes,White,HS,California,Cluster 3
+20170707172228,73,Female,0,12500,Yes,White,HS,Michigan,Cluster 3
+20170806172275,46,Male,2,100000,Yes,White,Bachelors,Arizona,Cluster 5
+20170807170612,34,Female,2,100000,Yes,Black,Some college,Maryland,Cluster 5
+20170807170864,48,Male,0,15000,No,Black,HS,Michigan,Cluster 6
 20170807171361,53,Female,0,25000,No,White,HS,Colorado,Cluster 2
-20170807172266,71,Female,1,35000,No,White,HS,Arizona,Cluster 3
-20170808171677,63,Male,0,100000,Yes,White,HS,Kansas,Cluster 6
+20170807171392,46,Female,2,100000,Yes,White,Some college,Iowa,Cluster 6
+20170808171095,16,Male,3,100000,No,White,No HS,Virginia,Cluster 4
+20170808172194,20,Female,0,75000,No,White,Some college,Illinois,Cluster 4
 20170906171296,50,Male,0,25000,No,White,HS,Pennsylvania,Cluster 2
 20170907171121,33,Female,2,60000,Yes,White,Some college,Illinois,Cluster 2
-20170907172020,21,Female,0,0,No,White,Some college,Florida,Cluster 4
-20170908171249,16,Male,3,15000,No,White,No HS,Texas,Cluster 4
-20170908171298,68,Male,0,150000,Yes,White,Bachelors,Florida,Cluster 1
+20170908170040,25,Male,0,60000,No,Asian,Bachelors,Hawaii,Cluster 1
+20170908170523,62,Female,0,12500,Yes,White,No HS,California,Cluster 3
+20170908170630,29,Male,0,50000,No,Black,Bachelors,New York,Cluster 5
+20170908171412,23,Female,0,60000,No,White,Bachelors,North Carolina,Cluster 7
+20170908172202,85,Male,0,40000,Yes,White,Bachelors,California,Cluster 3
 20170909170574,25,Male,0,40000,No,Asian,Bachelors,Massachusetts,Cluster 4
-20170909171011,27,Female,2,60000,No,White,HS,Indiana,Cluster 4
-20171008171784,47,Male,0,50000,No,White,Some college,Pennsylvania,Cluster 6
-20171008172177,72,Female,0,150000,Yes,White,Some college,New York,Cluster 7
-20171009171857,36,Male,0,20000,No,Black,Bachelors,Georgia,Cluster 5
-20171009172197,70,Female,0,75000,Yes,White,Bachelors,California,Cluster 1
+20171008171761,61,Female,0,75000,Yes,Black,HS,Hawaii,Cluster 6
+20171009170029,31,Male,0,60000,Yes,White,Masters,Tennessee,Cluster 1
+20171009170781,34,Female,2,100000,Yes,White,HS,California,Cluster 3
+20171009170866,38,Female,3,30000,No,White,Some college,California,Cluster 6
+20171009171916,71,Male,0,75000,Yes,White,Bachelors,California,Cluster 1
+20171009171920,44,Female,0,60000,No,White,Masters,Minnesota,Cluster 6
 20171009172216,24,Male,0,40000,No,White,Bachelors,Illinois,Cluster 4
-20171009172401,35,Female,3,75000,Yes,White,Unknown,Connecticut,Cluster 3
-20171010170643,17,Female,2,100000,No,Asian,No HS,New Jersey,Cluster 4
 20171010171971,44,Male,0,30000,No,Black,Some college,California,Cluster 2
-20171109172229,25,Male,0,50000,No,Black,HS,Texas,Cluster 7
-20171110171143,17,Male,1,20000,No,White,No HS,Florida,Cluster 4
-20171110171798,60,Female,0,60000,Yes,White,Some college,Ohio,Cluster 5
+20171010172228,67,Female,0,60000,Yes,White,HS,Mississippi,Cluster 1
+20171110170833,32,Female,2,150000,Yes,White,Some college,Minnesota,Cluster 5
+20171110171957,27,Female,1,60000,Yes,White,Bachelors,Wisconsin,Cluster 6
 20171110171961,73,Male,0,100000,Yes,White,Doctoral,Wisconsin,Cluster 7
-20171110172017,18,Male,1,150000,No,White,No HS,Missouri,Cluster 4
-20171110172158,77,Male,2,30000,Yes,White,HS,California,Cluster 1
-20171210171498,16,Male,1,100000,No,White,No HS,Pennsylvania,Cluster 4
-20171211172149,30,Male,0,100000,Yes,White,Bachelors,Massachusetts,Cluster 5
+20171110172058,32,Male,2,25000,No,White,Some college,Minnesota,Cluster 7
+20171110172340,43,Male,0,25000,No,Black,Some college,Texas,Cluster 6
+20171110172464,26,Female,0,50000,No,White,Bachelors,Texas,Cluster 5
+20171110172501,76,Male,0,35000,Yes,Black,Some college,North Carolina,Cluster 3
+20171111172225,70,Female,0,20000,Yes,White,HS,Georgia,Cluster 1
+20171210171655,59,Female,0,75000,No,White,Some college,Michigan,Cluster 5
+20171210172474,39,Male,0,7500,No,White,No HS,Rhode Island,Cluster 6
+20171211170593,74,Male,0,75000,No,White,Bachelors,Florida,Cluster 3
+20171211171073,59,Female,0,100000,Yes,White,Bachelors,Florida,Cluster 3
+20171211171318,68,Male,0,60000,Yes,White,Masters,Louisiana,Cluster 1
+20171211171938,50,Male,0,30000,No,White,HS,Ohio,Cluster 6
+20171211172384,54,Female,0,60000,Yes,White,HS,Florida,Cluster 7
+20171211172396,75,Female,0,60000,Yes,White,Bachelors,Illinois,Cluster 1
+20171211172420,36,Male,4,30000,Yes,White,No HS,California,Cluster 6
 20171211172423,46,Female,3,100000,Yes,White,Bachelors,Utah,Cluster 6
-20180101181236,57,Female,0,75000,Yes,White,Bachelors,Virginia,Cluster 1
+20171212171596,28,Female,0,35000,No,Black,HS,New York,Cluster 7
+20180101180919,80,Female,0,20000,Yes,White,HS,Pennsylvania,Cluster 1
+20180101182355,22,Female,0,50000,No,Other,Some college,Connecticut,Cluster 4
 20180111171351,21,Male,0,150000,No,Black,Some college,Texas,Cluster 4
 20180111171453,22,Female,4,0,No,White,No HS,West Virginia,Cluster 2
-20180112170705,68,Male,0,100000,Yes,White,Some college,Wisconsin,Cluster 3
-20180112170988,20,Male,0,150000,No,White,Some college,Maryland,Cluster 4
-20180201180649,39,Female,1,150000,No,Other,Masters,Maryland,Cluster 1
-20180201180968,42,Female,2,75000,Yes,White,Masters,Florida,Cluster 6
-20180201181331,64,Female,1,50000,No,White,No HS,Illinois,Cluster 1
-20180201182434,28,Male,0,150000,Yes,White,Unknown,New York,Cluster 1
-20180212171949,53,Male,0,100000,No,White,Masters,Wisconsin,Cluster 5
-20180301181380,16,Male,3,10000,No,Black,No HS,Florida,Cluster 4
+20180111171866,30,Female,3,40000,Yes,White,Some college,New York,Cluster 7
+20180111172088,17,Female,1,50000,No,Other,No HS,Illinois,Cluster 6
+20180111172347,80,Female,0,50000,Yes,White,HS,Michigan,Cluster 1
+20180112171470,43,Female,1,50000,No,White,Some college,New Hampshire,Cluster 6
+20180112172416,32,Female,4,100000,Yes,White,Some college,New York,Cluster 3
+20180201181914,19,Male,0,0,No,White,Some college,Montana,Cluster 4
+20180211172370,18,Male,5,5000,No,White,No HS,Massachusetts,Cluster 4
+20180212171532,20,Female,2,150000,No,White,Some college,Oregon,Cluster 4
+20180212172327,79,Male,0,40000,No,White,HS,Massachusetts,Cluster 1
 20180302180064,31,Female,3,10000,Yes,Black,HS,Florida,Cluster 6
-20180302180140,80,Female,0,25000,Yes,White,No HS,Texas,Cluster 3
-20180302180788,58,Female,0,15000,No,White,Some college,Washington,Cluster 7
 20180302181270,45,Male,2,150000,Yes,White,Some college,Wisconsin,Cluster 2
-20180302182119,80,Female,0,25000,No,White,HS,Wisconsin,Cluster 3
+20180302182421,25,Male,0,35000,No,White,Bachelors,North Carolina,Cluster 5
+20180403180525,63,Male,0,60000,Yes,White,Bachelors,Missouri,Cluster 1
+20180403180599,73,Male,0,50000,Yes,White,Bachelors,Alabama,Cluster 3
 20180403180799,22,Male,2,75000,No,White,Some college,California,Cluster 7
-20180403181329,77,Female,0,7500,Yes,White,No HS,Alabama,Cluster 1
-20180403181511,48,Male,0,150000,Yes,Black,Bachelors,Tennessee,Cluster 6
 20180403181748,36,Female,1,35000,Yes,White,Bachelors,Georgia,Cluster 6
-20180403181988,55,Male,0,100000,Yes,Black,Some college,Michigan,Cluster 6
-20180404180516,53,Female,1,30000,Yes,White,No HS,Texas,Cluster 3
-20180503182460,20,Male,0,60000,No,White,HS,California,Cluster 1
-20180504180966,45,Male,0,150000,No,Asian,Unknown,Washington,Cluster 3
-20180504181423,24,Male,0,75000,Yes,Asian,Some college,Washington,Cluster 6
-20180504181481,38,Male,1,40000,Yes,White,HS,Nebraska,Cluster 6
+20180403182450,59,Male,0,150000,Yes,White,Bachelors,Maryland,Cluster 5
+20180502181662,53,Male,0,75000,Yes,Black,HS,New York,Cluster 1
+20180502182197,49,Female,0,100000,Yes,Black,HS,California,Cluster 5
+20180503180702,31,Male,1,15000,No,White,HS,Iowa,Cluster 5
+20180503182080,18,Female,1,75000,No,White,HS,California,Cluster 4
+20180504180091,32,Male,1,75000,Yes,Black,Masters,Texas,Cluster 3
+20180504180771,70,Female,0,25000,Yes,White,HS,Virginia,Cluster 3
+20180504181192,68,Male,0,50000,Yes,White,Some college,Indiana,Cluster 3
 20180504181541,24,Male,0,35000,No,Asian,Some college,California,Cluster 7
-20180504181999,75,Male,0,150000,Yes,White,Masters,California,Cluster 6
 20180504182155,34,Female,4,50000,No,White,Some college,California,Cluster 3
-20180604181016,53,Female,1,75000,Yes,White,Some college,Colorado,Cluster 3
-20180604182061,60,Female,0,150000,No,Other,Masters,Michigan,Cluster 3
-20180604182398,35,Male,0,35000,No,Other,No HS,Illinois,Cluster 1
-20180605181178,43,Male,0,20000,No,Black,Some college,Missouri,Cluster 7
-20180605182479,18,Male,0,75000,No,White,Some college,California,Cluster 1
+20180604182424,47,Female,1,50000,Yes,White,HS,South Carolina,Cluster 7
+20180605180624,80,Female,0,7500,No,White,Some college,Illinois,Cluster 3
+20180605181409,78,Female,0,20000,No,White,HS,South Carolina,Cluster 1
 20180706181059,27,Male,0,50000,Yes,White,HS,Illinois,Cluster 2
 20180707180038,35,Male,0,100000,No,White,Some college,Washington,Cluster 2
-20180707181593,29,Female,0,75000,No,White,Bachelors,Maryland,Cluster 5
-20180707182195,27,Male,0,60000,No,White,Bachelors,Kansas,Cluster 5
-20180807181184,28,Male,0,35000,No,Black,Some college,California,Cluster 5
-20180807181363,26,Male,0,40000,Yes,White,HS,Ohio,Cluster 7
-20180807181645,30,Male,1,75000,Yes,White,Bachelors,Tennessee,Cluster 5
-20180807181728,36,Male,2,100000,No,White,HS,Washington,Cluster 6
+20180707180638,68,Female,0,20000,No,White,HS,Maryland,Cluster 3
+20180707181689,38,Male,0,100000,No,White,Bachelors,Pennsylvania,Cluster 5
+20180807180526,53,Male,1,75000,Yes,Other,Some college,Colorado,Cluster 7
+20180807180663,29,Female,0,75000,No,White,Masters,Texas,Cluster 7
+20180807181210,26,Female,0,7500,No,Black,HS,Illinois,Cluster 1
 20180807182063,16,Male,2,60000,No,Asian,No HS,Missouri,Cluster 4
-20180807182254,22,Male,0,75000,No,White,Some college,Ohio,Cluster 6
-20180907180689,44,Female,2,100000,Yes,Asian,Unknown,Iowa,Cluster 5
-20180908180713,30,Female,2,60000,Yes,White,Some college,Ohio,Cluster 3
+20180907181342,37,Male,0,150000,No,White,HS,Wisconsin,Cluster 7
+20180908180603,32,Male,0,40000,No,White,Bachelors,Texas,Cluster 5
+20180908180608,67,Female,0,60000,No,White,Some college,Oklahoma,Cluster 1
 20180908180816,51,Male,2,35000,Yes,Black,HS,New York,Cluster 7
-20180908180909,34,Male,0,60000,No,White,Some college,Louisiana,Cluster 6
+20180908181040,76,Male,0,75000,Yes,White,Masters,Texas,Cluster 1
 20180908181047,59,Male,0,40000,Yes,White,Bachelors,Georgia,Cluster 5
-20180908181432,79,Male,0,150000,No,White,Bachelors,Wisconsin,Cluster 5
-20180909182405,16,Female,1,100000,No,White,No HS,Virginia,Cluster 4
-20181008181577,17,Female,2,150000,No,White,No HS,Texas,Cluster 4
+20180908181175,15,Female,2,75000,No,Other,No HS,Colorado,Cluster 4
+20180908182034,38,Female,0,50000,Yes,White,Masters,New York,Cluster 5
+20180908182354,80,Female,0,75000,No,White,Masters,Missouri,Cluster 3
+20180908182415,49,Female,0,0,No,Black,HS,Georgia,Cluster 7
+20180909182193,35,Male,5,100000,Yes,White,Masters,Florida,Cluster 6
+20181007181871,43,Male,2,75000,Yes,White,HS,Pennsylvania,Cluster 6
 20181009180558,61,Female,0,20000,No,White,HS,Massachusetts,Cluster 2
-20181009182414,33,Male,0,50000,No,Black,Some college,Massachusetts,Cluster 4
-20181109181018,28,Female,3,40000,Yes,White,No HS,Alabama,Cluster 6
+20181009180648,17,Female,1,100000,No,White,HS,Massachusetts,Cluster 4
+20181009180830,23,Male,0,25000,No,Asian,Some college,Arizona,Cluster 4
+20181009181231,63,Male,0,75000,Yes,White,HS,Virginia,Cluster 6
+20181009181658,75,Female,0,15000,No,White,No HS,Ohio,Cluster 3
+20181009181994,52,Male,1,60000,Yes,Asian,Some college,California,Cluster 5
+20181009182141,33,Female,0,100000,Yes,White,Masters,Georgia,Cluster 6
+20181009182443,25,Male,0,60000,No,White,Bachelors,Kansas,Cluster 5
+20181010180631,80,Female,0,30000,No,White,HS,Washington,Cluster 1
+20181010181634,73,Female,0,60000,Yes,White,Some college,Indiana,Cluster 4
+20181010181906,85,Female,0,15000,No,White,HS,Florida,Cluster 1
 20181109181150,52,Male,0,20000,No,White,No HS,New York,Cluster 6
 20181109181600,25,Female,1,150000,No,White,Bachelors,Texas,Cluster 4
-20181110180565,80,Male,0,50000,Yes,White,Unknown,Missouri,Cluster 1
-20181110181129,46,Male,0,75000,No,White,Bachelors,New Jersey,Cluster 6
+20181110180128,30,Male,2,60000,Yes,Black,HS,New York,Cluster 5
+20181110180995,59,Male,0,150000,Yes,White,Masters,New Jersey,Cluster 5
 20181110181547,48,Male,0,60000,No,White,Bachelors,California,Cluster 7
-20181110182535,57,Male,0,100000,Yes,White,HS,Michigan,Cluster 5
+20181110181602,16,Male,1,150000,No,White,No HS,Wisconsin,Cluster 4
+20181111182497,15,Male,4,75000,No,Other,No HS,Maryland,Cluster 1
 20181211180544,56,Female,0,35000,Yes,White,Some college,Texas,Cluster 7
-20181212180953,50,Male,0,25000,Yes,Asian,Masters,Texas,Cluster 3
+20181211180627,17,Male,2,40000,No,White,No HS,Massachusetts,Cluster 4
+20181211181077,39,Female,0,50000,No,White,Some college,Tennessee,Cluster 6
+20181211181754,31,Female,2,60000,Yes,White,Masters,Minnesota,Cluster 3
