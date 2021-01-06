@@ -8,6 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 31 Dec 2020 10:42:50 -0500</lastBuildDate><atom:link href="https://joemarlo.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Who spends their day just like you?</title>
+      <link>https://joemarlo.github.io/posts/atus-similar-days/</link>
+      <pubDate>Thu, 31 Dec 2020 10:42:50 -0500</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/atus-similar-days/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Finding similar sequences of categorical data&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Measuring hate speech on social media</title>
       <link>https://joemarlo.github.io/posts/hate-speech/</link>
       <pubDate>Fri, 11 Dec 2020 09:17:57 -0500</pubDate>
@@ -158,15 +167,6 @@
       
       <guid>https://joemarlo.github.io/posts/fan-art/</guid>
       <description>&lt;p&gt;Using R to build beautiful digital artwork randomly&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Who spends their day just like you?</title>
-      <link>https://joemarlo.github.io/posts/atus-similar-days/</link>
-      <pubDate>Thu, 31 Dec 2020 10:42:50 -0500</pubDate>
-      
-      <guid>https://joemarlo.github.io/posts/atus-similar-days/</guid>
-      <description>&lt;p&gt;&lt;em&gt;DRAFT&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

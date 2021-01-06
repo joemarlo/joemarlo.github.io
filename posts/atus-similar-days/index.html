@@ -106,14 +106,15 @@
     <div class="col-lg-9">
       <div class="content-column-content">
          <h1>Who spends their day just like you?</h1>
-         <p><em>DRAFT</em></p>
+         <p><em>Finding similar sequences of categorical data</em></p>
 <hr>
-<p>How people their time is fascinating. It&rsquo;s the most equitable resource Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-<p>A single day can be reduced to a string of activities. Here, every hour&rsquo;s activity is represented by a single identifier.</p>
+<p>How people their time is fascinating. It&rsquo;s the most precious resource as where we spend our time reflects our priorities. Finding people who spend their days similar to our own can be enlightening — both because it&rsquo;s intrinsically interesting and to understand ourselves through the lens of others.</p>
+<p>A single day&rsquo;s time-use can be reduced to a string of activities. Here, every hour is represented by a rectangle and the activity by a color.</p>
 <div id="container_example"></div><br><br>
-<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+<div id='legend_example'><br></div>
+<p>This prototypical day tells us the person works a roughly 9-5 day and spends their free time relaxing or socializing. They most likely are not in school and do not have children requiring care. As a result it can be roughly inferred they have a steady full time job, are college educated, and make above median income.</p>
+<p>Answer the questions below to see who spends their day similar to you. The question-series yields common weekday sequences that may match your own; however the sequences are entirely editable to fit your exact day.</p>
 <br>
-<div class="corner_ribbon">DRAFT</div>
 <div id='visualization'>
   <div id="container_twenty_questions">
     <h3>How do you usually spend your weekdays?</h3>
@@ -163,43 +164,65 @@
   <div id="plot_sequence"></div>
   <br>
   <h4>Who are these people?</h4>
-  <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? </p>
+  <p>The below plots reflect the above 25 individuals measured on six attributes. The heights of the bars represent the frequency for that category.</p>
   <div id="plot_histograms"></div>
 </div>
 <hr><br>
 <h3 id="how-does-this-work">How does this work?</h3>
-<p>In short, a day&rsquo;s time use activities are reduced down to a single string of characters and the <a href="https://en.wikipedia.org/wiki/Edit_distance">edit distance</a> between the strings is computed. More similar days have smaller distances.</p>
+<p>In short, a day&rsquo;s time use activities are reduced to a single string of characters and the <a href="https://en.wikipedia.org/wiki/Edit_distance">edit distance</a> between the strings is computed. More similar days have smaller distances.</p>
 <h4 id="edit-distance-methods">Edit distance methods</h4>
-<p>These many choices of edit distance metrics. Most are variations of costs for insertions, deletions, and substitutions to convert one string to the other. The below four are some of the most common:</p>
+<p>There are many choices of edit distance method. Most rely on counting the number of insertions, deletions, and substitutions to transform one string to the other — with each method stipulating different costs for each operation. The below four are some of the most common:</p>
 <ul>
 <li>Hamming: only allows substitution</li>
-<li>Longest common subsequence (LCS): only allows insertions and deletions</li>
+<li>Longest common sub-sequence (LCS): only allows insertions and deletions</li>
 <li>Dynamic Hamming: only allows substitutions but costs depend on position within the sequence</li>
 <li>TRATE: costs derived from transition rates</li>
 </ul>
 <p>Each of these have advantages and disadvantages. For this project, dynamic hamming produced the most interesting clusters. It captured both the unique sequencing of the activities and their timing within the day.</p>
 <h4 id="clustering">Clustering</h4>
-<p>The data needs to condensed down from the original 100,000 days into a dataset small enough to be loaded quickly by the browser.</p>
+<p>The data comes from the <a href="https://www.bls.gov/tus/">American Time Use Survey</a> covering over 200,000 interviews between 2003 to 2018. The original 100,000 weekdays of data needs to be condensed down into a dataset small enough to be quickly loaded by the browser.</p>
+<p>Hierarchical clustering based on the edit distance is used to discover the seven most interesting clusters. While a smaller number of clusters results in the best cohesion-to-separation (measured via <a href="https://en.wikipedia.org/wiki/Silhouette_(clustering)">silhouette width</a>), seven clusters provides the best balance between the numerical measure and subjective interpretations of cluster distinction.</p>
+<p>The below dendrogram shows distances between the observations and how they coalesce at varying cluster k values. The colors represent the seven clusters.</p>
 <p align="center">
 <img src="/img/posts/ATUS-similar-days/dendrogram.png" width=80%>
 </p>
-<p align="center">
-<img src="/img/posts/ATUS-similar-days/silhouette_width.svg" width=80%>
-</p>
+<p>Each cluster&rsquo;s individual sequences reveal what makes the clusters differentiable. Cluster 1 consists of mostly socialites/relaxers; cluster 2 night workers; cluster 3 household activities; cluster 4 students; cluster 5 morning workers; cluster 6 early-morning workers; and cluster 7 evening workers.</p>
 <p align="center">
 <img src="/img/posts/ATUS-similar-days/state_distributions_by_cluster.png" width=95%>
 </p>
+<p>The clusters are reduced down to their modal sequence. These modes are used as the first step to classify the user&rsquo;s input. The input is first matched to the best cluster (based on edit distance to the modal sequence) and then matched to the top 25 sequences of 200 sampled sequences per cluster.</p>
 <p align="center">
 <img src="/img/posts/ATUS-similar-days/modal_sequences.svg" width=80%>
 </p>
+<br>
+<h4 id="survey-information">Survey information</h4>
+<ul>
+<li>Contains nationally representative estimates of how, where, and with whom Americans spend their time</li>
+<li>Covers 200,000 interviews conducted from 2003 to 2018</li>
+<li>Only non-holiday weekday data is included here resulting in ~100,000 interviews</li>
+<li>Can be linked to <a href="https://www.census.gov/programs-surveys/cps.html">Current Population Survey</a> for detailed household demographic information</li>
+<li>Sponsored by the Bureau of Labor Statistics and conducted by the Census Bureau</li>
+</ul>
+<br>
 <h4 id="limitations">Limitations</h4>
 <ul>
-<li>only weekdays</li>
-<li>not comprehensive of all day types</li>
-<li>distributions are not representative all <em>all</em> people that do those activities, just the top 25 people most similar to you</li>
-<li>list definitions of activities</li>
-<li>US only
-Sources: American Time Use Survey</li>
+<li>The American Time Use Survey measures primary activity so some activities are not accurately captured. For example, listening to music is rarely recorded because typically it is a secondary task. If I&rsquo;m listening to music, I&rsquo;m probably also doing housework or cooking.</li>
+<li>The data is self reported so <a href="https://en.wikipedia.org/wiki/Response_bias">standard biases apply</a></li>
+<li>The clustering process aims to provide distinct clusters but they may not be representative of all day types. Combined with the two-step algorithm specified above, some day types may not be matched well. Notably, the use of the <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a> to calculate distances between the user sequence and the modal sequences result in cluster 7 (evening workers) often being skipped over. Once time allows, I may write my own dynamic Hamming distance function in Javascript; one is not currently available.</li>
+<li>The above distributions are not representative of <em>all</em> people that do those activities, just the top 25 people most similar to you</li>
+<li>The raw time-use data details each minute of the respondent’s day by mapping it to a list of 465 activities. I aggregated these 465 activities into 15 activities based on the Bureau of Labor Statistics’ (BLS) hierarchical definitions and the author’s judgment. Each 30 minutes of the day is categorized as the modal activity within each respective time frame. These results in loss of information but severely reduces the distance matrix size.</li>
+</ul>
+<br>
+<h4 id="software-thanks">Software thanks</h4>
+<ul>
+<li><a href="https://d3js.org/">d3.js</a> and JavaScript for interactive visualizations</li>
+<li><a href="https://cran.r-project.org/">R</a> for analysis
+<ul>
+<li><a href="http://traminer.unige.ch/">TraMineR</a> for edit distance calculations</li>
+<li><a href="https://cran.r-project.org/web/packages/fastcluster/index.html">fastcluster</a> and <a href="https://cran.r-project.org/web/packages/NbClust/index.html">NbClust</a> for Clustering</li>
+<li><a href="https://www.tidyverse.org/">tidyverse</a> for data munging and <a href="https://ggplot2.tidyverse.org/">ggplot2</a> for static visualizations</li>
+</ul>
+</li>
 </ul>
 <br>
 <hr>

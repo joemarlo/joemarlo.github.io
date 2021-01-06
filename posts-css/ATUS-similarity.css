@@ -55,21 +55,30 @@ span {
 
 .example_div {
   width: 4%;
-  max-width: 25px;
-  height: 30px;
+  max-width: 30px;
+  height: 75px;
   float: left;
 }
 
-.example_rect {
-  max-width: 95%;
-  height: 16px;
+.example_div > svg > g > rect {
+  width: 95%;
+  height: 30%;
   border-radius: 0;
   box-shadow: none;
   border: solid;
-  border-color: white;
-  border-width: 1px;
+  stroke-width: 1;
   margin: 0;
   padding: 0 0 0 0;
+}
+
+.example_rect {
+
+}
+
+.example_div > svg > g > text {
+  font-size: 0.7em;
+  fill: #4d4d4d;
+  stroke: none;
 }
 
 .user_input_div {
@@ -102,7 +111,7 @@ span {
 /* this is the text */
 .user_input_div > svg > text {
   font-size: 0.5em;
-  fill: #424242;
+  fill: #4d4d4d;
   stroke: none;
 }
 

@@ -5,7 +5,7 @@ function getConfigBar(){
       top: 10,
       bottom: 70,
       left: 10,
-      right: 10
+      right: 20
   }
 
   //The body is the area that will be occupied by the bars.
@@ -27,7 +27,7 @@ function getScalesBar(data, configBar, id) {
 
  // manually set domains for some
  if (id == 'education'){xDomain = ['No HS', 'HS', 'Some college', 'Bachelors', 'Masters', 'Doctoral', 'Unknown']}
- if (id == 'n_child'){xDomain = ['0', '1', '2', '3', '4', '5']}
+ if (id == 'n_child'){xDomain = ['0', '1', '2', '3', '4', '5', '6']}
 
  let xScale = d3.scaleBand()
      .domain(xDomain)
@@ -61,7 +61,7 @@ function drawBars(data, configBar, scales, id, title){
   // .attr("transform", "translate(" + margin.left + "," + bodyHeight + ")")
    .call(d3.axisBottom(xScale))
    .selectAll("text")
-     .attr("transform", "translate(5,5)rotate(30)")
+     .attr("transform", "translate(5,5)rotate(50)")
      .style("text-anchor", "start");
 
   // remove and redraw x axis label

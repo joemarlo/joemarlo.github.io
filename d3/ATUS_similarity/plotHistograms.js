@@ -5,7 +5,7 @@ function getConfigHist() {
        top: 10,
        bottom: 70,
        left: 10,
-       right: 10
+       right: 20
    }
 
    //The body is the area that will be occupied by the bars.
@@ -63,7 +63,7 @@ function drawHistBars(data, nbins, scales, configHist, id, axisLabel){
     .attr("transform", "translate(" + margin.left + "," + bodyHeight + ")")
     .call(d3.axisBottom(xScale))
     .selectAll("text")
-      .attr("transform", "translate(5,5)rotate(40)")
+      .attr("transform", "translate(5,5)rotate(50)")
       .style("text-anchor", "start");
 
   /*// remove and redraw x axis label

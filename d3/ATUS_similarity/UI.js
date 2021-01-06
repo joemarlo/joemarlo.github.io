@@ -1,6 +1,9 @@
-// define example sequences
-example_cols = ['#154e56', '#154e56', '#154e56', '#154e56', '#65e6f9', '#f24325', '#58df8c', '#58df8c', '#58df8c', '#58df8c', '#58df8c', '#f24325', '#58df8c', '#58df8c', '#58df8c', '#58df8c', '#58df8c', '#f24325', '#65e6f9', '#154e56',  '#154e56',  '#154e56',  '#154e56']
+// create tick labels for sequences
+let tickLabels = ["4am", 5, 6, 7, 8, 9, 10, 11, "12pm", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "12am", 1, 2, 3]
 
+// define example sequences
+example_cols = ['#154e56', '#154e56', '#154e56', '#65e6f9', '#f24325', '#b5d08d', '#b5d08d', '#b5d08d', '#b5d08d', '#f24325', '#b5d08d', '#b5d08d', '#b5d08d', '#b5d08d', '#b5d08d', '#58df8c', '#f24325', '#58df8c', '#58df8c', '#65e6f9',  '#154e56',  '#154e56',  '#154e56', '#154e56']
+console.log(example_cols.length)
 // iterate through and create the select dropdowns
 for (var i=0; i<24; i++){
   // create new div
@@ -11,14 +14,22 @@ for (var i=0; i<24; i++){
   // append svg to the div
   svg = d3.select('#example_div'+(i+1))
     .append("svg")
-    .attr('class', 'example_rect')
     .attr("height", '100%')
     .attr("width", '100%')
+    .append('g')
   svg
     .append('rect')
-    .attr('height', '100%')
-    .attr('width', '100%')
-    .attr('fill', example_cols[i])
+    .attr('stroke', 'white')
+    .style('fill', example_cols[i])
+  svg
+    .append('text')
+    .attr("x", '105%')
+    .attr('y', '-5%')
+    .attr("dx", "0.8em")
+    .attr("dy", "-0.2em")
+    .text(tickLabels[i])
+    .attr("transform", "rotate(90)")
+    .style("text-anchor", "start");
 }
 
 // define the 7 'typical' sequences that are returned from 20Q. These is generated from generate_html.R
@@ -46,8 +57,6 @@ let proto10 = [ {val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#1
 var arrSelect = [
   {val : '#208eb7', text: 'Sports, Exercise, and Recreation'}, {val : '#65e6f9', text: 'Personal Care'}, {val : '#154e56', text: 'Sleep'}, {val : '#58df8c', text: 'Socializing, Relaxing, and Leisure'}, {val : '#966106', text: 'Household Activities'}, {val : '#b5d08d', text: 'Work'}, {val : '#6d3918', text: 'Professional & Personal Care Services'}, {val : '#f24325', text: 'Eating and Drinking'}, {val : '#8e1023', text: 'Caring For Household Member'}, {val : '#c27d92', text: 'Consumer Purchases'}, {val : '#fbcab9', text: 'Other'}, {val : '#ff0087', text: 'Caring For Nonhousehold Members'}, {val : '#fd8f2f', text: 'Education'}, {val : '#bce333', text: 'Volunteer'}, {val : '#798a58', text: 'Religious and Spiritual'}
 ];
-
-let tickLabels = ["4am", 5, 6, 7, 8, 9, 10, 11, "12pm", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, "12am", 1, 2, 3]
 
 // function to return cluster based on results from questions
 function arrColorsFun(){
