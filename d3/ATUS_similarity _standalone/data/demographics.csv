@@ -54,8 +54,8 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20031110031765,48,Female,0,25000,No,Black,Some college,Louisiana,Cluster 6
 20031110031934,56,Female,0,5000,No,White,HS,Michigan,Cluster 5
 20031110032507,69,Female,0,0,Yes,White,Bachelors,New York,Cluster 3
-20031211030818,43,Male,2,25000,Yes,White,Unknown,California,Cluster 3
-20031211031927,47,Male,0,25000,No,Black,Unknown,Michigan,Cluster 1
+20031211030818,43,Male,2,25000,Yes,White,NA,California,Cluster 3
+20031211031927,47,Male,0,25000,No,Black,NA,Michigan,Cluster 1
 20031211032002,28,Male,4,35000,Yes,White,No HS,Michigan,Cluster 7
 20031211032615,40,Female,1,35000,No,Other,HS,North Carolina,Cluster 3
 20031211032882,26,Male,0,15000,No,White,Some college,Oregon,Cluster 5
@@ -77,10 +77,10 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20040302041675,19,Male,1,20000,No,Black,HS,New Jersey,Cluster 7
 20040302041758,17,Female,4,10000,No,White,No HS,New York,Cluster 4
 20040302042004,23,Female,2,60000,Yes,White,Bachelors,Ohio,Cluster 7
-20040302042425,59,Female,0,75000,Yes,White,Unknown,Virginia,Cluster 3
+20040302042425,59,Female,0,75000,Yes,White,NA,Virginia,Cluster 3
 20040303041274,57,Male,0,0,No,White,No HS,Kentucky,Cluster 7
 20040303041770,43,Male,0,40000,No,White,HS,New York,Cluster 6
-20040403040727,19,Female,2,12500,No,White,Unknown,California,Cluster 2
+20040403040727,19,Female,2,12500,No,White,NA,California,Cluster 2
 20040403040762,49,Female,0,10000,No,White,No HS,California,Cluster 3
 20040403042054,57,Male,0,75000,Yes,White,Some college,Oregon,Cluster 1
 20040403042227,48,Male,1,100000,Yes,White,Bachelors,Tennessee,Cluster 5
@@ -122,7 +122,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20050101051016,20,Female,3,25000,No,Black,HS,Florida,Cluster 2
 20050111040019,29,Female,0,60000,No,Other,Bachelors,California,Cluster 2
 20050111040507,32,Male,5,40000,Yes,White,HS,Alabama,Cluster 2
-20050112040025,18,Female,0,150000,No,White,Unknown,Florida,Cluster 7
+20050112040025,18,Female,0,150000,No,White,NA,Florida,Cluster 7
 20050112041464,54,Male,2,150000,Yes,White,HS,Michigan,Cluster 5
 20050201050944,56,Female,1,60000,Yes,White,Some college,Florida,Cluster 5
 20050201051319,73,Female,0,0,No,White,HS,Louisiana,Cluster 1
@@ -144,7 +144,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20050504050818,76,Female,0,30000,Yes,White,Bachelors,Colorado,Cluster 1
 20050504050959,15,Male,1,75000,No,White,No HS,Florida,Cluster 4
 20050504051870,30,Female,1,50000,Yes,White,Masters,North Carolina,Cluster 1
-20050504051907,37,Male,1,75000,No,White,Unknown,Ohio,Cluster 5
+20050504051907,37,Male,1,75000,No,White,NA,Ohio,Cluster 5
 20050504052472,33,Male,1,75000,Yes,White,HS,West Virginia,Cluster 6
 20050505052252,65,Male,0,25000,Yes,White,HS,Texas,Cluster 3
 20050605052034,39,Female,0,20000,No,Black,Some college,Oklahoma,Cluster 5
@@ -155,7 +155,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20050806052200,37,Male,2,20000,Yes,White,HS,Texas,Cluster 1
 20050807050517,16,Female,2,10000,No,White,No HS,Alabama,Cluster 4
 20050807051476,25,Male,0,25000,Yes,White,Some college,Michigan,Cluster 2
-20050808050134,21,Female,0,20000,No,White,Unknown,Pennsylvania,Cluster 7
+20050808050134,21,Female,0,20000,No,White,NA,Pennsylvania,Cluster 7
 20050808050588,18,Male,1,20000,No,White,No HS,Arkansas,Cluster 4
 20050808050697,46,Female,0,150000,No,White,Some college,California,Cluster 6
 20050808052158,46,Female,0,50000,Yes,Black,HS,South Carolina,Cluster 2
@@ -177,7 +177,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20051211051146,51,Male,0,60000,Yes,White,HS,Indiana,Cluster 6
 20051211051839,47,Male,2,40000,Yes,White,HS,Ohio,Cluster 3
 20051211051974,39,Female,0,30000,Yes,White,HS,Pennsylvania,Cluster 5
-20051211052124,17,Female,1,25000,No,Black,Unknown,Texas,Cluster 4
+20051211052124,17,Female,1,25000,No,Black,NA,Texas,Cluster 4
 20051212051291,48,Female,0,50000,Yes,White,HS,Maryland,Cluster 3
 20060101061189,80,Female,0,15000,No,White,HS,Indiana,Cluster 1
 20060111051054,61,Male,0,0,Yes,White,HS,Illinois,Cluster 6
@@ -222,13 +222,13 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20060706061657,60,Male,1,5000,No,White,HS,New York,Cluster 1
 20060707060132,48,Female,0,60000,No,Black,HS,Maryland,Cluster 6
 20060807061174,38,Male,0,50000,No,White,HS,Iowa,Cluster 2
-20060807061731,43,Female,1,30000,No,Black,Unknown,North Carolina,Cluster 1
+20060807061731,43,Female,1,30000,No,Black,NA,North Carolina,Cluster 1
 20060807061764,52,Male,2,150000,Yes,White,Doctoral,North Carolina,Cluster 5
 20060908061078,19,Female,1,20000,No,White,Some college,Georgia,Cluster 3
 20060908061808,20,Female,0,75000,No,White,HS,Ohio,Cluster 2
 20060908061868,17,Female,1,15000,No,White,No HS,Oklahoma,Cluster 4
 20060908062174,37,Male,1,100000,Yes,White,HS,Texas,Cluster 7
-20060908062341,80,Female,0,30000,Yes,White,Unknown,Wisconsin,Cluster 1
+20060908062341,80,Female,0,30000,Yes,White,NA,Wisconsin,Cluster 1
 20060909060638,29,Male,0,0,No,White,Bachelors,California,Cluster 5
 20060909061044,23,Male,0,20000,No,White,HS,Georgia,Cluster 1
 20061008062202,16,Male,3,50000,No,White,No HS,Texas,Cluster 4
@@ -264,7 +264,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20070402071910,60,Male,0,0,Yes,White,HS,Pennsylvania,Cluster 1
 20070403070507,61,Female,0,20000,No,White,HS,Alabama,Cluster 7
 20070403071820,36,Female,5,75000,Yes,White,Bachelors,Ohio,Cluster 5
-20070403072355,85,Female,0,12500,No,White,Unknown,Wisconsin,Cluster 1
+20070403072355,85,Female,0,12500,No,White,NA,Wisconsin,Cluster 1
 20070503072394,16,Female,2,60000,No,White,No HS,Connecticut,Cluster 4
 20070504070084,42,Male,3,25000,Yes,Black,Bachelors,New York,Cluster 7
 20070504071188,27,Female,0,20000,No,White,HS,Illinois,Cluster 7
@@ -339,7 +339,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20080705082100,39,Female,1,35000,No,White,HS,New Jersey,Cluster 5
 20080706080586,42,Male,0,0,No,Black,Bachelors,New Jersey,Cluster 1
 20080706081387,49,Female,2,40000,Yes,Other,No HS,Oregon,Cluster 2
-20080706081556,18,Female,0,150000,No,White,Unknown,Texas,Cluster 1
+20080706081556,18,Female,0,150000,No,White,NA,Texas,Cluster 1
 20080706081642,66,Female,0,75000,Yes,White,Masters,California,Cluster 3
 20080807080551,79,Female,0,75000,No,White,Some college,Tennessee,Cluster 3
 20080807082010,80,Male,2,75000,No,White,No HS,Texas,Cluster 1
@@ -384,13 +384,13 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20090504090558,70,Male,0,40000,Yes,White,Some college,Washington,Cluster 3
 20090504090985,15,Female,2,30000,No,White,No HS,Florida,Cluster 4
 20090504091597,31,Male,2,5000,No,White,No HS,California,Cluster 6
-20090504092358,62,Female,0,0,No,Black,Unknown,California,Cluster 5
+20090504092358,62,Female,0,0,No,Black,NA,California,Cluster 5
 20090505090044,23,Female,2,25000,No,White,HS,Maryland,Cluster 5
 20090505090047,34,Male,0,40000,No,White,No HS,Kansas,Cluster 2
 20090605091908,55,Female,0,40000,Yes,White,HS,Ohio,Cluster 2
 20090606091530,33,Male,0,100000,No,White,Bachelors,California,Cluster 3
 20090705091609,22,Male,2,150000,No,White,Some college,California,Cluster 7
-20090706090095,22,Female,0,0,No,White,Unknown,Illinois,Cluster 7
+20090706090095,22,Female,0,0,No,White,NA,Illinois,Cluster 7
 20090706091339,44,Female,2,25000,Yes,Black,HS,Georgia,Cluster 7
 20090706091443,26,Male,0,0,No,White,Some college,Ohio,Cluster 7
 20090706091780,79,Male,0,40000,Yes,White,Masters,Oklahoma,Cluster 1
@@ -493,11 +493,11 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20110101111041,24,Male,0,75000,No,White,Some college,Iowa,Cluster 7
 20110111101963,15,Female,1,60000,No,Black,No HS,California,Cluster 4
 20110112100982,43,Female,1,100000,Yes,White,Masters,Texas,Cluster 6
-20110112101687,41,Male,0,25000,No,White,Unknown,Texas,Cluster 3
+20110112101687,41,Male,0,25000,No,White,NA,Texas,Cluster 3
 20110112101834,45,Male,1,40000,Yes,White,HS,Missouri,Cluster 7
 20110112101930,17,Female,1,40000,No,White,No HS,Arizona,Cluster 4
 20110201110967,21,Male,0,60000,No,White,Some college,Indiana,Cluster 3
-20110201112190,58,Female,0,75000,Yes,White,Unknown,Arizona,Cluster 6
+20110201112190,58,Female,0,75000,Yes,White,NA,Arizona,Cluster 6
 20110212101845,48,Male,2,60000,Yes,White,Bachelors,Texas,Cluster 5
 20110302110127,30,Male,3,75000,Yes,White,Bachelors,North Carolina,Cluster 5
 20110302110863,29,Male,0,75000,No,White,Doctoral,Idaho,Cluster 5
@@ -519,7 +519,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20110605110574,55,Female,1,15000,Yes,White,HS,Pennsylvania,Cluster 2
 20110605111312,73,Female,0,100000,Yes,White,Some college,Wisconsin,Cluster 7
 20110605111887,22,Female,0,60000,No,White,Some college,California,Cluster 7
-20110705111184,28,Female,0,150000,Yes,Asian,Unknown,New York,Cluster 3
+20110705111184,28,Female,0,150000,Yes,Asian,NA,New York,Cluster 3
 20110706110596,56,Female,0,60000,No,White,Bachelors,New York,Cluster 5
 20110706110828,22,Female,4,10000,No,Black,HS,Arkansas,Cluster 1
 20110706111460,45,Male,0,100000,No,White,HS,Florida,Cluster 6
@@ -563,7 +563,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20120112112059,39,Female,2,75000,Yes,White,HS,Oregon,Cluster 1
 20120112112314,59,Female,0,60000,Yes,White,HS,California,Cluster 1
 20120112112482,57,Female,0,60000,Yes,Black,Some college,Connecticut,Cluster 7
-20120112112490,57,Female,0,7500,No,Black,Unknown,Georgia,Cluster 1
+20120112112490,57,Female,0,7500,No,Black,NA,Georgia,Cluster 1
 20120201120155,42,Male,0,50000,Yes,Other,Some college,North Dakota,Cluster 7
 20120201120817,43,Male,3,60000,Yes,White,No HS,Texas,Cluster 1
 20120201121112,67,Male,0,75000,Yes,White,Bachelors,Massachusetts,Cluster 3
@@ -598,7 +598,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20120605122054,27,Female,0,50000,No,White,Some college,Missouri,Cluster 7
 20120605122179,64,Female,0,100000,No,White,Some college,Pennsylvania,Cluster 1
 20120705121424,28,Male,0,100000,No,White,Some college,Wyoming,Cluster 7
-20120706120043,51,Female,2,12500,No,Black,Unknown,Florida,Cluster 7
+20120706120043,51,Female,2,12500,No,Black,NA,Florida,Cluster 7
 20120706122109,29,Male,0,75000,No,White,Some college,Texas,Cluster 5
 20120706122308,19,Male,0,5000,No,Black,HS,Kentucky,Cluster 2
 20120706122343,41,Female,4,5000,Yes,White,HS,California,Cluster 4
@@ -623,7 +623,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20121211120682,22,Male,1,150000,No,White,Bachelors,California,Cluster 4
 20121211120736,45,Male,1,15000,No,White,No HS,California,Cluster 2
 20121211121639,30,Female,0,50000,No,White,HS,Iowa,Cluster 5
-20130101132075,17,Female,2,20000,No,Asian,Unknown,Utah,Cluster 4
+20130101132075,17,Female,2,20000,No,Asian,NA,Utah,Cluster 4
 20130111122356,20,Female,2,50000,No,White,Some college,Oregon,Cluster 1
 20130112121183,51,Female,0,75000,Yes,White,HS,Oregon,Cluster 6
 20130112121382,44,Female,2,100000,Yes,White,Bachelors,Pennsylvania,Cluster 6
@@ -642,7 +642,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20130403130089,29,Male,2,60000,No,White,HS,Florida,Cluster 7
 20130403130508,48,Female,1,100000,Yes,Asian,Bachelors,New York,Cluster 5
 20130403130748,50,Male,0,35000,No,White,Some college,Minnesota,Cluster 6
-20130403131128,23,Female,2,20000,Yes,Other,Unknown,Texas,Cluster 2
+20130403131128,23,Female,2,20000,Yes,Other,NA,Texas,Cluster 2
 20130403132109,38,Male,3,150000,Yes,White,Masters,California,Cluster 6
 20130404131188,46,Male,0,30000,No,Black,Some college,Ohio,Cluster 2
 20130504132369,23,Male,0,7500,No,White,Some college,Colorado,Cluster 4
@@ -652,7 +652,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20130705130997,35,Female,4,30000,Yes,White,No HS,Texas,Cluster 3
 20130706132205,60,Male,0,50000,No,White,HS,New Hampshire,Cluster 1
 20130706132261,48,Female,1,50000,No,White,Masters,Georgia,Cluster 3
-20130805132311,34,Male,2,20000,Yes,White,Unknown,New Jersey,Cluster 6
+20130805132311,34,Male,2,20000,Yes,White,NA,New Jersey,Cluster 6
 20130807130006,47,Female,0,35000,Yes,White,No HS,West Virginia,Cluster 3
 20130807130674,47,Female,1,100000,Yes,White,Bachelors,Illinois,Cluster 1
 20130807130974,44,Male,2,75000,No,White,HS,Minnesota,Cluster 5
@@ -718,7 +718,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20140808140553,68,Male,0,100000,Yes,White,HS,Virginia,Cluster 3
 20140808141652,65,Female,0,35000,Yes,White,Some college,Ohio,Cluster 3
 20140907141204,34,Female,2,100000,Yes,White,Some college,Indiana,Cluster 3
-20140907141797,18,Female,0,40000,No,White,Unknown,Arkansas,Cluster 4
+20140907141797,18,Female,0,40000,No,White,NA,Arkansas,Cluster 4
 20140907142068,52,Female,1,150000,Yes,Asian,Some college,Virginia,Cluster 5
 20140908140084,48,Male,0,40000,Yes,White,Some college,Florida,Cluster 5
 20140908141038,16,Male,2,75000,No,White,No HS,Minnesota,Cluster 4
@@ -755,7 +755,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20150201152408,70,Female,0,10000,No,White,Some college,Maine,Cluster 3
 20150201152452,27,Male,0,10000,No,White,HS,Illinois,Cluster 1
 20150201152492,39,Male,4,25000,Yes,White,Some college,Florida,Cluster 7
-20150212142258,32,Female,0,150000,No,White,Unknown,Michigan,Cluster 7
+20150212142258,32,Female,0,150000,No,White,NA,Michigan,Cluster 7
 20150301152171,36,Male,0,15000,No,White,HS,Pennsylvania,Cluster 7
 20150302151812,60,Female,0,15000,No,White,Some college,Maryland,Cluster 5
 20150302151907,15,Male,2,10000,No,White,No HS,Texas,Cluster 4
@@ -857,16 +857,16 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20161009160753,27,Male,0,75000,No,White,HS,Arizona,Cluster 5
 20161009160881,37,Female,2,75000,Yes,Asian,Masters,New Jersey,Cluster 1
 20161010160800,63,Female,0,100000,Yes,White,Some college,Iowa,Cluster 3
-20161109161095,17,Female,4,20000,No,White,Unknown,California,Cluster 4
+20161109161095,17,Female,4,20000,No,White,NA,California,Cluster 4
 20161109161914,30,Female,2,25000,No,White,HS,NA,Cluster 2
 20161110160751,42,Female,0,60000,No,White,HS,Illinois,Cluster 7
-20161110160764,30,Female,2,150000,Yes,White,Unknown,Texas,Cluster 3
+20161110160764,30,Female,2,150000,Yes,White,NA,Texas,Cluster 3
 20161110160824,29,Male,1,100000,Yes,Black,Some college,Florida,Cluster 2
 20161110161303,37,Male,0,25000,No,White,HS,Texas,Cluster 2
 20161110161952,56,Female,0,60000,No,White,Some college,Texas,Cluster 7
 20161110162234,26,Female,3,15000,No,Black,HS,Georgia,Cluster 2
 20161211160545,29,Male,0,50000,No,White,No HS,Florida,Cluster 5
-20161211161473,41,Female,1,100000,Yes,White,Unknown,Florida,Cluster 5
+20161211161473,41,Female,1,100000,Yes,White,NA,Florida,Cluster 5
 20161211161920,37,Female,0,75000,Yes,White,Bachelors,Pennsylvania,Cluster 2
 20161211162229,18,Male,1,75000,No,White,Some college,Illinois,Cluster 7
 20161211162402,45,Male,2,30000,Yes,White,HS,Pennsylvania,Cluster 1
@@ -920,7 +920,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20171009171857,36,Male,0,20000,No,Black,Bachelors,Georgia,Cluster 5
 20171009172197,70,Female,0,75000,Yes,White,Bachelors,California,Cluster 1
 20171009172216,24,Male,0,40000,No,White,Bachelors,Illinois,Cluster 4
-20171009172401,35,Female,3,75000,Yes,White,Unknown,Connecticut,Cluster 3
+20171009172401,35,Female,3,75000,Yes,White,NA,Connecticut,Cluster 3
 20171010170643,17,Female,2,100000,No,Asian,No HS,New Jersey,Cluster 4
 20171010171971,44,Male,0,30000,No,Black,Some college,California,Cluster 2
 20171109172229,25,Male,0,50000,No,Black,HS,Texas,Cluster 7
@@ -940,7 +940,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20180201180649,39,Female,1,150000,No,Other,Masters,Maryland,Cluster 1
 20180201180968,42,Female,2,75000,Yes,White,Masters,Florida,Cluster 6
 20180201181331,64,Female,1,50000,No,White,No HS,Illinois,Cluster 1
-20180201182434,28,Male,0,150000,Yes,White,Unknown,New York,Cluster 1
+20180201182434,28,Male,0,150000,Yes,White,NA,New York,Cluster 1
 20180212171949,53,Male,0,100000,No,White,Masters,Wisconsin,Cluster 5
 20180301181380,16,Male,3,10000,No,Black,No HS,Florida,Cluster 4
 20180302180064,31,Female,3,10000,Yes,Black,HS,Florida,Cluster 6
@@ -955,7 +955,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20180403181988,55,Male,0,100000,Yes,Black,Some college,Michigan,Cluster 6
 20180404180516,53,Female,1,30000,Yes,White,No HS,Texas,Cluster 3
 20180503182460,20,Male,0,60000,No,White,HS,California,Cluster 1
-20180504180966,45,Male,0,150000,No,Asian,Unknown,Washington,Cluster 3
+20180504180966,45,Male,0,150000,No,Asian,NA,Washington,Cluster 3
 20180504181423,24,Male,0,75000,Yes,Asian,Some college,Washington,Cluster 6
 20180504181481,38,Male,1,40000,Yes,White,HS,Nebraska,Cluster 6
 20180504181541,24,Male,0,35000,No,Asian,Some college,California,Cluster 7
@@ -976,7 +976,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20180807181728,36,Male,2,100000,No,White,HS,Washington,Cluster 6
 20180807182063,16,Male,2,60000,No,Asian,No HS,Missouri,Cluster 4
 20180807182254,22,Male,0,75000,No,White,Some college,Ohio,Cluster 6
-20180907180689,44,Female,2,100000,Yes,Asian,Unknown,Iowa,Cluster 5
+20180907180689,44,Female,2,100000,Yes,Asian,NA,Iowa,Cluster 5
 20180908180713,30,Female,2,60000,Yes,White,Some college,Ohio,Cluster 3
 20180908180816,51,Male,2,35000,Yes,Black,HS,New York,Cluster 7
 20180908180909,34,Male,0,60000,No,White,Some college,Louisiana,Cluster 6
@@ -989,7 +989,7 @@ ID,age,sex,n_child,HH_income,married,race,education,state,cluster
 20181109181018,28,Female,3,40000,Yes,White,No HS,Alabama,Cluster 6
 20181109181150,52,Male,0,20000,No,White,No HS,New York,Cluster 6
 20181109181600,25,Female,1,150000,No,White,Bachelors,Texas,Cluster 4
-20181110180565,80,Male,0,50000,Yes,White,Unknown,Missouri,Cluster 1
+20181110180565,80,Male,0,50000,Yes,White,NA,Missouri,Cluster 1
 20181110181129,46,Male,0,75000,No,White,Bachelors,New Jersey,Cluster 6
 20181110181547,48,Male,0,60000,No,White,Bachelors,California,Cluster 7
 20181110182535,57,Male,0,100000,Yes,White,HS,Michigan,Cluster 5

@@ -17,8 +17,8 @@ function showData(data){
   // filter the data based on the user and draw the plot
   filtered_data = filterData(sequences, demographics, inputSequence, modal_sequences, string_table)
   drawRects(filtered_data);
-  drawBarPlots(filtered_data);
   drawHistograms(filtered_data);
+  drawBarPlots(filtered_data);
 
   // update plot on user input
   d3.select("#button_update").on("click", function() {
@@ -27,18 +27,18 @@ function showData(data){
     inputSequence = retrieveUserSequence(string_table);
     filtered_data = filterData(sequences, demographics, inputSequence, modal_sequences, string_table)
     drawRects(filtered_data);
-    drawBarPlots(filtered_data);
     drawHistograms(filtered_data);
+    drawBarPlots(filtered_data);
   });
 }
 
 // read data in the data
 function loadData() {
     return Promise.all([
-        d3.csv("/d3/ATUS_similarity/data/sequences.csv"),
-        d3.csv("/d3/ATUS_similarity/data/demographics.csv"),
-        d3.csv("/d3/ATUS_similarity/data/string_table.csv"),
-        d3.csv("/d3/ATUS_similarity/data/modes.csv")
+        d3.csv("data/sequences.csv"),
+        d3.csv("data/demographics.csv"),
+        d3.csv("data/string_table.csv"),
+        d3.csv("data/modes.csv")
     ]).then(datasets => {
         store = {}
         store.sequences = datasets[0];

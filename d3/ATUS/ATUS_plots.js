@@ -3,7 +3,7 @@
 var margin = {top: 10, right: 50, bottom: 60, left: 75},
     width = 600 - margin.left - margin.right,
     height = 350 - margin.top - margin.bottom;
-    
+
 // Function to parse the date / time
 var	parseDate = d3.timeParse("%Y-%m-%d");
 
@@ -40,7 +40,7 @@ function make_x_gridlines() {
 }
 
 // gridlines in y axis function
-function make_y_gridlines() {		
+function make_y_gridlines() {
     return d3.axisLeft(y)
         .ticks(my_nYticks);
 }
@@ -49,7 +49,7 @@ function make_y_gridlines() {
 function drawXlabel(selection) {
   selection
     .attr("transform",
-            "translate(" + (width/2) + " ," + 
+            "translate(" + (width/2) + " ," +
                            (height + margin.top + 40) + ")")
     .attr("text-anchor", "middle")
     .attr("fill", "#737373")
@@ -143,7 +143,7 @@ var Tooltip = d3.select("body")
 var svg = d3.select("div#TV")
   .append("div")
   // Container class to make it responsive.
-  .classed("svg-container", true) 
+  .classed("svg-container", true)
   .append("svg")
   // Responsive SVG needs these 2 attributes and no width and height attr.
   .attr("preserveAspectRatio", "xMinYMin meet")
@@ -164,29 +164,29 @@ d3.csv("/d3/ATUS/d3_tv.csv",
 
   // use the data as 'data'
   function(data) {
-  
+
   // TV plot
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.TEAGE; }));
     y.domain( [100, 350] );
-    
+
     // add the X gridlines
-    svg.append("g")			
+    svg.append("g")
       .attr("class", "grid")
       .attr("transform", "translate(0," + height + ")")
       .call(make_x_gridlines()
           .tickSize(-height-my_tickSize)
           .tickFormat("")
       );
-      
+
     // add the Y gridlines
-    svg.append("g")			
+    svg.append("g")
       .attr("class", "grid")
       .call(make_y_gridlines()
           .tickSize(-width-my_tickSize)
           .tickFormat("")
       );
-      
+
     // add the X axis
     svg.append("g")
       .attr("class", "grid")
@@ -204,33 +204,33 @@ d3.csv("/d3/ATUS/d3_tv.csv",
         .tickSize(my_tickSize)
         .ticks(my_nYticks)
         .tickFormat(printHourMinute));
-    
+
     // text label for the x and y axis
     svg.append("text").call(drawXlabel);
     svg.append("text").call(drawYlabel);
-    
+
     // add label for males
     svg.append("text")
         .attr("class", "plot_label")
-        .attr("x", (width * 0.60))             
+        .attr("x", (width * 0.60))
         .attr("y", (height * 0.3))
-        .attr("text-anchor", "right")  
-        .style("font-size", "16px") 
-        .style("font-weight", "700") 
+        .attr("text-anchor", "right")
+        .style("font-size", "16px")
+        .style("font-weight", "700")
         .style("fill", "#66d8db")
         .text("Males");
-    
+
     // add label for females
     svg.append("text")
         .attr("class", "plot_label")
-        .attr("x", (width * 0.7))             
+        .attr("x", (width * 0.7))
         .attr("y", (height * 0.8))
-        .attr("text-anchor", "right")  
-        .style("font-size", "16px") 
-        .style("font-weight", "700") 
+        .attr("text-anchor", "right")
+        .style("font-size", "16px")
+        .style("font-weight", "700")
         .style("fill", "#fbada7")
         .text("Females");
-    
+
     // add line between male and female points
     svg
       .append('g')
@@ -259,41 +259,41 @@ d3.csv("/d3/ATUS/d3_tv.csv",
         // Three function that change the tooltip when user hover / move / leave a cell
         .on('mouseover', function(d, i) {
             console.log("mouseover on", this);
-              
-            // de-emphasize lines, circles, text labels, 
+
+            // de-emphasize lines, circles, text labels,
             d3.selectAll("path.path_TV")
               .attr('opacity', de_emphasize_opacity);
             d3.selectAll("circle.pt_TV")
               .attr('opacity', de_emphasize_opacity);
             d3.selectAll('text.plot_label')
               .attr('opacity', de_emphasize_opacity);
-              
+
             // make the mouseover'd element big
             d3.selectAll("circle.pt_TV_male" + i)
               .transition()
               .duration(75)
               .call(styleEmphCircle)
               .attr('fill', '#333333');
-            
+
             // highlight the male point
             d3.selectAll("circle.pt_TV_female" + i)
               .transition()
               .duration(75)
               .call(styleEmphCircle);
-              
+
             // highlight the selected points connection
             d3.selectAll("line.line_conn" + i)
               .attr('opacity', 1);
-            
+
             // this makes the tooltip show
             Tooltip.style("opacity", 1);
           })
-          
+
         .on('mousemove', function(d, i) {
           // this makes the tooltip move
           Tooltip
             .html(
-              "<b> Age " + d.TEAGE + "</b><br>" + 
+              "<b> Age " + d.TEAGE + "</b><br>" +
               "Males: " + printTime(d.Male) + "<br>" +
               "Females: " + printTime(d.Female) + "<br>" +
               "Gap of " + printTime(d.Male - d.Female)
@@ -301,21 +301,21 @@ d3.csv("/d3/ATUS/d3_tv.csv",
             .style("left", d3.event.pageX + 10 + "px")
             .style("top", d3.event.pageY + "px");
         })
-        
+
         .on('mouseout', function(d, i) {
             console.log("mouseout", this);
-            
+
             // return the mouseover'd element to the original format
             d3.selectAll("circle.pt_TV_male")
               .transition()
               .duration(200)
               .call(styleMaleCircle);
-            
+
             d3.selectAll("circle.pt_TV_female")
               .transition()
               .duration(200)
-              .call(styleFemaleCircle); 
-            
+              .call(styleFemaleCircle);
+
             // re-emphasis lines and circles
             d3.selectAll("path.path_TV")
               .transition()
@@ -347,41 +347,41 @@ d3.csv("/d3/ATUS/d3_tv.csv",
         // Three function that change the tooltip when user hover / move / leave a cell
         .on('mouseover', function(d, i) {
             console.log("mouseover on", this);
-              
-            // de-emphasize lines, circles, text labels, 
+
+            // de-emphasize lines, circles, text labels,
             d3.selectAll("path.path_TV")
               .attr('opacity', de_emphasize_opacity);
             d3.selectAll("circle.pt_TV")
               .attr('opacity', de_emphasize_opacity);
             d3.selectAll('text.plot_label')
               .attr('opacity', de_emphasize_opacity);
-              
+
             // make the mouseover'd element big
             d3.selectAll("circle.pt_TV_female" + i)
               .transition()
               .duration(75)
               .call(styleEmphCircle)
               .attr('fill', '#333333');
-            
+
             // highlight the male point
             d3.selectAll("circle.pt_TV_male" + i)
               .transition()
               .duration(75)
               .call(styleEmphCircle);
-              
+
             // highlight the selected points connection
             d3.selectAll("line.line_conn" + i)
               .attr('opacity', 1);
-            
+
             // this makes the tooltip show
             Tooltip.style("opacity", 1);
           })
-          
+
         .on('mousemove', function(d, i) {
           // this makes the tooltip move
           Tooltip
             .html(
-              "<b> Age " + d.TEAGE + "</b><br>" + 
+              "<b> Age " + d.TEAGE + "</b><br>" +
               "Males: " + printTime(d.Male) + "<br>" +
               "Females: " + printTime(d.Female) + "<br>" +
               "Gap of " + printTime(d.Male - d.Female)
@@ -389,21 +389,21 @@ d3.csv("/d3/ATUS/d3_tv.csv",
             .style("left", d3.event.pageX + 10 + "px")
             .style("top", d3.event.pageY + "px");
         })
-        
+
         .on('mouseout', function(d, i) {
             console.log("mouseout", this);
-            
+
             // return the mouseover'd element to the original format
             d3.selectAll("circle.pt_TV_male")
               .transition()
               .duration(200)
               .call(styleMaleCircle);
-            
+
             d3.selectAll("circle.pt_TV_female")
               .transition()
               .duration(200)
-              .call(styleFemaleCircle); 
-            
+              .call(styleFemaleCircle);
+
             // re-emphasis lines and circles
             d3.selectAll("path.path_TV")
               .transition()
@@ -430,11 +430,11 @@ d3.csv("/d3/ATUS/d3_tv.csv",
         .x(function(d) { return x(d.TEAGE) })
         .y(function(d) { return y(d.Male_smooth) })
         .curve(d3.curveMonotoneX)
-        
+
         // define (ie draw) the line at values not equal to NA
         .defined(function(d) { return d.Male_smooth != "NA" })
         );
-    
+
     // Add the female line
     svg.append("path")
       .datum(data)
@@ -445,10 +445,9 @@ d3.csv("/d3/ATUS/d3_tv.csv",
         .x(function(d) { return x(d.TEAGE) })
         .y(function(d) { return y(d.Female_smooth) })
         .curve(d3.curveMonotoneX)
-        
+
         // define (ie draw) the line at values not equal to NA
         .defined(function(d) { return d.Female_smooth != "NA" })
         );
 }
 );
-

@@ -1,9 +1,9 @@
 function getConfigHist() {
-   let width = 250;
+   let width = 300;
    let height = 200;
    let margin = {
        top: 10,
-       bottom: 70,
+       bottom: 20,
        left: 10,
        right: 10
    }
@@ -59,7 +59,7 @@ function drawHistBars(data, nbins, scales, configHist, id, axisLabel){
   // remove and redraw X axis
   d3.selectAll(".bottomAxisHist" + id).remove()
   container.append("g")
-    .attr("class", "bottomAxisHist bottomAxisHist" + id)
+    .attr("class", "bottomAxisHist" + id)
     .attr("transform", "translate(" + margin.left + "," + bodyHeight + ")")
     .call(d3.axisBottom(xScale));
 
@@ -73,7 +73,7 @@ function drawHistBars(data, nbins, scales, configHist, id, axisLabel){
     */
 
   // remove and redraw Y axis
-  yScale.domain([0, d3.max(bins, d => d.length)*1.4]); //this is a hack b/c I can't figure out why margins aren't working
+  yScale.domain([0, d3.max(bins, d => d.length)*1.2]); //this is a hack b/c I can't figure out why margins aren't working
 
   // join data with rect
   let rects = container

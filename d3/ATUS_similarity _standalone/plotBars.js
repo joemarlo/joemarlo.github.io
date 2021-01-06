@@ -1,9 +1,9 @@
 function getConfigBar(){
-  let width = 250;
+  let width = 300;
   let height = 200;
   let margin = {
       top: 10,
-      bottom: 70,
+      bottom: 20,
       left: 10,
       right: 10
   }
@@ -28,7 +28,7 @@ function getScalesBar(data, configBar) {
      .padding(0.2);
 
  let yScale = d3.scaleLinear()
-     .domain([0, maximumValue*1.4]) //this is a hack b/c I can't figure out why margins aren't working
+     .domain([0, maximumValue*1.2]) //this is a hack b/c I can't figure out why margins aren't working
      .range([bodyHeight, 0])
 
  return {xScale, yScale}
@@ -49,13 +49,13 @@ function drawBars(data, configBar, scales, id){
   // remove and redraw X axis
   d3.selectAll(".bottomAxisBar" + id).remove()
   container.append("g")
-   .attr("class", "bottomAxisBar bottomAxisBar" + id)
+   .attr("class", "bottomAxisBar" + id)
    .attr("transform", "translate(0," + bodyHeight + ")")
   // .attr("transform", "translate(" + margin.left + "," + bodyHeight + ")")
    .call(d3.axisBottom(xScale))
    .selectAll("text")
-     .attr("transform", "translate(5,5)rotate(30)")
-     .style("text-anchor", "start");
+     .attr("transform", "translate(-10,5)rotate(-70)")
+     .style("text-anchor", "end");
 
   // remove and redraw x axis label
   /*

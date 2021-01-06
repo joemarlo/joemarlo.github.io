@@ -1,7 +1,7 @@
 let containerLegend = d3.select("#legend")
   .append("svg")
-  .attr("preserveAspectRatio", "xMinYMin meet")
-  .attr("viewBox", "0 0 700 150")
+  .attr("height", 150)
+  .attr("width", 800)
 
 // legend rectangles
 containerLegend.append("rect").attr("x",10).attr("y",10).attr("width", 10).attr("height", 10).style("fill", "#208eb7")

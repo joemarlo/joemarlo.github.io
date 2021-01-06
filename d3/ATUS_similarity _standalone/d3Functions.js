@@ -16,7 +16,7 @@ function filterData(sequences, demographics, inputSequence, modal_sequences, str
   // left join the two datasets
   data = mergeOn(indexBy('ID', demographics), 'ID', sequences)
 
-  /*// add the user to the data
+  // add the user to the data
   // create object out of the user input sequence
   splitSeq = inputSequenceAsString.split("")
   userSequence = [];
@@ -35,7 +35,6 @@ function filterData(sequences, demographics, inputSequence, modal_sequences, str
   for (var i=starting_row; i<(starting_row+48); i++){
     data[i] = userSequence[(i-starting_row)]
   }
-  */
 
   // left join to get activity names
   data = mergeOn(indexBy('activity', string_table), 'activity', data)

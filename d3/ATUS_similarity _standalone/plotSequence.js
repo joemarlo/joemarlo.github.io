@@ -1,6 +1,6 @@
 function getConfig() {
-  let width = 600;
-  let height = 450;
+  let width = 800;
+  let height = 500;
   let margin = {
     top: 70,
     bottom: 50,
@@ -17,10 +17,8 @@ function getConfig() {
   container = container
     .append("svg")
     .attr("class", "plotSequence")
-    .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "0 0 600 450")
-    //.attr("width", width)
-    //.attr("height", height)
+    .attr("width", width)
+    .attr("height", height)
 
     return {width, height, margin, bodyHeight, bodyWidth, container}
   }
@@ -80,7 +78,7 @@ function drawRects(data){
     .padding(0.05);
 
   // create a tooltip
-  let tooltip = d3.select("body")
+  let tooltip = d3.select("#plot_sequence")
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip")
@@ -104,8 +102,8 @@ function drawRects(data){
             "Race: " + d.race + "<br>" +
             "Education: " + d.education + "<br>" +
             "State: " + d.state)
-      .style("left", (d3.event.pageX + 15) + "px") //(d3.mouse(this)[0]) + "px")
-      .style("top", (d3.event.pageY + 15) + "px") //(d3.mouse(this)[1]) + "px")
+      .style("left", (event.pageX + 15) + "px") //(d3.mouse(this)[0]) + "px")
+      .style("top", (event.pageY + 15) + "px") //(d3.mouse(this)[1]) + "px")
   }
   function mouseleave(d){
     tooltip
