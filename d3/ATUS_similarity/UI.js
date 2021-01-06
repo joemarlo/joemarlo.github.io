@@ -3,8 +3,8 @@ let tickLabels = ["4am", 5, 6, 7, 8, 9, 10, 11, "12pm", 1, 2, 3, 4, 5, 6, 7, 8, 
 
 // define example sequences
 example_cols = ['#154e56', '#154e56', '#154e56', '#65e6f9', '#f24325', '#b5d08d', '#b5d08d', '#b5d08d', '#b5d08d', '#f24325', '#b5d08d', '#b5d08d', '#b5d08d', '#b5d08d', '#b5d08d', '#58df8c', '#f24325', '#58df8c', '#58df8c', '#65e6f9',  '#154e56',  '#154e56',  '#154e56', '#154e56']
-console.log(example_cols.length)
-// iterate through and create the select dropdowns
+
+// iterate through and create the example sequence
 for (var i=0; i<24; i++){
   // create new div
   let new_div = $('<div>').appendTo('#container_example')
@@ -32,7 +32,7 @@ for (var i=0; i<24; i++){
     .style("text-anchor", "start");
 }
 
-// define the 7 'typical' sequences that are returned from 20Q. These is generated from generate_html.R
+// define the 10 'typical' sequences that are returned from 20Q. These is generated from generate_html.R
 let proto1 = [ {val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#65e6f9'},{val : '#f24325'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#f24325'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#f24325'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#65e6f9'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'} ]
 
 let proto2 = [ {val : '#b5d08d'},{val : '#b5d08d'},{val : '#b5d08d'},{val : '#b5d08d'},{val : '#b5d08d'},{val : '#b5d08d'},{val : '#b5d08d'},{val : '#b5d08d'},{val : '#f24325'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#154e56'},{val : '#65e6f9'},{val : '#58df8c'},{val : '#58df8c'},{val : '#58df8c'},{val : '#f24325'},{val : '#b5d08d'},{val : '#b5d08d'},{val : '#b5d08d'},{val : '#b5d08d'},{val : '#b5d08d'},{val : '#b5d08d'},{val : '#b5d08d'},{val : '#b5d08d'},{val : '#b5d08d'},{val : '#b5d08d'},{val : '#b5d08d'},{val : '#b5d08d'},{val : '#b5d08d'} ]

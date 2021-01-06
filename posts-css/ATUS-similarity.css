@@ -71,10 +71,6 @@ span {
   padding: 0 0 0 0;
 }
 
-.example_rect {
-
-}
-
 .example_div > svg > g > text {
   font-size: 0.7em;
   fill: #4d4d4d;
