@@ -32,7 +32,7 @@ function showData(data){
   });
 }
 
-// read data in the data
+// read in the data
 function loadData() {
     return Promise.all([
         d3.csv("/d3/ATUS_similarity/data/sequences.csv"),

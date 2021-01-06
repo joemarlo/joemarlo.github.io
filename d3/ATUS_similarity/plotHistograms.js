@@ -61,7 +61,10 @@ function drawHistBars(data, nbins, scales, configHist, id, axisLabel){
   container.append("g")
     .attr("class", "bottomAxisHist bottomAxisHist" + id)
     .attr("transform", "translate(" + margin.left + "," + bodyHeight + ")")
-    .call(d3.axisBottom(xScale));
+    .call(d3.axisBottom(xScale))
+    .selectAll("text")
+      .attr("transform", "translate(5,5)rotate(40)")
+      .style("text-anchor", "start");
 
   /*// remove and redraw x axis label
   d3.selectAll(".xaxis_label_hist_"+id).remove()
@@ -122,6 +125,7 @@ function drawHistograms(data) {
   // delete old plots
   d3.select("svg.plotHistage").remove()
   d3.select("svg.plotHistn_child").remove()
+  d3.select("svg.plotHistHH_income").remove()
 
   // get config, scales then draw the plots
   let configHist = getConfigHist();
@@ -129,4 +133,6 @@ function drawHistograms(data) {
   drawHistBars(data, 20, scales, configHist, id='age', axisLabel='Age');
   scales = getScalesHist(data, configHist, 'n_child');
   drawHistBars(data, null, scales, configHist, id='n_child', axisLabel='Number of children');
+  scales = getScalesHist(data, configHist, 'HH_income');
+  drawHistBars(data, null, scales, configHist, id='HH_income', axisLabel='Household income');
 }

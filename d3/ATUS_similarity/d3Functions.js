@@ -102,10 +102,11 @@ function retrieveUserSequence(string_table){
 
 // function to count categorical data
 function countData(data, id){
+  console.log('data into count', data)
   counts = d3.nest()
   .key(d => d[id])
   .rollup(d => d.length)
-  .entries(demographics);
+  .entries(data);
 
   return counts
 }

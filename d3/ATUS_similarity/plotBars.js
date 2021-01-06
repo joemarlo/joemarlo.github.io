@@ -111,6 +111,7 @@ function drawBars(data, configBar, scales, id){
 }
 
 function drawBarPlots(data) {
+  filteredData = data
   // delete old plots
   d3.select("svg.plotBarSex").remove()
   d3.select("svg.plotBarMarried").remove()
@@ -120,19 +121,15 @@ function drawBarPlots(data) {
   // get config, scales then draw the plots
   let configBar = getConfigBar();
 
-  let counts = countData(data, 'sex')
+  let counts = countData(filteredData, 'sex')
   let scales = getScalesBar(counts, configBar, 'sex');
   drawBars(data=counts, configBar=configBar, scales=scales, id='Sex');
 
-  counts = countData(data, 'married')
+  counts = countData(filteredData, 'married')
   scales = getScalesBar(counts, configBar, 'married');
   drawBars(data=counts, configBar=configBar, scales=scales, id='Married');
 
-  counts = countData(data, 'education')
+  counts = countData(filteredData, 'education')
   scales = getScalesBar(counts, configBar, 'education');
   drawBars(data=counts, configBar=configBar, scales=scales, id='Education');
-
-  counts = countData(data, 'race')
-  scales = getScalesBar(counts, configBar, 'race');
-  drawBars(data=counts, configBar=configBar, scales=scales, id='Race');
 }
