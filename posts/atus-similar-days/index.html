@@ -123,8 +123,8 @@
     <div id='container_Q2'>
     <h4>When do you start work?</h4>
       <select id='Q2' class='form-control form-control-sm container_twenty_questions_dropdown'>
-        <option value="Early morning">Early morning (6am)</option>
-        <option value="Morning">Morning (8-9am)</option>
+        <option value="Early morning">Early morning (before 8am)</option>
+        <option value="Morning">Morning (after 8am)</option>
         <option value="Afternoon">Afternoon</option>
         <option value="Evening">Evening</option>
       </select>
@@ -149,7 +149,7 @@
     <br><br>
   </div>
   <div>
-    <h4>Is this how your day roughly looks? Customize by clicking on each square</h4>
+    <h4>Is this how your day roughly looks? Customize by clicking each square</h4>
     <div id="container_user_input"></div>
     <br><br>
     <div id='legend'><br></div>
@@ -166,9 +166,9 @@
 </div>
 <br>
 <h3 id="how-does-this-work">How does this work?</h3>
-<p>In short, a day&rsquo;s time use activities are reduced down to a single string of characters and the <a href="https://en.wikipedia.org/wiki/Edit_distance">edit distance</a> between the strings is computed. A smaller distance means two given days are more similar.</p>
+<p>In short, a day&rsquo;s time use activities are reduced down to a single string of characters and the <a href="https://en.wikipedia.org/wiki/Edit_distance">edit distance</a> between the strings is computed. More similar days have smaller distances.</p>
 <h4 id="edit-distance-methods">Edit distance methods</h4>
-<p>These many choices of edit distance metrics. Most are variations of different costs for insertions, deletions, and substitutions. The below four are some of the most common:</p>
+<p>These many choices of edit distance metrics. Most are variations of costs for insertions, deletions, and substitutions to convert one string to the other. The below four are some of the most common:</p>
 <ul>
 <li>Hamming: only allows substitution</li>
 <li>Longest common subsequence (LCS): only allows insertions and deletions</li>
@@ -177,18 +177,19 @@
 </ul>
 <p>Each of these have advantages and disadvantages. For this project, dynamic hamming produced the most interesting clusters. It captured both the unique sequencing of the activities and their timing within the day.</p>
 <h4 id="clustering">Clustering</h4>
-<p>The data needs to condensed down from the original 100,000 days into small dataset that can be quickly loaded with the webpage.</p>
+<p>The data needs to condensed down from the original 100,000 days into a dataset small enough to be loaded quickly by the browser.</p>
 <p align="center">
-<img src="/img/posts/ATUS-similar-days/dendrogram.png" width=70%>
+<img src="/img/posts/ATUS-similar-days/dendrogram.png" width=80%>
 </p>
 <p align="center">
-<img src="/img/posts/ATUS-similar-days/silhouette_width.svg" width=70%>
+<img src="/img/posts/ATUS-similar-days/silhouette_width.svg" width=80%>
 </p>
 <p align="center">
-<img src="/img/posts/ATUS-similar-days/state_distributions_by_cluster.png" width=90%>
+<img src="/img/posts/ATUS-similar-days/state_distributions_by_cluster.png" width=95%>
 </p>
+<p>[Note the change of colors in legend]</p>
 <p align="center">
-<img src="/img/posts/ATUS-similar-days/modal_sequences.svg" width=70%>
+<img src="/img/posts/ATUS-similar-days/modal_sequences.svg" width=80%>
 </p>
 <h4 id="limitations">Limitations</h4>
 <ul>
