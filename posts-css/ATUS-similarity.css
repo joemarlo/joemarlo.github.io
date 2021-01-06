@@ -54,10 +54,22 @@ span {
 }
 
 .example_div {
-  width: 3%;
-  max-width: 14px;
+  width: 4%;
+  max-width: 25px;
   height: 30px;
   float: left;
+}
+
+.example_rect {
+  max-width: 95%;
+  height: 16px;
+  border-radius: 0;
+  box-shadow: none;
+  border: solid;
+  border-color: white;
+  border-width: 1px;
+  margin: 0;
+  padding: 0 0 0 0;
 }
 
 .user_input_div {

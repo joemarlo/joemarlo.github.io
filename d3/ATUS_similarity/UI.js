@@ -1,9 +1,6 @@
-/*
 // define example sequences
-<svg width="20" height="10">
- <rect width="20" height="100" style="fill: rgb(0,0,255);" />
-</svg>
-*/
+example_cols = ['#154e56', '#154e56', '#154e56', '#154e56', '#65e6f9', '#f24325', '#58df8c', '#58df8c', '#58df8c', '#58df8c', '#58df8c', '#f24325', '#58df8c', '#58df8c', '#58df8c', '#58df8c', '#58df8c', '#f24325', '#65e6f9', '#154e56',  '#154e56',  '#154e56',  '#154e56']
+
 // iterate through and create the select dropdowns
 for (var i=0; i<24; i++){
   // create new div
@@ -12,8 +9,16 @@ for (var i=0; i<24; i++){
   new_div.attr('id', 'example_div'+(i+1))
 
   // append svg to the div
-  let sel = $('<svg>').appendTo(new_div);
-  $('<rect width="20" height="100" style="fill: rgb(0,0,255);').appendTo(sel)
+  svg = d3.select('#example_div'+(i+1))
+    .append("svg")
+    .attr('class', 'example_rect')
+    .attr("height", '100%')
+    .attr("width", '100%')
+  svg
+    .append('rect')
+    .attr('height', '100%')
+    .attr('width', '100%')
+    .attr('fill', example_cols[i])
 }
 
 // define the 7 'typical' sequences that are returned from 20Q. These is generated from generate_html.R
