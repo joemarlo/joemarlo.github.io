@@ -191,7 +191,7 @@
 <p align="center">
 <img src="/img/posts/ATUS-similar-days/state_distributions_by_cluster.png" width=95%>
 </p>
-<p>The clusters are reduced down to their modal sequence. These modes are used as the first step to classify the user&rsquo;s input. The user input is first matched to the best cluster (based on edit distance to the modal sequence) and then matched to the top 25 sequences of 200 potential sequences that are a priori stratified sampled from the clusters.</p>
+<p>The clusters are reduced down to their modal sequence. These modes are used as the first step to classify the user&rsquo;s input. The user input is first matched to the best cluster (based on edit distance to the modal sequence) and then matched to the top 25 sequences of 400 potential sequences that are a priori stratified sampled from the clusters.</p>
 <p align="center">
 <img src="/img/posts/ATUS-similar-days/modal_sequences.svg" width=80%>
 </p>
@@ -208,7 +208,7 @@
 <ul>
 <li>The American Time Use Survey measures primary activity so some activities are not accurately captured. For example, listening to music is rarely recorded because typically it is a secondary task. If I&rsquo;m listening to music, I&rsquo;m probably also doing housework or cooking.</li>
 <li>The data is self reported so <a href="https://en.wikipedia.org/wiki/Response_bias">standard biases apply</a></li>
-<li>The clustering process aims to provide distinct clusters representative of common sequences so they may not be representative of all types of sequences. Combined with the two-step algorithm specified above, some day types may not be matched well. Notably, the use of the <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a> to calculate distances between the user sequence and the modal sequences result in cluster 7 (evening workers) often being skipped over. Once time allows, I may write my own dynamic Hamming distance function in JavaScript; one is not available currently.</li>
+<li>The clustering process aims to provide distinct clusters representative of common sequences so they may not be representative of all types of sequences. Combined with the two-step algorithm specified above, some day types may not be matched well. Notably, the use of the <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a> in the front-end is incongruous with the dynamic Hamming method in the analysis. Once time allows, I may write my own dynamic Hamming distance function in JavaScript.</li>
 <li>The above distributions are not representative of <em>all</em> people that do those activities, just the top 25 people most similar to you</li>
 <li>The raw time-use data details each minute of the respondent’s day by mapping it to a list of 465 activities. I aggregated these 465 activities into 15 activities based on the Bureau of Labor Statistics’ (BLS) hierarchical definitions and my judgment. Every half hour is reduced to its respective modal activity. This results in some loss of information but severely reduces the distance matrix size.</li>
 </ul>
