@@ -131,7 +131,7 @@
 <p align="left">
 <font size="1.5">
 This is a simplified result with only three solutions: age 62, Full Retirement Age (FRA, ~66) and 70. A more comprehensive plot with all ages between 62 and 70 is presented in the <b>How to build your own analysis</b> section below.
-</font> 
+</font>
 </p>
 <!---
 <div class="iframe_container">
@@ -164,7 +164,7 @@ This is a simplified result with only three solutions: age 62, Full Retirement A
 <p>You can find the helper functions in <code>R</code> form here: <a href="https://github.com/joemarlo/Social-Security/blob/master/R/Helper_functions.R"><code>Helper_functions.R</code></a>.</p>
 <h3 id="the-discounting-process">The discounting process</h3>
 <p>We can determine the value of a series of benefits by simple net present value (NPV) discounted at the rate of inflation. First, calculate the benefits using the benefits calculator then take the NPV.</p>
-<pre><code># calculate the NPV of a series of annual benefits 
+<pre><code># calculate the NPV of a series of annual benefits
 benefits &lt;- calculate_benefits(birth.year = 1957, claim.age = 62) %&gt;% filter(Age &gt;= 62)
 NPV(benefits$Benefits, inflation.rate)
 </code></pre><pre><code>[1] 430684.4
@@ -172,11 +172,11 @@ NPV(benefits$Benefits, inflation.rate)
 <pre><code># plot of NPVs by claim age
 sapply(62:70, function(claim.age){
   calculate_benefits(birth.year = 1957, claim.age = claim.age) %&gt;%
-    filter(Age &gt;= 62) %&gt;% 
+    filter(Age &gt;= 62) %&gt;%
     pull(Benefits) %&gt;%
     NPV(., inflation.rate)
 }) %&gt;%
-  enframe() %&gt;% 
+  enframe() %&gt;%
   ggplot(aes(x = name, y = value)) +
   geom_col(fill = '#2b7551') +
   scale_x_continuous(breaks = 1:9,
@@ -192,7 +192,7 @@ sapply(62:70, function(claim.age){
 <p>However, what we want to know is how much is a series of benefits worth if one invests their benefits and it yields a certain rate of return. We can treat the accumulation of benefits as an investment account with annual deposits and compounded growth at a given rate. Then we can take the terminal (final) value and discount it back to age 62. This will give us a single value that is an apples-to-apples comparison once we start varying the claim age.</p>
 <pre><code># calculate the present value of one series of benefits, starting at age 62,
 #  ending at age 100, and with an an investment return of 5%
-benefits$Benefits %&gt;% 
+benefits$Benefits %&gt;%
   add_investment_return(., rate = 1.05) %&gt;%
   last(.) %&gt;%
   PV(., rate = inflation.rate, periods = 100-62)
@@ -220,7 +220,7 @@ PV.grid$PV &lt;-
            add_investment_return(., inv.return) %&gt;%
            last(.) %&gt;%
            PV(., rate = inflation.rate, periods = death - 62)
-         
+
        }) %&gt;% unlist()
 
 head(PV.grid)
@@ -278,9 +278,9 @@ replicate(n.sims,
                                 exp.return = exp.return,
                                 exp.vol = exp.vol)) %&gt;%
   as.data.frame() %&gt;%
-  as_tibble() %&gt;% 
-  mutate(Age = 62:100) %&gt;% 
-  pivot_longer(cols = starts_with(&quot;V&quot;)) %&gt;% 
+  as_tibble() %&gt;%
+  mutate(Age = 62:100) %&gt;%
+  pivot_longer(cols = starts_with(&quot;V&quot;)) %&gt;%
   ggplot(aes(x = Age, y = value, group = name)) +
   geom_point(color = &quot;#2b7551&quot;, alpha = 0.05) +
   geom_line(color = &quot;#2b7551&quot;, alpha = 0.05) +
@@ -332,7 +332,7 @@ rm(sim.PV)
 # plot of best claim age by investment return and death age (all claim ages)
 PV.grid %&gt;%
   select(-PV) %&gt;%
-  pivot_longer(cols = contains(&quot;percentile&quot;), names_to = &quot;Percentile&quot;, values_to = &quot;PV&quot;) %&gt;% 
+  pivot_longer(cols = contains(&quot;percentile&quot;), names_to = &quot;Percentile&quot;, values_to = &quot;PV&quot;) %&gt;%
   group_by(Return, Death.age, Percentile) %&gt;%
   filter(PV == max(PV)) %&gt;%
   ggplot(aes(x = Death.age, y = Return, fill = as.factor(Claim.age))) +
@@ -385,15 +385,15 @@ PV.grid &lt;- crossing(Return = seq(1, 1.1, by = 0.001),
                     Claim.age = 62:70)
 
 # calculate quantiles for all the combinations
-sim.PV &lt;- map2_dfr(PV.grid$Return, PV.grid$Claim.age, 
+sim.PV &lt;- map2_dfr(PV.grid$Return, PV.grid$Claim.age,
                    function(inv.return, age){
-  
+
   # calculate the benefits
   benefits &lt;- calculate_benefits(birth.year = 1957,
                                  claim.age = age) %&gt;%
-  filter(Age &gt;= 62) %&gt;% 
+  filter(Age &gt;= 62) %&gt;%
   pull(Benefits)
-  
+
   # simulate the investment returns from 62:100
   sims &lt;- replicate(
     n.sims,
@@ -403,7 +403,7 @@ sim.PV &lt;- map2_dfr(PV.grid$Return, PV.grid$Claim.age,
       exp.vol = (inv.return - 1) * 2
     )
   )
-  
+
   # calculate the quantiles for each death age and clean up
   quantiles &lt;- sapply(62:100 - 61, FUN = function(death) {
     quantile(sims[death,], probs = percentile)}) %&gt;%
