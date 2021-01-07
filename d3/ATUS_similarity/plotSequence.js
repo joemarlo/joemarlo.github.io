@@ -98,7 +98,7 @@ function drawRects(data){
       .html("<strong>" + d.description + "</strong><br>" +
             "Age: " + d.age + "<br>" +
             "Sex: " + d.sex + "<br>" +
-            "Number of children: " + d.n_child + "<br>" +
+            "# children in household: " + d.n_child + "<br>" +
             "Married: " + d.married + "<br>" +
             "Household income: " + formatter.format(d.HH_income) + "<br>" +
             "Race: " + d.race + "<br>" +
