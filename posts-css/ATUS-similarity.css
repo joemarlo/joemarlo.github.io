@@ -167,12 +167,6 @@ select {
   text-anchor: left;
 }
 
-.xaxis_label {
-  font-size: 0.8em;
-  fill: #4d4d4d;
-  text-anchor: middle;
-}
-
 .bottomAxisSequence, .bottomAxisHist, .bottomAxisBar {
   font-size: 0.5em;
   color: #4d4d4d;

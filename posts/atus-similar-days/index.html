@@ -109,10 +109,10 @@
          <p><em>Finding similar sequences of categorical data</em></p>
 <hr>
 <p>How people spend their time is fascinating. It&rsquo;s the most precious resource and consequently our time-use reflect our priorities. Finding people who spend their days similar to our own can be enlightening — both because it&rsquo;s intrinsically interesting and to understand ourselves through the lens of others.</p>
-<p>A single day&rsquo;s time-use can be reduced to a string of activities. Here, every hour is represented by a rectangle and the activity by a color.</p>
+<p>A single day&rsquo;s time-use can be reduced to a string of activities. Here, every hour is represented by a rectangle and its activity by a color.</p>
 <div id="container_example"></div><br><br>
 <div id='legend_example'><br></div>
-<p>This prototypical day tells us the person works a roughly 9-5 day and spends their free time relaxing or socializing. They most likely are not in school and do not have children requiring care. As a result it can be approximately inferred they have a steady full time job, are college educated, and make above median income.</p>
+<p>This prototypical day tells us the person works a roughly 9-5 day and spends their free time relaxing or socializing. They most likely are not in school and do not have children requiring care. As a result it can be presumed they have a steady full time job, are college educated, and make above median income.</p>
 <p>Answer the questions below to see who spends their day similar to you. The question-series yields common weekday sequences that may match your own; however the sequences are entirely editable to fit your exact day.</p>
 <br>
 <div id='visualization'>
@@ -140,7 +140,7 @@
       </select>
     </div>
     <div id='container_Q4'>
-      <h4>Hmmm, how do you usually spend your day?</h4>
+      <h4>Hmmm, which activity most defines your day?</h4>
       <select id='Q4' class='form-control form-control-sm container_twenty_questions_dropdown' >
         <option value="Socializing, relaxation, leisure">Socializing, relaxation, or leisure</option>
         <option value="Household activities">Household activities</option>
@@ -210,7 +210,7 @@
 <li>The data is self reported so <a href="https://en.wikipedia.org/wiki/Response_bias">standard biases apply</a></li>
 <li>The clustering process aims to provide distinct clusters but they may not be representative of all day types. Combined with the two-step algorithm specified above, some day types may not be matched well. Notably, the use of the <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a> to calculate distances between the user sequence and the modal sequences result in cluster 7 (evening workers) often being skipped over. Once time allows, I may write my own dynamic Hamming distance function in Javascript; one is not currently available.</li>
 <li>The above distributions are not representative of <em>all</em> people that do those activities, just the top 25 people most similar to you</li>
-<li>The raw time-use data details each minute of the respondent’s day by mapping it to a list of 465 activities. I aggregated these 465 activities into 15 activities based on the Bureau of Labor Statistics’ (BLS) hierarchical definitions and my judgment. Each 30 minutes of the day is categorized as the modal activity within each respective time frame. This results in some loss of information but severely reduces the distance matrix size.</li>
+<li>The raw time-use data details each minute of the respondent’s day by mapping it to a list of 465 activities. I aggregated these 465 activities into 15 activities based on the Bureau of Labor Statistics’ (BLS) hierarchical definitions and my judgment. Every half hour is reduced to its respective modal activity. This results in some loss of information but severely reduces the distance matrix size.</li>
 </ul>
 <br>
 <h4 id="software-thanks">Software thanks</h4>

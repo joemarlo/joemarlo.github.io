@@ -4,7 +4,7 @@ function getConfig() {
   let margin = {
     top: 70,
     bottom: 50,
-    left: 0,
+    left: 20,
     right: 10
   }
 
@@ -71,6 +71,8 @@ function drawRects(data){
     .attr("class", "xaxis_label")
     .attr("transform",
           "translate(" + (bodyWidth*1/2) + " ," + (bodyHeight + (margin.bottom*3/4)) + ")")
+    .attr('fill', '#4d4d4d')
+    .attr('font-size', '0.8em')
     .text("Time of day")
 
   // Build Y scales and axis:
@@ -78,6 +80,17 @@ function drawRects(data){
     .range([ bodyHeight, 0 ])
     .domain(myVars)
     .padding(0.05);
+
+  // remove and redraw y axis label
+  d3.selectAll(".yaxis_label").remove()
+  container.append("text")
+    .attr("class", "yaxis_label")
+    .attr("transform", "rotate(-90)")
+    .attr("x", 0 - bodyHeight*5/7)
+    .attr("y", 0 - 7)
+    .attr('fill', '#4d4d4d')
+    .attr('font-size', '0.8em')
+    .text("More similar individuals ⟶")
 
   // create a tooltip
   let tooltip = d3.select("body")
@@ -154,7 +167,7 @@ function drawRects(data){
   d3.select("svg.plotSequence")
     .append("text")
       .attr("class", "sequence_plot_title sequence_plot_title_text")
-      .attr("x", margin.left)
+      .attr("x", 0)
       .attr("y", (margin.top / 2))
       .text("The 25 most similar individuals to you");
 
@@ -162,7 +175,7 @@ function drawRects(data){
   d3.select("svg.plotSequence")
     .append("text")
       .attr("class", "sequence_plot_title sequence_plot_subtitle_text")
-      .attr("x", margin.left)
+      .attr("x", 0)
       .attr("y", (margin.top * 3/4))
       .style("max-width", bodyWidth)
       .text("Each square represents how an individual spent 30 minutes of their day");
