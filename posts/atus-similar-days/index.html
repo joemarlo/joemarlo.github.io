@@ -108,8 +108,8 @@
          <h1>Who spends their day just like you?</h1>
          <p><em>Finding similar sequences of categorical data</em></p>
 <hr>
-<p>How people spend their time is fascinating. It&rsquo;s the most precious resource and consequently our time-use reflect our priorities. Finding people who spend their days similar to our own can be enlightening — both because it&rsquo;s intrinsically interesting and so we can understand ourselves through the lens of others.</p>
-<p>A single day&rsquo;s time-use can be reduced down to a string of activities. Here, every hour is represented by a rectangle and its activity by a color.</p>
+<p>How people spend their time is fascinating. It is our most precious resource and consequently our time-use reflect our priorities. Finding people who spend their days similar to our own can be enlightening — both because it&rsquo;s intrinsically interesting and so we can understand ourselves through the lens of others.</p>
+<p>A single day&rsquo;s time-use can be represented as a string of activities. Here, every hour is depicted by a rectangle and its activity by a color.</p>
 <div id="container_example"></div><br><br>
 <div id='legend_example'><br></div>
 <p>This prototypical day tells us the person works a roughly 9-5 day and spends their free time relaxing or socializing. They most likely are not in school and do not have children requiring care. As a result it can be presumed they have a steady full time job, are college educated, and make above median income.</p>
@@ -191,7 +191,7 @@
 <p align="center">
 <img src="/img/posts/ATUS-similar-days/state_distributions_by_cluster.png" width=95%>
 </p>
-<p>The clusters are reduced down to their modal sequence. These modes are used as the first step to classify the user&rsquo;s input. The user input is first matched to the best cluster (based on edit distance to the modal sequence) and then matched to the top 25 sequences of 400 potential sequences that are a priori stratified sampled from the clusters.</p>
+<p>The clusters are simplified to their modal sequence. These modes are used as the first step to classify the user&rsquo;s input. The user input is first matched to the closet modal sequence (based on edit distance) and then matched to the top 25 sequences of 400 potential sequences that are a priori stratified sampled from the matched cluster.</p>
 <p align="center">
 <img src="/img/posts/ATUS-similar-days/modal_sequences.svg" width=80%>
 </p>
@@ -210,7 +210,7 @@
 <li>The data is self reported so <a href="https://en.wikipedia.org/wiki/Response_bias">standard biases apply</a></li>
 <li>The clustering process aims to provide distinct clusters representative of common sequences so they may not be representative of all types of sequences. Combined with the two-step algorithm specified above, some day types may not be matched well. Notably, the use of the <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a> in the front-end is incongruous with the dynamic Hamming method in the analysis. Once time allows, I may write my own dynamic Hamming distance function in JavaScript.</li>
 <li>The above distributions are not representative of <em>all</em> people that do those activities, just the top 25 people most similar to you</li>
-<li>The raw time-use data details each minute of the respondent’s day by mapping it to a list of 465 activities. I aggregated these 465 activities into 15 activities based on the Bureau of Labor Statistics’ (BLS) hierarchical definitions and my judgment. Every half hour is reduced to its respective modal activity. This results in some loss of information but severely reduces the distance matrix size.</li>
+<li>The raw time-use data details each minute of the respondent’s day by mapping it to a list of 465 activities. I aggregated these 465 activities into 15 activities based on the Bureau of Labor Statistics’ (BLS) hierarchical definitions and my judgment. Every half hour is reduced to its respective modal activity. This results in some loss of information but severely decreases the distance matrix size.</li>
 </ul>
 <h4 id="software-thanks">Software thanks</h4>
 <ul>

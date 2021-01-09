@@ -97,6 +97,12 @@ span {
   transition: background-color 750ms, color 750ms;
 }
 
+/* resets the dropdown background to dark */
+.user_input > option {
+  background-color: #333333;
+  color: #e3e3e3;
+}
+
 /* this is the tick */
 .user_input_div > svg > line {
   padding: 0;

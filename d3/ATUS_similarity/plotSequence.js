@@ -70,7 +70,7 @@ function drawRects(data){
   container.append("text")
     .attr("class", "xaxis_label")
     .attr("transform",
-          "translate(" + (bodyWidth*1/2) + " ," + (bodyHeight + (margin.bottom*3/4)) + ")")
+          "translate(" + (bodyWidth*3/7) + " ," + (bodyHeight + (margin.bottom*3/4)) + ")")
     .attr('fill', '#4d4d4d')
     .attr('font-size', '0.8em')
     .text("Time of day")
