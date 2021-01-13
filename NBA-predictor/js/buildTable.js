@@ -14,9 +14,28 @@ function buildTable(data){
     rankedData[i]['rating_string'] = parseFloat(rankedData[i]['rating']).toFixed(0)
   }
 
+  // reorganize data to 1:15 and 16:30
+  rankedDataWide = rankedData.filter(d => d.rank <= rankedData.length/2)
+  for (var i=0; i<(rankedData.length/2); i++){
+    rankedDataWide[i]['rank1'] = rankedData[i].rank
+    rankedDataWide[i]['rating_string1'] = rankedData[i].rating_string
+    rankedDataWide[i]['team1'] = rankedData[i].team
+
+    // add second group of columns
+    j = i + Math.floor(rankedData.length/2)
+    rankedDataWide[i]['empty'] = ""
+    rankedDataWide[i]['rank2'] = rankedData[j].rank
+    rankedDataWide[i]['rating_string2'] = rankedData[j].rating_string
+    rankedDataWide[i]['team2'] = rankedData[j].team
+  }
+
+  console.log('here', rankedDataWide)
+
   // columns to include in table
-  columns = ['rank', 'team', 'rating_string']
-  columnNames = ['Rank', 'Team', 'Rating']
+  //columns = ['rank', 'team', 'rating_string']
+  //columnNames = ['Rank', 'Team', 'Rating']
+  columns = ['rank1', 'team1', 'rating_string1', 'empty', 'rank2', 'team2', 'rating_string2']
+  columnNames = ['Rank', 'Team', 'Rating', "", 'Rank', 'Team', 'Rating']
 
   // create table
   let table = d3.select('#tableRank').append('table')
@@ -32,7 +51,7 @@ function buildTable(data){
       .text(d => d)
 
     let rows = tbody.selectAll('tr')
-      .data(rankedData)
+      .data(rankedDataWide)
       .enter()
     .append('tr')
 
