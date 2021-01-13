@@ -85,7 +85,7 @@ function drawData(data, config, scales){
   let grouped = d3.nest()
     .key(d => d.team)
     .entries(data)
-  console.log('here', grouped)
+  console.log('Grouped data:', grouped)
 
   // filter the data for the current data
   // TODO: issue here if teams didn't play today
@@ -138,7 +138,6 @@ function drawData(data, config, scales){
       .transition()
         .duration(150)
         .style('opacity', 1)
-    //TODO: should fade the stroke color here
   }
 
   function mousemove(d){
@@ -265,7 +264,6 @@ function drawData(data, config, scales){
       .on('mouseover', mouseover)
       .on('mousemove', mousemove)
       .on('mouseleave', mouseleave)
-
 }
 
 function buildPlot(data){

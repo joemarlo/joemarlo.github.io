@@ -176,8 +176,22 @@ th {
   font-weight: 700;
 }
 
+#tableRankContainer {
+  max-width: 200px;
+}
+
+#plotRankContainer {
+  width: 60%;
+}
+
+@media (max-width: 767px) {
+  #plotRankContainer {
+    width: 95%;
+  }
+}
+
 #plotRank {
-  max-width: 700px;
+  max-width: 100%;
 }
 
 .tooltip {
