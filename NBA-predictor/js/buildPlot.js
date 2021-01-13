@@ -232,15 +232,20 @@ function drawData(data, config, scales){
     .style("fill", "none");
 
   // add historical lines
-  let line = d3.line()
+  var myColor = d3.scaleLinear()
+    .domain([-200,200])
+    .range(["white", "blue"])
+  let historicalLine = d3.line()
+      .curve(d3.curveCatmullRom.alpha(1))
       .x(d => xScale(d.rating_delta))
       .y(d => yScale(d.rating))
+
   container.append('g')
       .selectAll('lines')
       .data(grouped)
       .enter()
       .append("path")
-        .attr('d', d => line(d.values))
+        .attr('d', d => historicalLine(d.values))
         .style('stroke-width', 1.5)
         .attr('stroke', '#666666')
         .style('fill', 'none')
@@ -257,6 +262,7 @@ function drawData(data, config, scales){
       .attr("cy", d => yScale(d.rating))
       .attr("r", 4)
       .style("fill", "#666666")
+      .style("stroke", '#fff')
       .style('opacity', 0)
       .attr('team', d => d.team + "_circle")
 
