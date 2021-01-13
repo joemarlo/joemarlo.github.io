@@ -77,7 +77,7 @@ function filterData(sequences, demographics, inputSequence, modal_sequences, str
   rankedData = mergeOn(indexBy('ID', stringMatchScores), 'ID', data)
   rankedData.sort(function(a,b) { return +a.rank - +b.rank })
 
-  // filter to just the top 50 ranked observations
+  // filter to just the top 25 ranked observations
   maxRank = d3.max(rankedData, d => d.rank)
   rankedFilteredData = rankedData.filter(d => {return d.rank >= (maxRank - 25)})
 

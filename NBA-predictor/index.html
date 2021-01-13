@@ -1,0 +1,47 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="CSS/meyer.css">
+    <link rel="stylesheet" type="text/css" href="CSS/NBA.css">
+</head>
+<body>
+  <main class="wrapper">
+    <section>
+      <h1>NBA Game Predictions</h1>
+    </section>
+    <br>
+    <div class="tab">
+      <button class="tablinks" id='defaultTab' onclick="changeTab(event, 'tabPredictions')">Predictions</button>
+      <button class="tablinks" onclick="changeTab(event, 'tabRankings')">Rankings</button>
+      <button class="tablinks" onclick="changeTab(event, 'tabMethodology')">Methodology</button>
+    </div>
+    <div id="tabPredictions" class="tabcontent">
+      <div id="gridContainer" class="cards"></div>
+    </div>
+    <div id="tabRankings" class="tabcontent" style="display:none">
+      <div id='tableRankContainer'>
+        <h3>Current team rankings</h3>
+        <div id='tableRank'></div>
+      </div>
+      <div id='plotRankContainer'>
+        <h3>Team ratings</h3>
+        <h5>Hover over points to see team history</h5>
+        <div id='plotRank'></div>
+      </div>
+      <div style='clear: left'></div>
+    </div>
+    <div id="tabMethodology" class="tabcontent" style="display:none">
+      <h3>Our methodology</h3>
+    </div>
+  </main>
+</body>
+<footer>
+  <p>Updated daily at 6am Eastern Time. Find the code <a href="https://github.com/gperrett/nba-predictor">here</a> and download the current predictions <a href="Data/game_predictions.csv">here</a>.</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://d3js.org/d3.v5.js"></script>
+<script src="js/tabbed.js"></script>
+<script src="js/buildGrid.js"></script>
+<script src="js/buildTable.js"></script>
+<script src="js/buildPlot.js"></script>
+<script src="js/showData.js"></script>
+</html>
