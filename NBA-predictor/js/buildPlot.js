@@ -26,6 +26,7 @@ function cleanData(data){
   uniqueDates = d3.map(data, d => d.date).keys()
   uniqueDates = uniqueDates.sort(d3.descending)
   let nDays = 15
+  // TODO: I don't think this date filtering doesn't work
   newData = newData.filter(d => {return d.date >= uniqueDates[nDays]})
 
   return newData;
@@ -112,7 +113,7 @@ function drawData(data, config, scales){
     .attr('class', 'axisLabel')
     .attr("transform",
             "translate(" + bodyWidth*3/9 + " ," + (bodyHeight + (margin.bottom*3/5)) + ")")
-    .text("Rating change in last 15 days")
+    .text("Rating change in last 10 days")
 
   // create a tooltip
   let tooltip = d3.select("#plotRank")
@@ -142,7 +143,7 @@ function drawData(data, config, scales){
 
   function mousemove(d){
     tooltip
-      .html("<p style='font-weight: 700'>" + d.team + "</p>Last 15 days")
+      .html("<p style='font-weight: 700'>#" + d.rank + ": " + d.team + "</p>Historical ratings shown")
       .style("left", (d3.event.pageX + 20) + "px")
       .style("top", (d3.event.pageY + 20) + "px")
   }
