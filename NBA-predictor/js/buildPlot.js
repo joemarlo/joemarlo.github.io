@@ -129,6 +129,11 @@ function drawData(data, config, scales){
     d3.selectAll('.currentPoints')
       .style('opacity', 0.2)
 
+    // emphasize this current point tho
+    d3.select(this)
+      .style('opacity', 1)
+      .style('fill', '#666666')
+
     // get team name and change the stroke with all values with this team name
     let name = d3.select(this).attr('team')
     d3.selectAll("[team=" + name + "_path]")
@@ -139,6 +144,10 @@ function drawData(data, config, scales){
       .transition()
         .duration(150)
         .style('opacity', 1)
+
+    // highlight row on table
+    d3.selectAll('table').select('[team=' + name + ']')
+      .style("background-color", '#f1f1f1')
   }
 
   function mousemove(d){
@@ -154,20 +163,23 @@ function drawData(data, config, scales){
 
     // re-emphasize other points
     d3.selectAll('.currentPoints')
-      .transition()
-        .duration(200)
-        .style('opacity', 0.8)
+      .style('opacity', 0.8)
+      .style('fill', '#adadad')
 
     // get team name and change the stroke with all values with this team name
     let name = d3.select(this).attr('team')
     d3.selectAll("[team=" + name + "_path]")
       .transition()
-        .duration(200)
+        .duration(100)
         .style('stroke-opacity', 0)
     d3.selectAll("[team=" + name + "_circle]")
       .transition()
-        .duration(200)
+        .duration(100)
         .style('opacity', 0)
+
+    // de-highlight row on table
+    d3.selectAll('table').select('[team=' + name + ']')
+      .style("background-color", '#fff')
   }
 
   // add quadrant identifiers
@@ -262,6 +274,7 @@ function drawData(data, config, scales){
       .style('stroke', '#fff')
       .attr('class', 'currentPoints')
       .attr('team', d => d.team)
+      .attr('teamShape', d => d.team + "_currentCircle")
       .on('mouseover', mouseover)
       .on('mousemove', mousemove)
       .on('mouseleave', mouseleave)
