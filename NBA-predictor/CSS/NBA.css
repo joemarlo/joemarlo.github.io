@@ -173,7 +173,7 @@ footer > p {
 }
 
 th, td {
-  padding: 6px 8px 6px 8px;
+  padding: 4px 14px 4px 14px;
   text-align: left;
   border-bottom: 1px solid #E2E2E2;
   font-size: 0.8em;
@@ -184,22 +184,49 @@ th {
   font-weight: 700;
 }
 
+#plotRankContainer {
+  width: 800px;
+  max-width: 60%;
+}
+
 #tableRankContainer {
   max-width: 95%;
 }
 
-#plotRankContainer {
-  width: 60%;
+#plotRank {
+  max-width: 800px;
 }
 
 @media (max-width: 767px) {
   #plotRankContainer {
     width: 95%;
+    max-width: 95%;
   }
-}
-
-#plotRank {
-  max-width: 100%;
+  #tableRankContainer {
+    display: inline-block;
+    width: 95%;
+    max-width: 95%;
+    margin: 0;
+    padding: 0;
+  }
+  #tableRank {
+    table-layout: fixed;
+    width: 100%;
+    max-width: 95%;
+    margin: auto;
+    margin-bottom: 0;
+    padding: 0;
+    display: table;
+  }
+  .colWidth_Rank {
+    width: 50%;
+  }
+  .colWidth_Team {
+    width: 50%;
+  }
+  .colWidth_Rating {
+    width: 50%;
+  }
 }
 
 .tooltip {

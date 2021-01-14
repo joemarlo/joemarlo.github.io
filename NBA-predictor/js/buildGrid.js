@@ -4,7 +4,6 @@ function buildGrid(data){
   uniqueDates = d3.map(data, d => d.date).keys()
 
   // sort the dates ascending
-  // TODO: this doesn't work
   uniqueDates = uniqueDates.sort((a, b) => b - a)
 
   // for each date, create a grid

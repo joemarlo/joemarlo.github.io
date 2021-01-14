@@ -38,8 +38,17 @@ function buildTable(data){
 
   // create table
   let table = d3.select('#tableRank').append('table')
+    let tcol = table.append('colgroup')
     let thead = table.append('thead')
     let tbody = table.append('tbody')
+
+    // create the col group
+    tcol
+      .selectAll('colgroup')
+      .data(columnNames)
+      .enter()
+      .append('col')
+      .attr('class', d => 'colWidth_' + d)
 
     // create the table head
     thead.append('tr')
@@ -52,53 +61,53 @@ function buildTable(data){
     let rows = tbody.selectAll('tr')
       .data(rankedData)
       .enter()
-    .append('tr')
-    .attr('team', d => d.team)
-    .on("mouseover", function(d, i){
-      // highlight this row
-      d3.select(this)
-        .style("background-color", '#f1f1f1')
+      .append('tr')
+      .attr('team', d => d.team)
+      .on("mouseover", function(d, i){
+        // highlight this row
+        d3.select(this)
+          .style("background-color", '#f1f1f1')
 
-      // de-emphasize other points
-      d3.selectAll('.currentPoints')
-        .style('opacity', 0.2)
+        // de-emphasize other points
+        d3.selectAll('.currentPoints')
+          .style('opacity', 0.2)
 
-      // get team name and change the stroke with all values with this team name
-      let name = d3.select(this).attr('team')
-      d3.selectAll("[team=" + name + "_path]")
-        .transition()
-          .duration(150)
-          .style('stroke-opacity', 1)
-      d3.selectAll("[team=" + name + "_circle]")
-        .transition()
-          .duration(150)
+        // get team name and change the stroke with all values with this team name
+        let name = d3.select(this).attr('team')
+        d3.selectAll("[team=" + name + "_path]")
+          .transition()
+            .duration(150)
+            .style('stroke-opacity', 1)
+        d3.selectAll("[team=" + name + "_circle]")
+          .transition()
+            .duration(150)
+            .style('opacity', 1)
+
+        // emphasize this current point tho
+        d3.selectAll("[teamShape=" + name + "_currentCircle]")
           .style('opacity', 1)
+          .style('fill', '#666666')
+      })
+      .on("mouseleave", function(d, i){
+        // de-highlight this row
+        d3.select(this)
+          .style("background-color", '#fff')
 
-      // emphasize this current point tho
-      d3.selectAll("[teamShape=" + name + "_currentCircle]")
-        .style('opacity', 1)
-        .style('fill', '#666666')
-    })
-    .on("mouseleave", function(d, i){
-      // de-highlight this row
-      d3.select(this)
-        .style("background-color", '#fff')
+        // re-emphasize other points
+        d3.selectAll('.currentPoints')
+          .style('opacity', 0.8)
+          .style('fill', '#adadad')
 
-      // re-emphasize other points
-      d3.selectAll('.currentPoints')
-        .style('opacity', 0.8)
-        .style('fill', '#adadad')
-
-      // get team name and change the stroke with all values with this team name
-      let name = d3.select(this).attr('team')
-      d3.selectAll("[team=" + name + "_path]")
-        .transition()
-          .duration(200)
-          .style('stroke-opacity', 0)
-      d3.selectAll("[team=" + name + "_circle]")
-        .transition()
-          .duration(200)
-          .style('opacity', 0)
+        // get team name and change the stroke with all values with this team name
+        let name = d3.select(this).attr('team')
+        d3.selectAll("[team=" + name + "_path]")
+          .transition()
+            .duration(200)
+            .style('stroke-opacity', 0)
+        d3.selectAll("[team=" + name + "_circle]")
+          .transition()
+            .duration(200)
+            .style('opacity', 0)
     })
 
     let cells = rows.selectAll('td')
