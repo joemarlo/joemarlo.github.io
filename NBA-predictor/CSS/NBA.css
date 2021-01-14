@@ -3,10 +3,12 @@
 body {
     font-family: "Roboto", Helvetica, Arial, sans-serif;
     margin: 1em;
+    background-color: #F5F5F6;
 }
 
 p, a {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: 400;
 }
 
 p {
@@ -21,11 +23,11 @@ html {
 
 a {
   text-decoration: none;
-  color: #595959;
+  color: #666666;
   border-radius: .25rem;
   text-align: center;
   display: inline-block;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 a:hover {
@@ -40,18 +42,27 @@ h1 {
   color: #525252;
 }
 
-h3, h5 {
+h3, h4, h5, .subtitle {
   display: block;
   font-size: 1.17em;
   margin: 0.6rem 0 0.6rem 0;
-  font-weight: bold;
+  font-weight: 700;
   color: #525252;
 }
 
-h5 {
+h4 {
+  font-size: 1em;
+}
+
+h5, .subtitle {
   font-size: 0.8em;
   padding: 0.5rem 0 0 0;
   color: #666666;
+}
+
+.subtitle {
+  fill: #666666;
+  font-weight: 400;
 }
 
 #gridContainer h3:first-child {
@@ -77,6 +88,7 @@ h5 {
   border: 1px solid #E2E2E2;
   border-radius: 0.15rem;
   background-color: #fff;
+  box-shadow: 0.1rem 0.3rem 0.3rem #c9c9c9;
 }
 
 .cards > ul > li > p {
@@ -109,7 +121,6 @@ h5 {
 }
 
 footer {
-  background-color: #f1f1f1;
   border-radius: 0.15rem;
   padding: 0.8rem;
   margin: 3rem 0 0 0;
@@ -118,14 +129,17 @@ footer {
 
 footer > p {
   font-size: 0.75em;
+  color: #a6a6a6;
 }
 
 .tab {
   overflow: hidden;
   border: none;
   border-width: 0;
+  border-radius: 0.15rem;
   padding: 0;
   background-color: #71807b; /*#f1f1f1;*/
+  box-shadow: 0.1rem 0.3rem 0.3rem #c9c9c9;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -177,6 +191,7 @@ th, td {
   padding: 4px 14px 4px 14px;
   text-align: left;
   border-bottom: 1px solid #E2E2E2;
+  border-radius: 0.15rem;
   font-size: 0.8em;
   color: #666666;
 }
@@ -198,6 +213,14 @@ th {
   max-width: 800px;
 }
 
+#plotRank, #tableRank {
+  border: 1px solid #E2E2E2;
+  border-radius: 0.15rem;
+  background-color: #fff;
+  box-shadow: 0.1rem 0.3rem 0.3rem #c9c9c9;
+  padding: 1rem;
+}
+
 @media (max-width: 767px) {
   #plotRankContainer {
     width: 95%;
@@ -215,8 +238,7 @@ th {
     width: 100%;
     max-width: 95%;
     margin: auto;
-    margin-bottom: 0;
-    padding: 0;
+    padding: 0.5rem;
     display: table;
   }
   .colWidth_Rank {
@@ -233,13 +255,13 @@ th {
 .tooltip {
   font-size: 0.8em;
   background-color: white;
-  border: solid #666666;
+  border: solid #394E48;
   border-width: 2px;
   border-radius: 2px;
   padding: 0.5rem 0.5rem 0.3rem 0.5rem;
   text-align: left;
   position: absolute;
-  color: #383838;
+  color: #666666;
 }
 
 .axis > path {
@@ -267,4 +289,24 @@ th {
 
 .legend > text {
   fill: #666666;
+}
+
+#methodologyContainer {
+  border: 1px solid #E2E2E2;
+  border-radius: 0.15rem;
+  background-color: #fff;
+  box-shadow: 0.1rem 0.3rem 0.3rem #c9c9c9;
+  padding: 1rem;
+  max-width: 900px;
+}
+
+#methodologyContainer > p {
+  font-weight: 100;
+  color: #808080;
+  font-size: 0.9em;
+  letter-spacing: 0.02em;
+}
+
+#methodologyContainer > h4 {
+  padding: 1.3rem 0 0 0;
 }

@@ -39,8 +39,8 @@ function getConfig(){
   let width = 800;
   let height = 600;
   let margin = {
-      top: 10,
-      bottom: 100,
+      top: 30,
+      bottom: 80,
       left: 80,
       right: 50
   }
@@ -119,7 +119,7 @@ function drawData(data, config, scales){
   container.append('text')
     .attr('class', 'axisLabel')
     .attr("transform",
-            "translate(" + bodyWidth*3/9 + " ," + (bodyHeight + (margin.bottom*2/5)) + ")")
+            "translate(" + bodyWidth*3/9 + " ," + (bodyHeight + (margin.bottom*2.5/5)) + ")")
     .text("Rating trend over last 15 days")
 
   // create a tooltip
@@ -159,7 +159,7 @@ function drawData(data, config, scales){
 
   function mousemove(d){
     tooltip
-      .html("<p style='font-weight: 700'>#" + d.rank + ": " + d.team + "</p>Historical ratings shown")
+      .html("<p style='font-weight: 700'>#" + d.rank + ": " + d.team + "</p><p style='font-weight: 400'>Historical ratings shown</p>")
       .style("left", (d3.event.pageX + 20) + "px")
       .style("top", (d3.event.pageY + 20) + "px")
   }
@@ -293,12 +293,20 @@ function drawData(data, config, scales){
       .on('mousemove', mousemove)
       .on('mouseleave', mouseleave)
 
+  // add subtitle
+  container
+    .append('text')
+    .attr('class', 'subtitle')
+    .attr('x', -75)
+    .attr('y', -20)
+    .text('Hover over points to see team history')
+
   // add legend
   let legend = container
     .append('g')
     .attr("class", "legend")
     .attr("transform",
-            "translate(" + bodyWidth*2.5/9 + " ," + (bodyHeight + (margin.bottom*2/5)) + ")")
+            "translate(" + bodyWidth*2.5/9 + " ," + (bodyHeight + (margin.bottom*2.5/5)) + ")")
   legend.append("circle").attr("cx",10).attr("cy",25).attr("r", 6).style("fill", "#C58581")
   legend.append("circle").attr("cx",100).attr("cy",25).attr("r", 6).style("fill", "#224870")
   legend.append("text").attr("x", 25).attr("y", 30).text("Eastern").style("font-size", "15px").attr("alignment-baseline","middle")
