@@ -1,4 +1,10 @@
 function buildTable(data){
+
+  // set color scale for conference
+  let colorScale = d3.scaleOrdinal()
+      .domain(["Eastern", "Western"])
+      .range(["#C58581", "#224870"])
+
   // filter to latest date
   // TODO: need to revise this to latest date *per team*
   uniqueDates = d3.map(data, d => d.date).keys()
@@ -14,8 +20,8 @@ function buildTable(data){
     rankedData[i]['rating_string'] = parseFloat(rankedData[i]['rating']).toFixed(0)
   }
 
+  /*
   // reorganize data to 1:15 and 16:30
-  // can remove this because need single rows to highlight plot
   rankedDataWide = rankedData.filter(d => d.rank <= rankedData.length/2)
   for (var i=0; i<(rankedData.length/2); i++){
     rankedDataWide[i]['rank1'] = rankedData[i].rank
@@ -29,6 +35,7 @@ function buildTable(data){
     rankedDataWide[i]['rating_string2'] = rankedData[j].rating_string
     rankedDataWide[i]['team2'] = rankedData[j].team
   }
+  */
 
   // columns to include in table
   columns = ['rank', 'team', 'rating_string']
@@ -66,7 +73,7 @@ function buildTable(data){
       .on("mouseover", function(d, i){
         // highlight this row
         d3.select(this)
-          .style("background-color", '#f1f1f1')
+          .style("background-color", '#e4ebe7')
 
         // de-emphasize other points
         d3.selectAll('.currentPoints')
@@ -83,10 +90,10 @@ function buildTable(data){
             .duration(150)
             .style('opacity', 1)
 
-        // emphasize this current point tho
+        // emphasize the current point
         d3.selectAll("[teamShape=" + name + "_currentCircle]")
           .style('opacity', 1)
-          .style('fill', '#666666')
+          .style('fill', '#394E48')
       })
       .on("mouseleave", function(d, i){
         // de-highlight this row
@@ -96,7 +103,8 @@ function buildTable(data){
         // re-emphasize other points
         d3.selectAll('.currentPoints')
           .style('opacity', 0.8)
-          .style('fill', '#adadad')
+          //.style('fill', '#71807b')
+          .style('fill', d => colorScale(d.conference))
 
         // get team name and change the stroke with all values with this team name
         let name = d3.select(this).attr('team')
