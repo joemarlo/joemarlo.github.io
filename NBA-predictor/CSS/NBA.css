@@ -6,6 +6,12 @@ body {
     background-color: #F5F5F6;
 }
 
+.wrapper {
+  max-width: 1300px;
+  margin: auto;
+  display: block;
+}
+
 p, a {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 400;
@@ -185,6 +191,8 @@ footer > p {
   display: none;
   padding: 6px 12px;
   border: none;
+  margin: auto;
+  display: block;
 }
 
 /* rankings page */
@@ -218,14 +226,11 @@ th {
   width: 800px;
   max-width: 60%;
 }
-
 #tableRankContainer {
   max-width: 95%;
 }
 
-#plotRank {
-  max-width: 800px;
-}
+
 
 #plotRank, #tableRank {
   border: 1px solid #E2E2E2;
