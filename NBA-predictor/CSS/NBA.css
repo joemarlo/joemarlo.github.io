@@ -7,7 +7,7 @@ body {
 }
 
 .wrapper {
-  max-width: 1300px;
+  max-width: 1020px;
   margin: auto;
   display: block;
 }
@@ -154,7 +154,7 @@ footer > p {
   border-radius: 0.15rem;
   padding: 0;
   background-color: #71807b; /*#f1f1f1;*/
-  box-shadow: 0.1rem 0.3rem 0.3rem #c9c9c9;
+  box-shadow: 0.1rem 0.3rem 0.3rem #c9c9c9, 0rem -0.2rem 0.3rem 1.0rem rgba(245, 245, 246);
   position: -webkit-sticky;
   position: sticky;
   top: 1rem;
@@ -224,7 +224,7 @@ th {
 
 #plotRankContainer {
   width: 800px;
-  max-width: 60%;
+  max-width: 64%;
 }
 #tableRankContainer {
   max-width: 95%;
