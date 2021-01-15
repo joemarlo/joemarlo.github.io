@@ -66,7 +66,7 @@ h5 {
 .subGridContainerHeaderDiv {
   position: -webkit-sticky;
   position: sticky;
-  top: 3rem;
+  top: 3.5rem;
   background-color: #F5F5F6;
   background-color: rgba(245, 245, 246, 1);
   box-shadow: -1rem 0.2rem 0.5rem rgba(245, 245, 246), 1rem 0.2rem 0.5rem rgba(245, 245, 246);
@@ -190,7 +190,7 @@ footer > p {
 /* rankings page */
 #tabRankings h3:first-child, #tabMethodology h3:first-child {
   padding: 1.5rem 0 0rem 0;
-  margin: 0rem 0 0.6rem 0;
+  margin: 0rem 0 1.5rem 0;
 }
 
 #plotRankContainer, #tableRankContainer {
@@ -239,6 +239,7 @@ th {
   #plotRankContainer {
     width: 95%;
     max-width: 95%;
+    margin: 0 0 2rem 0;
   }
   #tableRankContainer {
     display: inline-block;
