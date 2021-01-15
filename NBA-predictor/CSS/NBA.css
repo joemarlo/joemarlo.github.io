@@ -63,19 +63,19 @@ h5 {
   font-size: 0.6em;
 }
 
-#gridContainer h3:first-child {
-  margin: 0rem 0 0.6rem 0;
-}
-
 .subGridContainerHeaderDiv {
   position: -webkit-sticky;
   position: sticky;
-  top: 4rem;
+  top: 3rem;
   background-color: #F5F5F6;
   background-color: rgba(245, 245, 246, 1);
-  box-shadow: 0rem 0.3rem 1rem rgba(245, 245, 246);
+  box-shadow: -1rem 0.2rem 0.5rem rgba(245, 245, 246), 1rem 0.2rem 0.5rem rgba(245, 245, 246);
   padding: 1rem 0rem 0.2rem 0rem;
-  margin: 0.6rem 0 0.1rem 0;
+  margin: 1.5rem 0 0.3rem 0;
+}
+
+#gridContainer > .subGridContainer:first-child > .subGridContainerHeaderDiv {
+  margin: 0rem 0 0.6rem 0;
 }
 
 /* cards styles */
