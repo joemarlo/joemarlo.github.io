@@ -89,6 +89,8 @@ function drawData(data, config, scales){
   let {xScale, yScale, colorScale} = scales;
   console.log('Data into drawData():', data)
 
+  let meanY = d3.mean(data, d => +d.rating);
+
   // group the data for drawing the historical lines
   let grouped = d3.nest()
     .key(d => d.team)
@@ -96,10 +98,7 @@ function drawData(data, config, scales){
   console.log('Grouped data:', grouped)
 
   // filter the data for the current data
-  // TODO: issue here if teams didn't play today
-  uniqueDates = d3.map(data, d => d.date).keys()
-  uniqueDates = uniqueDates.sort(d3.descending)
-  latestData = data.filter(d => {return d.date >= uniqueDates[0]})
+  latestData = data.filter(d => {return d.latest == 1})
 
   // add X axis
   container.append("g")
@@ -193,27 +192,27 @@ function drawData(data, config, scales){
   // add quadrant identifiers
   container.append("text")
     .attr("class", "quadrantText")
-    .attr("transform",
-          "translate(" + 35 + "," + bodyHeight*1/5 + ")")
-    .style("text-anchor", "center")
+    .attr("x", xScale(0-15))
+    .attr("y", yScale(meanY*1.05))
+    .style("text-anchor", "end")
     .html("HIGH BUT DECLINING")
  container.append("text")
     .attr("class", "quadrantText")
-    .attr("transform",
-          "translate(" + 300 + "," + bodyHeight*1/5 + ")")
-    .style("text-anchor", "center")
+    .attr("x", xScale(0+15))
+    .attr("y", yScale(meanY*1.05))
+    .style("text-anchor", "start")
     .html("HIGH AND INCREASING")
   container.append("text")
     .attr("class", "quadrantText")
-    .attr("transform",
-          "translate(" + 35 + "," + bodyHeight*4/5 + ")")
-    .style("text-anchor", "center")
+    .attr("x", xScale(0-15))
+    .attr("y", yScale(meanY-(meanY*0.06)))
+    .style("text-anchor", "end")
     .html("LOW AND DECLINING")
  container.append("text")
     .attr("class", "quadrantText")
-    .attr("transform",
-          "translate(" + 300 + "," + bodyHeight*4/5 + ")")
-    .style("text-anchor", "center")
+    .attr("x", xScale(0+15))
+    .attr("y", yScale(meanY-(meanY*0.06)))
+    .style("text-anchor", "start")
     .html("LOW BUT INCREASING")
 
   // add vertical line
@@ -228,7 +227,6 @@ function drawData(data, config, scales){
     .style("fill", "none");
 
   // add horizontal line
-  let meanY = d3.mean(data, d => +d.rating);
   container.append("line")
     .attr("x1", 0)
     .attr('y1', yScale(meanY))

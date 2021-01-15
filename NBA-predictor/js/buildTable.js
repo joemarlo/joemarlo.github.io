@@ -1,15 +1,14 @@
 function buildTable(data){
 
+  console.log("Data into buildTable():", data)
+
   // set color scale for conference
   let colorScale = d3.scaleOrdinal()
       .domain(["Eastern", "Western"])
       .range(["#C58581", "#224870"])
 
   // filter to latest date
-  // TODO: need to revise this to latest date *per team*
-  uniqueDates = d3.map(data, d => d.date).keys()
-  uniqueDates = uniqueDates.sort(d3.descending)
-  filteredData = data.filter(d => {return d.date == uniqueDates[0]})
+  filteredData = data.filter(d => {return d.latest == 1})
 
   // create rankings
   rankedData =  filteredData.sort((a, b) => d3.descending(a.rating, b.rating))
