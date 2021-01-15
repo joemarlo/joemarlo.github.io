@@ -23,10 +23,7 @@ html {
 
 a {
   text-decoration: none;
-  color: #666666;
-  border-radius: .25rem;
-  text-align: center;
-  display: inline-block;
+  color: #919191;
   font-weight: 500;
 }
 
@@ -54,7 +51,7 @@ h4 {
   font-size: 1em;
 }
 
-h5, .subtitle {
+h5 {
   font-size: 0.8em;
   padding: 0.5rem 0 0 0;
   color: #666666;
@@ -63,6 +60,7 @@ h5, .subtitle {
 .subtitle {
   fill: #666666;
   font-weight: 400;
+  font-size: 0.6em;
 }
 
 #gridContainer h3:first-child {
@@ -129,7 +127,7 @@ footer {
 
 footer > p {
   font-size: 0.75em;
-  color: #a6a6a6;
+  color: #b8b8b8;
 }
 
 .tab {
@@ -154,6 +152,7 @@ footer > p {
   padding: 1rem 1.1rem;
   transition: 0.3s;
   color: #fff;
+  font-size: 0.9em;
 }
 
 /* Change background color of buttons on hover */
@@ -283,12 +282,13 @@ th {
 
 .quadrantText {
   font-weight: 700;
-  font-size: 1.5em;
+  font-size: 1.1em;
   fill: #E2E2E2;
 }
 
 .legend > text {
   fill: #666666;
+  font-size: 0.8em;
 }
 
 #methodologyContainer {
@@ -309,4 +309,9 @@ th {
 
 #methodologyContainer > h4 {
   padding: 1.3rem 0 0 0;
+}
+
+#methodologyContainer > p > a {
+  font-weight: 500;
+  font-size: 1em;
 }

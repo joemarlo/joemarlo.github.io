@@ -36,13 +36,13 @@ function cleanData(data){
 }
 
 function getConfig(){
-  let width = 800;
-  let height = 600;
+  let width = 600;
+  let height = 450;
   let margin = {
       top: 30,
       bottom: 80,
       left: 80,
-      right: 50
+      right: 20
   }
 
   //The body is the area that will be occupied by the bars.
@@ -159,7 +159,7 @@ function drawData(data, config, scales){
 
   function mousemove(d){
     tooltip
-      .html("<p style='font-weight: 700'>#" + d.rank + ": " + d.team + "</p><p style='font-weight: 400'>Historical ratings shown</p>")
+      .html("<p style='font-weight: 700'>#" + d.rank + ": " + d.team + "</p><p style='font-weight: 400; font-size: 0.9em'>Historical ratings shown</p>")
       .style("left", (d3.event.pageX + 20) + "px")
       .style("top", (d3.event.pageY + 20) + "px")
   }
@@ -200,7 +200,7 @@ function drawData(data, config, scales){
  container.append("text")
     .attr("class", "quadrantText")
     .attr("transform",
-          "translate(" + 400 + "," + bodyHeight*1/5 + ")")
+          "translate(" + 300 + "," + bodyHeight*1/5 + ")")
     .style("text-anchor", "center")
     .html("HIGH AND INCREASING")
   container.append("text")
@@ -212,7 +212,7 @@ function drawData(data, config, scales){
  container.append("text")
     .attr("class", "quadrantText")
     .attr("transform",
-          "translate(" + 400 + "," + bodyHeight*4/5 + ")")
+          "translate(" + 300 + "," + bodyHeight*4/5 + ")")
     .style("text-anchor", "center")
     .html("LOW BUT INCREASING")
 
@@ -265,7 +265,7 @@ function drawData(data, config, scales){
     .append("circle")
       .attr("cx", d => xScale(d.rating_delta))
       .attr("cy", d => yScale(d.rating))
-      .attr("r", 4)
+      .attr("r", 3)
       .style("fill", "#394E48")
       //.style('fill', d => colorScale(d.conference))
       .style("stroke", '#fff')
@@ -280,7 +280,7 @@ function drawData(data, config, scales){
     .append("circle")
       .attr("cx", d => xScale(d.rating_delta))
       .attr("cy", d => yScale(d.rating))
-      .attr("r", 10)
+      .attr("r", 8)
       .style('opacity', 0.8)
       //.style("fill", "#adadad")
 //      .style('fill', '#71807b')
@@ -309,8 +309,8 @@ function drawData(data, config, scales){
             "translate(" + bodyWidth*2.5/9 + " ," + (bodyHeight + (margin.bottom*2.5/5)) + ")")
   legend.append("circle").attr("cx",10).attr("cy",25).attr("r", 6).style("fill", "#C58581")
   legend.append("circle").attr("cx",100).attr("cy",25).attr("r", 6).style("fill", "#224870")
-  legend.append("text").attr("x", 25).attr("y", 30).text("Eastern").style("font-size", "15px").attr("alignment-baseline","middle")
-  legend.append("text").attr("x", 115).attr("y", 30).text("Western Conference").style("font-size", "15px").attr("alignment-baseline","middle")
+  legend.append("text").attr("x", 25).attr("y", 30).text("Eastern").attr("alignment-baseline","middle")
+  legend.append("text").attr("x", 115).attr("y", 30).text("Western Conference").attr("alignment-baseline","middle")
 
 
 
