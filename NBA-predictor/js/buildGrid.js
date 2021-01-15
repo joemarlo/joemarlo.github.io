@@ -16,13 +16,19 @@ function buildGrid(data){
     // sort list by win probability
     filteredData = filteredData.sort((a, b) => d3.ascending(Math.abs(0.5 - a.probA), Math.abs(0.5 - b.probA)))
 
+    // add new div
+    let new_div = $("<div>").appendTo('#gridContainer')
+    new_div.attr('class', 'subGridContainer')
+
     // add date title
     dateFormat = {weekday: 'long', month: 'long', day: 'numeric'}
     formattedDate = new Date(uniqueDates[i]).toLocaleDateString('en', dateFormat)
-    $("<h3>" + formattedDate + "</h3>").appendTo('#gridContainer')
+    let h_div = $("<div>").appendTo(new_div)
+    h_div.attr('class', 'subGridContainerHeaderDiv')
+    $("<h3>" + formattedDate + "</h3>").appendTo(h_div) //('#gridContainer')
 
     // create list
-    let new_ul = $('<ul>').appendTo('#gridContainer')
+    let new_ul = $('<ul>').appendTo(new_div) //'#gridContainer')
     new_ul.attr('id', 'newUl'+i)
 
     // for each game, create a grid item

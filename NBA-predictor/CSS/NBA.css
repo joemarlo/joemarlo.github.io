@@ -67,29 +67,40 @@ h5 {
   margin: 0rem 0 0.6rem 0;
 }
 
+.subGridContainerHeaderDiv {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 4rem;
+  background-color: #F5F5F6;
+  background-color: rgba(245, 245, 246, 1);
+  box-shadow: 0rem 0.3rem 1rem rgba(245, 245, 246);
+  padding: 1rem 0rem 0.2rem 0rem;
+  margin: 0.6rem 0 0.1rem 0;
+}
+
 /* cards styles */
 .cards {
   padding: 0rem;
 }
 
-.cards > h3 {
+.cards > div > h3 {
   padding: 1.5rem 0 0rem 0;
 }
 
-.cards > ul {
+.cards > div > ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 1rem;
 }
 
-.cards > ul > li {
+.cards > div > ul > li {
   border: 1px solid #E2E2E2;
   border-radius: 0.15rem;
   background-color: #fff;
   box-shadow: 0.1rem 0.3rem 0.3rem #c9c9c9;
 }
 
-.cards > ul > li > p {
+.cards > div > ul > li > p {
   font-size: 1em;
   line-height: 1.5;
   padding: 1rem .75rem;
@@ -101,12 +112,12 @@ h5 {
   padding: 0.5rem 0.75rem 0.5rem .75rem;
 }
 
-.cards > ul > li > a {
+.cards > div > ul > li > a {
   padding: .5rem 1rem;
   margin: .5rem;
 }
 
-.cards > ul > li > li > hr {
+.cards > div > ul > li > li > hr {
   border: 1px solid #E2E2E2;
   margin: 0 0.7rem 0 0.7rem;
 }
@@ -138,6 +149,10 @@ footer > p {
   padding: 0;
   background-color: #71807b; /*#f1f1f1;*/
   box-shadow: 0.1rem 0.3rem 0.3rem #c9c9c9;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 1rem;
+  z-index: 99;
 }
 
 /* Style the buttons that are used to open the tab content */
