@@ -41,7 +41,7 @@ function getConfig(){
   let margin = {
       top: 30,
       bottom: 80,
-      left: 80,
+      left: 60,
       right: 20
   }
 
@@ -79,7 +79,7 @@ function getScales(data, config) {
 
  let colorScale = d3.scaleOrdinal()
       .domain(["Eastern", "Western"])
-      .range(["#C58581", "#224870"])
+      .range(["#183b32", "#80b0a4"])
 
  return {xScale, yScale, colorScale}
 }
@@ -90,6 +90,8 @@ function drawData(data, config, scales){
   console.log('Data into drawData():', data)
 
   let meanY = d3.mean(data, d => +d.rating);
+  let minX = d3.min(data, d => +d.rating_delta)
+  let maxX = d3.max(data, d => +d.rating_delta)
 
   // group the data for drawing the historical lines
   let grouped = d3.nest()
@@ -108,7 +110,7 @@ function drawData(data, config, scales){
   container.append('text')
     .attr('class', 'axisLabel')
     .attr("transform",
-          "translate(" + -margin.left*2/3 + "," + bodyHeight*3/5 + ")rotate(-90)")
+          "translate(" + -margin.left*0.8 + "," + bodyHeight*3/5 + ")rotate(-90)")
     .text("Current rating")
 
   // Add Y axis
@@ -119,7 +121,7 @@ function drawData(data, config, scales){
     .attr('class', 'axisLabel')
     .attr("transform",
             "translate(" + bodyWidth*3/9 + " ," + (bodyHeight + (margin.bottom*2.5/5)) + ")")
-    .text("Rating trend over last 15 days")
+    .text("Rating trend over last 10 games")
 
   // create a tooltip
   let tooltip = d3.select("#plotRank")
@@ -190,28 +192,30 @@ function drawData(data, config, scales){
   }
 
   // add quadrant identifiers
+  let xOffset = (maxX - minX) * 0.04
+  let yOffset = meanY * 0.06
   container.append("text")
     .attr("class", "quadrantText")
-    .attr("x", xScale(0-15))
-    .attr("y", yScale(meanY*1.05))
+    .attr("x", xScale(0 - xOffset))
+    .attr("y", yScale(meanY + yOffset))
     .style("text-anchor", "end")
     .html("HIGH BUT DECLINING")
  container.append("text")
     .attr("class", "quadrantText")
-    .attr("x", xScale(0+15))
-    .attr("y", yScale(meanY*1.05))
+    .attr("x", xScale(0 + xOffset))
+    .attr("y", yScale(meanY + yOffset))
     .style("text-anchor", "start")
     .html("HIGH AND INCREASING")
   container.append("text")
     .attr("class", "quadrantText")
-    .attr("x", xScale(0-15))
-    .attr("y", yScale(meanY-(meanY*0.06)))
+    .attr("x", xScale(0 - xOffset))
+    .attr("y", yScale(meanY - yOffset*1.05))
     .style("text-anchor", "end")
     .html("LOW AND DECLINING")
  container.append("text")
     .attr("class", "quadrantText")
-    .attr("x", xScale(0+15))
-    .attr("y", yScale(meanY-(meanY*0.06)))
+    .attr("x", xScale(0 + xOffset))
+    .attr("y", yScale(meanY - yOffset*1.05))
     .style("text-anchor", "start")
     .html("LOW BUT INCREASING")
 
@@ -295,7 +299,7 @@ function drawData(data, config, scales){
   container
     .append('text')
     .attr('class', 'subtitle')
-    .attr('x', -75)
+    .attr('x', -55)
     .attr('y', -20)
     .text('Hover over points to see team history')
 
@@ -305,8 +309,8 @@ function drawData(data, config, scales){
     .attr("class", "legend")
     .attr("transform",
             "translate(" + bodyWidth*2.5/9 + " ," + (bodyHeight + (margin.bottom*2.5/5)) + ")")
-  legend.append("circle").attr("cx",10).attr("cy",25).attr("r", 6).style("fill", "#C58581")
-  legend.append("circle").attr("cx",100).attr("cy",25).attr("r", 6).style("fill", "#224870")
+  legend.append("circle").attr("cx",10).attr("cy",25).attr("r", 6).style("fill", "#183b32")
+  legend.append("circle").attr("cx",100).attr("cy",25).attr("r", 6).style("fill", "#80b0a4")
   legend.append("text").attr("x", 25).attr("y", 30).text("Eastern").attr("alignment-baseline","middle")
   legend.append("text").attr("x", 115).attr("y", 30).text("Western Conference").attr("alignment-baseline","middle")
 
@@ -315,8 +319,8 @@ function drawData(data, config, scales){
 }
 
 function buildPlot(data){
-  filteredData = cleanData(data)
+  //filteredData = cleanData(data)
   config = getConfig()
-  scales = getScales(filteredData, config)
-  drawData(filteredData, config, scales)
+  scales = getScales(data, config)
+  drawData(data, config, scales)
 }

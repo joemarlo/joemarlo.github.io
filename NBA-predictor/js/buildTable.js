@@ -5,7 +5,7 @@ function buildTable(data){
   // set color scale for conference
   let colorScale = d3.scaleOrdinal()
       .domain(["Eastern", "Western"])
-      .range(["#C58581", "#224870"])
+      .range(["#183b32", "#80b0a4"])
 
   // filter to latest date
   filteredData = data.filter(d => {return d.latest == 1})
