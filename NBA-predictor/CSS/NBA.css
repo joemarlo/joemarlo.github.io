@@ -336,3 +336,20 @@ th {
   font-weight: 500;
   font-size: 1em;
 }
+
+.corner_ribbon{
+  width: 200px;
+  background: #b0453e;
+  position: fixed;
+  top: 25px;
+  right: -50px;
+  text-align: center;
+  line-height: 50px;
+  letter-spacing: 2px;
+  font-size: 1.2em;
+  color: #f0f0f0;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(45deg);
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  z-index: 999;
+}
