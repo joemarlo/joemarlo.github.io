@@ -216,6 +216,7 @@ footer > p {
 #plotRankContainer {
   margin: 0 2rem 0 0;
   max-width: 64%;
+  width: 100%;
 }
 
 th, td {
