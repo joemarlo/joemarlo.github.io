@@ -1,40 +1,3 @@
-function cleanData(data){
-
-  /// add a new column of data denoted the lag between dates
-  // split data into each team
-  uniqueTeams = d3.map(data, d => d.team).keys()
-
-  /*
-  // initiate object to hold new data
-  newData = []
-
-  for (var i=0; i<uniqueTeams.length; i++){
-    // get date and filter the data to that date
-    filteredData = []
-    filteredData = data.filter(d => {return d.team == uniqueTeams[i]})
-
-    // add new column with change in rating in last 10 days
-    for (var j=0; j<filteredData.length; j++){
-      if (j < (filteredData.length-10)){
-        filteredData[j]['rating_delta'] = filteredData[j]['rating'] - filteredData[j+10]['rating']
-      }
-    }
-
-    // add data to dataframe
-    newData = newData.concat(filteredData)
-  }
-  */
-
-  // filter to last 30 days
-  uniqueDates = d3.map(data, d => d.date).keys()
-  uniqueDates = uniqueDates.sort(d3.descending)
-  let nDays = 30
-  // TODO: I don't think this date filtering doesn't work
-  newData = data.filter(d => {return d.date >= uniqueDates[nDays]})
-
-  return newData;
-}
-
 function getConfig(){
   let width = 600;
   let height = 450;
@@ -90,6 +53,8 @@ function drawData(data, config, scales){
   console.log('Data into drawData():', data)
 
   let meanY = d3.mean(data, d => +d.rating);
+  let minY = d3.min(data, d => +d.rating);
+  let maxY = d3.max(data, d => +d.rating);
   let minX = d3.min(data, d => +d.rating_delta)
   let maxX = d3.max(data, d => +d.rating_delta)
 
@@ -192,31 +157,29 @@ function drawData(data, config, scales){
   }
 
   // add quadrant identifiers
-  let xOffset = (maxX - minX) * 0.04
-  let yOffset = meanY * 0.06
   container.append("text")
     .attr("class", "quadrantText")
-    .attr("x", xScale(0 - xOffset))
-    .attr("y", yScale(meanY + yOffset))
-    .style("text-anchor", "end")
+    .attr("x", xScale(minX/2))
+    .attr("y", yScale(meanY + (maxY-meanY)/2))
+    .style("text-anchor", "middle")
     .html("HIGH BUT DECLINING")
  container.append("text")
     .attr("class", "quadrantText")
-    .attr("x", xScale(0 + xOffset))
-    .attr("y", yScale(meanY + yOffset))
-    .style("text-anchor", "start")
+    .attr("x", xScale(maxX/2))
+    .attr("y", yScale(meanY + (maxY-meanY)/2))
+    .style("text-anchor", "middle")
     .html("HIGH AND INCREASING")
   container.append("text")
     .attr("class", "quadrantText")
-    .attr("x", xScale(0 - xOffset))
-    .attr("y", yScale(meanY - yOffset*1.05))
-    .style("text-anchor", "end")
+    .attr("x", xScale(minX/2))
+    .attr("y", yScale(meanY - (meanY-minY)/2) + 10)
+    .style("text-anchor", "middle")
     .html("LOW AND DECLINING")
  container.append("text")
     .attr("class", "quadrantText")
-    .attr("x", xScale(0 + xOffset))
-    .attr("y", yScale(meanY - yOffset*1.05))
-    .style("text-anchor", "start")
+    .attr("x", xScale(maxX/2))
+    .attr("y", yScale(meanY - (meanY-minY)/2) + 10)
+    .style("text-anchor", "middle")
     .html("LOW BUT INCREASING")
 
   // add vertical line
@@ -313,13 +276,9 @@ function drawData(data, config, scales){
   legend.append("circle").attr("cx",100).attr("cy",25).attr("r", 6).style("fill", "#80b0a4")
   legend.append("text").attr("x", 25).attr("y", 30).text("Eastern").attr("alignment-baseline","middle")
   legend.append("text").attr("x", 115).attr("y", 30).text("Western Conference").attr("alignment-baseline","middle")
-
-
-
 }
 
 function buildPlot(data){
-  //filteredData = cleanData(data)
   config = getConfig()
   scales = getScales(data, config)
   drawData(data, config, scales)
