@@ -210,11 +210,12 @@ footer > p {
 
 .rankingItem {
   flex-grow: 1;
-  flex-shrink: 1;
+  flex-shrink: 2;
 }
 
 #plotRankContainer {
   margin: 0 2rem 0 0;
+  max-width: 64%;
 }
 
 th, td {
@@ -228,11 +229,6 @@ th, td {
 
 th {
   font-weight: 700;
-}
-
-#plotRankContainer {
-  width: 800px;
-  max-width: 64%;
 }
 
 #plotRank, #tableRank {

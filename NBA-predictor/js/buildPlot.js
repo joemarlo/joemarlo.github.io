@@ -74,9 +74,10 @@ function drawData(data, config, scales){
     .call(d3.axisBottom(xScale));
   container.append('text')
     .attr('class', 'axisLabel')
-    .attr("transform",
-          "translate(" + -margin.left*0.8 + "," + bodyHeight*3/5 + ")rotate(-90)")
-    .text("Current rating")
+    .attr("x", xScale(0))
+    .attr('y', bodyHeight + margin.bottom/2)
+    .attr('text-anchor', 'middle')
+    .text("Rating trend over last 10 games")
 
   // Add Y axis
   container.append("g")
@@ -84,9 +85,11 @@ function drawData(data, config, scales){
     .call(d3.axisLeft(yScale));
   container.append('text')
     .attr('class', 'axisLabel')
-    .attr("transform",
-            "translate(" + bodyWidth*3/9 + " ," + (bodyHeight + (margin.bottom*2.5/5)) + ")")
-    .text("Rating trend over last 10 games")
+    .attr('x', -margin.left-10)
+    .attr('y', yScale(meanY))
+    .attr('text-anchor', 'middle')
+    .attr("transform", "rotate(-90,-" + (margin.left-10) + "," + yScale(meanY) + ")")
+    .text("Current rating")
 
   // create a tooltip
   let tooltip = d3.select("#plotRank")
