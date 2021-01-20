@@ -1,10 +1,8 @@
 function buildGrid(data){
 
   // split data into each unique date
+  // these dates should already be sorted in R or Python
   uniqueDates = d3.map(data, d => d.date).keys()
-
-  // sort the dates ascending
-  uniqueDates = uniqueDates.sort((a, b) => b - a)
 
   // for each date, create a grid
   for (var i=0; i<uniqueDates.length; i++){
