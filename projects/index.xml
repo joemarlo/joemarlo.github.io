@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Marlo</title>
-    <link>https://joemarlo.github.io/visualizations/</link>
+    <link>https://joemarlo.github.io/projects/</link>
     <description>Recent content on Marlo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 05 Nov 2016 21:05:33 +0530</lastBuildDate><atom:link href="https://joemarlo.github.io/visualizations/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Nov 2016 21:05:33 +0530</lastBuildDate><atom:link href="https://joemarlo.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
