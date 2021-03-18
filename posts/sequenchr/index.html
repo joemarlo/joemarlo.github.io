@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Introducing sequenchr</title>
+<meta name="description" content="Personal portfolio of Joe Marlo">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/owl.theme.css">
+<link rel="icon" href= "https://joemarlo.github.io/favicon.ico" /> 
+
+
+  <link href="https://joemarlo.github.io/css/style.custom.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://joemarlo.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://joemarlo.github.io/img/favicon.png">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://joemarlo.github.io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://joemarlo.github.io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://joemarlo.github.io/favicon-16x16.png">
+
+
+
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="https://joemarlo.github.io">Marlo</a></h1>
+    
+      <p class="sidebar-p">I'm an applied statistics grad student @ NYU. <br> Based in New York.</p>
+    
+    <ul class="sidebar-menu">
+      
+        <li><a href="https://joemarlo.github.io/posts/">Posts</a></li>
+      
+        <li><a href="https://joemarlo.github.io/projects/">Projects</a></li>
+      
+        <li><a href="https://joemarlo.github.io/about/">About</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  
+  
+  
+  <a href="https://www.linkedin.com/in/jmarlo" data-animate-hover="pulse" class="external">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+  
+  <a href="https://www.github.com/joemarlo" data-animate-hover="pulse" class="external">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2021 Joe Marlo
+        
+        <br> Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to <a href="https://gohugo.io/">Hugo</a> by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://joemarlo.github.io">Marlo</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-9">
+      <div class="content-column-content">
+         <h1>Introducing sequenchr</h1>
+         <p><em>R package for EDA and unsupervised learning of categorical sequence data</em></p>
+<hr>
+<p>Sequenchr is a sequence analysis tool for applied researchers. It is designed to enable faster analysis iterations and is also great for those who prefer an interactive interface. The core of the package is the interactive Shiny app but the majority of the underlying functions can be accessed directly through R.</p>
+<h3 id="installation">Installation</h3>
+<p>The package is available through <a href="https://github.com/joemarlo/sequenchr">GitHub</a> and can installed via devtools.</p>
+<pre><code>devtools::install_github(&quot;joemarlo/sequenchr&quot;)
+</code></pre><br>
+<h3 id="launching-the-sequenchr-shiny-app">Launching the sequenchr Shiny app</h3>
+<p>Sequenchr is built on top of the powerful sequench analysis package TraMineR which provides a number of helpful functions to manipulate and analyze sequence data.</p>
+<p>The sequenchr Shiny app requires a TraMineR object created from <code>TraMineR::seqdef</code>. For more information on using TraMineR, see <a href="http://traminer.unige.ch/">http://traminer.unige.ch/</a>. Once the TraMineR object is created, calling <code>sequenchr::launch_sequechnr</code> will launch the Shiny app in a new browser window.</p>
+<pre><code>library(TraMineR)
+library(sequenchr)
+
+# load data and convert to a sequence object
+data(mvad)
+seqstatl(mvad[, 17:86])
+mvad.alphabet &lt;- c(&quot;employment&quot;, &quot;FE&quot;, &quot;HE&quot;, &quot;joblessness&quot;, &quot;school&quot;,
+                   &quot;training&quot;)
+mvad.labels &lt;- c(&quot;employment&quot;, &quot;further education&quot;, &quot;higher education&quot;,
+                 &quot;joblessness&quot;, &quot;school&quot;, &quot;training&quot;)
+mvad.scodes &lt;- c(&quot;EM&quot;, &quot;FE&quot;, &quot;HE&quot;, &quot;JL&quot;, &quot;SC&quot;, &quot;TR&quot;)
+mvad.seq &lt;- seqdef(mvad, 17:86, alphabet = mvad.alphabet, states = mvad.scodes,
+                   labels = mvad.labels, xtstep = 6)
+</code></pre><pre><code># launch the sequenchr app
+launch_sequenchr(sequence_data = mvad.seq)
+</code></pre><p align="center">
+<img src="/img/posts/sequenchr/screenshot_seqi.png" width=80%>
+</p>
+<p>The sequenchr app displays plotting of the state sequences and hierarchical clustering. Distance methods, clustering methods, and separation metrics can be specified on the left side. Cluster labels can also be downloaded as a .csv if you wish to use them directly within R.</p>
+<p align="center">
+<img src="/img/posts/sequenchr/screenshot.png" width=80%>
+</p>
+<p align="center">
+<img src="/img/posts/sequenchr/screenshot_dendrogram.png" width=80%>
+</p>
+<br>
+<h3 id="using-the-functions-directly">Using the functions directly</h3>
+<p>The functions that power the sequenchr app can also be used directly. All plotting functions start with sequenchr::plot_* and most require a tidy dataframe created from the TraMineR object.</p>
+<p>The tidy dataframe is created via <code>sequenchr::tidy_sequence_data</code> and then is passed to the <code>sequenchr::plot_* functions</code>.</p>
+<pre><code># tidy the data
+seq_def_tidy &lt;- tidy_sequence_data(mvad.seq)
+
+# plot the sequence index
+plot_sequence_index(seq_def_tidy)
+</code></pre><br>
+<p align="center">
+<img class='prettyImg' src="/img/posts/sequenchr/seqi.png" width=70%>
+</p>
+<br>
+<h4 id="modifying-plots">Modifying plots</h4>
+<p>Plots are standard ggplot2 objects and can be customized using ggplot2 syntax. For example, the theme, scales, and labels can be modified by calling their respective functions on <code>sequenchr::plot_*</code> output, concatenated with &lsquo;<code>+</code>&rsquo;.</p>
+<pre><code>library(ggplot2)
+theme_set(theme_minimal())
+p &lt;- plot_sequence_index(seq_def_tidy)
+
+p +
+  scale_x_continuous(breaks = seq(0, 70, by = 5)) +
+  labs(title = 'My seqI plot',
+       subtitle = 'A helpful subtitle',
+       x = 'Month',
+       fill = 'States',
+       caption = 'Data from McVicar and Anyadike-Danes') +
+  theme(legend.position = 'bottom')
+</code></pre><br>
+<p align="center">
+<img class='prettyImg' src="/img/posts/sequenchr/title.png" width=70%>
+</p>
+<br>
+<br>
+<h3 id="read-more-about-sequenchr-by-viewing-the-vignette">Read more about sequenchr by viewing the vignette</h3>
+<pre><code>devtools::install_github(&quot;joemarlo/sequenchr&quot;, build_vignettes = TRUE)
+vignette('sequenchr')
+</code></pre><br>
+<hr>
+<p><em>2021 March</em><br>
+<em>Find the code here: <a href="https://github.com/joemarlo/sequenchr">github.com/joemarlo/sequenchr</a></em></p>
+<!-- custom CSS -->
+<style type=text/css>
+  .prettyImg {
+    filter: drop-shadow(0 0.75rem 1rem #a6a6a6);
+    border-radius: 0.35rem
+  }
+</style>
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://joemarlo.github.io/js/jquery.min.js"></script>
+<script src="https://joemarlo.github.io/js/bootstrap.min.js"></script>
+<script src="https://joemarlo.github.io/js/jquery.cookie.js"> </script>
+<script src="https://joemarlo.github.io/js/ekko-lightbox.js"></script>
+<script src="https://joemarlo.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://joemarlo.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://joemarlo.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://joemarlo.github.io/js/owl.carousel.min.js"></script>
+<script src="https://joemarlo.github.io/js/front.js"></script>
+
+
+
+</body>
+</html>
