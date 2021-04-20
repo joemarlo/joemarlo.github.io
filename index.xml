@@ -6,7 +6,7 @@
     <description>Recent content on Marlo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Mar 2021 18:30:42 -0400</lastBuildDate><atom:link href="https://joemarlo.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Apr 2021 17:52:50 -0400</lastBuildDate><atom:link href="https://joemarlo.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Who spends their day just like you?</title>
       <link>https://joemarlo.github.io/posts/atus-similar-days/</link>
@@ -50,6 +50,15 @@
       
       <guid>https://joemarlo.github.io/posts/learning-causal-inference/</guid>
       <description>&lt;p&gt;&lt;em&gt;Building intuition for the causal framework&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>The decline and return of excitement in Formula One</title>
+      <link>https://joemarlo.github.io/posts/f1-entropy/</link>
+      <pubDate>Mon, 19 Apr 2021 17:52:50 -0400</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/f1-entropy/</guid>
+      <description>&lt;p&gt;&lt;em&gt;The entropy of racing&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
