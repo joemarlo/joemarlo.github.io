@@ -143,7 +143,9 @@
 <ul>
 <li>Changes in lap leader due to pit strategy are not treated separately. A more nuanced approach would only consider swaps in on-track position.</li>
 <li>Changes in lap leader on the last lap are the most exciting. The current metric treats these equally with a change on the first lap. IRL one is not like the other.</li>
+<li>Entropy does not consider the time differential between drivers. A one second lead is treated the same as a 60 second lead.</li>
 <li>There is no assessment of cross-race entropy. The metric is applied within a race. A season of alternating full-race dominance by Red Bull and Mercedes would have the same measure as one team dominating.</li>
+<li>The 60 race / three season rolling average was chosen visually. The trend remains consistent across different values but 60 races qualitatively offers the best balance between signal and noise.</li>
 <li>The data consists of lap position at the end of each lap. Position swaps that occur within a lap and then swap back are not recorded. This underestimates entropy slightly but is likely unbiased across the years.</li>
 </ul>
 <br>
