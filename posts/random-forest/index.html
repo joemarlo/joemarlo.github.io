@@ -415,52 +415,22 @@ n &lt;- 1000
 .data &lt;- tibble(X1 = runif(n, -1, 1),
                 X2 = runif(n, -1, 1),
                 Y = (round(X1) == round(X2)) * 1)
-
-# plot it
-.data %&gt;% 
-  mutate(Y = paste0(&quot;Class &quot;, Y)) %&gt;% 
-  ggplot(aes(x = X1, y = X2, shape = Y)) +
-  geom_point(size = 3, alpha = 0.5) +
-  scale_shape_manual(values = c(1, 19)) +
-  labs(shape = NULL)
 </code></pre><p align="center">
 <img src="/img/posts/random-forest/example_data.png" width=80%>
 </p>
 <p>Classifying these points with a logistic regression results in poor performance. The red indicates misclassified points.</p>
 <pre><code class="language-{r}" data-lang="{r}"># logistic regression
 model_log &lt;- glm(Y ~ X1 + X2, data = .data, family = 'binomial')
-
-# plot it
-.data %&gt;% 
-  mutate(preds = model_log$fitted.values &gt; 0.5, 
-         correct = if_else(preds == Y, &quot;Correct classification&quot;, &quot;Incorrect&quot;),
-         Y = paste0(&quot;Class &quot;, Y)) %&gt;% 
-  ggplot(aes(x = X1, y = X2, shape = Y, color = correct)) +
-  geom_point(size = 3, alpha = 0.5) +
-  scale_shape_manual(values = c(1, 19)) +
-  scale_color_manual(values = c('#5f7d71', 'red')) +
-  labs(color = NULL,
-       shape = NULL)
 </code></pre><p align="center">
 <img src="/img/posts/random-forest/logistic_classes.png" width=80%>
 </p>
 <p>These &ldquo;square&rdquo; data suit the decision tree classifier well. Below, the classifier correctly classifies almost all points. The incorrect points all lie around the boundary between Class 0 and Class 1. This may be due to the <code>splits</code> in <code>optimal_split()</code> not being granular enough.</p>
 <pre><code class="language-{r" data-lang="{r">X &lt;- dplyr::select(.data, -Y)
 Y &lt;- .data[['Y']]
-model_decision_tree &lt;- decision_tree_classifier(X, Y, max_depth = 4, gini_threshold = 0, min_observations = 1)
+model_decision_tree &lt;- decision_tree_classifier(X, Y, max_depth = 4,
+						gini_threshold = 0, 
+						min_observations = 1)
 preds &lt;- predict_decision_tree(model_decision_tree, X)
-
-# plot it
-.data %&gt;% 
-  mutate(preds = preds &gt; 0.5, 
-         correct = if_else(preds == Y, &quot;Correct classification&quot;, &quot;Incorrect&quot;),
-         Y = paste0(&quot;Class &quot;, Y)) %&gt;% 
-  ggplot(aes(x = X1, y = X2, shape = Y, color = correct)) +
-  geom_point(size = 3, alpha = 0.5) +
-  scale_shape_manual(values = c(1, 19)) +
-  scale_color_manual(values = c('#5f7d71', 'red')) +
-  labs(color = NULL,
-       shape = NULL)
 </code></pre><p align="center">
 <img src="/img/posts/random-forest/tree_classes.png" width=80%>
 </p>
@@ -499,7 +469,10 @@ preds &lt;- predict_decision_tree(model_decision_tree, X)
       Y_sampled &lt;- Y_train[sample_indices]
       
       # fit model on subset and then make predictions on all data
-      model_decision_tree &lt;- decision_tree_classifier(X_sampled, Y_sampled, max_depth = max_depth, gini_threshold = gini_threshold, min_observations = min_observations)
+      model_decision_tree &lt;- decision_tree_classifier(X_sampled, Y_sampled, 
+      						      max_depth = max_depth, 
+      						      gini_threshold = gini_threshold, 
+      						      min_observations = min_observations)
       preds &lt;- predict_decision_tree(model_decision_tree, X_test)
     },
     error = function(e) NA
@@ -525,7 +498,8 @@ X_test &lt;- X[!indices,]
 Y_train &lt;- Y[indices]
 Y_test &lt;- Y[!indices]
 </code></pre><pre><code class="language-{r}" data-lang="{r}"># fit the bagged model
-preds &lt;- bag_it(X_train, Y_train, X_test, n_trees = 50, max_depth = 10, gini_threshold = 0, min_observations = 5)
+preds &lt;- bag_it(X_train, Y_train, X_test, n_trees = 50, max_depth = 10, 
+		gini_threshold = 0, min_observations = 5)
 table(preds &gt; 0.5, Y_test)
 </code></pre><pre><code>##        Y_test
 ##           0   1
@@ -568,7 +542,8 @@ table(preds &gt; 0.5, Y_test)
   return(preds)
 }
 </code></pre><pre><code class="language-{r}" data-lang="{r}"># fit the random forest
-preds &lt;- random_forest(X_train, Y_train, X_test, n_trees = 50, max_depth = 10, gini_threshold = 0, min_observations = 5)
+preds &lt;- random_forest(X_train, Y_train, X_test, n_trees = 50, max_depth = 10, 
+		       gini_threshold = 0, min_observations = 5)
 table(preds &gt; 0.5, Y_test)
 </code></pre><pre><code>##        Y_test
 ##           0   1
