@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Random forest from first principles</title>
+<meta name="description" content="Personal portfolio of Joe Marlo">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/owl.theme.css">
+<link rel="icon" href= "https://joemarlo.github.io/favicon.ico" /> 
+
+
+  <link href="https://joemarlo.github.io/css/style.custom.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://joemarlo.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://joemarlo.github.io/img/favicon.png">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://joemarlo.github.io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://joemarlo.github.io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://joemarlo.github.io/favicon-16x16.png">
+
+
+
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="https://joemarlo.github.io">Marlo</a></h1>
+    
+      <p class="sidebar-p">I'm an applied statistics grad student @ NYU. <br> Based in New York.</p>
+    
+    <ul class="sidebar-menu">
+      
+        <li><a href="https://joemarlo.github.io/posts/">Posts</a></li>
+      
+        <li><a href="https://joemarlo.github.io/projects/">Projects</a></li>
+      
+        <li><a href="https://joemarlo.github.io/about/">About</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  
+  
+  
+  <a href="https://www.linkedin.com/in/jmarlo" data-animate-hover="pulse" class="external">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+  
+  <a href="https://www.github.com/joemarlo" data-animate-hover="pulse" class="external">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2021 Joe Marlo
+        
+        <br> Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to <a href="https://gohugo.io/">Hugo</a> by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://joemarlo.github.io">Marlo</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-9">
+      <div class="content-column-content">
+         <h1>Random forest from first principles</h1>
+         <p><em>A bottom-up tutorial</em></p>
+<hr>
+<p>This is a step-by-step guide to build a random forest classification algorithm in base <a href="https://www.r-project.org/about.html">R</a> from the bottom-up. We will start with the Gini impurity metric then move to decision trees and then ensemble methods. The guide assumes basic statistics knowledge and medium familarity with R including functions and mapping.</p>
+<p>R has many packages that include &ndash; faster and more flexible &ndash; implementations of random forest. The goal of this guide is to walk through the fundamentals. The final algorithm will be functional but it is not robust to bugs or programming edge cases. The goal is to provide you with an accurate mental model of how random forest works and, therefore, intuition to where it will perform well and where it falls short.</p>
+<br>
+<h3 id="process">Process</h3>
+<p>Random forests are an ensemble model consisting of many decision trees. We will start at the lowest building block of the decision trees &ndash; the impurity metric &ndash; and build up from there. The steps to build a random forest are:</p>
+<ol>
+<li>Define an impurity metric which drives each split in the decision tree</li>
+<li>Program a decision algorithm to choose the best data split based on the impurity measure</li>
+<li>Program a decision tree algorithm by recursively calling the decision algorithm</li>
+<li>Program a bagging model by implementing many decision trees and resampling the data</li>
+<li>Program a random forest model by implementing many decision trees, resampling the data, and sampling from the columns</li>
+</ol>
+<br>
+<h3 id="intuition">Intuition</h3>
+<p>Binary decision trees create an interpretable decision-making framework for making a single prediction. Suppose a patient comes into your clinic with chest pain and you wish to diagnose them with either a heart attack or not a heart attack. A simple framework of coming to that diagnosis could look like the below diagram. Note that each split results in two outcomes (binary) and every possible condition leads to a terminal node.</p>
+<p align="center">
+<img src="/img/posts/random-forest/diagram.png" width=60%>
+</p>
+<p>The model&rsquo;s splits can also be visualized as partitioning the feature space. Since the decision tree makes binary splits along a feature, the resulting boundaries will always be rectangular. Further growing of the above decision tree will result in more but smaller boxes. Additional features (<code>X1</code>, <code>X2</code>, <code>...</code>) will result in additional dimensions to the plot.</p>
+<p align="center">
+<img src="/img/posts/random-forest/diagram_parameters.png" width=60%>
+</p>
+<p>But where to split the data? The splits are determined via an impurity index. With each split, the algorithm maximizes the purity of the resulting data. If a potential split results in classes <code>[HA, HA]</code> and [<code>NHA</code>, <code>NHA</code>] then that is chosen over another split that results in <code>[HA, NHA]</code> and <code>[NHA, HA]</code>. At each node, all possible splits are tested and the split that maximizes purity is chosen.</p>
+<p>For classification problems, a commonly used metric is <a href="https://en.wikipedia.org/wiki/Decision_tree_learning#Gini_impurity">Gini impurity</a>. Gini impurity is <code>2 * p * (1 - p)</code> where <code>p</code> is the fraction of elements labeled as the class of interest. A value of <code>0</code> is a completely homogeneous vector while <code>0.5</code> is the inverse. The vector <code>[NHA, HA, NHA]</code> has a Gini value of <code>2 * 1/3 * 2/3 = 0.444</code>. Since Gini is used for comparing splits, a Gini value is calculated per each resulting vector and then averaged &ndash; weighted by the respective lengths of the two vectors.</p>
+<br>
+<h3 id="setup">Setup</h3>
+<p>Okay, it&rsquo;s not quite &ldquo;base&rdquo; R as we&rsquo;re going to use the <code>tidyverse</code> meta-package for general data munging and <code>parallel</code> for multi-core processing during bagging and the random forest.</p>
+<pre><code class="language-{r" data-lang="{r">library(tidyverse)
+library(parallel)
+options(mc.cores = detectCores())
+set.seed(44)
+</code></pre><br>
+<h3 id="gini-impurity">Gini impurity</h3>
+<p>We&rsquo;re going to build the random forest algorithm starting with the smallest component: the Gini impurity metric. Note that the output of <code>gini</code> is constrained to <code>[0, 0.5]</code>.</p>
+<pre><code class="language-{r" data-lang="{r">gini &lt;- function(p) 2 * p * (1 - p)
+</code></pre><p align="center">
+<img src="/img/posts/random-forest/gini.png" width=80%>
+</p>
+<p>For convenience, I am going to wrap the <code>gini</code> function so we feed it a vector instead of a probability. The probability is calculated from the mean value of the vector. In practice, this vector will be binary and represent classification labels so the mean value is the proportion of labels that represent a positive classification.</p>
+<pre><code class="language-{r" data-lang="{r">gini_vector &lt;- function(X){
+  # X should be binary 0 1 or TRUE/FALSE
+  gini(mean(X, na.rm = TRUE))
+}
+X1 &lt;- c(0, 1, 0)
+gini_vector(X1)
+</code></pre><pre><code>## [1] 0.4444444
+</code></pre><p>And finally I am going to wrap it again so it gives us the weighted Gini of two vectors.</p>
+<pre><code class="language-{r" data-lang="{r">gini_weighted &lt;- function(X1, X2){
+  # X should be binary 0 1 or TRUE/FALSE
+  if (is.null(X1)) return(gini_vector(X2))
+  if (is.null(X2)) return(gini_vector(X1))
+  
+  prop_x1 &lt;- length(X1) / (length(X1) + length(X2))
+  weighted_gini &lt;- (prop_x1*gini_vector(X1)) + ((1-prop_x1)*gini_vector(X2))
+  return(weighted_gini)
+}
+X2 &lt;- c(1, 1, 1)
+gini_weighted(X1, X2)
+</code></pre><pre><code>## [1] 0.2222222
+</code></pre><br>
+<h3 id="splitting">Splitting</h3>
+<p>At each node, the tree needs to make a decision using the Gini metric. Here a single-dimensional grid search is performed to find the optimal value of the split for a given feature such as <code>X1</code>. Note that in formal packages like <code>ranger</code> this step is likely not a straight grid search and is optimized.</p>
+<pre><code class="language-{r" data-lang="{r">optimal_split &lt;- function(X, classes, n_splits = 50){
+  
+  # create &quot;dividing lines&quot; that split X into to parts
+  # a smarter version would account for X's values
+  splits &lt;- seq(min(X), max(X), length.out = n_splits)
+  
+  # calculate gini for each potential split
+  gini_index &lt;- sapply(splits, function(split){
+    X1 &lt;- classes[X &lt;= split]
+    X2 &lt;- classes[X &gt; split]
+    gini_index &lt;- gini_weighted(X1, X2)
+    return(gini_index)
+  })
+
+  # choose the best split based on the minimum (most pure) gini value
+  gini_minimum &lt;- min(gini_index, na.rm = TRUE)
+  optimal_split &lt;- na.omit(splits[gini_index == gini_minimum])[1]
+  
+  # best prediction for these data are the means of the classes
+  classes_split &lt;- split(classes, X &lt;= optimal_split)
+  split0 &lt;- tryCatch(mean(classes_split[[2]], na.rm = TRUE), error = function(e) NULL)
+  split1 &lt;- tryCatch(mean(classes_split[[1]], na.rm = TRUE),  error = function(e) NULL)
+  preds &lt;- list(split0 = split0, split1 = split1)
+  
+  return(list(gini = gini_minimum, split_value = optimal_split, preds = preds))
+}
+X &lt;- rnorm(10)
+classes &lt;- rbinom(10, 1, 0.5)
+optimal_split(X, classes)
+</code></pre><pre><code>## $gini
+## [1] 0.3
+## 
+## $split_value
+## [1] -1.172117
+## 
+## $preds
+## $preds$split0
+## [1] 0
+## 
+## $preds$split1
+## [1] 0.5
+</code></pre><p align="center">
+<img src="/img/posts/random-forest/optimal_split.png" width=80%>
+</p>
+<p>The grid search needs to be expanded to search all possible features (<code>X1</code>, <code>X2</code>, <code>...</code>). The resulting smallest Gini value is the split the tree uses.</p>
+<pre><code class="language-{r" data-lang="{r">best_feature_to_split &lt;- function(X, Y){
+  # X must be a dataframe, Y a vector of 0:1
+
+  # get optimal split for each column
+  ginis &lt;- sapply(X, function(x) optimal_split(x, Y))
+  
+  # return the the column with best split and its splitting value
+  best_gini &lt;- min(unlist(ginis['gini',]))[1]
+  best_column &lt;- names(which.min(ginis['gini',]))[1]
+  best_split &lt;- ginis[['split_value', best_column]]
+  pred &lt;- ginis[['preds', best_column]]
+  return(list(column = best_column, gini = best_gini, split = best_split, pred = pred))
+}
+n &lt;- 1000
+.data &lt;- tibble(Y = rbinom(n, 1, prob = 0.3),
+                X1 = rnorm(n),
+                X2 = rnorm(n),
+                X3 = rbinom(n, 1, prob = 0.5))
+X &lt;- .data[, -1]
+Y &lt;- .data[[1]]
+best_feature_to_split(.data[, -1], .data[['Y']])
+</code></pre><pre><code>## $column
+## [1] &quot;X1&quot;
+## 
+## $gini
+## [1] 0.4046333
+## 
+## $split
+## [1] -2.726038
+## 
+## $pred
+## $pred$split0
+## [1] 1
+## 
+## $pred$split1
+## [1] 0.2825651
+</code></pre><br>
+<h3 id="decision-trees">Decision trees</h3>
+<h4 id="recursion">Recursion</h4>
+<p>To create the decision trees, the splitting algorithm should be applied until it reaches a certain stopping threshold. It is not known prior how many splits it is going to make &ndash; the depth or the width. This is not easily solved using a <code>while</code> loop as a split results in two new branches and each can potentially split again. <a href="https://www.cs.utah.edu/~germain/PPS/Topics/recursion.html">Recursion</a> is required.</p>
+<p>In recursive functions, the function is called within itself until some stopping criteria is met. A simple example is the <a href="https://algs4.cs.princeton.edu/23quicksort/">quicksort</a> algorithm which sorts a vector of numbers from smallest to greatest.</p>
+<p>Quicksort is a divide-and-conquer method that splits the input vector into two vectors based on a pivot point. Points smaller than the pivot go to one vector, points larger to the other vector. The pivot point can be any point but is often the first or last item in the vector. The function is called on itself to repeat the splitting until one or less numbers exist in the resulting vector. Then these sorted child-vectors are passed upward through the recursed functions and combined back into a single vector that is now sorted.</p>
+<pre><code class="language-{r" data-lang="{r">quick_sort &lt;- function(X){
+  
+  # stopping criteria: stop if X is length 1 or less
+  if (length(X) &lt;= 1) return(X)
+  
+  # create the pivot point and remove it from the vector
+  pivot_point &lt;- X[1]
+  X_vec &lt;- X[-1]
+  
+  # create the lower and upper vectors
+  lower_vec &lt;- X_vec[X_vec &lt;= pivot_point]
+  upper_vec &lt;- X_vec[X_vec &gt; pivot_point]
+  
+  # call the function recursively
+  lower_sorted &lt;- quick_sort(lower_vec)
+  upper_sorted &lt;- quick_sort(upper_vec)
+  
+  # return the sorted vector
+  X_sorted &lt;- c(lower_sorted, pivot_point, upper_sorted) 
+  return(X_sorted)
+}
+X &lt;- rnorm(20)
+quick_sort(X)
+</code></pre><pre><code>##  [1] -1.288492187 -1.012602888 -0.938064465 -0.815872056 -0.495430743
+##  [6] -0.479283544 -0.477149902 -0.445188837 -0.008493793  0.112405152
+## [11]  0.176615746  0.389688918  0.454000688  0.507450697  0.615812243
+## [16]  0.947849356  1.415313533  1.423378109  1.457175891  1.813671874
+</code></pre><br>
+<h4 id="recursive-branching">Recursive branching</h4>
+<p>We&rsquo;re going to implement the above splitting algorithm as a recursive function which builds our decision tree classifier. The tree will stop if it exceeds a certain depth, a minimum number of observations result from a given split, or if the Gini measure falls below a certain amount. Only one of these methods is required however including all three allow additional hyperparameter tuning down-the-road.</p>
+<p>The function recursively calls the <code>best_feature_to_split()</code> function until one of the stopping criteria is met. All other code is to manage the saving of the split decisions. The output is a dataframe denoting these decisions. The <code>m_features</code> argument denotes the number of columns to be used at each split &ndash; this will be useful later for random forest.</p>
+<pre><code class="language-{r" data-lang="{r"># create a dataframe denoting the best splits
+decision_tree_classifier &lt;- function(X, Y, gini_threshold = 0.4, max_depth = 5, min_observations = 5, branch_id = '0', splits = NULL, m_features = ncol(X)){
+  
+  # sample the columns -- for use later in random forest
+  m_features_clean &lt;- min(ncol(X), max(2, m_features))
+  sampled_cols &lt;- sample(1:ncol(X), size = max(1, m_features_clean), replace = FALSE)
+  X_sampled &lt;- X[, sampled_cols]  
+
+  # calculate the first optimal split
+  first_split &lt;- best_feature_to_split(X_sampled, Y)
+  
+  # save the splits
+  if (is.null(splits)) splits &lt;- tibble()
+  splits &lt;- bind_rows(splits, tibble(column = first_split$column, 
+                                     split = first_split$split,
+                                     pred = list(first_split$pred),
+                                     branch = branch_id))
+
+  # create two dataframes based on the first split
+  X_split &lt;- split(X, X[first_split$column] &gt;= first_split$split)
+  Y_split &lt;- split(Y, X[first_split$column] &gt;= first_split$split)
+  
+  # check if stopping criteria is met
+  is_too_deep &lt;- isTRUE(nchar(branch_id) &gt;= max_depth)
+  is_pure_enough &lt;- isTRUE(first_split$gini &lt;= gini_threshold)
+  too_few_observations &lt;- isTRUE(min(sapply(X_split, nrow)) &lt; min_observations)
+  
+  # stop here if criteria is met
+  if (is_too_deep | is_pure_enough | too_few_observations) return(splits)
+
+  # otherwise continue splitting
+  # the try will catch errors due to one split group having no observations
+  split0 &lt;- tryCatch({
+    decision_tree_classifier(
+      X = X_split[[1]],
+      Y = Y_split[[1]],
+      gini_threshold = gini_threshold,
+      max_depth = max_depth,
+      min_observations = min_observations,
+      branch_id = paste0(branch_id, &quot;0&quot;),
+      splits = splits,
+      m_features = m_features
+    )
+  }, error = function(e) NULL
+  )
+  split1 &lt;- tryCatch({
+    decision_tree_classifier(
+      X = X_split[[2]], 
+      Y = Y_split[[2]], 
+      gini_threshold = gini_threshold, 
+      max_depth = max_depth, 
+      min_observations = min_observations, 
+      branch_id = paste0(branch_id, &quot;1&quot;),
+      splits = splits,
+      m_features = m_features
+    )
+  }, error = function(e) NULL
+  )
+  
+  # bind rows into a dataframe and remove duplicates caused by diverging branches
+  all_splits &lt;- distinct(bind_rows(split0, split1))
+  
+  return(all_splits)
+}
+# test the function
+n &lt;- 1000
+.data &lt;- tibble(Y = rbinom(n, 1, prob = 0.3),
+                X1 = rnorm(n),
+                X2 = rnorm(n),
+                X3 = rbinom(n, 1, prob = 0.5))
+X &lt;- .data[, -1]
+Y &lt;- .data[[1]]
+decision_tree &lt;- decision_tree_classifier(X, Y, 0.1)
+decision_tree
+</code></pre><pre><code>## # A tibble: 17 x 4
+##    column   split pred             branch
+##    &lt;chr&gt;    &lt;dbl&gt; &lt;list&gt;           &lt;chr&gt; 
+##  1 X2     -1.22   &lt;named list [2]&gt; 0     
+##  2 X2     -1.26   &lt;named list [2]&gt; 00    
+##  3 X1      1.99   &lt;named list [2]&gt; 000   
+##  4 X2     -1.23   &lt;named list [2]&gt; 001   
+##  5 X1     -1.52   &lt;named list [2]&gt; 01    
+##  6 X2      0.149  &lt;named list [2]&gt; 010   
+##  7 X1     -1.77   &lt;named list [2]&gt; 0100  
+##  8 X2      0.0631 &lt;named list [2]&gt; 01000 
+##  9 X1     -1.62   &lt;named list [2]&gt; 01001 
+## 10 X1     -1.56   &lt;named list [2]&gt; 0101  
+## 11 X2      0.110  &lt;named list [2]&gt; 011   
+## 12 X2     -0.117  &lt;named list [2]&gt; 0110  
+## 13 X2     -0.165  &lt;named list [2]&gt; 01100 
+## 14 X2      0.0502 &lt;named list [2]&gt; 01101 
+## 15 X2      0.478  &lt;named list [2]&gt; 0111  
+## 16 X1      1.06   &lt;named list [2]&gt; 01110 
+## 17 X2      0.586  &lt;named list [2]&gt; 01111
+</code></pre><p>And that is all there is to a decision tree classifier &ndash; just a recursive algorithm that splits the data based on some purity metric.</p>
+<br>
+<h4 id="predictions">Predictions</h4>
+<p>A new observation is predicted by traversing the decision tree model via recursion. For a given point, start at <code>branch_id = 0</code>, calculate if the value is above or below the split, and then go &ldquo;left&rdquo; or &ldquo;right&rdquo; by appending the <code>branch_id</code> with a <code>0</code> or <code>1</code>. Repeat until there are no branches left.</p>
+<pre><code class="language-{r" data-lang="{r"># predict a new data point
+predict_data_point &lt;- function(model_decision_tree, new_row, branch_id = '0'){
+  
+  # traverse the decision tree and get the next split
+  decision_point &lt;- model_decision_tree[model_decision_tree$branch == branch_id,]
+  decision_split &lt;- new_row[, decision_point$column] &lt; decision_point$split
+  decision_split &lt;- if_else(decision_split, 0, 1) 
+  branch_id &lt;- paste0(branch_id, decision_split)
+  
+  # if the new branch_id (i.e. the next split) is not in the decision tree then return the current prediction
+  if (!(branch_id %in% model_decision_tree$branch)){
+    pred &lt;- decision_point$pred[[1]][[decision_split + 1]]
+    return(pred) 
+  }
+  
+  # otherwise continue recursion
+  return(predict_data_point(model_decision_tree, new_row, branch_id))
+}
+predict_data_point(decision_tree, X[1,])
+</code></pre><pre><code>## [1] 0.3252033
+</code></pre><p>Wrap the <code>predict_data_point</code> function in a loop so it can predict all observations in a dataframe.</p>
+<pre><code class="language-{r" data-lang="{r"># predict all datapoints in a dataframe
+predict_decision_tree &lt;- function(model_decision_tree, new_data){
+  preds &lt;- rep(NULL, nrow(new_data))
+  for (i in 1:nrow(new_data)){
+    preds[i] &lt;- predict_data_point(model_decision_tree, new_row = new_data[i,])
+  }
+  return(preds)
+}
+preds &lt;- predict_decision_tree(decision_tree, X)
+</code></pre><p>Finally, we can test our decision tree classifier on data. Decision trees perform best on data split horizontally and/or vertically &ndash; i.e. on data where linear regression or logistic regression tends to perform poorly. Here I create &ldquo;boxed&rdquo; data where the boxes delineate between Class 0 and Class 1.</p>
+<pre><code class="language-{r" data-lang="{r"># create a two dimensional dataset
+n &lt;- 1000
+.data &lt;- tibble(X1 = runif(n, -1, 1),
+                X2 = runif(n, -1, 1),
+                Y = (round(X1) == round(X2)) * 1)
+</code></pre><p align="center">
+<img src="/img/posts/random-forest/example_data.png" width=80%>
+</p>
+<p>Classifying these points with a logistic regression results in poor performance. The red indicates misclassified points.</p>
+<pre><code class="language-{r}" data-lang="{r}"># logistic regression
+model_log &lt;- glm(Y ~ X1 + X2, data = .data, family = 'binomial')
+</code></pre><p align="center">
+<img src="/img/posts/random-forest/logistic_classes.png" width=80%>
+</p>
+<p>These &ldquo;square&rdquo; data suit the decision tree classifier well. Below, the classifier correctly classifies almost all points. The incorrect points all lie around the boundary between Class 0 and Class 1. This may be due to the <code>splits</code> in <code>optimal_split()</code> not being granular enough.</p>
+<pre><code class="language-{r" data-lang="{r">X &lt;- dplyr::select(.data, -Y)
+Y &lt;- .data[['Y']]
+model_decision_tree &lt;- decision_tree_classifier(X, Y, max_depth = 4,
+						gini_threshold = 0, 
+						min_observations = 1)
+preds &lt;- predict_decision_tree(model_decision_tree, X)
+</code></pre><p align="center">
+<img src="/img/posts/random-forest/tree_classes.png" width=80%>
+</p>
+<p>We can visualize the splits made by the decision tree classifier. They should be right along the rectangle boundaries. Note that these lines do not account for the order of the splits &ndash; the lines would need to be truncated at their parent node&rsquo;s line, similar to the diagram in the introduction.</p>
+<p align="center">
+<img src="/img/posts/random-forest/tree_boundaries.png" width=80%>
+</p>
+<br>
+<h4 id="where-trees-struggle">Where trees struggle</h4>
+<p>Trees will struggle when the feature space is dissected at an angle by the classification value. Since regression trees are partitioning the parameter space into rectangles, the tree will need to be deeper to approximate the decision boundary.</p>
+<p>The below data&rsquo;s classification is in two separate triangles: top left and bottom right of the plot. A logistic regression finds the boundary easily.</p>
+<p align="center">
+<img src="/img/posts/random-forest/triangle_logistic.png" width=80%>
+</p>
+<p>A regression tree has a difficult time finding the decision boundary.</p>
+<p align="center">
+<img src="/img/posts/random-forest/triangle_tree.png" width=80%>
+</p>
+<p>The decision tree&rsquo;s rectangles are not enough to approximate the angled boundary.</p>
+<p align="center">
+<img src="/img/posts/random-forest/triangle_boundaries.png" width=80%>
+</p>
+<br>
+<h3 id="bagging">Bagging</h3>
+<p>Single decision trees are prone to overfitting and can have high variance on new data. A simple solution is to create many decision trees based on resamples of the data and allow each tree to &ldquo;vote&rdquo; on the final classification. This is bagging. The process keeps the low-bias of the single tree model but reduces overall variance.</p>
+<p>The &ldquo;vote&rdquo; from each tree is their prediction for a given observation. The votes are averaged across all the trees and the final classification is determined from this average. The trees are trained on <a href="https://online.stat.psu.edu/stat555/node/119/">bootstrapped data</a> &ndash; taking repeated samples of the training data with replacement.</p>
+<pre><code class="language-{r" data-lang="{r">bag_it &lt;- function(X_train, Y_train, X_test, n_trees = 100, max_depth = 5, gini_threshold = 0.2, min_observations = 5){
+  
+  # grow the trees
+  preds &lt;- parallel::mclapply(1:n_trees, function(i){
+    
+    preds &lt;- tryCatch({
+      
+      # bootstrap the data
+      sample_indices &lt;- sample(1:nrow(X_train), size = nrow(X_train), replace = TRUE)
+      X_sampled &lt;- X_train[sample_indices,]
+      Y_sampled &lt;- Y_train[sample_indices]
+      
+      # fit model on subset and then make predictions on all data
+      model_decision_tree &lt;- decision_tree_classifier(X_sampled, Y_sampled, 
+      						      max_depth = max_depth, 
+      						      gini_threshold = gini_threshold, 
+      						      min_observations = min_observations)
+      preds &lt;- predict_decision_tree(model_decision_tree, X_test)
+    },
+    error = function(e) NA
+    )
+    
+    return(tibble(preds))
+  }) %&gt;% bind_cols()
+  
+  # average the predictions across each model's prediction
+  # this is how each tree &quot;votes&quot;
+  preds &lt;- rowMeans(preds, na.rm = TRUE)
+  return(preds)
+}
+</code></pre><pre><code class="language-{r}" data-lang="{r}"># read in the credit data
+credit &lt;- read_csv(file.path(wd, &quot;data/credit_card.csv&quot;))
+X &lt;- select(credit, -Class)
+Y &lt;- credit$Class
+
+# create train test split
+indices &lt;- sample(c(TRUE, FALSE), size = nrow(credit), replace = TRUE, prob = c(0.5, 0.5))
+X_train &lt;- X[indices,]
+X_test &lt;- X[!indices,]
+Y_train &lt;- Y[indices]
+Y_test &lt;- Y[!indices]
+</code></pre><pre><code class="language-{r}" data-lang="{r}"># fit the bagged model
+preds &lt;- bag_it(X_train, Y_train, X_test, n_trees = 50, max_depth = 10, 
+		gini_threshold = 0, min_observations = 5)
+table(preds &gt; 0.5, Y_test)
+</code></pre><pre><code>##        Y_test
+##           0   1
+##   FALSE 485  33
+##   TRUE    9 221
+</code></pre><br>
+<h3 id="random-forest">Random forest</h3>
+<p>Random forest is like bagging except in addition to bootstrapping the observations, you also take a random subset of the features at each split. The rule-of-thumb sample size is the square root of the total number of features. We&rsquo;ll implement this by taking utilizing the optional <code>m_features</code> argument we added earlier to <code>decision_tree_classifier()</code>.</p>
+<pre><code class="language-{r" data-lang="{r">random_forest &lt;- function(X_train, Y_train, X_test, n_trees = 100, m_features = ceiling(sqrt(ncol(X_train))), max_depth = 5, gini_threshold = 0.2, min_observations = 5){
+  
+  # grow the trees
+  preds &lt;- parallel::mclapply(1:n_trees, function(i){
+    
+    preds &lt;- tryCatch({
+      
+      # bootstrap the data
+      sample_indices &lt;- sample(1:nrow(X_train), size = nrow(X_train), replace = TRUE)
+      X_sampled &lt;- X_train[sample_indices,]
+      Y_sampled &lt;- Y_train[sample_indices]
+      
+      # fit model on subset and then make predictions on all data
+      model_decision_tree &lt;- decision_tree_classifier(
+        X_sampled, 
+        Y_sampled, 
+        max_depth = max_depth, 
+        gini_threshold = gini_threshold, 
+        min_observations = min_observations,
+        m_features = m_features
+      )
+      preds &lt;- predict_decision_tree(model_decision_tree, X_test)
+    },
+    error = function(e) NA
+    )
+    
+    return(tibble(preds))
+  }) %&gt;% bind_cols()
+  
+  # average the predictions across each model's prediction
+  # this is how each tree &quot;votes&quot;
+  preds &lt;- rowMeans(preds, na.rm = TRUE)
+  return(preds)
+}
+</code></pre><pre><code class="language-{r}" data-lang="{r}"># fit the random forest
+preds &lt;- random_forest(X_train, Y_train, X_test, n_trees = 50, max_depth = 10, 
+		       gini_threshold = 0, min_observations = 5)
+table(preds &gt; 0.5, Y_test)
+</code></pre><pre><code>##        Y_test
+##           0   1
+##   FALSE 487  32
+##   TRUE    7 222
+</code></pre><p>Compare this against the <code>ranger</code> package&rsquo;s random forest algorithm.</p>
+<pre><code class="language-{r}" data-lang="{r}">model_ranger &lt;- ranger::ranger(Class ~ ., data = credit[indices,], num.trees = 50, max.depth = 10)
+preds &lt;- predict(model_ranger, data = credit[!indices,])$predictions
+table(preds &gt; 0.5, credit$Class[!indices])
+</code></pre><pre><code>##           0   1
+##   FALSE 481  29
+##   TRUE   13 225
+</code></pre><p>Not bad! Looks like our function performs just as well on this dataset as the formal <code>ranger</code> package.</p>
+<br>
+<h3 id="conclusion">Conclusion</h3>
+<p>Benefits of tree methods:</p>
+<ul>
+<li>Single trees are easy to explain and interpret</li>
+<li>Allows for both classification and regression
+<ul>
+<li>For regression, replace the Gini impurity measure with variance of the outcome variable</li>
+</ul>
+</li>
+<li>Allows for binary, continuous, and categorical (with dummy coding) variables</li>
+<li>Can handle missing data (if data is not used within a branch)</li>
+<li>Ensemble methods are computationally parallelizable</li>
+</ul>
+<br>
+<p>Downsides:</p>
+<ul>
+<li>Single trees are easy to overfit</li>
+<li>Single trees have high variance</li>
+<li>Ensemble methods are difficult to interpret</li>
+</ul>
+<br>
+<hr>
+<p><em>2021 April</em><br>
+<em>Find the code here: <a href="https://github.com/joemarlo/regression-trees">github.com/joemarlo/regression-trees</a></em></p>
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://joemarlo.github.io/js/jquery.min.js"></script>
+<script src="https://joemarlo.github.io/js/bootstrap.min.js"></script>
+<script src="https://joemarlo.github.io/js/jquery.cookie.js"> </script>
+<script src="https://joemarlo.github.io/js/ekko-lightbox.js"></script>
+<script src="https://joemarlo.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://joemarlo.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://joemarlo.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://joemarlo.github.io/js/owl.carousel.min.js"></script>
+<script src="https://joemarlo.github.io/js/front.js"></script>
+
+
+
+</body>
+</html>
