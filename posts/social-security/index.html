@@ -164,12 +164,12 @@ This is a simplified result with only three solutions: age 62, Full Retirement A
 <p>You can find the helper functions in <code>R</code> form here: <a href="https://github.com/joemarlo/Social-Security/blob/master/R/Helper_functions.R"><code>Helper_functions.R</code></a>.</p>
 <h3 id="the-discounting-process">The discounting process</h3>
 <p>We can determine the value of a series of benefits by simple net present value (NPV) discounted at the rate of inflation. First, calculate the benefits using the benefits calculator then take the NPV.</p>
-<pre><code># calculate the NPV of a series of annual benefits
+<pre tabindex="0"><code># calculate the NPV of a series of annual benefits
 benefits &lt;- calculate_benefits(birth.year = 1957, claim.age = 62) %&gt;% filter(Age &gt;= 62)
 NPV(benefits$Benefits, inflation.rate)
-</code></pre><pre><code>[1] 430684.4
+</code></pre><pre tabindex="0"><code>[1] 430684.4
 </code></pre><p>Now, repeat this process for all the claim ages between 62 and 70 then plot it.</p>
-<pre><code># plot of NPVs by claim age
+<pre tabindex="0"><code># plot of NPVs by claim age
 sapply(62:70, function(claim.age){
   calculate_benefits(birth.year = 1957, claim.age = claim.age) %&gt;%
     filter(Age &gt;= 62) %&gt;%
@@ -190,15 +190,15 @@ sapply(62:70, function(claim.age){
 <img src="/img/posts/Social-Security/NPVs.png" width=100%>
 </p>
 <p>However, what we want to know is how much is a series of benefits worth if one invests their benefits and it yields a certain rate of return. We can treat the accumulation of benefits as an investment account with annual deposits and compounded growth at a given rate. Then we can take the terminal (final) value and discount it back to age 62. This will give us a single value that is an apples-to-apples comparison once we start varying the claim age.</p>
-<pre><code># calculate the present value of one series of benefits, starting at age 62,
+<pre tabindex="0"><code># calculate the present value of one series of benefits, starting at age 62,
 #  ending at age 100, and with an an investment return of 5%
 benefits$Benefits %&gt;%
   add_investment_return(., rate = 1.05) %&gt;%
   last(.) %&gt;%
   PV(., rate = inflation.rate, periods = 100-62)
-</code></pre><pre><code>[1] 706134
+</code></pre><pre tabindex="0"><code>[1] 706134
 </code></pre><p>Great. Now let&rsquo;s calculate this present value across various investment returns, claim ages, and longevities.</p>
-<pre><code># set the investment returns, claim ages, and death ages we are interested in
+<pre tabindex="0"><code># set the investment returns, claim ages, and death ages we are interested in
 inv.returns &lt;- seq(1, 1.1, by = 0.001) # this is 0-&gt;10%
 claim.ages &lt;- 62:70
 death.ages &lt;- 63:100
@@ -224,7 +224,7 @@ PV.grid$PV &lt;-
        }) %&gt;% unlist()
 
 head(PV.grid)
-</code></pre><pre><code># A tibble: 6 x 4
+</code></pre><pre tabindex="0"><code># A tibble: 6 x 4
   Return Claim.age Death.age     PV
    &lt;dbl&gt;     &lt;int&gt;     &lt;int&gt;  &lt;dbl&gt;
 1   1           62        63 21867.
@@ -236,7 +236,7 @@ head(PV.grid)
 
 </code></pre><p>We now have present values for every combination of investment return, claim age, and longevity. What we really care about is the best claim age for a given investment return and longevity. To find this, we can take the maximum present value for a given grouping of investment return and longevity.</p>
 <p>We can now build the plot shown at the beginning of the post. A simple table will do but that might miss the bigger pattern. This one will be bit more detailed as every age between between 62 and 70 was calculated, not just age 62, 66 (<a href="https://www.ssa.gov/planners/retire/retirechart.html">FRA</a>), and 70.</p>
-<pre><code># plot of best claim age by investment return and death age
+<pre tabindex="0"><code># plot of best claim age by investment return and death age
 PV.grid %&gt;%
   group_by(Return, Death.age) %&gt;%
   filter(PV == max(PV)) %&gt;%
@@ -264,7 +264,7 @@ PV.grid %&gt;%
 <h3 id="simulating-the-investments">Simulating the investments</h3>
 <p>Using deterministic investment returns may overestimate final account balances. Simulating (i.e. Monte Carlo) investment returns will most likely just slightly reduce the expected rate of return which in and of itself does not warrant a full Monte Carlo. Where Monte Carlos do make a significant difference is when you have a sequence of withdrawals or contributions to an account. The variation of investment returns and the timing of those returns tends to have a large effect. Given we are estimating an account balance that has annual contributions, the Monte Carlo method may provide a more accurate prediction than deterministic returns.</p>
 <p>Let&rsquo;s simulate a single account first. We can use the already calculated <code>Benefits</code> data frame and apply investment returns using the <code>sim_investment_return()</code> function. Doing this many times we can see how the account balances will vary over time — some perform well and others poorly.</p>
-<pre><code># set seed for reproducibility
+<pre tabindex="0"><code># set seed for reproducibility
 set.seed(44)
 
 # set number of simulations, expected return, and expected volatility
@@ -295,7 +295,7 @@ replicate(n.sims,
 <img src="/img/posts/Social-Security/AccountSim.png" width=100%>
 </p>
 <p>Since we are calculating the present value we only care about the final ending value. And we only need one of those <code>5,000</code> values to pick for our present value calculation. We can shoot for the middle of the road by choosing the 50th percentile or a more conservative approach would be choosing the 20th percentile — that represents the value where 80% of the other values are greater than it. Let&rsquo;s do three approaches representing conservative (20th), moderate (50th), and aggressive (80th) expectations.</p>
-<pre><code># set the percentile (quantile) we are interested in (lower percentile = more conservative)
+<pre tabindex="0"><code># set the percentile (quantile) we are interested in (lower percentile = more conservative)
 percentile &lt;- c(0.2, 0.5, 0.8)
 
 # calculate benefits then add investment return then calculate present value
@@ -303,8 +303,8 @@ benefits$Benefits %&gt;%
   grab_percentile_inv_return(., exp.return = exp.return, exp.vol = exp.vol,
                              n.sims = n.sims, percentile = percentile) %&gt;%
   PV(., rate = inflation.rate, periods = 100 - 62)
-</code></pre><pre><code>[1] 486898.7 655132.3 898047.4
-</code></pre><pre><code># calculate PV for all the combinations
+</code></pre><pre tabindex="0"><code>[1] 486898.7 655132.3 898047.4
+</code></pre><pre tabindex="0"><code># calculate PV for all the combinations
 sim.PV &lt;-
   pmap(list(PV.grid$Return, PV.grid$Claim.age, PV.grid$Death.age),
        function(inv.return, age, death) {
@@ -380,7 +380,7 @@ PV.grid %&gt;%
 </ol>
 <p>This method reduces the simulation calls from 101 x 9 x 38 = 34,542 to 101 x 8 = 909 by vectorizing across death ages. Additionally, we call the <code>PV()</code> function once on the whole vector of results rather than within each iteration of 101 x 9 x 39 = 34,542.</p>
 <p>Runtime is reduced from <strong>two hours to about three minutes which is ~40x faster</strong>. Not bad for a slight tradeoff in readability.</p>
-<pre><code># create all combinations of investment returns and claim age
+<pre tabindex="0"><code># create all combinations of investment returns and claim age
 PV.grid &lt;- crossing(Return = seq(1, 1.1, by = 0.001),
                     Claim.age = 62:70)
 

@@ -123,12 +123,12 @@
 </li>
 </ol>
 <p>If you&rsquo;re more interested in this, I encourage you to tweak (and improve) <a href="https://github.com/joemarlo/Fan-art">my code</a> along with checking out <a href="https://www.data-to-art.com/">Data-to-Art</a>.</p>
-<pre><code># build a single fan
+<pre tabindex="0"><code># build a single fan
 buildFan()
 </code></pre><p align="center">
 <img src="/img/posts/fan-art/singlefan.png" width=60%>
 </p> 
-<pre><code># tweak the fan's properties
+<pre tabindex="0"><code># tweak the fan's properties
 buildFan(n.segments = 1000,
          x.end = runif(1000, -1, 1),
          y.end = runif(1000, -1, 1),
@@ -140,7 +140,7 @@ buildFan(n.segments = 1000,
 <img src="/img/posts/fan-art/singlefanDepth.png" width=80%>
 </p>
 <h4 id="you-can-create-animated-gifs-by-saving-many-plots-and-then-collapse-them-into-a-gif-use-imagemagickhttpsimagemagickorg-shell-commands">You can create animated gifs by saving many plots and then collapse them into a GIF use <a href="https://imagemagick.org/">imagemagick</a> shell commands:</h4>
-<pre><code># gif rendering requires imagemagick to be installed
+<pre tabindex="0"><code># gif rendering requires imagemagick to be installed
 #  see https://imagemagick.org/ or brew install imagemagick 
 setwd(&quot;Plotted_images/Gifs&quot;)
 
@@ -170,7 +170,7 @@ file.remove(list.files(pattern = &quot;.png&quot;))
 </code></pre><p align="center">
 <img src="/img/posts/fan-art/fans_thumbnail.gif" width=70%>
 </p> 
-<pre><code># gif parameters
+<pre tabindex="0"><code># gif parameters
 n.frames &lt;- 100
 logis.curve &lt;- 1 / ( 1 + exp(seq(4, -5, length = n.frames/2)))
 logis.curve &lt;- c(logis.curve, rev(logis.curve))
@@ -208,7 +208,7 @@ file.remove(list.files(pattern = &quot;.png&quot;))
 </code></pre><p align="center">
 <img src="/img/posts/fan-art/depth_fan.gif" width=80%>
 </p>
-<pre><code># set where to save
+<pre tabindex="0"><code># set where to save
 png(filename = paste0('fan%02d.png'),
     width = 1250,
     height = 800)
@@ -247,7 +247,7 @@ file.remove(list.files(pattern = &quot;.png&quot;))
 </p> 
 <br>
 <h4 id="you-can-create-animated-gifs-across-plots-specifying-individual-parameters-to-create-effects">You can create animated gifs across plots, specifying individual parameters to create effects.</h4>
-<pre><code># gif of many fans with sequencing pattern
+<pre tabindex="0"><code># gif of many fans with sequencing pattern
 # gif parameters
 n.frames &lt;- 12*8
 hues &lt;- rep(seq(0, 1, length = 12), 12)
@@ -301,7 +301,7 @@ file.remove(list.files(pattern = &quot;.png&quot;))
 <img src="/img/posts/fan-art/multi_fan.gif" width=90%>
 </p> 
 <h4 id="use-printfans-to-create-a-panel-of-plots-all-at-once">Use printFans() to create a panel of plots all at once.</h4>
-<pre><code># build a panel of fans and save it
+<pre tabindex="0"><code># build a panel of fans and save it
 printFans()
 </code></pre><p align="center">
 <img src="/img/posts/fan-art/fansDefault.png" width=100%>

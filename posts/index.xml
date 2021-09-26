@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Marlo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 11 May 2021 12:54:32 -0400</lastBuildDate><atom:link href="https://joemarlo.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Sep 2021 13:52:16 -0400</lastBuildDate><atom:link href="https://joemarlo.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Simpleweather</title>
+      <link>https://joemarlo.github.io/posts/simpleweather/</link>
+      <pubDate>Sun, 26 Sep 2021 13:52:16 -0400</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/simpleweather/</guid>
+      <description>&lt;p&gt;&lt;em&gt;R package to simply get daily weather data&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Who spends their day just like you?</title>
       <link>https://joemarlo.github.io/posts/atus-similar-days/</link>
