@@ -447,12 +447,12 @@ preds &lt;- predict_decision_tree(model_decision_tree, X)
 </p>
 <br>
 <h4 id="where-trees-struggle">Where trees struggle</h4>
-<p>Trees will struggle when the feature space is dissected at an angle by the classification value. Since regression trees are partitioning the parameter space into rectangles, the tree will need to be deeper to approximate the decision boundary.</p>
+<p>Trees will struggle when the feature space is dissected at an angle by the classification value. Since decision trees are partitioning the parameter space into rectangles, the tree will need to be deeper to approximate the decision boundary.</p>
 <p>The below data&rsquo;s classification is in two separate triangles: top left and bottom right of the plot. A logistic regression finds the boundary easily.</p>
 <p align="center">
 <img src="/img/posts/random-forest/triangle_logistic.png" width=80%>
 </p>
-<p>A regression tree has a difficult time finding the decision boundary.</p>
+<p>A decision tree has a difficult time finding the decision boundary.</p>
 <p align="center">
 <img src="/img/posts/random-forest/triangle_tree.png" width=80%>
 </p>
