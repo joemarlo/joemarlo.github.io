@@ -117,7 +117,7 @@
 <p>The second part is determining the resulting three dice rolls that complete each possible <code>base.rolls</code> pair. In our example, these three can take 216 different permutations (there&rsquo;s three slots to fill where each slot can take six values so: 6 * 6 * 6 = 216). In R we can build a vector <code>1:6</code> three times using <code>replicate(3, 1:6)</code> then call <code>expand.grid()</code> on itself to produce the actual 216 permutations.</p>
 <p>These 216 permutations now need to combined with our base rolls. This results in 864 possible outcomes (4 * 216), and can be produced using <code>expand.grid()</code>. We now have the four conditional sample spaces — one for each <code>base.rolls</code> — and can pass them to <code>calculate.score()</code>.</p>
 <p>Rinse-and-repeat this process for withholding one, three, four, or five different dice. Group the results based on the <code>base.rolls</code> and then we can see the likely outcomes for each combination of original dice to withhold. We can also plot the densities to get a more intuitive view of the possible scores:</p>
-<pre tabindex="0"><code>&gt; calculate.die.to.keep(seed.roll = c(2, 2, 4, 5, 2), verbose = TRUE)
+<pre><code>&gt; calculate.die.to.keep(seed.roll = c(2, 2, 4, 5, 2), verbose = TRUE)
 # A tibble: 16 x 4
    Base_roll     Mean Median    SD
    &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;

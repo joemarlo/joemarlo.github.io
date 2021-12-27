@@ -111,12 +111,12 @@
 <p>Sequenchr is a sequence analysis tool for applied researchers. It is designed to enable faster analysis iterations and is also great for those who prefer an interactive interface. The core of the package is the interactive Shiny app but the majority of the underlying functions can be accessed directly through R.</p>
 <h3 id="installation">Installation</h3>
 <p>The package is available through <a href="https://github.com/joemarlo/sequenchr">GitHub</a> and can be installed via devtools.</p>
-<pre tabindex="0"><code>devtools::install_github(&quot;joemarlo/sequenchr&quot;)
+<pre><code>devtools::install_github(&quot;joemarlo/sequenchr&quot;)
 </code></pre><br>
 <h3 id="launching-the-sequenchr-shiny-app">Launching the sequenchr Shiny app</h3>
 <p>Sequenchr is built on top of the powerful sequence analysis package TraMineR which provides a number of helpful functions to manipulate and analyze sequence data.</p>
 <p>The sequenchr Shiny app requires a TraMineR object created from <code>TraMineR::seqdef</code>. For more information on using TraMineR, see <a href="http://traminer.unige.ch/">http://traminer.unige.ch/</a>. Once the TraMineR object is created, calling <code>sequenchr::launch_sequechnr</code> will launch the Shiny app in a new browser window.</p>
-<pre tabindex="0"><code>library(TraMineR)
+<pre><code>library(TraMineR)
 library(sequenchr)
 
 # load data and convert to a sequence object
@@ -129,7 +129,7 @@ mvad.labels &lt;- c(&quot;employment&quot;, &quot;further education&quot;, &quot
 mvad.scodes &lt;- c(&quot;EM&quot;, &quot;FE&quot;, &quot;HE&quot;, &quot;JL&quot;, &quot;SC&quot;, &quot;TR&quot;)
 mvad.seq &lt;- seqdef(mvad, 17:86, alphabet = mvad.alphabet, states = mvad.scodes,
                    labels = mvad.labels, xtstep = 6)
-</code></pre><pre tabindex="0"><code># launch the sequenchr app
+</code></pre><pre><code># launch the sequenchr app
 launch_sequenchr(sequence_data = mvad.seq)
 </code></pre><p align="center">
 <img src="/img/posts/sequenchr/screenshot_seqi.png" width=80%>
@@ -145,7 +145,7 @@ launch_sequenchr(sequence_data = mvad.seq)
 <h3 id="using-the-functions-directly">Using the functions directly</h3>
 <p>The functions that power the sequenchr app can also be used directly. All plotting functions start with sequenchr::plot_* and most require a tidy dataframe created from the TraMineR object.</p>
 <p>The tidy dataframe is created via <code>sequenchr::tidy_sequence_data</code> and then is passed to the <code>sequenchr::plot_* functions</code>.</p>
-<pre tabindex="0"><code># tidy the data
+<pre><code># tidy the data
 seq_def_tidy &lt;- tidy_sequence_data(mvad.seq)
 
 # plot the sequence index
@@ -157,7 +157,7 @@ plot_sequence_index(seq_def_tidy)
 <br>
 <h4 id="modifying-plots">Modifying plots</h4>
 <p>Plots are standard ggplot2 objects and can be customized using ggplot2 syntax. For example, the theme, scales, and labels can be modified by calling their respective functions on <code>sequenchr::plot_*</code> output, concatenated with &lsquo;<code>+</code>&rsquo;.</p>
-<pre tabindex="0"><code>library(ggplot2)
+<pre><code>library(ggplot2)
 theme_set(theme_minimal())
 p &lt;- plot_sequence_index(seq_def_tidy)
 
@@ -176,7 +176,7 @@ p +
 <br>
 <br>
 <h3 id="read-more-about-sequenchr-by-viewing-the-vignette">Read more about sequenchr by viewing the vignette</h3>
-<pre tabindex="0"><code>devtools::install_github(&quot;joemarlo/sequenchr&quot;, build_vignettes = TRUE)
+<pre><code>devtools::install_github(&quot;joemarlo/sequenchr&quot;, build_vignettes = TRUE)
 vignette('sequenchr')
 </code></pre><br>
 <hr>

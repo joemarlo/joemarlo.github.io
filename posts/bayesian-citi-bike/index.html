@@ -245,21 +245,21 @@ Negative binomial models' outcomes are specified in log counts so the coefficien
 </table>
 </div>
 <p>We can draw from this model using <code>brms::brm()</code> with the optional arguments <code>family = 'negbinomial'</code> and <code>sample_prior = &quot;only&quot;</code>. The resulting estimates are inline with our priors except for maybe that shape parameter seems a little off. More on that later.</p>
-<pre tabindex="0"><code>prior_estimate &lt;- brm(Trip_count ~ Weekday + Precipitation + Temp + Gust_speed,
+<pre><code>prior_estimate &lt;- brm(Trip_count ~ Weekday + Precipitation + Temp + Gust_speed,
                       data = Citibike_train, family = 'negbinomial',
                       prior = priors, sample_prior = &quot;only&quot;)
 </code></pre><p align="center">
 <img src="/img/posts/Bayesian-Citi-Bike/prior_estimates.svg" width=90%>
 </p>
 <p>And finally, we compute the expected value using <code>brms::pp_expect()</code>. The below plot shows these draws from the prior distribution of the conditional expectation are reasonable. Examining the deciles shows that the middle 90% are covering a reasonable range of data. The values are little low but close to the actuals: the mean draw is 38,778 whereas the mean daily ridership for 2017-2019 is closer to 50,000.</p>
-<pre tabindex="0"><code>prior_draws &lt;- pp_expect(draws, nsamples = 4000)
+<pre><code>prior_draws &lt;- pp_expect(draws, nsamples = 4000)
 </code></pre><p align="center">
 <img src="/img/posts/Bayesian-Citi-Bike/prior_draws.svg" width=90%>
 </p>
 <br>
 <h2 id="conditioning-on-the-observed-data">Conditioning on the observed data</h2>
 <p>Since the priors are reasonable we can now condition on the data. This is simple using the <code>brms</code> package; simply call <code>brms::update()</code> on the model with the argument <code>sample_prior = &quot;no&quot;</code>.</p>
-<pre tabindex="0"><code>post_nb &lt;- update(prior_estimate, sample_prior = &quot;no&quot;)
+<pre><code>post_nb &lt;- update(prior_estimate, sample_prior = &quot;no&quot;)
 </code></pre><p>The model converges and Rhat values are each 1.00. The effective-sample-sizes are all large as well, ranging from 2,800 to 5,500. Importantly, we see the estimates are close to the priors.</p>
 <p>The largest surprise is that precipitation is associated with a larger effect on the outcome than weekday which may indicate that the hypothesized weekday commuters do not have as strong a positive effect as rain has a negative effect.</p>
 <!-- table of model parameters-->
