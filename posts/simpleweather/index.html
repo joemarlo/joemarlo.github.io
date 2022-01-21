@@ -110,7 +110,7 @@
 <hr>
 <p><a href="https://github.com/joemarlo/simpleweather">simpleweather</a> is an R package that provides a simple interface to get historical and forecasted weather. It does one thing: retrieve basic weather data for a given latitude, longitude location. No anguish to figure out which data source to use, weather variable to pick, or weather station to choose.</p>
 <p>simpleweather is focused and therefore limited to only providing temperature (daily max in Fahrenheit), precipitation (True/False), and wind speed (mph). The package leverages NOAA for historical data and OpenWeather for the latest data. NOAA data is limited to the United States only.</p>
-<pre><code>library(simpleweather)
+<pre tabindex="0"><code>library(simpleweather)
 dates &lt;- Sys.Date() + -7:2
 lat &lt;- 40.7812
 long &lt;- -73.9665
@@ -133,11 +133,11 @@ get_weather(dates, lat, long)
 </code></pre><br>
 <h3 id="installation">Installation</h3>
 <p>The package is available through <a href="https://github.com/joemarlo/simpleweather">GitHub</a> and can be installed via devtools.</p>
-<pre><code># install.packages(&quot;devtools&quot;)
+<pre tabindex="0"><code># install.packages(&quot;devtools&quot;)
 devtools::install_github(&quot;joemarlo/simpleweather&quot;)
 </code></pre><p>Requires API keys for the <a href="https://www.ncdc.noaa.gov/cdo-web/webservices/v2">NOAA API</a> and <a href="https://openweathermap.org/api/one-call-api">OpenWeather API</a>. You can request those keys for free <a href="https://www.ncdc.noaa.gov/cdo-web/token">here</a> and <a href="https://openweathermap.org/price">here</a>.</p>
 <p>And then log your API keys via the set_api_key_* functions.</p>
-<pre><code>set_api_key_noaa(&quot;&lt;key&gt;&quot;)
+<pre tabindex="0"><code>set_api_key_noaa(&quot;&lt;key&gt;&quot;)
 set_api_key_openweather(&quot;&lt;key&gt;&quot;)
 </code></pre><br>
 <p>Please credit NOAA and/or OpenWeather as your weather data provider depending on your use.</p>

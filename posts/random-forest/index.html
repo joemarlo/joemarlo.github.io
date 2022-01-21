@@ -135,27 +135,27 @@
 <br>
 <h3 id="setup">Setup</h3>
 <p>Okay, it&rsquo;s not quite &ldquo;base&rdquo; R as we&rsquo;re going to use the <code>tidyverse</code> meta-package for general data munging and <code>parallel</code> for multi-core processing during bagging and the random forest.</p>
-<pre><code class="language-{r" data-lang="{r">library(tidyverse)
+<pre tabindex="0"><code class="language-{r" data-lang="{r">library(tidyverse)
 library(parallel)
 options(mc.cores = detectCores())
 set.seed(44)
 </code></pre><br>
 <h3 id="gini-impurity">Gini impurity</h3>
 <p>We&rsquo;re going to build the random forest algorithm starting with the smallest component: the Gini impurity metric. Note that the output of <code>gini</code> is constrained to <code>[0, 0.5]</code>.</p>
-<pre><code class="language-{r" data-lang="{r">gini &lt;- function(p) 2 * p * (1 - p)
+<pre tabindex="0"><code class="language-{r" data-lang="{r">gini &lt;- function(p) 2 * p * (1 - p)
 </code></pre><p align="center">
 <img src="/img/posts/random-forest/gini.png" width=80%>
 </p>
 <p>For convenience, I am going to wrap the <code>gini</code> function so we feed it a vector instead of a probability. The probability is calculated from the mean value of the vector. In practice, this vector will be binary and represent classification labels so the mean value is the proportion of labels that represent a positive classification.</p>
-<pre><code class="language-{r" data-lang="{r">gini_vector &lt;- function(X){
+<pre tabindex="0"><code class="language-{r" data-lang="{r">gini_vector &lt;- function(X){
   # X should be binary 0 1 or TRUE/FALSE
   gini(mean(X, na.rm = TRUE))
 }
 X1 &lt;- c(0, 1, 0)
 gini_vector(X1)
-</code></pre><pre><code>## [1] 0.4444444
+</code></pre><pre tabindex="0"><code>## [1] 0.4444444
 </code></pre><p>And finally I am going to wrap it again so it gives us the weighted Gini of two vectors.</p>
-<pre><code class="language-{r" data-lang="{r">gini_weighted &lt;- function(X1, X2){
+<pre tabindex="0"><code class="language-{r" data-lang="{r">gini_weighted &lt;- function(X1, X2){
   # X should be binary 0 1 or TRUE/FALSE
   if (is.null(X1)) return(gini_vector(X2))
   if (is.null(X2)) return(gini_vector(X1))
@@ -166,11 +166,11 @@ gini_vector(X1)
 }
 X2 &lt;- c(1, 1, 1)
 gini_weighted(X1, X2)
-</code></pre><pre><code>## [1] 0.2222222
+</code></pre><pre tabindex="0"><code>## [1] 0.2222222
 </code></pre><br>
 <h3 id="splitting">Splitting</h3>
 <p>At each node, the tree needs to make a decision using the Gini metric. Here a single-dimensional grid search is performed to find the optimal value of the split for a given feature such as <code>X1</code>. Note that in formal packages like <code>ranger</code> this step is likely not a straight grid search and is optimized.</p>
-<pre><code class="language-{r" data-lang="{r">optimal_split &lt;- function(X, classes, n_splits = 50){
+<pre tabindex="0"><code class="language-{r" data-lang="{r">optimal_split &lt;- function(X, classes, n_splits = 50){
 
   # create &quot;dividing lines&quot; that split X into to parts
   # a smarter version would account for X's values
@@ -199,7 +199,7 @@ gini_weighted(X1, X2)
 X &lt;- rnorm(10)
 classes &lt;- rbinom(10, 1, 0.5)
 optimal_split(X, classes)
-</code></pre><pre><code>## $gini
+</code></pre><pre tabindex="0"><code>## $gini
 ## [1] 0.3
 ##
 ## $split_value
@@ -215,7 +215,7 @@ optimal_split(X, classes)
 <img src="/img/posts/random-forest/optimal_split.png" width=80%>
 </p>
 <p>The grid search needs to be expanded to search all possible features (<code>X1</code>, <code>X2</code>, <code>...</code>). The resulting smallest Gini value is the split the tree uses.</p>
-<pre><code class="language-{r" data-lang="{r">best_feature_to_split &lt;- function(X, Y){
+<pre tabindex="0"><code class="language-{r" data-lang="{r">best_feature_to_split &lt;- function(X, Y){
   # X must be a dataframe, Y a vector of 0:1
 
   # get optimal split for each column
@@ -236,7 +236,7 @@ n &lt;- 1000
 X &lt;- .data[, -1]
 Y &lt;- .data[[1]]
 best_feature_to_split(.data[, -1], .data[['Y']])
-</code></pre><pre><code>## $column
+</code></pre><pre tabindex="0"><code>## $column
 ## [1] &quot;X1&quot;
 ##
 ## $gini
@@ -257,7 +257,7 @@ best_feature_to_split(.data[, -1], .data[['Y']])
 <p>To create the decision trees, the splitting algorithm should be applied until it reaches a certain stopping threshold. It is not known prior how many splits it is going to make &ndash; the depth or the width. This is not easily solved using a <code>while</code> loop as a split results in two new branches and each can potentially split again. <a href="https://www.cs.utah.edu/~germain/PPS/Topics/recursion.html">Recursion</a> is required.</p>
 <p>In recursive functions, the function is called within itself until some stopping criteria is met. A simple example is the <a href="https://algs4.cs.princeton.edu/23quicksort/">quicksort</a> algorithm which sorts a vector of numbers from smallest to greatest.</p>
 <p>Quicksort is a divide-and-conquer method that splits the input vector into two vectors based on a pivot point. Points smaller than the pivot go to one vector, points larger to the other vector. The pivot point can be any point but is often the first or last item in the vector. The function is called on itself to repeat the splitting until one or less numbers exist in the resulting vector. Then these sorted child-vectors are passed upward through the recursed functions and combined back into a single vector that is now sorted.</p>
-<pre><code class="language-{r" data-lang="{r">quick_sort &lt;- function(X){
+<pre tabindex="0"><code class="language-{r" data-lang="{r">quick_sort &lt;- function(X){
 
   # stopping criteria: stop if X is length 1 or less
   if (length(X) &lt;= 1) return(X)
@@ -280,7 +280,7 @@ best_feature_to_split(.data[, -1], .data[['Y']])
 }
 X &lt;- rnorm(20)
 quick_sort(X)
-</code></pre><pre><code>##  [1] -1.288492187 -1.012602888 -0.938064465 -0.815872056 -0.495430743
+</code></pre><pre tabindex="0"><code>##  [1] -1.288492187 -1.012602888 -0.938064465 -0.815872056 -0.495430743
 ##  [6] -0.479283544 -0.477149902 -0.445188837 -0.008493793  0.112405152
 ## [11]  0.176615746  0.389688918  0.454000688  0.507450697  0.615812243
 ## [16]  0.947849356  1.415313533  1.423378109  1.457175891  1.813671874
@@ -288,7 +288,7 @@ quick_sort(X)
 <h4 id="recursive-branching">Recursive branching</h4>
 <p>We&rsquo;re going to implement the above splitting algorithm as a recursive function which builds our decision tree classifier. The tree will stop if it exceeds a certain depth, a minimum number of observations result from a given split, or if the Gini measure falls below a certain amount. Only one of these methods is required however including all three allow additional hyperparameter tuning down-the-road.</p>
 <p>The function recursively calls the <code>best_feature_to_split()</code> function until one of the stopping criteria is met. All other code is to manage the saving of the split decisions. The output is a dataframe denoting these decisions. The <code>m_features</code> argument denotes the number of columns to be used at each split &ndash; this will be useful later for random forest.</p>
-<pre><code class="language-{r" data-lang="{r"># create a dataframe denoting the best splits
+<pre tabindex="0"><code class="language-{r" data-lang="{r"># create a dataframe denoting the best splits
 decision_tree_classifier &lt;- function(X, Y, gini_threshold = 0.4, max_depth = 5, min_observations = 5, branch_id = '0', splits = NULL, m_features = ncol(X)){
 
   # sample the columns -- for use later in random forest
@@ -362,7 +362,7 @@ X &lt;- .data[, -1]
 Y &lt;- .data[[1]]
 decision_tree &lt;- decision_tree_classifier(X, Y, 0.1)
 decision_tree
-</code></pre><pre><code>## # A tibble: 17 x 4
+</code></pre><pre tabindex="0"><code>## # A tibble: 17 x 4
 ##    column   split pred             branch
 ##    &lt;chr&gt;    &lt;dbl&gt; &lt;list&gt;           &lt;chr&gt;
 ##  1 X2     -1.22   &lt;named list [2]&gt; 0     
@@ -386,7 +386,7 @@ decision_tree
 <br>
 <h4 id="predictions">Predictions</h4>
 <p>A new observation is predicted by traversing the decision tree model via recursion. For a given point, start at <code>branch_id = 0</code>, calculate if the value is above or below the split, and then go &ldquo;left&rdquo; or &ldquo;right&rdquo; by appending the <code>branch_id</code> with a <code>0</code> or <code>1</code>. Repeat until there are no branches left.</p>
-<pre><code class="language-{r" data-lang="{r"># predict a new data point
+<pre tabindex="0"><code class="language-{r" data-lang="{r"># predict a new data point
 predict_data_point &lt;- function(model_decision_tree, new_row, branch_id = '0'){
 
   # traverse the decision tree and get the next split
@@ -405,9 +405,9 @@ predict_data_point &lt;- function(model_decision_tree, new_row, branch_id = '0')
   return(predict_data_point(model_decision_tree, new_row, branch_id))
 }
 predict_data_point(decision_tree, X[1,])
-</code></pre><pre><code>## [1] 0.3252033
+</code></pre><pre tabindex="0"><code>## [1] 0.3252033
 </code></pre><p>Wrap the <code>predict_data_point</code> function in a loop so it can predict all observations in a dataframe.</p>
-<pre><code class="language-{r" data-lang="{r"># predict all datapoints in a dataframe
+<pre tabindex="0"><code class="language-{r" data-lang="{r"># predict all datapoints in a dataframe
 predict_decision_tree &lt;- function(model_decision_tree, new_data){
   preds &lt;- rep(NULL, nrow(new_data))
   for (i in 1:nrow(new_data)){
@@ -417,7 +417,7 @@ predict_decision_tree &lt;- function(model_decision_tree, new_data){
 }
 preds &lt;- predict_decision_tree(decision_tree, X)
 </code></pre><p>Finally, we can test our decision tree classifier on data. Decision trees perform best on data split horizontally and/or vertically &ndash; i.e. on data where linear regression or logistic regression tends to perform poorly. Here I create &ldquo;boxed&rdquo; data where the boxes delineate between Class 0 and Class 1.</p>
-<pre><code class="language-{r" data-lang="{r"># create a two dimensional dataset
+<pre tabindex="0"><code class="language-{r" data-lang="{r"># create a two dimensional dataset
 n &lt;- 1000
 .data &lt;- tibble(X1 = runif(n, -1, 1),
                 X2 = runif(n, -1, 1),
@@ -426,13 +426,13 @@ n &lt;- 1000
 <img src="/img/posts/random-forest/example_data.png" width=80%>
 </p>
 <p>Classifying these points with a logistic regression results in poor performance. The red indicates misclassified points.</p>
-<pre><code class="language-{r}" data-lang="{r}"># logistic regression
+<pre tabindex="0"><code class="language-{r}" data-lang="{r}"># logistic regression
 model_log &lt;- glm(Y ~ X1 + X2, data = .data, family = 'binomial')
 </code></pre><p align="center">
 <img src="/img/posts/random-forest/logistic_classes.png" width=80%>
 </p>
 <p>These &ldquo;square&rdquo; data suit the decision tree classifier well. Below, the classifier correctly classifies almost all points. The incorrect points all lie around the boundary between Class 0 and Class 1. This may be due to the <code>splits</code> in <code>optimal_split()</code> not being granular enough.</p>
-<pre><code class="language-{r" data-lang="{r">X &lt;- dplyr::select(.data, -Y)
+<pre tabindex="0"><code class="language-{r" data-lang="{r">X &lt;- dplyr::select(.data, -Y)
 Y &lt;- .data[['Y']]
 model_decision_tree &lt;- decision_tree_classifier(X, Y, max_depth = 4,
 						gini_threshold = 0,
@@ -464,7 +464,7 @@ preds &lt;- predict_decision_tree(model_decision_tree, X)
 <h3 id="bagging">Bagging</h3>
 <p>Single decision trees are prone to overfitting and can have high variance on new data. A simple solution is to create many decision trees based on resamples of the data and allow each tree to &ldquo;vote&rdquo; on the final classification. This is bagging. The process keeps the low-bias of the single tree model but reduces overall variance.</p>
 <p>The &ldquo;vote&rdquo; from each tree is their prediction for a given observation. The votes are averaged across all the trees and the final classification is determined from this average. The trees are trained on <a href="https://online.stat.psu.edu/stat555/node/119/">bootstrapped data</a> &ndash; taking repeated samples of the training data with replacement.</p>
-<pre><code class="language-{r" data-lang="{r">bag_it &lt;- function(X_train, Y_train, X_test, n_trees = 100, max_depth = 5, gini_threshold = 0.2, min_observations = 5){
+<pre tabindex="0"><code class="language-{r" data-lang="{r">bag_it &lt;- function(X_train, Y_train, X_test, n_trees = 100, max_depth = 5, gini_threshold = 0.2, min_observations = 5){
 
   # grow the trees
   preds &lt;- parallel::mclapply(1:n_trees, function(i){
@@ -494,7 +494,7 @@ preds &lt;- predict_decision_tree(model_decision_tree, X)
   preds &lt;- rowMeans(preds, na.rm = TRUE)
   return(preds)
 }
-</code></pre><pre><code class="language-{r}" data-lang="{r}"># read in the credit data
+</code></pre><pre tabindex="0"><code class="language-{r}" data-lang="{r}"># read in the credit data
 credit &lt;- read_csv(file.path(wd, &quot;data/credit_card.csv&quot;))
 X &lt;- select(credit, -Class)
 Y &lt;- credit$Class
@@ -505,18 +505,18 @@ X_train &lt;- X[indices,]
 X_test &lt;- X[!indices,]
 Y_train &lt;- Y[indices]
 Y_test &lt;- Y[!indices]
-</code></pre><pre><code class="language-{r}" data-lang="{r}"># fit the bagged model
+</code></pre><pre tabindex="0"><code class="language-{r}" data-lang="{r}"># fit the bagged model
 preds &lt;- bag_it(X_train, Y_train, X_test, n_trees = 50, max_depth = 10,
 		gini_threshold = 0, min_observations = 5)
 table(preds &gt; 0.5, Y_test)
-</code></pre><pre><code>##        Y_test
+</code></pre><pre tabindex="0"><code>##        Y_test
 ##           0   1
 ##   FALSE 485  33
 ##   TRUE    9 221
 </code></pre><br>
 <h3 id="random-forest">Random forest</h3>
 <p>Random forest is like bagging except in addition to bootstrapping the observations, you also take a random subset of the features at each split. The rule-of-thumb sample size is the square root of the total number of features. We&rsquo;ll implement this by utilizing the optional <code>m_features</code> argument we added earlier to <code>decision_tree_classifier()</code>.</p>
-<pre><code class="language-{r" data-lang="{r">random_forest &lt;- function(X_train, Y_train, X_test, n_trees = 100, m_features = ceiling(sqrt(ncol(X_train))), max_depth = 5, gini_threshold = 0.2, min_observations = 5){
+<pre tabindex="0"><code class="language-{r" data-lang="{r">random_forest &lt;- function(X_train, Y_train, X_test, n_trees = 100, m_features = ceiling(sqrt(ncol(X_train))), max_depth = 5, gini_threshold = 0.2, min_observations = 5){
 
   # grow the trees
   preds &lt;- parallel::mclapply(1:n_trees, function(i){
@@ -550,19 +550,19 @@ table(preds &gt; 0.5, Y_test)
   preds &lt;- rowMeans(preds, na.rm = TRUE)
   return(preds)
 }
-</code></pre><pre><code class="language-{r}" data-lang="{r}"># fit the random forest
+</code></pre><pre tabindex="0"><code class="language-{r}" data-lang="{r}"># fit the random forest
 preds &lt;- random_forest(X_train, Y_train, X_test, n_trees = 50, max_depth = 10,
 		       gini_threshold = 0, min_observations = 5)
 table(preds &gt; 0.5, Y_test)
-</code></pre><pre><code>##        Y_test
+</code></pre><pre tabindex="0"><code>##        Y_test
 ##           0   1
 ##   FALSE 487  32
 ##   TRUE    7 222
 </code></pre><p>Compare this against the <code>ranger</code> package&rsquo;s random forest algorithm.</p>
-<pre><code class="language-{r}" data-lang="{r}">model_ranger &lt;- ranger::ranger(Class ~ ., data = credit[indices,], num.trees = 50, max.depth = 10)
+<pre tabindex="0"><code class="language-{r}" data-lang="{r}">model_ranger &lt;- ranger::ranger(Class ~ ., data = credit[indices,], num.trees = 50, max.depth = 10)
 preds &lt;- predict(model_ranger, data = credit[!indices,])$predictions
 table(preds &gt; 0.5, credit$Class[!indices])
-</code></pre><pre><code>##           0   1
+</code></pre><pre tabindex="0"><code>##           0   1
 ##   FALSE 481  29
 ##   TRUE   13 225
 </code></pre><p>Not bad! Looks like our function performs just as well on this dataset as the formal <code>ranger</code> package.</p>
