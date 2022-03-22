@@ -39,6 +39,17 @@
 
 
 
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-0RYJVT684H', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
 </head>
 <body>
   <div id="all">
@@ -128,7 +139,7 @@ buildFan()
 </code></pre><p align="center">
 <img src="/img/posts/fan-art/singlefan.png" width=60%>
 </p> 
-<pre tabindex="0"><code># tweak the fan's properties
+<pre tabindex="0"><code># tweak the fan&#39;s properties
 buildFan(n.segments = 1000,
          x.end = runif(1000, -1, 1),
          y.end = runif(1000, -1, 1),
@@ -142,10 +153,10 @@ buildFan(n.segments = 1000,
 <h4 id="you-can-create-animated-gifs-by-saving-many-plots-and-then-collapse-them-into-a-gif-use-imagemagickhttpsimagemagickorg-shell-commands">You can create animated gifs by saving many plots and then collapse them into a GIF use <a href="https://imagemagick.org/">imagemagick</a> shell commands:</h4>
 <pre tabindex="0"><code># gif rendering requires imagemagick to be installed
 #  see https://imagemagick.org/ or brew install imagemagick 
-setwd(&quot;Plotted_images/Gifs&quot;)
+setwd(&#34;Plotted_images/Gifs&#34;)
 
 # gif of single fan
-png(filename = paste0('fan%02d.png'),
+png(filename = paste0(&#39;fan%02d.png&#39;),
     width = 500,
     height = 500)
 for (i in c(1:40, 39:1)){
@@ -165,8 +176,8 @@ for (i in c(1:40, 39:1)){
            depth = TRUE)
 }
 dev.off()
-system(&quot;convert -delay 20 *.png single_fan.gif&quot;)
-file.remove(list.files(pattern = &quot;.png&quot;))
+system(&#34;convert -delay 20 *.png single_fan.gif&#34;)
+file.remove(list.files(pattern = &#34;.png&#34;))
 </code></pre><p align="center">
 <img src="/img/posts/fan-art/fans_thumbnail.gif" width=70%>
 </p> 
@@ -177,7 +188,7 @@ logis.curve &lt;- c(logis.curve, rev(logis.curve))
 rescaleVector &lt;- function(x, min = .1, max = .9) (x - min(x))/(max(x) - min(x)) * (max - min) + min
 
 # set where to save
-png(filename = paste0('fan%02d.png'),
+png(filename = paste0(&#39;fan%02d.png&#39;),
     width = 1250,
     height = 1250)
 for (i in 1:n.frames){
@@ -203,13 +214,13 @@ for (i in 1:n.frames){
   )
 }
 dev.off()
-system(&quot;convert -delay 20 *.png depth_fan.gif&quot;)
-file.remove(list.files(pattern = &quot;.png&quot;))
+system(&#34;convert -delay 20 *.png depth_fan.gif&#34;)
+file.remove(list.files(pattern = &#34;.png&#34;))
 </code></pre><p align="center">
 <img src="/img/posts/fan-art/depth_fan.gif" width=80%>
 </p>
 <pre tabindex="0"><code># set where to save
-png(filename = paste0('fan%02d.png'),
+png(filename = paste0(&#39;fan%02d.png&#39;),
     width = 1250,
     height = 800)
 
@@ -240,8 +251,8 @@ for (i in 1:n.frames){
   )
 }
 dev.off()
-system(&quot;convert -delay 20 *.png semi_fan.gif&quot;)
-file.remove(list.files(pattern = &quot;.png&quot;))
+system(&#34;convert -delay 20 *.png semi_fan.gif&#34;)
+file.remove(list.files(pattern = &#34;.png&#34;))
 </code></pre><p align="center">
 <img src="/img/posts/fan-art/semi_fan.gif" width=70%>
 </p> 
@@ -256,17 +267,17 @@ logis.curve &lt;- c(logis.curve, rev(logis.curve))
 loop.vec &lt;- c(10:11, 0:11, 0)
 
 # set where to save
-png(filename = 'fan%02d.png',
+png(filename = &#39;fan%02d.png&#39;,
     width = 1250,
     height = 1250)
 
 for (i in 1:n.frames){
 
   # set graphical parameters
-  par(bg = 'white',
+  par(bg = &#39;white&#39;,
       mar = rep(2, 4),
       mfrow = c(3, 4),
-      bty = &quot;n&quot;)
+      bty = &#34;n&#34;)
   
   # set the number of segments to plot
   n &lt;-  floor(logis.curve[i] * 250)
@@ -295,8 +306,8 @@ for (i in 1:n.frames){
   }
 }
 dev.off()
-system(&quot;convert -delay 40 *.png multi_fan.gif&quot;)
-file.remove(list.files(pattern = &quot;.png&quot;))
+system(&#34;convert -delay 40 *.png multi_fan.gif&#34;)
+file.remove(list.files(pattern = &#34;.png&#34;))
 </code></pre><p align="center">
 <img src="/img/posts/fan-art/multi_fan.gif" width=90%>
 </p> 

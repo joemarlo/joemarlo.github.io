@@ -39,6 +39,17 @@
 
 
 
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-0RYJVT684H', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
 </head>
 <body>
   <div id="all">
@@ -108,8 +119,8 @@
          <h1>Text analysis of last meals</h1>
          <p><em>Examining favorite foods through last meal requests</em></p>
 <hr>
-<p>Last summer I toured an 1800s era <a href="https://en.wikipedia.org/wiki/Missouri_State_Penitentiary">state penitentiary</a> which included the requisite walk-through of the execution room. The tour guide spoke about the prisoners' pasts and spent considerable time discussing their last meals. Besides the obvious morbid thoughts of death and questions on the ethics of capital punishment, it struck me that these meals could serve as a great proxy for exploring peoples' favorite foods.</p>
-<p>Recently I came across the <a href="https://en.wikipedia.org/wiki/Last_meal">last meals Wikipedia page</a> which includes a table of 130 U.S. condemned prisoners' choices for their final feast. This is a great, approachable dataset to test out some text analysis tricks and unearth any patterns.</p>
+<p>Last summer I toured an 1800s era <a href="https://en.wikipedia.org/wiki/Missouri_State_Penitentiary">state penitentiary</a> which included the requisite walk-through of the execution room. The tour guide spoke about the prisoners&rsquo; pasts and spent considerable time discussing their last meals. Besides the obvious morbid thoughts of death and questions on the ethics of capital punishment, it struck me that these meals could serve as a great proxy for exploring peoples&rsquo; favorite foods.</p>
+<p>Recently I came across the <a href="https://en.wikipedia.org/wiki/Last_meal">last meals Wikipedia page</a> which includes a table of 130 U.S. condemned prisoners&rsquo; choices for their final feast. This is a great, approachable dataset to test out some text analysis tricks and unearth any patterns.</p>
 <h2 id="summary-findings">Summary findings</h2>
 <p>Ice cream. That&rsquo;s what everyone wants. After scraping, cleaning, and tokenizing the text, the most common items are also the most obvious:   ice cream, french  fries, steak, pizza, and fried chicken. These five show up in 66% or in 85 of the cases.</p>
 <p align="center">
@@ -149,36 +160,36 @@
 <h3 id="scraping-the-tables-a-idscrapinga">Scraping the tables <a id="scraping"></a></h3>
 <p>Scraping the tables off Wikipedia is simple using the <a href="https://blog.rstudio.com/2014/11/24/rvest-easy-web-scraping-with-r/">rvest package</a>. It&rsquo;s similar to the ubiquitous <a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a> package for Python. We can pull the html quickly, search for the nodes that represent the tables on the website and then do some wrangling to get the data into a tidy format.</p>
 <pre tabindex="0"><code># scrape the table
-tables &lt;- read_html('https://en.wikipedia.org/wiki/Last_meal') %&gt;%
-  html_nodes(xpath = '//table[contains(@class, &quot;sortable&quot;)]') %&gt;%
+tables &lt;- read_html(&#39;https://en.wikipedia.org/wiki/Last_meal&#39;) %&gt;%
+  html_nodes(xpath = &#39;//table[contains(@class, &#34;sortable&#34;)]&#39;) %&gt;%
   html_table() %&gt;%
   .[[4]]
 </code></pre><p>We need to remove cases of inmates that didn&rsquo;t request a meal or received a meal that was not requested. We&rsquo;re interested in what people <em><strong>wanted</strong></em> as their last meal, not necessarily what they received. This also removes some cases such as prisoner&rsquo;s requesting communion in lieu of a meal.</p>
-<pre tabindex="0"><code>excl.names &lt;- c(&quot;David Mason&quot;, &quot;Odell Barnes&quot;, &quot;Philip Workman&quot;, &quot;Ledell Lee&quot;)
+<pre tabindex="0"><code>excl.names &lt;- c(&#34;David Mason&#34;, &#34;Odell Barnes&#34;, &#34;Philip Workman&#34;, &#34;Ledell Lee&#34;)
 US.table &lt;- US.table[!(US.table$Name %in% excl.names),]
 
 head(US.table)
 </code></pre><pre tabindex="0"><code># A tibble: 6 x 6
   Name        Crime     State   Year Method.of.Dispa… Requested.Meal                                      
   &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;                                               
-1 Adam Kelly… Murderer  Texas   2016 Lethal injection &quot;Beef soft tacos, Spanish rice, salsa, mixed greens…
-2 Aileen Wuo… Serial k… Flori…  2002 Lethal injection &quot;Declined a special meal, but had a hamburger and o…
-3 Allen Lee … Murderer  Flori…  1999 Electrocution    &quot;350-pound \&quot;Tiny\&quot; Davis had one lobster tail, fri…
-4 Alton Cole… Spree Ki… Ohio    2002 Lethal injection &quot;Well done filet mignon smothered with mushrooms, f…
-5 Andrew Lac… Murderer  Alaba…  2013 Lethal injection &quot;Turkey bologna, French fries, and grilled cheese.&quot;
-6 Ángel Niev… Murderer  Flori…  2006 Lethal injection &quot;Declined a special meal. He was served the regular…
+1 Adam Kelly… Murderer  Texas   2016 Lethal injection &#34;Beef soft tacos, Spanish rice, salsa, mixed greens…
+2 Aileen Wuo… Serial k… Flori…  2002 Lethal injection &#34;Declined a special meal, but had a hamburger and o…
+3 Allen Lee … Murderer  Flori…  1999 Electrocution    &#34;350-pound \&#34;Tiny\&#34; Davis had one lobster tail, fri…
+4 Alton Cole… Spree Ki… Ohio    2002 Lethal injection &#34;Well done filet mignon smothered with mushrooms, f…
+5 Andrew Lac… Murderer  Alaba…  2013 Lethal injection &#34;Turkey bologna, French fries, and grilled cheese.&#34;
+6 Ángel Niev… Murderer  Flori…  2006 Lethal injection &#34;Declined a special meal. He was served the regular…
 </code></pre><br>
 <h3 id="tokenizing-a-idtokenizinga">Tokenizing <a id="tokenizing"></a></h3>
 <p>The first challenge is separating all the food related words and phrases from the non-food. This could be quite easy or quite difficult depending on meal description. For example,</p>
 <blockquote>
-<p><em>&ldquo;Salmon and potatoes.&quot;</em></p>
+<p><em>&ldquo;Salmon and potatoes.&rdquo;</em></p>
 </blockquote>
 <p>is straightforward. Each item is a food word. We just need to extract the words &lsquo;salmon&rsquo; and &lsquo;potatoes.&rsquo;</p>
 <p>Using the <a href="https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html">tidytext package</a> we can pull out the words (or unigrams) using <code>unnest_tokens()</code> and remove the stop words (&lsquo;and&rsquo;, &lsquo;is&rsquo;, &lsquo;a&rsquo;, etc.) by anti-joining with the built-in stop_words dataset.</p>
 <pre tabindex="0"><code>parsed.words &lt;- US.table %&gt;%
   select(Name, Requested.Meal) %&gt;%
   unnest_tokens(output = word, input = Requested.Meal) %&gt;%
-  anti_join(stop_words, by = &quot;word&quot;)
+  anti_join(stop_words, by = &#34;word&#34;)
 
 head(parsed.words)
 </code></pre><pre tabindex="0"><code># A tibble: 6 x 2
@@ -193,7 +204,7 @@ head(parsed.words)
 </code></pre><p>However, there&rsquo;s two major issues: 1. it&rsquo;s not finding items that consist of one or more words like &ldquo;ice cream&rdquo; and 2. it&rsquo;s finding irrelevant words like &ldquo;wishing.&rdquo;</p>
 <p>Now consider the following example:</p>
 <blockquote>
-<p><em>&ldquo;Morrow requested a last meal of a hamburger with mayonnaise, two chicken and waffle meals, a pint of butter pecan ice cream, a bag of buttered popcorn, two all-beef franks, and a large lemonade.&quot;</em></p>
+<p><em>&ldquo;Morrow requested a last meal of a hamburger with mayonnaise, two chicken and waffle meals, a pint of butter pecan ice cream, a bag of buttered popcorn, two all-beef franks, and a large lemonade.&rdquo;</em></p>
 </blockquote>
 <p>How would you systematically go through this and decide which words or series of words to keep?</p>
 <p>First, let&rsquo;s replace the unigram method with uni-, bi- and trigrams. This will return all permutations of 1, 2, and 3 word phrases. In the above example, the four word phrase &lsquo;butter pecan ice cream&rsquo; would return the follow variations:</p>
@@ -209,28 +220,28 @@ cream
 </code></pre><pre tabindex="0"><code># tokenize the meals
 parsed.ngrams &lt;- US.table %&gt;%
   select(Name, Requested.Meal) %&gt;%
-  unnest_tokens(output = word, input = Requested.Meal, token = &quot;ngrams&quot;, n = 3, n_min = 1) %&gt;%
-  anti_join(stop_words, by = &quot;word&quot;)
+  unnest_tokens(output = word, input = Requested.Meal, token = &#34;ngrams&#34;, n = 3, n_min = 1) %&gt;%
+  anti_join(stop_words, by = &#34;word&#34;)
 </code></pre><br>
 <h3 id="foodbase-corpus-a-idfoodbasea">Foodbase corpus <a id="foodbase"></a></h3>
 <p>Second, we need a way to understand if the word is in fact food- or meal-related. The easiest method is to compare against a pre-processed list. Finding a dictionary of food related words was more difficult than I anticipated. I finally found the <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6827550/">FoodBase corpus</a>, a collection of 22,000 recipes with 274,000 &lsquo;food entities&rsquo; in XML format. Each recipe has a list of its ingredients that can be easily extricated, deduped, and then turned into a list of &lsquo;food&rsquo; items. This will serve as a master list of food-related words. Any items that are in our dataset but not in this dataset will be removed. I&rsquo;ve also manually excluded a few additional words that made it through such as &lsquo;meal&rsquo;, &lsquo;food&rsquo;, &lsquo;drink&rsquo;, etc., and added &lsquo;coke&rsquo; and &lsquo;pepsi&rsquo; as I think these are relevant.</p>
 <pre tabindex="0"><code># import the food words from the Foodbase corpus
-food.words  &lt;- read_xml('Data/Foodbase/FoodBase_uncurated.xml') %&gt;%
-  xml_find_all(xpath = &quot;/collection/document/annotation/text&quot;) %&gt;%
+food.words  &lt;- read_xml(&#39;Data/Foodbase/FoodBase_uncurated.xml&#39;) %&gt;%
+  xml_find_all(xpath = &#34;/collection/document/annotation/text&#34;) %&gt;%
   xml_text() %&gt;%
   unique() %&gt;%
-  enframe(value = &quot;word&quot;) %&gt;%
+  enframe(value = &#34;word&#34;) %&gt;%
   select(-name) %&gt;%
   str_to_lower()
 
 # remove copmmon condiments from the food words list
-excl.words &lt;- c(&quot;meal&quot;, &quot;food&quot;, &quot;snack&quot;, &quot;drink&quot;, &quot;double&quot;, &quot;sauce&quot;, &quot;ketchup&quot;, &quot;cups&quot;,
-                &quot;mustard&quot;, &quot;mayonnaise&quot;, &quot;mayo&quot;, &quot;sour cream&quot;, &quot;onion&quot;, &quot;meat&quot;,
-                &quot;onions&quot;, &quot;pepper&quot;, &quot;butter&quot;, &quot;ranch&quot;, &quot;ranch dressing&quot;)
+excl.words &lt;- c(&#34;meal&#34;, &#34;food&#34;, &#34;snack&#34;, &#34;drink&#34;, &#34;double&#34;, &#34;sauce&#34;, &#34;ketchup&#34;, &#34;cups&#34;,
+                &#34;mustard&#34;, &#34;mayonnaise&#34;, &#34;mayo&#34;, &#34;sour cream&#34;, &#34;onion&#34;, &#34;meat&#34;,
+                &#34;onions&#34;, &#34;pepper&#34;, &#34;butter&#34;, &#34;ranch&#34;, &#34;ranch dressing&#34;)
 food.words &lt;- food.words[!(food.words %in% excl.words)]
 
 # add additional one-off words
-food.words &lt;- append(food.words, c(&quot;coke&quot;, &quot;pepsi&quot;))
+food.words &lt;- append(food.words, c(&#34;coke&#34;, &#34;pepsi&#34;))
 </code></pre><pre tabindex="0"><code>parsed.ngrams &lt;- parsed.ngrams %&gt;%
   filter(word %in% food.words)
 head(parsed.ngrams)
@@ -250,7 +261,7 @@ head(parsed.ngrams)
 #  then split the dataframe by $Name
 # remove unrelated words
 name.groups &lt;- parsed.ngrams %&gt;%
-  mutate(word = str_split(word, pattern = &quot; &quot;)) %&gt;%
+  mutate(word = str_split(word, pattern = &#34; &#34;)) %&gt;%
   group_by(Name) %&gt;%
   group_split()
 
@@ -278,8 +289,8 @@ deduped.ngrams &lt;- lapply(name.groups, function(group) {
     non.duplicates &lt;- group$word[duplicate.bool]
 
     # remove $words that are more than two
-    #  individual words (e.g. &quot;chocolate ice cream&quot;) b/c
-    #  these will be captured in &quot;ice cream&quot;
+    #  individual words (e.g. &#34;chocolate ice cream&#34;) b/c
+    #  these will be captured in &#34;ice cream&#34;
     non.duplicates &lt;- non.duplicates[sapply(non.duplicates, length) &lt;= 2]
   }
   return(group %&gt;% filter(word %in% non.duplicates))
@@ -289,7 +300,7 @@ rm(name.groups)
 # unlist the word column
 deduped.ngrams &lt;- deduped.ngrams %&gt;%
   rowwise() %&gt;%
-  mutate(word = paste0(word, collapse = &quot; &quot;)) %&gt;%
+  mutate(word = paste0(word, collapse = &#34; &#34;)) %&gt;%
   ungroup()
 </code></pre><br>
 <h3 id="manual-checks-a-idmanual-checksa">Manual checks <a id="manual-checks"></a></h3>
@@ -298,19 +309,19 @@ deduped.ngrams &lt;- deduped.ngrams %&gt;%
   # function returns that top n matches of the current.word
   #   within the words.to.match list via fuzzy string matching
 
-  scores &lt;- stringsim(current.word, words.to.match, method = &quot;osa&quot;)
+  scores &lt;- stringsim(current.word, words.to.match, method = &#34;osa&#34;)
   words.to.match[rev(order(scores))][1:(n + 1)]
 }
 
 # apply the function across the entire list to generate a data.frame
-#  containing the current.name and it's top 5 best matches
+#  containing the current.name and it&#39;s top 5 best matches
 lapply(deduped.ngrams$word,
                       get_top_matches,
                       words.to.match = unique(deduped.ngrams$word)) %&gt;%
   unlist() %&gt;%
   matrix(ncol = 6, byrow = TRUE) %&gt;%
   as_tibble() %&gt;%
-  setNames(c(&quot;Current.word&quot;, paste0(&quot;Match.&quot;, 1:5))) %&gt;%
+  setNames(c(&#34;Current.word&#34;, paste0(&#34;Match.&#34;, 1:5))) %&gt;%
   head()
 </code></pre><pre tabindex="0"><code># A tibble: 6 x 6
   Current.word Match.1    Match.2   Match.3    Match.4 Match.5   
@@ -325,7 +336,7 @@ lapply(deduped.ngrams$word,
 <h3 id="stemming-a-idstemminga">Stemming <a id="stemming"></a></h3>
 <p>We&rsquo;re now left with just <code>ice cream</code>. Next, we need to <a href="https://en.wikipedia.org/wiki/Stemming">stem the words</a> to get the word into its base form. This is to ensure we aren&rsquo;t separately counting &lsquo;hamburger&rsquo; and &lsquo;hamburgers.&rsquo; In our case, we&rsquo;re going to use a simpler word stemmer as we&rsquo;re mostly just removing plurality. There are more <a href="https://cran.r-project.org/web/packages/corpus/vignettes/stemmer.html">sophisticated word stemers</a> if you have a more complex problem.</p>
 <pre tabindex="0"><code>deduped.ngrams &lt;- deduped.ngrams %&gt;%
-  mutate(stem = wordStem(word, language = 'english'))
+  mutate(stem = wordStem(word, language = &#39;english&#39;))
 </code></pre><br>
 <h3 id="frequency-plots-a-idfrequency-plotsa">Frequency plots <a id="frequency-plots"></a></h3>
 <p>And finally we can plot the most popular items. The only trick here is we want to count items based on stem but have labels from the original word. This label switching may conflate a few items but it mostly doesn&rsquo;t affect the results.</p>
@@ -347,32 +358,32 @@ deduped.ngrams %&gt;%
   left_join(unique.stem.word.pairs) %&gt;%
   ggplot(aes(x = reorder(word, n), y = n, fill = n)) +
   geom_col() +
-  scale_fill_gradient(low = &quot;#0b2919&quot;, high = &quot;#2b7551&quot;) +
+  scale_fill_gradient(low = &#34;#0b2919&#34;, high = &#34;#2b7551&#34;) +
   geom_text(aes(label = n),
             hjust = 1.5,
-            color = &quot;white&quot;) +
+            color = &#34;white&#34;) +
   geom_curve(aes(x = 6.5, y = 40,
                  xend = 9, yend = 43),
-             curvature = 0.4, color = '#428fa1', size = 1.25,
-             arrow = arrow(type = 'closed', length = unit(0.4, &quot;cm&quot;))) +
-  annotate(&quot;label&quot;, x = 6, y = 35,
-           fill = '#428fa1',
-           label = &quot;'Ice cream' takes the\ntop spot with 43 occurrences\nin last meal requests&quot;,
-           fontface = &quot;bold&quot;,
-           color = 'white',
+             curvature = 0.4, color = &#39;#428fa1&#39;, size = 1.25,
+             arrow = arrow(type = &#39;closed&#39;, length = unit(0.4, &#34;cm&#34;))) +
+  annotate(&#34;label&#34;, x = 6, y = 35,
+           fill = &#39;#428fa1&#39;,
+           label = &#34;&#39;Ice cream&#39; takes the\ntop spot with 43 occurrences\nin last meal requests&#34;,
+           fontface = &#34;bold&#34;,
+           color = &#39;white&#39;,
            size = 4,
            label.size = 1.25,
-           label.padding = unit(0.75, &quot;lines&quot;)) +
-  labs(title = &quot;Top 10 most common items in last meal requests&quot;,
-       subtitle = &quot;Data from 130 U.S. inmates since 1927&quot;,
-       caption = &quot;marlo.works&quot;,
+           label.padding = unit(0.75, &#34;lines&#34;)) +
+  labs(title = &#34;Top 10 most common items in last meal requests&#34;,
+       subtitle = &#34;Data from 130 U.S. inmates since 1927&#34;,
+       caption = &#34;marlo.works&#34;,
        x = NULL,
-       y = &quot;Count&quot;) +
+       y = &#34;Count&#34;) +
   coord_flip() +
-  theme(legend.position = &quot;none&quot;,
-        plot.caption = element_text(face = &quot;italic&quot;,
+  theme(legend.position = &#34;none&#34;,
+        plot.caption = element_text(face = &#34;italic&#34;,
                                     size = 6,
-                                    color = 'grey50'))
+                                    color = &#39;grey50&#39;))
 </code></pre><p align="center">
 <img src="/img/posts/last-meals/Common_last_meals.svg" width=80%>
 </p>
@@ -391,12 +402,12 @@ deduped.ngrams %&gt;%
 </blockquote>
 <pre tabindex="0"><code>cosine_matrix &lt;- function(tokenized_data, lower = 0, upper = 1, filt = 0) {
 
-  if (!all(c(&quot;stem&quot;, &quot;Name&quot;) %in% names(tokenized_data))) {
-    stop(&quot;tokenized_data must contain variables named stem and Name&quot;)
+  if (!all(c(&#34;stem&#34;, &#34;Name&#34;) %in% names(tokenized_data))) {
+    stop(&#34;tokenized_data must contain variables named stem and Name&#34;)
   }
 
   if (lower &lt; 0 | lower &gt; 1 | upper &lt; 0 | upper &gt; 1 | filt &lt; 0 | filt &gt; 1) {
-    stop(&quot;lower, upper, and filt must be 0 &lt;= x &lt;= 1&quot;)
+    stop(&#34;lower, upper, and filt must be 0 &lt;= x &lt;= 1&#34;)
   }
 
   docs &lt;- length(unique(tokenized_data$Name))
@@ -439,16 +450,16 @@ chicken       0.00  0.00   0.00 0.00  0.18      0.00   0.00    0.00
 <p>The <code>cosine_matrix()</code> function does what it sounds likes: returns a matrix of the cosine scores between each food item. We can build a graph from this matrix to visualize which food items tend to co-occur more frequently.</p>
 <pre tabindex="0"><code>set.seed(26)
 graph_from_adjacency_matrix(cos_mat,
-                            mode = &quot;undirected&quot;,
+                            mode = &#34;undirected&#34;,
                             weighted = TRUE) %&gt;%
-  ggraph(layout = 'nicely') +
+  ggraph(layout = &#39;nicely&#39;) +
   geom_edge_link(aes(alpha = weight),
                  show.legend = FALSE,
-                 color = &quot;#2b7551&quot;) +
+                 color = &#34;#2b7551&#34;) +
   geom_node_label(aes(label = name),
                   label.size = 0.1,
                   size = 3,
-                  color = &quot;#0b2919&quot;)
+                  color = &#34;#0b2919&#34;)
 </code></pre><p align="center">
 <img src="/img/posts/last-meals/last_meals_graph.svg" width=80%>
 </p>

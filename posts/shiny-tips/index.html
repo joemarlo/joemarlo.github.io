@@ -39,6 +39,17 @@
 
 
 
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-0RYJVT684H', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
 </head>
 <body>
   <div id="all">
@@ -175,22 +186,22 @@ output$sampling_plots &lt;- renderPlot(draw_histograms(sampling_data()))
 <p>In addition to organization and sanity, this method allows you to easily use mapping functions on objects. For example, you want to update the label on three different buttons scattered across three pages. Simply throw it in a <code>lapply()</code> call and modify the ID within each ‘loop’.</p>
 <pre tabindex="0"><code># list of prefixes used for saving related objects
 data_save_name_prefixes &lt;- c(
-  &quot;filtering_data_save&quot;,
-  &quot;sampling_data_save&quot;,
-  &quot;manual_data_save&quot;
+  &#34;filtering_data_save&#34;,
+  &#34;sampling_data_save&#34;,
+  &#34;manual_data_save&#34;
 )
 
 # update every label on all three save buttons
 lapply(data_save_name_prefixes, function(id){
-  save_name &lt;- paste0(id, &quot;_name&quot;)
-  save_button &lt;- paste0(id, &quot;_button&quot;)
+  save_name &lt;- paste0(id, &#34;_name&#34;)
+  save_button &lt;- paste0(id, &#34;_button&#34;)
 
   # make save button label equal to the inputted dataset name
   observeEvent(input[[save_name]], {
     updateActionButton(
       session = session,
       inputId = save_button,
-      label = paste0(&quot;Save &quot;, str_trim(input[[save_name]]))
+      label = paste0(&#34;Save &#34;, str_trim(input[[save_name]]))
     )
   })
 })
@@ -210,17 +221,17 @@ The Data exploration page containing the ggplot output
 p &lt;- ggplot(plot_data, aes_string(x = input$exploration_variable_x))
 
 # if the user selects scatter
-if (input$exploration_select_plot_type == 'Scatter'){
+if (input$exploration_select_plot_type == &#39;Scatter&#39;){
 p &lt;- p + geom_point(aes_string(...)
 
       # add regression line
-      if (input$exploration_variable_regression == 'Include'){
+      if (input$exploration_variable_regression == &#39;Include&#39;){
             p &lt;- p + geom_smooth(aes_string(...))
       }
 }
 
 # if the user selects histogram
-if (input$exploration_select_plot_type == 'Histogram'){
+if (input$exploration_select_plot_type == &#39;Histogram&#39;){
       p &lt;- p + geom_histogram(...)
     }
 </code></pre><br>
@@ -233,7 +244,7 @@ strata_combos &lt;- reactive({
   # this method works even if one or two input$strata_variables are entered
   name_combos &lt;- Reduce(
     x = data[, input$strata_variables],
-    f = function(var1, var2) paste(var1, var2, sep = &quot;_&quot;)
+    f = function(var1, var2) paste(var1, var2, sep = &#34;_&#34;)
   )
 
   # tally the names

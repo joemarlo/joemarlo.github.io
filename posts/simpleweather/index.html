@@ -39,6 +39,17 @@
 
 
 
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-0RYJVT684H', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
 </head>
 <body>
   <div id="all">
@@ -133,12 +144,12 @@ get_weather(dates, lat, long)
 </code></pre><br>
 <h3 id="installation">Installation</h3>
 <p>The package is available through <a href="https://github.com/joemarlo/simpleweather">GitHub</a> and can be installed via devtools.</p>
-<pre tabindex="0"><code># install.packages(&quot;devtools&quot;)
-devtools::install_github(&quot;joemarlo/simpleweather&quot;)
+<pre tabindex="0"><code># install.packages(&#34;devtools&#34;)
+devtools::install_github(&#34;joemarlo/simpleweather&#34;)
 </code></pre><p>Requires API keys for the <a href="https://www.ncdc.noaa.gov/cdo-web/webservices/v2">NOAA API</a> and <a href="https://openweathermap.org/api/one-call-api">OpenWeather API</a>. You can request those keys for free <a href="https://www.ncdc.noaa.gov/cdo-web/token">here</a> and <a href="https://openweathermap.org/price">here</a>.</p>
 <p>And then log your API keys via the set_api_key_* functions.</p>
-<pre tabindex="0"><code>set_api_key_noaa(&quot;&lt;key&gt;&quot;)
-set_api_key_openweather(&quot;&lt;key&gt;&quot;)
+<pre tabindex="0"><code>set_api_key_noaa(&#34;&lt;key&gt;&#34;)
+set_api_key_openweather(&#34;&lt;key&gt;&#34;)
 </code></pre><br>
 <p>Please credit NOAA and/or OpenWeather as your weather data provider depending on your use.</p>
 <br>

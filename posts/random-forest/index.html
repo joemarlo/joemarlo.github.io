@@ -39,6 +39,17 @@
 
 
 
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-0RYJVT684H', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
 </head>
 <body>
   <div id="all">
@@ -172,8 +183,8 @@ gini_weighted(X1, X2)
 <p>At each node, the tree needs to make a decision using the Gini metric. Here a single-dimensional grid search is performed to find the optimal value of the split for a given feature such as <code>X1</code>. Note that in formal packages like <code>ranger</code> this step is likely not a straight grid search and is optimized.</p>
 <pre tabindex="0"><code class="language-{r" data-lang="{r">optimal_split &lt;- function(X, classes, n_splits = 50){
 
-  # create &quot;dividing lines&quot; that split X into to parts
-  # a smarter version would account for X's values
+  # create &#34;dividing lines&#34; that split X into to parts
+  # a smarter version would account for X&#39;s values
   splits &lt;- seq(min(X), max(X), length.out = n_splits)
 
   # calculate gini for each potential split
@@ -222,10 +233,10 @@ optimal_split(X, classes)
   ginis &lt;- sapply(X, function(x) optimal_split(x, Y))
 
   # return the the column with best split and its splitting value
-  best_gini &lt;- min(unlist(ginis['gini',]))[1]
-  best_column &lt;- names(which.min(ginis['gini',]))[1]
-  best_split &lt;- ginis[['split_value', best_column]]
-  pred &lt;- ginis[['preds', best_column]]
+  best_gini &lt;- min(unlist(ginis[&#39;gini&#39;,]))[1]
+  best_column &lt;- names(which.min(ginis[&#39;gini&#39;,]))[1]
+  best_split &lt;- ginis[[&#39;split_value&#39;, best_column]]
+  pred &lt;- ginis[[&#39;preds&#39;, best_column]]
   return(list(column = best_column, gini = best_gini, split = best_split, pred = pred))
 }
 n &lt;- 1000
@@ -235,9 +246,9 @@ n &lt;- 1000
                 X3 = rbinom(n, 1, prob = 0.5))
 X &lt;- .data[, -1]
 Y &lt;- .data[[1]]
-best_feature_to_split(.data[, -1], .data[['Y']])
+best_feature_to_split(.data[, -1], .data[[&#39;Y&#39;]])
 </code></pre><pre tabindex="0"><code>## $column
-## [1] &quot;X1&quot;
+## [1] &#34;X1&#34;
 ##
 ## $gini
 ## [1] 0.4046333
@@ -289,7 +300,7 @@ quick_sort(X)
 <p>We&rsquo;re going to implement the above splitting algorithm as a recursive function which builds our decision tree classifier. The tree will stop if it exceeds a certain depth, a minimum number of observations result from a given split, or if the Gini measure falls below a certain amount. Only one of these methods is required however including all three allow additional hyperparameter tuning down-the-road.</p>
 <p>The function recursively calls the <code>best_feature_to_split()</code> function until one of the stopping criteria is met. All other code is to manage the saving of the split decisions. The output is a dataframe denoting these decisions. The <code>m_features</code> argument denotes the number of columns to be used at each split &ndash; this will be useful later for random forest.</p>
 <pre tabindex="0"><code class="language-{r" data-lang="{r"># create a dataframe denoting the best splits
-decision_tree_classifier &lt;- function(X, Y, gini_threshold = 0.4, max_depth = 5, min_observations = 5, branch_id = '0', splits = NULL, m_features = ncol(X)){
+decision_tree_classifier &lt;- function(X, Y, gini_threshold = 0.4, max_depth = 5, min_observations = 5, branch_id = &#39;0&#39;, splits = NULL, m_features = ncol(X)){
 
   # sample the columns -- for use later in random forest
   m_features_clean &lt;- min(ncol(X), max(2, m_features))
@@ -327,7 +338,7 @@ decision_tree_classifier &lt;- function(X, Y, gini_threshold = 0.4, max_depth = 
       gini_threshold = gini_threshold,
       max_depth = max_depth,
       min_observations = min_observations,
-      branch_id = paste0(branch_id, &quot;0&quot;),
+      branch_id = paste0(branch_id, &#34;0&#34;),
       splits = splits,
       m_features = m_features
     )
@@ -340,7 +351,7 @@ decision_tree_classifier &lt;- function(X, Y, gini_threshold = 0.4, max_depth = 
       gini_threshold = gini_threshold,
       max_depth = max_depth,
       min_observations = min_observations,
-      branch_id = paste0(branch_id, &quot;1&quot;),
+      branch_id = paste0(branch_id, &#34;1&#34;),
       splits = splits,
       m_features = m_features
     )
@@ -387,7 +398,7 @@ decision_tree
 <h4 id="predictions">Predictions</h4>
 <p>A new observation is predicted by traversing the decision tree model via recursion. For a given point, start at <code>branch_id = 0</code>, calculate if the value is above or below the split, and then go &ldquo;left&rdquo; or &ldquo;right&rdquo; by appending the <code>branch_id</code> with a <code>0</code> or <code>1</code>. Repeat until there are no branches left.</p>
 <pre tabindex="0"><code class="language-{r" data-lang="{r"># predict a new data point
-predict_data_point &lt;- function(model_decision_tree, new_row, branch_id = '0'){
+predict_data_point &lt;- function(model_decision_tree, new_row, branch_id = &#39;0&#39;){
 
   # traverse the decision tree and get the next split
   decision_point &lt;- model_decision_tree[model_decision_tree$branch == branch_id,]
@@ -427,13 +438,13 @@ n &lt;- 1000
 </p>
 <p>Classifying these points with a logistic regression results in poor performance. The red indicates misclassified points.</p>
 <pre tabindex="0"><code class="language-{r}" data-lang="{r}"># logistic regression
-model_log &lt;- glm(Y ~ X1 + X2, data = .data, family = 'binomial')
+model_log &lt;- glm(Y ~ X1 + X2, data = .data, family = &#39;binomial&#39;)
 </code></pre><p align="center">
 <img src="/img/posts/random-forest/logistic_classes.png" width=80%>
 </p>
 <p>These &ldquo;square&rdquo; data suit the decision tree classifier well. Below, the classifier correctly classifies almost all points. The incorrect points all lie around the boundary between Class 0 and Class 1. This may be due to the <code>splits</code> in <code>optimal_split()</code> not being granular enough.</p>
 <pre tabindex="0"><code class="language-{r" data-lang="{r">X &lt;- dplyr::select(.data, -Y)
-Y &lt;- .data[['Y']]
+Y &lt;- .data[[&#39;Y&#39;]]
 model_decision_tree &lt;- decision_tree_classifier(X, Y, max_depth = 4,
 						gini_threshold = 0,
 						min_observations = 1)
@@ -489,13 +500,13 @@ preds &lt;- predict_decision_tree(model_decision_tree, X)
     return(tibble(preds))
   }) %&gt;% bind_cols()
 
-  # average the predictions across each model's prediction
-  # this is how each tree &quot;votes&quot;
+  # average the predictions across each model&#39;s prediction
+  # this is how each tree &#34;votes&#34;
   preds &lt;- rowMeans(preds, na.rm = TRUE)
   return(preds)
 }
 </code></pre><pre tabindex="0"><code class="language-{r}" data-lang="{r}"># read in the credit data
-credit &lt;- read_csv(file.path(wd, &quot;data/credit_card.csv&quot;))
+credit &lt;- read_csv(file.path(wd, &#34;data/credit_card.csv&#34;))
 X &lt;- select(credit, -Class)
 Y &lt;- credit$Class
 
@@ -545,8 +556,8 @@ table(preds &gt; 0.5, Y_test)
     return(tibble(preds))
   }) %&gt;% bind_cols()
 
-  # average the predictions across each model's prediction
-  # this is how each tree &quot;votes&quot;
+  # average the predictions across each model&#39;s prediction
+  # this is how each tree &#34;votes&#34;
   preds &lt;- rowMeans(preds, na.rm = TRUE)
   return(preds)
 }

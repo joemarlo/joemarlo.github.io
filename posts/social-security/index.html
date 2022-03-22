@@ -39,6 +39,17 @@
 
 
 
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-0RYJVT684H', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
 </head>
 <body>
   <div id="all">
@@ -178,13 +189,13 @@ sapply(62:70, function(claim.age){
 }) %&gt;%
   enframe() %&gt;%
   ggplot(aes(x = name, y = value)) +
-  geom_col(fill = '#2b7551') +
+  geom_col(fill = &#39;#2b7551&#39;) +
   scale_x_continuous(breaks = 1:9,
                      labels = 62:70) +
   scale_y_continuous(labels = scales::dollar_format()) +
-  labs(title = &quot;Net present value of SS benefits by claim age&quot;,
-       x = &quot;Claim age&quot;,
-       y = &quot;NPV of benefits&quot;) +
+  labs(title = &#34;Net present value of SS benefits by claim age&#34;,
+       x = &#34;Claim age&#34;,
+       y = &#34;NPV of benefits&#34;) +
   light.theme
 </code></pre><p align="center">
 <img src="/img/posts/Social-Security/NPVs.png" width=100%>
@@ -233,7 +244,6 @@ head(PV.grid)
 4   1.00        62        63 21900.
 5   1.00        62        63 21910.
 6   1.00        62        63 21921.
-
 </code></pre><p>We now have present values for every combination of investment return, claim age, and longevity. What we really care about is the best claim age for a given investment return and longevity. To find this, we can take the maximum present value for a given grouping of investment return and longevity.</p>
 <p>We can now build the plot shown at the beginning of the post. A simple table will do but that might miss the bigger pattern. This one will be bit more detailed as every age between between 62 and 70 was calculated, not just age 62, 66 (<a href="https://www.ssa.gov/planners/retire/retirechart.html">FRA</a>), and 70.</p>
 <pre tabindex="0"><code># plot of best claim age by investment return and death age
@@ -242,19 +252,19 @@ PV.grid %&gt;%
   filter(PV == max(PV)) %&gt;%
   ggplot(aes(x = Death.age, y = Return, fill = as.factor(Claim.age))) +
   geom_tile() +
-  scale_fill_brewer(name = &quot;Claim age&quot;) +
+  scale_fill_brewer(name = &#34;Claim age&#34;) +
   scale_y_continuous(breaks = seq(1, 1.1, by = 0.01),
                      labels = scales::percent(0:10/100, 1)) +
   scale_x_continuous(breaks = seq(65, 100, 5)) +
-  geom_text(x = 71, y = 1.06, label = &quot;Claim at age 62&quot;, color = &quot;grey50&quot;) +
-  geom_text(x = 79.5, y = 1.029, label = &quot;67&quot;, color = &quot;white&quot;) +
-  geom_text(x = 81.5, y = 1.028, label = &quot;68&quot;, color = &quot;white&quot;) +
-  geom_text(x = 83.5, y = 1.027, label = &quot;69&quot;, color = &quot;white&quot;) +
-  geom_text(x = 90, y = 1.02, label = &quot;Claim at age 70&quot;, color = &quot;white&quot;) +
-  labs(title = &quot;Best age to claim Social Security to maximum lifetime benefits&quot;,
-       subtitle = &quot;Based on expected longevity and investment return (if reinvesting the benefits)&quot;,
-       x = &quot;Expected longevity (years)&quot;,
-       y = &quot;Expected investment return&quot;) +
+  geom_text(x = 71, y = 1.06, label = &#34;Claim at age 62&#34;, color = &#34;grey50&#34;) +
+  geom_text(x = 79.5, y = 1.029, label = &#34;67&#34;, color = &#34;white&#34;) +
+  geom_text(x = 81.5, y = 1.028, label = &#34;68&#34;, color = &#34;white&#34;) +
+  geom_text(x = 83.5, y = 1.027, label = &#34;69&#34;, color = &#34;white&#34;) +
+  geom_text(x = 90, y = 1.02, label = &#34;Claim at age 70&#34;, color = &#34;white&#34;) +
+  labs(title = &#34;Best age to claim Social Security to maximum lifetime benefits&#34;,
+       subtitle = &#34;Based on expected longevity and investment return (if reinvesting the benefits)&#34;,
+       x = &#34;Expected longevity (years)&#34;,
+       y = &#34;Expected investment return&#34;) +
   light.theme +
   theme(panel.grid.major.y = element_line(color = NA))
 </code></pre><p align="center">
@@ -280,16 +290,16 @@ replicate(n.sims,
   as.data.frame() %&gt;%
   as_tibble() %&gt;%
   mutate(Age = 62:100) %&gt;%
-  pivot_longer(cols = starts_with(&quot;V&quot;)) %&gt;%
+  pivot_longer(cols = starts_with(&#34;V&#34;)) %&gt;%
   ggplot(aes(x = Age, y = value, group = name)) +
-  geom_point(color = &quot;#2b7551&quot;, alpha = 0.05) +
-  geom_line(color = &quot;#2b7551&quot;, alpha = 0.05) +
+  geom_point(color = &#34;#2b7551&#34;, alpha = 0.05) +
+  geom_line(color = &#34;#2b7551&#34;, alpha = 0.05) +
   scale_y_continuous(labels = scales::dollar_format()) +
-  labs(title = paste0(&quot;Simulation of &quot;,
+  labs(title = paste0(&#34;Simulation of &#34;,
                       scales::comma(n.sims),
-                      &quot; account balances over time&quot;),
-       x = &quot;Age&quot;,
-       y = &quot;Account balance&quot;) +
+                      &#34; account balances over time&#34;),
+       x = &#34;Age&#34;,
+       y = &#34;Account balance&#34;) +
   light.theme
 </code></pre><p align="center">
 <img src="/img/posts/Social-Security/AccountSim.png" width=100%>
@@ -325,35 +335,35 @@ sim.PV &lt;-
 
 # convert into data frame and then add columns to sim.PV
 sim.PV &lt;- data.frame(matrix(unlist(sim.PV), nrow = length(sim.PV), byrow = T))
-names(sim.PV) &lt;- paste0(percentile * 100, &quot;th percentile of investment returns&quot;)
+names(sim.PV) &lt;- paste0(percentile * 100, &#34;th percentile of investment returns&#34;)
 PV.grid &lt;- bind_cols(PV.grid, sim.PV)
 rm(sim.PV)
 
 # plot of best claim age by investment return and death age (all claim ages)
 PV.grid %&gt;%
   select(-PV) %&gt;%
-  pivot_longer(cols = contains(&quot;percentile&quot;), names_to = &quot;Percentile&quot;, values_to = &quot;PV&quot;) %&gt;%
+  pivot_longer(cols = contains(&#34;percentile&#34;), names_to = &#34;Percentile&#34;, values_to = &#34;PV&#34;) %&gt;%
   group_by(Return, Death.age, Percentile) %&gt;%
   filter(PV == max(PV)) %&gt;%
   ggplot(aes(x = Death.age, y = Return, fill = as.factor(Claim.age))) +
   geom_tile() +
-  scale_fill_brewer(name = &quot;Claim age&quot;) +
+  scale_fill_brewer(name = &#34;Claim age&#34;) +
   scale_y_continuous(breaks = seq(1, 1.1, by = 0.01),
                      labels = scales::percent(0:10/100, 1)) +
   scale_x_continuous(breaks = seq(65, 100, 5)) +
-  labs(title = &quot;Best age to claim Social Security to maximum lifetime benefits&quot;,
-       subtitle = paste(&quot;Based on&quot;,
+  labs(title = &#34;Best age to claim Social Security to maximum lifetime benefits&#34;,
+       subtitle = paste(&#34;Based on&#34;,
                         scales::comma(n.sims),
-                        &quot;simulations per each intersection of return, longevity, and claim age&quot;),
-       x = &quot;Expected longevity (years)&quot;,
-       y = &quot;Expected investment return&quot;) +
+                        &#34;simulations per each intersection of return, longevity, and claim age&#34;),
+       x = &#34;Expected longevity (years)&#34;,
+       y = &#34;Expected investment return&#34;) +
   facet_wrap(~Percentile, nrow = length(percentile)) +
   light.theme +
   theme(panel.grid.major.y = element_line(color = NA),
-        plot.caption = element_text(color = &quot;gray30&quot;,
-                                    face = 'italic',
+        plot.caption = element_text(color = &#34;gray30&#34;,
+                                    face = &#39;italic&#39;,
                                     size = 7),
-        legend.position = &quot;bottom&quot;)
+        legend.position = &#34;bottom&#34;)
 </code></pre><p align="center">
 <img src="/img/posts/Social-Security/bestClaimSim.png"" width=100%>
 </p>
@@ -417,7 +427,7 @@ sim.PV &lt;- map2_dfr(PV.grid$Return, PV.grid$Claim.age,
 }) %&gt;% filter(death.age &gt; claim.age)
 
 # rename the percentile columns
-names(sim.PV)[1:length(percentile)] &lt;- paste0(percentile * 100, &quot;th percentile of investment returns&quot;)
+names(sim.PV)[1:length(percentile)] &lt;- paste0(percentile * 100, &#34;th percentile of investment returns&#34;)
 </code></pre><p align="center">
 <img src="/img/posts/Social-Security/bestClaimVec.png"" width=100%>
 </p>
