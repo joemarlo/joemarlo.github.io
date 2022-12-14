@@ -8,12 +8,21 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 26 Sep 2021 13:52:16 -0400</lastBuildDate><atom:link href="https://joemarlo.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Simpleweather</title>
-      <link>https://joemarlo.github.io/posts/simpleweather/</link>
-      <pubDate>Sun, 26 Sep 2021 13:52:16 -0400</pubDate>
+      <title>Measuring hate speech on social media</title>
+      <link>https://joemarlo.github.io/posts/hate-speech/</link>
+      <pubDate>Fri, 11 Dec 2020 09:17:57 -0500</pubDate>
       
-      <guid>https://joemarlo.github.io/posts/simpleweather/</guid>
-      <description>&lt;p&gt;&lt;em&gt;R package to simply get daily weather data&lt;/em&gt;&lt;/p&gt;</description>
+      <guid>https://joemarlo.github.io/posts/hate-speech/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Machine learning for the social good&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>To the moon 🚀🌙</title>
+      <link>https://joemarlo.github.io/posts/to-the-moon/</link>
+      <pubDate>Tue, 11 May 2021 12:54:32 -0400</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/to-the-moon/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Discourse on r/wallstreetbets. Null results and struggles of the bag-of-words approach&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -26,15 +35,6 @@
     </item>
     
     <item>
-      <title>Measuring hate speech on social media</title>
-      <link>https://joemarlo.github.io/posts/hate-speech/</link>
-      <pubDate>Fri, 11 Dec 2020 09:17:57 -0500</pubDate>
-      
-      <guid>https://joemarlo.github.io/posts/hate-speech/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Machine learning for the social good&lt;/em&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Disparities in the fall of NYC subway ridership</title>
       <link>https://joemarlo.github.io/posts/covid-nyc-ridership/</link>
       <pubDate>Sat, 26 Sep 2020 17:40:21 -0400</pubDate>
@@ -44,12 +44,12 @@
     </item>
     
     <item>
-      <title>To the moon 🚀🌙</title>
-      <link>https://joemarlo.github.io/posts/to-the-moon/</link>
-      <pubDate>Tue, 11 May 2021 12:54:32 -0400</pubDate>
+      <title>Simpleweather</title>
+      <link>https://joemarlo.github.io/posts/simpleweather/</link>
+      <pubDate>Sun, 26 Sep 2021 13:52:16 -0400</pubDate>
       
-      <guid>https://joemarlo.github.io/posts/to-the-moon/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Discourse on r/wallstreetbets. Null results and struggles of the bag-of-words approach&lt;/em&gt;&lt;/p&gt;</description>
+      <guid>https://joemarlo.github.io/posts/simpleweather/</guid>
+      <description>&lt;p&gt;&lt;em&gt;R package to simply get daily weather data&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -68,24 +68,6 @@
       
       <guid>https://joemarlo.github.io/posts/f1-entropy/</guid>
       <description>&lt;p&gt;&lt;em&gt;The entropy of racing&lt;/em&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Learning causal inference</title>
-      <link>https://joemarlo.github.io/posts/learning-causal-inference/</link>
-      <pubDate>Wed, 09 Dec 2020 11:16:59 -0500</pubDate>
-      
-      <guid>https://joemarlo.github.io/posts/learning-causal-inference/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Building intuition for the causal framework&lt;/em&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Stonks only go up, but does Robinhood usage follow?</title>
-      <link>https://joemarlo.github.io/posts/stonks/</link>
-      <pubDate>Sat, 26 Sep 2020 14:31:39 -0400</pubDate>
-      
-      <guid>https://joemarlo.github.io/posts/stonks/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Using Bayesian MLMs to see the link between r/wallstreetbets and Robinhood&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -113,6 +95,24 @@
       
       <guid>https://joemarlo.github.io/posts/citi-bike-availability/</guid>
       <description>&lt;p&gt;&lt;em&gt;Extracting the best from Python and Shiny&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Learning causal inference</title>
+      <link>https://joemarlo.github.io/posts/learning-causal-inference/</link>
+      <pubDate>Wed, 09 Dec 2020 11:16:59 -0500</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/learning-causal-inference/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Building intuition for the causal framework&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Stonks only go up, but does Robinhood usage follow?</title>
+      <link>https://joemarlo.github.io/posts/stonks/</link>
+      <pubDate>Sat, 26 Sep 2020 14:31:39 -0400</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/stonks/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Using Bayesian MLMs to see the link between r/wallstreetbets and Robinhood&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
