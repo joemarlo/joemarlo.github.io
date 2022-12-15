@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Marlo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 26 Sep 2021 13:52:16 -0400</lastBuildDate><atom:link href="https://joemarlo.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Dec 2022 19:00:54 -0600</lastBuildDate><atom:link href="https://joemarlo.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Measuring hate speech on social media</title>
       <link>https://joemarlo.github.io/posts/hate-speech/</link>
@@ -41,6 +41,24 @@
       
       <guid>https://joemarlo.github.io/posts/covid-nyc-ridership/</guid>
       <description>&lt;p&gt;&lt;em&gt;Mapping the decline of subway ridership in the Covid era&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>plotBart</title>
+      <link>https://joemarlo.github.io/posts/plotbart/</link>
+      <pubDate>Wed, 14 Dec 2022 19:00:54 -0600</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/plotbart/</guid>
+      <description>&lt;p&gt;&lt;em&gt;R package to make potential outcomes based causal inference easier&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>thinkCausal</title>
+      <link>https://joemarlo.github.io/posts/thinkcausal/</link>
+      <pubDate>Wed, 08 Dec 2021 10:40:50 -0500</pubDate>
+      
+      <guid>https://joemarlo.github.io/posts/thinkcausal/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Potential outcomes based causal inference for applied researchers&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

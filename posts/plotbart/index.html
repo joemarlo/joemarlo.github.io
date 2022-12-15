@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>plotBart</title>
+<meta name="description" content="Personal portfolio of Joe Marlo">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://joemarlo.github.io/css/owl.theme.css">
+<link rel="icon" href= "https://joemarlo.github.io/favicon.ico" /> 
+
+
+  <link href="https://joemarlo.github.io/css/style.custom.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://joemarlo.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://joemarlo.github.io/img/favicon.png">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://joemarlo.github.io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://joemarlo.github.io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://joemarlo.github.io/favicon-16x16.png">
+
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-149957828-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="https://joemarlo.github.io">Marlo</a></h1>
+    
+      <p class="sidebar-p">I'm an applied statistician. <br> Based in Chicago.</p>
+    
+    <ul class="sidebar-menu">
+      
+        <li><a href="https://joemarlo.github.io/posts/">Posts</a></li>
+      
+        <li><a href="https://joemarlo.github.io/projects/">Projects</a></li>
+      
+        <li><a href="https://joemarlo.github.io/about/">About</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  
+  
+  
+  <a href="https://www.linkedin.com/in/jmarlo" data-animate-hover="pulse" class="external">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+  
+  <a href="https://www.github.com/joemarlo" data-animate-hover="pulse" class="external">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2021 Joe Marlo
+        
+        <br> Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to <a href="https://gohugo.io/">Hugo</a> by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://joemarlo.github.io">Marlo</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-9">
+      <div class="content-column-content">
+         <h1>plotBart</h1>
+         <p><em>R package to make potential outcomes based causal inference easier</em></p>
+<hr>
+<p><a href="https://cran.r-project.org/web/packages/plotBart/index.html"><code>plotBart</code></a> is a diagnostic and plotting package for
+<a href="https://github.com/vdorie/bartCause"><code>bartCause</code></a> and
+<a href="https://github.com/priism-center/thinkCausal_dev"><code>thinkCausal</code></a>. It&rsquo;s designed to expedite the causal inference analysis process. It includes functions to assist in diagnostics and plotting.</p>
+<pre tabindex="0"><code>library(plotBart)
+data(lalonde)
+confounders &lt;- c(&#39;age&#39;, &#39;educ&#39;, &#39;black&#39;, &#39;hisp&#39;, &#39;married&#39;, &#39;nodegr&#39;)
+
+# fit BART model
+model_results &lt;- bartCause::bartc(
+  response = lalonde[[&#39;re78&#39;]],
+  treatment = lalonde[[&#39;treat&#39;]],
+  confounders = as.matrix(lalonde[, confounders]),
+  estimand = &#39;ate&#39;,
+  commonSup.rule = &#39;none&#39;,
+  verbose = FALSE,
+  keepTrees = TRUE
+)
+
+# plot common support
+plot_common_support(.model = model_results)
+</code></pre><img src="/img/posts/plotBart/README-example-1.png" width="75%" style="display: block; margin: auto;" />
+<br>
+<pre tabindex="0"><code># plot CATE and manipulate ggplot object
+plot_CATE(
+  .model = model_results, 
+  type = &#39;density&#39;, 
+  ci_80 = TRUE, 
+  ci_95 = TRUE,
+  .mean = TRUE
+) + 
+  labs(subtitle = &#39;My comments on the results&#39;) +
+  theme_classic()
+</code></pre><img src="/img/posts/plotBart/README-example-2.png" width="75%" style="display: block; margin: auto;" />
+<br>
+<h3 id="installation">Installation</h3>
+<p>plotBart is currently in development and is available to test by
+installing via:</p>
+<pre tabindex="0"><code># latest release on CRAN
+install.packages(&#39;plotBart&#39;)
+
+# latest development version
+# install.packages(&#34;remotes&#34;)
+remotes::install_github(&#39;priism-center/plotBart)
+</code></pre><br>
+<hr>
+<p><em>2022 December</em><br>
+<em>Find the code here: <a href="https://github.com/priism-center/plotBart">github.com/priism-center/plotBart</a></em></p>
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://joemarlo.github.io/js/jquery.min.js"></script>
+<script src="https://joemarlo.github.io/js/bootstrap.min.js"></script>
+<script src="https://joemarlo.github.io/js/jquery.cookie.js"> </script>
+<script src="https://joemarlo.github.io/js/ekko-lightbox.js"></script>
+<script src="https://joemarlo.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://joemarlo.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://joemarlo.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://joemarlo.github.io/js/owl.carousel.min.js"></script>
+<script src="https://joemarlo.github.io/js/front.js"></script>
+
+
+
+</body>
+</html>
